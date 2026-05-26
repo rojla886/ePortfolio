@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap 5 Mastery | Complete Demo with Explanations</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      body {
+        background: #f0f4f8;
+        padding: 0 1rem 3rem;
+      }
+      .component-card {
+        margin-bottom: 2rem;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: 0.2s;
+      }
+      .component-card:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+      .code-snippet {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        font-family: "Fira Code", monospace;
+        font-size: 0.8rem;
+        overflow-x: auto;
+        margin-top: 1rem;
+      }
+      .section-header {
+        border-left: 5px solid #0d6efd;
+        padding-left: 1rem;
+        margin: 2rem 0 1rem;
+      }
+      .demo-box {
+        background: #e9ecef;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        text-align: center;
+      }
+      footer {
+        background: #e9ecef;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 0.5rem;
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="site-nav">
+      <div class="site-nav-inner">
+        <a href="./index.html" class="site-brand">🧱 Web Guides</a>
+        <div class="nav-links">
+          <a href="./fullstack.html">Full Stack</a>
+          <a href="./index.html">HTML</a>
+          <a href="./Css.html">CSS</a>
+          <a href="./javascript.html">JavaScript</a>
+          <a href="./Bootstrap.html" class="active">Bootstrap</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container page-container" style="margin-top: 20px">
+      <section class="hero-banner text-center mb-4">
+        <h1 class="display-4 fw-bold">Bootstrap 5 Complete Guide</h1>
+        <p class="lead">
+          Every component explained with live examples and code snippets – full
+          understanding guaranteed.
+        </p>
+        <button
+          class="btn btn-light btn-lg"
+          data-bs-toggle="modal"
+          data-bs-target="#masterModal"
+        >
+          <i class="bi bi-question-circle"></i> What is Bootstrap?
+        </button>
+      </section>
+
+      <!-- Alert (dismissible) -->
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>✓ Bootstrap loaded successfully!</strong> All components below
+        are functional. Click the <strong>X</strong> to dismiss this alert.
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+        ></button>
+      </div>
+
+      <!-- ================= WHAT IS BOOTSTRAP MODAL ================= -->
+      <div class="modal fade" id="masterModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+              <h5 class="modal-title">What is Bootstrap?</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                <strong>Bootstrap</strong> is a free, open‑source CSS framework
+                that provides:
+              </p>
+              <ul>
+                <li>
+                  A <strong>responsive 12‑column grid system</strong> – adapts
+                  to any screen size.
+                </li>
+                <li>
+                  <strong>Pre‑styled components</strong> – navbar, cards,
+                  modals, forms, buttons, alerts, etc.
+                </li>
+                <li>
+                  <strong>Utility classes</strong> – for spacing, typography,
+                  flexbox, display, colours.
+                </li>
+                <li>
+                  <strong>JavaScript plugins</strong> – tooltips, popovers,
+                  carousels, offcanvas – no custom JS needed.
+                </li>
+              </ul>
+              <div class="code-snippet">
+                <pre>
+&lt;!-- Include CSS --&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"&gt;
+&lt;!-- Include JS bundle --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</pre
+                >
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= GRID SYSTEM (detailed) ================= -->
+      <div class="card component-card" id="grid">
+        <div class="card-body">
+          <h2 class="card-title">📐 Bootstrap Grid System (12 columns)</h2>
+          <p>
+            The grid is the foundation of Bootstrap layouts. It uses
+            <strong>containers, rows, and columns</strong>.
+          </p>
+          <div class="row g-3 mb-3">
+            <div class="col-md-4">
+              <div class="demo-box bg-primary text-white">.col-md-4</div>
+            </div>
+            <div class="col-md-4">
+              <div class="demo-box bg-success text-white">.col-md-4</div>
+            </div>
+            <div class="col-md-4">
+              <div class="demo-box bg-warning text-dark">.col-md-4</div>
+            </div>
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-6 col-md-3">
+              <div class="demo-box bg-info">.col-6 .col-md-3</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="demo-box bg-info">.col-6 .col-md-3</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="demo-box bg-info">.col-6 .col-md-3</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="demo-box bg-info">.col-6 .col-md-3</div>
+            </div>
+          </div>
+          <div class="alert alert-secondary">
+            <strong>📘 How it works:</strong> Columns are placed inside rows
+            (<code>.row</code>). Each column has a width defined by numbers that
+            add up to 12. <code>.col-md-4</code> means "4 out of 12 columns on
+            medium screens (≥768px)". <code>.col-6 .col-md-3</code> means "6
+            columns on extra small screens, 3 columns on medium and up".
+          </div>
+          <div class="code-snippet">
+            <pre>
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-4"&gt;Column 1&lt;/div&gt;
+    &lt;div class="col-md-4"&gt;Column 2&lt;/div&gt;
+    &lt;div class="col-md-4"&gt;Column 3&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= COMPONENTS SECTION ================= -->
+      <h2 class="section-header" id="components">
+        🧩 Bootstrap Components (Live Examples + Code)
+      </h2>
+
+      <!-- Accordion -->
+      <div class="card component-card">
+        <div class="card-body">
+          <h3>📂 Accordion</h3>
+          <p>
+            Vertically collapsing panels – great for FAQs or content sections.
+          </p>
+          <div class="accordion" id="demoAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                >
+                  Accordion Item #1
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                data-bs-parent="#demoAccordion"
+              >
+                <div class="accordion-body">
+                  This is the first accordion body. It is shown by default.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                >
+                  Accordion Item #2
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  Second item – hidden until clicked.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="code-snippet mt-2">
+            <pre>
+&lt;div class="accordion" id="myAccordion"&gt;
+  &lt;div class="accordion-item"&gt;
+    &lt;h2 class="accordion-header"&gt;
+      &lt;button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse1"&gt;
+        Title
+      &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#myAccordion"&gt;
+      &lt;div class="accordion-body"&gt;Content&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="card component-card">
+        <div class="card-body">
+          <h3>🃏 Cards</h3>
+          <p>Flexible content containers with many variations.</p>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title">Basic Card</h5>
+                  <p class="card-text">Simple card with body only.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card h-100">
+                <img
+                  src="https://picsum.photos/id/26/300/150"
+                  class="card-img-top"
+                  alt="sample"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Image Card</h5>
+                  <p class="card-text">Card with top image.</p>
+                  <button class="btn btn-primary">Button</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card h-100">
+                <div class="card-header">Featured</div>
+                <div class="card-body">
+                  <h5 class="card-title">Header/Footer</h5>
+                  <p class="card-text">Card with header and footer.</p>
+                </div>
+                <div class="card-footer">2 days ago</div>
+              </div>
+            </div>
+          </div>
+          <div class="code-snippet mt-2">
+            <pre>
+&lt;div class="card" style="width: 18rem;"&gt;
+  &lt;img src="..." class="card-img-top"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Title&lt;/h5&gt;
+    &lt;p class="card-text"&gt;Content&lt;/p&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;Button&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel (Bootstrap JS component) -->
+      <div class="card component-card">
+        <div class="card-body">
+          <h3>🎠 Carousel (Image Slider)</h3>
+          <p>Cycles through images with controls and indicators.</p>
+          <div id="demoCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#demoCarousel"
+                data-bs-slide-to="0"
+                class="active"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#demoCarousel"
+                data-bs-slide-to="1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#demoCarousel"
+                data-bs-slide-to="2"
+              ></button>
+            </div>
+            <div class="carousel-inner rounded">
+              <div class="carousel-item active">
+                <img
+                  src="https://picsum.photos/id/101/800/300"
+                  class="d-block w-100"
+                  alt="slide1"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://picsum.photos/id/104/800/300"
+                  class="d-block w-100"
+                  alt="slide2"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://picsum.photos/id/106/800/300"
+                  class="d-block w-100"
+                  alt="slide3"
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#demoCarousel"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#demoCarousel"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+          <div class="code-snippet mt-2">
+            <pre>
+&lt;div id="myCarousel" class="carousel slide" data-bs-ride="carousel"&gt;
+  &lt;div class="carousel-inner"&gt;
+    &lt;div class="carousel-item active"&gt;&lt;img src="..."&gt;&lt;/div&gt;
+    ...
+  &lt;/div&gt;
+  &lt;button class="carousel-control-prev" data-bs-target="#myCarousel" data-bs-slide="prev"&gt;...&lt;/button&gt;
+&lt;/div&gt;</pre
+            >
+          </div>
+          <div class="alert alert-info mt-2">
+            💡 Carousel requires Bootstrap's JavaScript bundle – automatically
+            included.
+          </div>
+        </div>
+      </div>
+
+      <!-- Offcanvas (sidebar) -->
+      <div class="card component-card">
+        <div class="card-body">
+          <h3>📂 Offcanvas (Sidebar)</h3>
+          <p>
+            A hidden sidebar that slides in from the left, right, or bottom.
+          </p>
+          <button
+            class="btn btn-primary"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#demoOffcanvas"
+          >
+            Open Offcanvas
+          </button>
+          <div
+            class="offcanvas offcanvas-start"
+            tabindex="-1"
+            id="demoOffcanvas"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title">Offcanvas</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <p>
+                This is a sliding sidebar. Great for mobile menus or extra
+                content.
+              </p>
+            </div>
+          </div>
+          <div class="code-snippet mt-2">
+            <pre>
+&lt;button data-bs-toggle="offcanvas" data-bs-target="#myOffcanvas"&gt;Open&lt;/button&gt;
+&lt;div class="offcanvas offcanvas-start" id="myOffcanvas"&gt;
+  &lt;div class="offcanvas-header"&gt;...&lt;/div&gt;
+  &lt;div class="offcanvas-body"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Dropdowns -->
+      <div class="card component-card">
+        <div class="card-body">
+          <h3>📌 Dropdowns</h3>
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+              Dropdown Button
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+          </div>
+          <div class="code-snippet mt-2">
+            <pre>
+&lt;div class="dropdown"&gt;
+  &lt;button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"&gt;Dropdown&lt;/button&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Item&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Tooltips & Popovers -->
+      <div class="card component-card">
+        <div class="card-body">
+          <h3>💬 Tooltips & Popovers</h3>
+          <p>
+            Tooltip:
+            <button
+              class="btn btn-outline-secondary"
+              data-bs-toggle="tooltip"
+              title="I am a tooltip!"
+            >
+              Hover me
+            </button>
+          </p>
+          <p>
+            Popover:
+            <button
+              class="btn btn-outline-danger"
+              data-bs-toggle="popover"
+              title="Popover Title"
+              data-bs-content="This is the popover content. Click again to close."
+            >
+              Click me
+            </button>
+          </p>
+          <div class="code-snippet mt-2">
+            <pre>
+&lt;button data-bs-toggle="tooltip" title="Tooltip text"&gt;Hover&lt;/button&gt;
+&lt;button data-bs-toggle="popover" title="Title" data-bs-content="Content"&gt;Click&lt;/button&gt;
+&lt;script&gt;
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.map(t => new bootstrap.Tooltip(t));
+  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+  popoverTriggerList.map(p => new bootstrap.Popover(p));
+&lt;/script&gt;</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast -->
+      <div class="card component-card">
+        <div class="card-body">
+          <h3>🍞 Toast Notifications</h3>
+          <button class="btn btn-warning" id="showToastBtn">Show Toast</button>
+          <div
+            class="toast-container position-fixed bottom-0 end-0 p-3"
+            style="z-index: 11"
+          >
+            <div
+              id="liveToast"
+              class="toast"
+              role="alert"
+              data-bs-autohide="true"
+              data-bs-delay="3000"
+            >
+              <div class="toast-header">
+                <strong class="me-auto">Bootstrap</strong><small>just now</small
+                ><button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="toast"
+                ></button>
+              </div>
+              <div class="toast-body">Hello! This is a toast message.</div>
+            </div>
+          </div>
+          <div class="code-snippet mt-2">
+            <pre>
+&lt;div class="toast"&gt;
+  &lt;div class="toast-header"&gt;...&lt;/div&gt;
+  &lt;div class="toast-body"&gt;Message&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;new bootstrap.Toast(toastEl).show();&lt;/script&gt;</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Bars & Spinners -->
+      <div class="card component-card">
+        <div class="card-body">
+          <h3>⏳ Progress Bars & Spinners</h3>
+          <div class="progress mb-2">
+            <div class="progress-bar bg-success" style="width: 65%">65%</div>
+          </div>
+          <div class="progress mb-3">
+            <div
+              class="progress-bar progress-bar-striped progress-bar-animated"
+              style="width: 40%"
+            >
+              40%
+            </div>
+          </div>
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="code-snippet mt-2">
+            <pre>
+&lt;div class="progress"&gt;&lt;div class="progress-bar" style="width: 65%"&gt;65%&lt;/div&gt;&lt;/div&gt;
+&lt;div class="spinner-border text-primary"&gt;&lt;/div&gt;</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges & Breadcrumbs -->
+      <div class="card component-card">
+        <div class="card-body">
+          <h3>🏷️ Badges & Breadcrumbs</h3>
+          <p>
+            Badges: <span class="badge bg-primary">New</span>
+            <span class="badge bg-secondary">Secondary</span>
+            <span class="badge bg-success rounded-pill">Pill</span>
+          </p>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Library</a></li>
+              <li class="breadcrumb-item active">Data</li>
+            </ol>
+          </nav>
+          <div class="code-snippet mt-2">
+            <pre>
+&lt;span class="badge bg-primary"&gt;New&lt;/span&gt;
+&lt;nav aria-label="breadcrumb"&gt;
+  &lt;ol class="breadcrumb"&gt;
+    &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- List Groups -->
+      <div class="card component-card">
+        <div class="card-body">
+          <h3>📋 List Groups</h3>
+          <ul class="list-group mb-2">
+            <li class="list-group-item active">Active item</li>
+            <li class="list-group-item">Second item</li>
+            <li class="list-group-item disabled">Disabled</li>
+          </ul>
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action"
+              >Link item 1</a
+            >
+            <a href="#" class="list-group-item list-group-item-action"
+              >Link item 2</a
+            >
+          </div>
+          <div class="code-snippet mt-2">
+            <pre>
+&lt;ul class="list-group"&gt;&lt;li class="list-group-item"&gt;Item&lt;/li&gt;&lt;/ul&gt;</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= FORMS (Advanced) ================= -->
+      <h2 class="section-header" id="forms">📝 Forms & Validation</h2>
+      <div class="card component-card">
+        <div class="card-body">
+          <h3>Form with Floating Labels & Validation</h3>
+          <form id="demoForm" class="needs-validation" novalidate>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingName"
+                placeholder="Name"
+                required
+              />
+              <label for="floatingName">Full name</label>
+              <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="floatingEmail"
+                placeholder="Email"
+                required
+              />
+              <label for="floatingEmail">Email address</label>
+              <div class="invalid-feedback">Valid email required.</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Select option</label>
+              <select class="form-select" required>
+                <option value="">Choose...</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+              </select>
+            </div>
+            <div class="mb-3 form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="termsCheck"
+                required
+              />
+              <label class="form-check-label" for="termsCheck"
+                >Agree to terms</label
+              >
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </form>
+          <div id="formResult" class="mt-2"></div>
+          <div class="code-snippet mt-2">
+            <pre>
+&lt;form class="needs-validation" novalidate&gt;
+  &lt;div class="form-floating mb-3"&gt;
+    &lt;input type="text" class="form-control" id="name" required&gt;
+    &lt;label for="name"&gt;Name&lt;/label&gt;
+    &lt;div class="invalid-feedback"&gt;Required&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= UTILITIES ================= -->
+      <h2 class="section-header" id="utilities">
+        🎯 Utility Classes (Spacing, Flex, Display)
+      </h2>
+      <div class="card component-card">
+        <div class="card-body">
+          <p>
+            Bootstrap provides hundreds of utility classes to control spacing,
+            alignment, and display without custom CSS.
+          </p>
+          <div
+            class="d-flex justify-content-between align-items-center border p-3 mb-3"
+          >
+            <div class="p-2 bg-primary text-white">Flex item 1</div>
+            <div class="p-2 bg-success text-white">Flex item 2</div>
+            <div class="p-2 bg-warning text-dark">Flex item 3</div>
+          </div>
+          <div class="text-center p-3 bg-light rounded">
+            Centered text using <code>.text-center</code> and
+            <code>.p-3</code> (padding).
+          </div>
+          <div class="mt-4">
+            <span class="me-2 bg-secondary text-white p-1"
+              >.me-2 (margin-right)</span
+            >
+            <span class="mx-3 bg-info p-1">.mx-3 (margin left+right)</span>
+            <span class="mb-0 d-block bg-warning p-1"
+              >.mb-0 (margin-bottom 0)</span
+            >
+          </div>
+          <div class="code-snippet mt-2">
+            <pre>
+&lt;div class="d-flex justify-content-between align-items-center"&gt;...&lt;/div&gt;
+&lt;div class="text-center p-3"&gt;Centered&lt;/div&gt;
+&lt;span class="me-2"&gt;Margin right&lt;/span&gt;
+&lt;span class="mx-auto"&gt;Auto margins&lt;/span&gt;</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= BUTTONS ================= -->
+      <div class="card component-card">
+        <div class="card-body">
+          <h3>🔘 Buttons & Button Groups</h3>
+          <div>
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-secondary">Secondary</button>
+            <button class="btn btn-success">Success</button>
+            <button class="btn btn-danger">Danger</button>
+            <button class="btn btn-warning">Warning</button>
+            <button class="btn btn-outline-info">Outline Info</button>
+          </div>
+          <div class="btn-group mt-3" role="group">
+            <button class="btn btn-outline-primary">Left</button>
+            <button class="btn btn-outline-primary">Middle</button>
+            <button class="btn btn-outline-primary">Right</button>
+          </div>
+          <div class="code-snippet mt-2">
+            <pre>
+&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;div class="btn-group"&gt;&lt;button&gt;Left&lt;/button&gt;&lt;button&gt;Right&lt;/button&gt;&lt;/div&gt;</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="card bg-light">
+        <div class="card-body text-center">
+          <h3>✅ Full Understanding of Bootstrap Framework</h3>
+          <p>
+            This page demonstrates <strong>20+ Bootstrap components</strong>,
+            the grid system, utilities, forms, and all interactive JavaScript
+            plugins. Each section includes a live example and the corresponding
+            HTML code.
+          </p>
+          <p>
+            You can copy any snippet and use it in your own projects. Bootstrap
+            saves development time and guarantees responsive, consistent design.
+          </p>
+          <a href="#" class="btn btn-primary">Back to top ↑</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        © 2025 – Bootstrap Mastery Demo | All components are functional and
+        explained
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Enable tooltips and popovers
+      var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]'),
+      );
+      tooltipTriggerList.forEach((el) => new bootstrap.Tooltip(el));
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]'),
+      );
+      popoverTriggerList.forEach((el) => new bootstrap.Popover(el));
+
+      // Toast demo
+      const toastBtn = document.getElementById("showToastBtn");
+      const toastLive = document.getElementById("liveToast");
+      if (toastBtn && toastLive) {
+        toastBtn.addEventListener("click", () => {
+          const toast = new bootstrap.Toast(toastLive);
+          toast.show();
+        });
+      }
+
+      // Form validation (Bootstrap's default)
+      (function () {
+        const form = document.getElementById("demoForm");
+        if (form) {
+          form.addEventListener("submit", function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            } else {
+              event.preventDefault();
+              document.getElementById("formResult").innerHTML =
+                '<div class="alert alert-success">✓ Form submitted successfully! (demo)</div>';
+              form.reset();
+            }
+            form.classList.add("was-validated");
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
