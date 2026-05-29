@@ -19,7 +19,6 @@
       color: #0f172a;
       line-height: 1.5;
     }
-    /* Navigation – same as Full Stack page */
     .site-nav {
       background: #0f3b5c;
       padding: 0.8rem 2rem;
@@ -259,12 +258,26 @@
       <h5>&lt;h5&gt;</h5>
       <h6>&lt;h6&gt;</h6>
     </div>
+    <div class="code-block">
+      <pre>&lt;h1&gt;Main Title&lt;/h1&gt;
+&lt;h2&gt;Subheading&lt;/h2&gt;
+&lt;h3&gt;Section title&lt;/h3&gt;
+&lt;h4&gt;Level 4&lt;/h4&gt;
+&lt;h5&gt;Level 5&lt;/h5&gt;
+&lt;h6&gt;Level 6&lt;/h6&gt;</pre>
+    </div>
+
     <h3>Paragraphs (&lt;p&gt;)</h3>
     <div class="explanation">Defines a paragraph. Browsers add automatic spacing before and after.</div>
     <div class="demo-area">
       <p>This is the first paragraph. It contains some text.</p>
       <p>This is the second paragraph. There is a gap between them.</p>
     </div>
+    <div class="code-block">
+      <pre>&lt;p&gt;This is the first paragraph. It contains some text.&lt;/p&gt;
+&lt;p&gt;This is the second paragraph. There is a gap between them.&lt;/p&gt;</pre>
+    </div>
+
     <h3>Inline Text Formatting</h3>
     <div class="demo-area">
       <p><strong>Strong</strong> – <strong>bold and important</strong></p>
@@ -277,6 +290,18 @@
       <p><code>Code</code> – <code>inline code</code></p>
       <p>Press <kbd>Ctrl</kbd>+<kbd>C</kbd> to copy</p>
     </div>
+    <div class="code-block">
+      <pre>&lt;strong&gt;Bold and important&lt;/strong&gt;
+&lt;em&gt;Italic and emphasised&lt;/em&gt;
+&lt;mark&gt;Highlighted&lt;/mark&gt;
+&lt;small&gt;Small text&lt;/small&gt;
+&lt;del&gt;Deleted text&lt;/del&gt;
+&lt;ins&gt;Inserted text&lt;/ins&gt;
+H&lt;sub&gt;2&lt;/sub&gt;O
+x&lt;sup&gt;2&lt;/sup&gt;
+&lt;code&gt;inline code&lt;/code&gt;
+Press &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;C&lt;/kbd&gt;</pre>
+    </div>
     <div class="tip">✅ Use <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> instead of <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> – they add meaning, not just style.</div>
   </div>
 
@@ -288,15 +313,39 @@
     <div class="demo-area">
       <ul><li>Apples</li><li>Bananas</li><li>Oranges</li></ul>
     </div>
+    <div class="code-block">
+      <pre>&lt;ul&gt;
+  &lt;li&gt;Apples&lt;/li&gt;
+  &lt;li&gt;Bananas&lt;/li&gt;
+  &lt;li&gt;Oranges&lt;/li&gt;
+&lt;/ul&gt;</pre>
+    </div>
+
     <h3>Ordered list (&lt;ol&gt; + &lt;li&gt;)</h3>
     <div class="explanation">Numbered list – sequence matters (steps, rankings).</div>
     <div class="demo-area">
       <ol><li>Wake up</li><li>Brush teeth</li><li>Eat breakfast</li></ol>
     </div>
+    <div class="code-block">
+      <pre>&lt;ol&gt;
+  &lt;li&gt;Wake up&lt;/li&gt;
+  &lt;li&gt;Brush teeth&lt;/li&gt;
+  &lt;li&gt;Eat breakfast&lt;/li&gt;
+&lt;/ol&gt;</pre>
+    </div>
+
     <h3>Description list (&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;)</h3>
     <div class="explanation">Terms and definitions (glossary).</div>
     <div class="demo-area">
       <dl><dt>HTML</dt><dd>Structures the page.</dd><dt>CSS</dt><dd>Styles the page.</dd></dl>
+    </div>
+    <div class="code-block">
+      <pre>&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;Structures the page.&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Styles the page.&lt;/dd&gt;
+&lt;/dl&gt;</pre>
     </div>
   </div>
 
@@ -313,7 +362,8 @@
     <div class="code-block">
       <pre>&lt;a href="https://example.com" target="_blank"&gt;Visit&lt;/a&gt;
 &lt;a href="#section2"&gt;Go to Section 2&lt;/a&gt;
-&lt;a href="mailto:hello@example.com"&gt;Email Us&lt;/a&gt;</pre>
+&lt;a href="mailto:hello@example.com"&gt;Email Us&lt;/a&gt;
+&lt;a href="tel:+123456789"&gt;Call Us&lt;/a&gt;</pre>
     </div>
   </div>
 
@@ -325,6 +375,10 @@
     <div class="demo-area">
       <img src="https://picsum.photos/id/1/200/130" alt="Mountain" style="border-radius: 8px;">
     </div>
+    <div class="code-block">
+      <pre>&lt;img src="photo.jpg" alt="Description of image" width="300"&gt;</pre>
+    </div>
+
     <h3>&lt;audio&gt; and &lt;video&gt;</h3>
     <div class="demo-area">
       <audio controls><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio><br>
@@ -333,9 +387,12 @@
       </video>
     </div>
     <div class="code-block">
-      <pre>&lt;img src="photo.jpg" alt="Description" width="300"&gt;
-&lt;audio controls&gt;&lt;source src="song.mp3"&gt;&lt;/audio&gt;
-&lt;video controls&gt;&lt;source src="movie.mp4"&gt;&lt;/video&gt;</pre>
+      <pre>&lt;audio controls&gt;
+  &lt;source src="song.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+&lt;video width="250" controls&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</pre>
     </div>
   </div>
 
@@ -346,9 +403,25 @@
     <div class="demo-area">
       <table>
         <thead><tr><th>Month</th><th>Revenue</th></tr></thead>
-        <tbody><tr><td>January</td><td>$5,000</td></tr><tr><td>February</td><td>$6,200</td></tr></tbody>
+        <tbody><tr><td>January</td><td>$5,000</td></tr>
+          <tr><td>February</td><td>$6,200</td></tr>
+        </tbody>
         <tfoot><tr><td>Total</td><td>$11,200</td></tr></tfoot>
       </table>
+    </div>
+    <div class="code-block">
+      <pre>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Month&lt;/th&gt;&lt;th&gt;Revenue&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;January&lt;/td&gt;&lt;td&gt;$5,000&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;February&lt;/td&gt;&lt;td&gt;$6,200&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;&lt;td&gt;Total&lt;/td&gt;&lt;td&gt;$11,200&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</pre>
     </div>
   </div>
 
@@ -375,6 +448,30 @@
         <button type="button">Just a button</button>
       </form>
     </div>
+    <div class="code-block">
+      <pre>&lt;form action="/submit" method="POST"&gt;
+  &lt;input type="text" name="name" placeholder="Your name"&gt;
+  &lt;input type="email" name="email" placeholder="user@example.com"&gt;
+  &lt;input type="password" name="password"&gt;
+  &lt;input type="number" name="age" min="1" max="120"&gt;
+  &lt;input type="date" name="birthday"&gt;
+  
+  &lt;input type="radio" name="gender" value="male"&gt; Male
+  &lt;input type="radio" name="gender" value="female"&gt; Female
+  
+  &lt;input type="checkbox" name="hobby" value="reading"&gt; Reading
+  &lt;input type="checkbox" name="hobby" value="sports"&gt; Sports
+  
+  &lt;select name="country"&gt;
+    &lt;option&gt;USA&lt;/option&gt;
+    &lt;option&gt;UK&lt;/option&gt;
+  &lt;/select&gt;
+  
+  &lt;textarea name="message" rows="3" cols="30"&gt;&lt;/textarea&gt;
+  &lt;input type="submit" value="Submit"&gt;
+  &lt;button type="button"&gt;Just a button&lt;/button&gt;
+&lt;/form&gt;</pre>
+    </div>
     <div class="tip">✨ The <code>name</code> attribute is critical – without it, the input’s value won’t be sent to the server.</div>
   </div>
 
@@ -390,6 +487,15 @@
       <section style="background:#fff0db; padding:0.5rem">&lt;section&gt; – thematic group</section>
       <aside style="background:#fde2e2; padding:0.5rem">&lt;aside&gt; – sidebar</aside>
       <footer style="background:#cfe7fc; padding:0.5rem">&lt;footer&gt; – copyright, contact</footer>
+    </div>
+    <div class="code-block">
+      <pre>&lt;header&gt;...&lt;/header&gt;
+&lt;nav&gt;...&lt;/nav&gt;
+&lt;main&gt;...&lt;/main&gt;
+&lt;article&gt;...&lt;/article&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;aside&gt;...&lt;/aside&gt;
+&lt;footer&gt;...&lt;/footer&gt;</pre>
     </div>
   </div>
 
@@ -418,6 +524,13 @@
       &amp; (ampersand) → <code>&amp;amp;</code><br>
       &copy; (copyright) → <code>&amp;copy;</code><br>
       &hearts; (heart) → <code>&amp;hearts;</code>
+    </div>
+    <div class="code-block">
+      <pre>&amp;lt;  →  &lt;
+&amp;gt;  →  &gt;
+&amp;amp;  →  &amp;
+&amp;copy; → ©
+&amp;hearts; → ♥</pre>
     </div>
   </div>
 
@@ -465,6 +578,29 @@
       </dialog>
       <button onclick="document.getElementById('myDialog').showModal()">Open Dialog</button>
     </div>
+    <div class="code-block">
+      <pre>&lt;details&gt;
+  &lt;summary&gt;Click to expand&lt;/summary&gt;
+  &lt;p&gt;Hidden content appears when you click.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;progress value="70" max="100"&gt;&lt;/progress&gt;
+
+&lt;meter value="0.6" min="0" max="1"&gt;60%&lt;/meter&gt;
+
+&lt;hr&gt;
+
+&lt;blockquote&gt;"The Web is for everyone." – Tim Berners-Lee&lt;/blockquote&gt;
+
+&lt;pre&gt;Preformatted text
+  preserves spaces&lt;/pre&gt;
+
+&lt;dialog id="myDialog"&gt;
+  &lt;p&gt;This is a modal dialog.&lt;/p&gt;
+  &lt;button onclick="close()"&gt;Close&lt;/button&gt;
+&lt;/dialog&gt;
+&lt;button onclick="document.getElementById('myDialog').showModal()"&gt;Open Dialog&lt;/button&gt;</pre>
+    </div>
   </div>
 
   <!-- ========== 15. HTML5 VALIDATION (Built-in) ========== -->
@@ -479,6 +615,12 @@
         <input type="submit" value="Submit">
       </form>
       <p class="tip">Try submitting without filling – browser will show a validation message.</p>
+    </div>
+    <div class="code-block">
+      <pre>&lt;input type="text" placeholder="Your name" required&gt;
+&lt;input type="email" placeholder="Email" required&gt;
+&lt;input type="number" min="18" max="99" required&gt;
+&lt;input type="submit" value="Submit"&gt;</pre>
     </div>
   </div>
 
