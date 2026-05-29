@@ -1,128 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Full Stack Development – Ultimate Mastery Hub</title>
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Stack Development – Complete Master Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --text-secondary: #334155;
-      --border: #e2e8f0;
-      --primary: #2c7da0;
-      --primary-dark: #0f3b5c;
-      --accent: #f59e0b;
-      --code-bg: #1e293b;
-      --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-    }
-
-    body.dark {
-      --bg: #0f172a;
-      --surface: #1e293b;
-      --text: #f1f5f9;
-      --text-secondary: #cbd5e1;
-      --border: #334155;
-      --primary: #3b82f6;
-      --primary-dark: #1e40af;
-      --code-bg: #0a0f1a;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      transition: background 0.3s, color 0.2s;
-      scroll-behavior: smooth;
+      background: #f0f4f8;
+      color: #0f172a;
+      line-height: 1.5;
     }
-
-    /* Layout with sidebar */
-    .app-layout {
-      display: flex;
-      max-width: 1400px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      width: 260px;
-      background: var(--surface);
-      border-right: 1px solid var(--border);
+    .site-header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 0.8rem 2rem;
       position: sticky;
       top: 0;
-      height: 100vh;
-      overflow-y: auto;
-      padding: 1.5rem 1rem;
-      z-index: 10;
-      transition: transform 0.3s;
+      z-index: 100;
     }
-    .sidebar h3 {
-      font-size: 1.2rem;
-      margin-bottom: 1.2rem;
-      color: var(--primary);
-    }
-    .sidebar nav a {
-      display: block;
-      padding: 0.5rem 0.75rem;
-      margin: 0.3rem 0;
-      border-radius: 0.5rem;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: 0.2s;
-    }
-    .sidebar nav a:hover, .sidebar nav a.active {
-      background: var(--primary);
-      color: white;
-    }
-    .theme-toggle {
-      margin-top: 2rem;
+    .header-inner {
+      max-width: 1300px;
+      margin: 0 auto;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      cursor: pointer;
-      padding: 0.5rem;
-      border-radius: 2rem;
-      background: var(--border);
+      align-items: center;
+      flex-wrap: wrap;
     }
-
-    /* Main content */
-    .main-content {
-      flex: 1;
-      padding: 2rem 2rem 3rem;
-    }
-
-    section {
-      margin-bottom: 3rem;
-      scroll-margin-top: 1rem;
-    }
-    h1 {
-      font-size: 2.5rem;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #2c7da0, #0f3b5c);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
     }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #334155;
+      font-weight: 500;
+      transition: 0.2s;
+      padding: 0.3rem 0.6rem;
+    }
+    .nav-links a:hover { color: #2c7da0; background: #eef2ff; border-radius: 2rem; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      background: white;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 2.3rem;
+      background: linear-gradient(135deg, #0f3b5c, #2c7da0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .subhead {
+      font-size: 1.1rem;
+      color: #475569;
+      border-left: 4px solid #2c7da0;
+      padding-left: 1rem;
+      margin-bottom: 2rem;
+    }
     h2 {
       font-size: 1.8rem;
-      margin: 1.5rem 0 1rem;
-      border-left: 4px solid var(--primary);
-      padding-left: 1rem;
+      margin: 2rem 0 1rem;
+      border-bottom: 3px solid #e2e8f0;
+      color: #0f3b5c;
+      padding-bottom: 0.3rem;
     }
     h3 {
+      font-size: 1.3rem;
       margin: 1rem 0 0.5rem;
-      color: var(--primary);
+      color: #1e5a6e;
+    }
+    .card {
+      background: #f9fbfd;
+      border-radius: 1rem;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      border: 1px solid #e2e8f0;
+      transition: 0.2s;
+    }
+    .card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+    .explanation {
+      background: #e6f4ea;
+      border-left: 5px solid #2e7d32;
+      padding: 0.8rem 1rem;
+      border-radius: 0.75rem;
+      margin: 1rem 0;
+    }
+    .tip {
+      background: #fff3e0;
+      border-left: 5px solid #f39c12;
+      padding: 0.8rem 1rem;
+      border-radius: 0.75rem;
+      margin: 1rem 0;
+    }
+    .diagram {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      background: #eef2ff;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      margin: 1rem 0;
+    }
+    .diagram-box {
+      flex: 1;
+      min-width: 140px;
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-top: 4px solid;
+    }
+    .frontend { border-top-color: #3b82f6; }
+    .backend { border-top-color: #f59e0b; }
+    .database { border-top-color: #10b981; }
+    .api-layer { border-top-color: #8b5cf6; }
+    .arrow { font-size: 1.8rem; align-self: center; color: #64748b; }
+    .code-block {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      margin: 1rem 0;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .comparison-table th, .comparison-table td {
+      border: 1px solid #cbd5e1;
+      padding: 0.6rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    .comparison-table th { background: #e2e8f0; }
+    .demo-area {
+      background: #f1f5f9;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    .step-log {
+      background: #1e293b;
+      color: #a5f3c3;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      white-space: pre-wrap;
     }
     .stats-grid {
       display: flex;
@@ -131,460 +179,256 @@
       margin: 1rem 0;
     }
     .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: white;
       border-radius: 1rem;
       padding: 1rem;
       flex: 1 1 150px;
       text-align: center;
-      box-shadow: var(--card-shadow);
+      border: 1px solid #e2e8f0;
     }
-    .stat-card i {
-      font-size: 2rem;
-      color: var(--primary);
-    }
-    .card-modern {
-      background: var(--surface);
-      border-radius: 1rem;
-      padding: 1.2rem;
-      margin: 1rem 0;
-      border: 1px solid var(--border);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .card-modern:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.15);
-    }
-    .code-tabs {
-      display: flex;
-      gap: 0.5rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 1rem;
-    }
-    .tab-btn {
-      background: none;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      color: var(--text-secondary);
+    .badge {
+      background: #2c7da0;
+      color: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2rem;
+      font-size: 0.7rem;
       font-weight: 600;
     }
-    .tab-btn.active {
-      color: var(--primary);
-      border-bottom: 2px solid var(--primary);
-    }
-    .code-block {
-      background: var(--code-bg);
-      border-radius: 0.75rem;
-      padding: 1rem;
-      overflow-x: auto;
-      font-family: monospace;
-      font-size: 0.85rem;
-      color: #e2e8f0;
-    }
-    .timeline {
-      position: relative;
-      padding-left: 2rem;
-      margin: 1rem 0;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--primary);
-    }
-    .timeline-item {
-      margin-bottom: 1.5rem;
-      position: relative;
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -2rem;
-      top: 0.2rem;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--primary);
-    }
-    .architecture-viz {
-      background: var(--surface);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .layer-group {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .layer-node {
-      background: var(--primary-dark);
-      padding: 0.8rem;
-      border-radius: 1rem;
-      flex: 1;
-      color: white;
-    }
     footer {
-      border-top: 1px solid var(--border);
       margin-top: 2rem;
-      padding-top: 1.5rem;
       text-align: center;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 1.5rem;
       font-size: 0.85rem;
+      color: #475569;
     }
-    @media (max-width: 768px) {
-      .sidebar {
-        position: fixed;
-        transform: translateX(-100%);
-        z-index: 20;
-      }
-      .sidebar.open {
-        transform: translateX(0);
-      }
-      .main-content {
-        padding: 1rem;
-      }
-      .hamburger {
-        display: block;
-        position: fixed;
-        top: 1rem;
-        left: 1rem;
-        z-index: 30;
-        background: var(--primary);
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        color: white;
-      }
-    }
-    .hamburger {
-      display: none;
-    }
-    .btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 2rem;
-      cursor: pointer;
-    }
-    .flow-diagram {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
+    @media (max-width: 700px) {
+      .header-inner { flex-direction: column; gap: 0.5rem; }
+      .diagram { flex-direction: column; align-items: center; }
+      .arrow { transform: rotate(90deg); }
+      .container { padding: 1rem; }
     }
   </style>
 </head>
 <body>
-<div class="app-layout">
-  <div class="sidebar" id="sidebar">
-    <h3><i class="fas fa-code"></i> Full Stack Hub</h3>
-    <nav>
-      <a href="#overview" class="active"><i class="fas fa-home"></i> Overview</a>
-      <a href="#roadmap"><i class="fas fa-map"></i> Learning Roadmap</a>
-      <a href="#architecture"><i class="fas fa-project-diagram"></i> Architecture</a>
-      <a href="#auth-flow"><i class="fas fa-lock"></i> Auth Flow</a>
-      <a href="#api-lifecycle"><i class="fas fa-exchange-alt"></i> API Lifecycle</a>
-      <a href="#deployment"><i class="fas fa-cloud-upload-alt"></i> Deployment</a>
-      <a href="#security"><i class="fas fa-shield-alt"></i> Security</a>
-      <a href="#git-workflow"><i class="fab fa-git-alt"></i> Git Workflow</a>
-      <a href="#tools"><i class="fas fa-tools"></i> Modern Tools</a>
-      <a href="#skills"><i class="fas fa-chart-line"></i> Skills Roadmap</a>
-      <a href="#project-structure"><i class="fas fa-folder-tree"></i> Project Structure</a>
-      <a href="#developer-workflow"><i class="fas fa-user-check"></i> Dev Workflow</a>
-      <a href="#timeline"><i class="fas fa-history"></i> Timeline</a>
-    </nav>
-    <div class="theme-toggle" id="themeToggle">
-      <span><i class="fas fa-sun"></i> Light</span>
-      <span><i class="fas fa-moon"></i> Dark</span>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">🌐 Full Stack Development Hub</div>
+    <div class="nav-links">
+      <a href="#overview">Overview</a><a href="#why">Why</a><a href="#layers">Layers</a><a href="#roadmap">Roadmap</a>
+      <a href="#architecture">Architecture</a><a href="#auth">Auth</a><a href="#api">API</a><a href="#deploy">Deploy</a>
+      <a href="#security">Security</a><a href="#git">Git</a><a href="#tools">Tools</a><a href="#demo">Demo</a>
     </div>
   </div>
-  <div class="main-content">
-    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
-    
-    <!-- Hero stats -->
-    <section id="overview">
-      <h1>🌐 Full Stack Development<br> <span style="font-size: 1.2rem;">Complete Architecture, Tools & Workflows</span></h1>
-      <div class="stats-grid">
-        <div class="stat-card"><i class="fas fa-layer-group"></i><h3>3+ Layers</h3><small>Frontend, Backend, DB</small></div>
-        <div class="stat-card"><i class="fas fa-rocket"></i><h3>50%</h3><small>Faster delivery</small></div>
-        <div class="stat-card"><i class="fas fa-users"></i><h3>#1</h3><small>In-demand role</small></div>
-        <div class="stat-card"><i class="fas fa-cloud"></i><h3>12+</h3><small>Modern tools</small></div>
-      </div>
-      <div class="card-modern">
-        <p><strong>Full Stack Development</strong> = Frontend (UI) + Backend (logic) + Database (storage) + APIs + DevOps. This page gives you a complete map: from roadmap to deployment, authentication to Git workflows, with live visualizations.</p>
-      </div>
-    </section>
-
-    <!-- Learning Roadmap -->
-    <section id="roadmap">
-      <h2>📌 Learning Roadmap</h2>
-      <div class="timeline">
-        <div class="timeline-item"><strong>Phase 1:</strong> HTML, CSS, JavaScript, Git basics</div>
-        <div class="timeline-item"><strong>Phase 2:</strong> Frontend framework (React/Vue) + Bootstrap/Tailwind</div>
-        <div class="timeline-item"><strong>Phase 3:</strong> Backend (Node.js/Python) + REST APIs</div>
-        <div class="timeline-item"><strong>Phase 4:</strong> Databases (SQL, MongoDB) + Authentication</div>
-        <div class="timeline-item"><strong>Phase 5:</strong> Deployment (Vercel, Heroku, Docker) + CI/CD</div>
-        <div class="timeline-item"><strong>Phase 6:</strong> Advanced: GraphQL, WebSockets, Cloud (AWS)</div>
-      </div>
-    </section>
-
-    <!-- Architecture diagram live -->
-    <section id="architecture">
-      <h2>🏗️ Frontend ↔ Backend Architecture</h2>
-      <div class="architecture-viz">
-        <div class="layer-group">
-          <div class="layer-node">🖥️ Client (React/HTML/CSS)</div>
-          <div class="layer-node">🌐 HTTP / HTTPS</div>
-          <div class="layer-node">⚙️ Backend API (Node.js/Python)</div>
-          <div class="layer-node">🗄️ Database (SQL/NoSQL)</div>
-        </div>
-        <div id="liveViz" style="margin-top: 1rem; font-size:0.9rem"></div>
-        <button id="animateRequest" class="btn" style="margin-top:0.8rem">▶️ Animate Request Flow</button>
-      </div>
-    </section>
-
-    <!-- Authentication Flow -->
-    <section id="auth-flow">
-      <h2>🔐 Authentication Flow (JWT / Session)</h2>
-      <div class="card-modern">
-        <div class="flow-diagram">
-          <span>User → Login → Frontend → POST /api/login → Backend → verify DB → JWT token → Frontend stores → Authorized requests</span>
-        </div>
-        <div class="code-tabs">
-          <button class="tab-btn active" data-tab="jwt">JWT Flow</button>
-          <button class="tab-btn" data-tab="session">Session Cookie</button>
-        </div>
-        <div id="jwt" class="tab-content code-block">
-          <pre>1. Client sends credentials
-2. Server validates, creates JWT
-3. Client stores token (localStorage)
-4. Client sends token in Authorization header
-5. Server verifies signature → protected route</pre>
-        </div>
-        <div id="session" class="tab-content code-block" style="display:none">
-          <pre>1. Login → server creates session ID
-2. Set cookie (HttpOnly)
-3. Browser auto-sends cookie on each request
-4. Server validates session from store</pre>
-        </div>
-      </div>
-    </section>
-
-    <!-- API lifecycle -->
-    <section id="api-lifecycle">
-      <h2>🔄 API Request Lifecycle (REST)</h2>
-      <div class="card-modern">
-        <ol>
-          <li>Client → HTTP request (GET /api/users)</li>
-          <li>Backend route handler → validate params</li>
-          <li>Service layer → business logic</li>
-          <li>Database query → return result set</li>
-          <li>Backend formats JSON → HTTP response</li>
-          <li>Client parses JSON → updates UI</li>
-        </ol>
-        <div class="code-block">
-          <pre>// Example: Express + MongoDB
-app.get('/api/users', async (req, res) => {
-  const users = await User.find();
-  res.json(users);
-});</pre>
-        </div>
-      </div>
-    </section>
-
-    <!-- Deployment & hosting -->
-    <section id="deployment">
-      <h2>☁️ Deployment & Hosting</h2>
-      <div class="card-modern">
-        <p><strong>Modern deployment pipelines:</strong> GitHub → CI/CD (GitHub Actions) → Build → Deploy to Vercel/Netlify (frontend) + Heroku/AWS/Railway (backend). Containerization with Docker, orchestration with Kubernetes.</p>
-        <div class="stats-grid">
-          <div class="stat-card">Vercel / Netlify</div>
-          <div class="stat-card">Render / Railway</div>
-          <div class="stat-card">AWS EC2 / Lambda</div>
-          <div class="stat-card">Docker + NGINX</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Security best practices -->
-    <section id="security">
-      <h2>🛡️ Security Best Practices</h2>
-      <div class="card-modern">
-        <ul>
-          <li>✅ HTTPS everywhere, HSTS headers</li>
-          <li>✅ Hash passwords (bcrypt, PBKDF2)</li>
-          <li>✅ CSRF protection (tokens)</li>
-          <li>✅ XSS sanitization (escape output)</li>
-          <li>✅ Rate limiting & input validation</li>
-          <li>✅ Environment variables (never commit secrets)</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Git workflow -->
-    <section id="git-workflow">
-      <h2><i class="fab fa-github"></i> Git & GitHub Workflow</h2>
-      <div class="card-modern">
-        <div class="flow-diagram">main ← dev ← feature branches → PR → review → merge → CI/CD</div>
-        <div class="code-block">
-          <pre>git checkout -b feature/login
-git add .
-git commit -m "feat: login page"
-git push origin feature/login
-# create pull request → merge after review</pre>
-        </div>
-      </div>
-    </section>
-
-    <!-- Modern tools -->
-    <section id="tools">
-      <h2>🧰 Modern Full Stack Toolchain</h2>
-      <div class="stats-grid">
-        <div class="stat-card">VS Code</div>
-        <div class="stat-card">Postman / Insomnia</div>
-        <div class="stat-card">Docker Desktop</div>
-        <div class="stat-card">MongoDB Compass</div>
-        <div class="stat-card">Prisma / TypeORM</div>
-        <div class="stat-card">Vite / Webpack</div>
-      </div>
-    </section>
-
-    <!-- Skills roadmap -->
-    <section id="skills">
-      <h2>📈 Skills Roadmap (by seniority)</h2>
-      <div class="card-modern">
-        <div><strong>Junior:</strong> HTML/CSS/JS, Git, basic React, REST APIs, SQL</div>
-        <div><strong>Mid-level:</strong> Full framework (Next/Nest), Auth, Docker, cloud basics, testing</div>
-        <div><strong>Senior:</strong> System design, microservices, Kubernetes, CI/CD, performance optimization, security</div>
-      </div>
-    </section>
-
-    <!-- Project structure -->
-    <section id="project-structure">
-      <h2>📁 Real Project Structure (MERN example)</h2>
-      <div class="code-block">
-        <pre>project/
-├── client/          # React frontend
-│   ├── src/
-│   └── public/
-├── server/          # Express backend
-│   ├── models/
-│   ├── routes/
-│   └── controllers/
-├── .env
-├── docker-compose.yml
-└── README.md</pre>
-      </div>
-    </section>
-
-    <!-- Developer workflow -->
-    <section id="developer-workflow">
-      <h2>👨‍💻 Daily Developer Workflow</h2>
-      <div class="timeline">
-        <div class="timeline-item">1. Pull latest changes (git pull)</div>
-        <div class="timeline-item">2. Create feature branch</div>
-        <div class="timeline-item">3. Write code + tests + commit</div>
-        <div class="timeline-item">4. Run local dev environment (Docker compose)</div>
-        <div class="timeline-item">5. Push → open PR → review → deploy staging</div>
-      </div>
-    </section>
-
-    <!-- Timeline -->
-    <section id="timeline">
-      <h2>⏳ Full Stack Journey Timeline (typical)</h2>
-      <div class="card-modern">
-        <div>📅 0–3 months: Fundamentals (HTML/CSS/JS)</div>
-        <div>📅 3–6 months: Framework + backend basics</div>
-        <div>📅 6–12 months: Full projects, databases, auth</div>
-        <div>📅 12–18 months: Deployment, DevOps, advanced patterns</div>
-      </div>
-    </section>
-
-    <footer>
-      <p>🎯 Complete Full Stack reference – from request lifecycle to security, Git workflows, and deployment. Built with modern UI & interactive elements.</p>
-      <p>© 2025 Full Stack Mastery | <a href="#" style="color: var(--primary)">Back to top ↑</a></p>
-    </footer>
+</header>
+<div class="container">
+  <div style="text-align:center; margin-bottom:1rem;">
+    <h1>Full Stack Development – Complete Master Guide</h1>
+    <div class="subhead" style="border-left:none;">What it is, how it works, real code, interactive demos, and a complete learning path.</div>
   </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card"><i class="fas fa-layer-group fa-2x" style="color:#2c7da0;"></i><h3>3+ Layers</h3><small>Frontend, Backend, DB</small></div>
+    <div class="stat-card"><i class="fas fa-rocket fa-2x" style="color:#2c7da0;"></i><h3>50% Faster</h3><small>Time to market</small></div>
+    <div class="stat-card"><i class="fas fa-chart-line fa-2x" style="color:#2c7da0;"></i><h3>#1 Role</h3><small>Most in-demand</small></div>
+    <div class="stat-card"><i class="fas fa-cloud fa-2x" style="color:#2c7da0;"></i><h3>12+ Tools</h3><small>Modern ecosystem</small></div>
+  </div>
+
+  <!-- 1. What is Full Stack -->
+  <h2 id="overview">📖 1. What is Full Stack Development?</h2>
+  <div class="card">
+    <div class="explanation"><strong>Full Stack Development</strong> is building both the <strong>frontend</strong> (user interface) and <strong>backend</strong> (server, logic, database) of a web application. A full stack developer can create a complete product from scratch.</div>
+    <div class="tip">🍽️ <strong>Analogy:</strong> Frontend = menu & tables; Backend = kitchen; Database = fridge; API = waiter.</div>
+  </div>
+
+  <!-- 2. Why Important -->
+  <h2 id="why">💡 2. Why is Full Stack Development Important?</h2>
+  <div class="card"><ul><li>✔ End-to-end understanding</li><li>✔ Faster development cycles</li><li>✔ Easier troubleshooting</li><li>✔ Scalability</li><li>✔ Higher employability & freelancing</li></ul></div>
+
+  <!-- 3. The Three Layers + API -->
+  <h2 id="layers">🏗️ 3. The Layers of Full Stack</h2>
+  <div class="diagram">
+    <div class="diagram-box frontend"><strong>🖥️ Frontend</strong><br>HTML, CSS, JS, React</div>
+    <div class="arrow">➡️ HTTP ➡️</div>
+    <div class="diagram-box api-layer"><strong>🔌 API / Backend</strong><br>Node.js, Python, PHP</div>
+    <div class="arrow">➡️ Query ➡️</div>
+    <div class="diagram-box database"><strong>🗄️ Database</strong><br>SQL / MongoDB</div>
+  </div>
+  <div class="card"><h3>Frontend</h3><div class="explanation">Runs in browser: HTML (structure), CSS (style), JavaScript (interactivity). Frameworks: React, Vue, Angular.</div>
+  <h3>Backend</h3><div class="explanation">Server-side logic: Node.js/Express, Python/Django, PHP/Laravel. Handles requests, authentication, business logic.</div>
+  <h3>Database</h3><div class="explanation">Persistent storage: SQL (MySQL, PostgreSQL) or NoSQL (MongoDB).</div>
+  <div class="code-block"><pre>// Example: Express backend route
+app.get('/api/users', async (req, res) => {
+  const users = await db.query('SELECT * FROM users');
+  res.json(users);
+});</pre></div></div>
+
+  <!-- 4. Comparison Table -->
+  <h2>📊 Frontend vs Backend vs Database</h2>
+  <table class="comparison-table"><thead><tr><th>Layer</th><th>Role</th><th>Tech</th><th>Tasks</th></tr></thead>
+  <tbody><tr><td>Frontend</td><td>UI & interaction</td><td>HTML, CSS, React</td><td>Rendering, clicks, API calls</td></tr>
+  <tr><td>Backend</td><td>Business logic</td><td>Node.js, Python</td><td>Auth, data processing, APIs</td></tr>
+  <tr><td>Database</td><td>Data storage</td><td>MySQL, MongoDB</td><td>CRUD operations, queries</td></tr>
+  </tbody></table>
+
+  <!-- 5. Learning Roadmap -->
+  <h2 id="roadmap">🗺️ 5. Learning Roadmap (6–12 months)</h2>
+  <div class="card"><div class="timeline" style="position:relative; padding-left:1.5rem;"><div style="position:absolute; left:0; top:0; bottom:0; width:2px; background:#2c7da0;"></div>
+    <div style="margin-bottom:1rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div><strong>Phase 1:</strong> HTML, CSS, JavaScript, Git basics</div>
+    <div style="margin-bottom:1rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div><strong>Phase 2:</strong> Frontend framework (React/Vue) + Bootstrap</div>
+    <div style="margin-bottom:1rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div><strong>Phase 3:</strong> Backend (Node.js/Express or Django) + REST APIs</div>
+    <div style="margin-bottom:1rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div><strong>Phase 4:</strong> Databases (SQL, MongoDB) + Authentication (JWT)</div>
+    <div style="margin-bottom:1rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div><strong>Phase 5:</strong> Deployment (Vercel, Render, Docker) + CI/CD</div>
+    <div style="margin-bottom:1rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div><strong>Phase 6:</strong> Advanced: GraphQL, WebSockets, Cloud (AWS)</div>
+  </div></div>
+
+  <!-- 6. Architecture & API Flow -->
+  <h2 id="architecture">🔗 6. How They Connect (HTTP & APIs)</h2>
+  <div class="card"><div class="explanation">The frontend communicates with the backend via HTTP requests (GET, POST, PUT, DELETE). The backend exposes API endpoints that return JSON data.</div>
+  <div class="code-block"><pre>// Frontend fetch
+fetch('/api/products')
+  .then(res => res.json())
+  .then(data => console.log(data));
+
+// Backend response (JSON)
+{ "id": 1, "name": "AI Service", "price": 99 }</pre></div>
+  <div class="tip">💡 The browser never directly accesses the database – it always goes through the backend API.</div></div>
+
+  <!-- 7. Authentication Flow -->
+  <h2 id="auth">🔐 7. Authentication Flow (JWT)</h2>
+  <div class="card"><ol><li>User submits login credentials → frontend POST /api/login</li><li>Backend validates user against database</li><li>Backend generates signed JWT token</li><li>Frontend stores token (localStorage or cookie)</li><li>Subsequent requests include Authorization: Bearer &lt;token&gt;</li><li>Backend verifies token before sending protected data</li></ol>
+  <div class="code-block"><pre>// JWT verification middleware
+function auth(req, res, next) {
+  const token = req.header('Authorization')?.replace('Bearer ', '');
+  if (!token) return res.status(401).json({ error: 'Access denied' });
+  try { req.user = jwt.verify(token, SECRET); next(); } 
+  catch { res.status(400).json({ error: 'Invalid token' }); }
+}</pre></div></div>
+
+  <!-- 8. API Request Lifecycle -->
+  <h2 id="api">🔄 8. API Request Lifecycle (REST)</h2>
+  <div class="card"><div class="timeline" style="position:relative; padding-left:1.5rem;"><div style="position:absolute; left:0; top:0; bottom:0; width:2px; background:#2c7da0;"></div>
+    <div style="margin-bottom:0.8rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div>1️⃣ Client → HTTP request (GET /api/products)</div>
+    <div style="margin-bottom:0.8rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div>2️⃣ Backend router → controller → validate input</div>
+    <div style="margin-bottom:0.8rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div>3️⃣ Service / business logic</div>
+    <div style="margin-bottom:0.8rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div>4️⃣ Database query (SELECT * FROM products)</div>
+    <div style="margin-bottom:0.8rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div>5️⃣ Database returns result → backend formats JSON</div>
+    <div style="margin-bottom:0.8rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div>6️⃣ Backend sends HTTP response (status 200, 404, etc.)</div>
+    <div style="margin-bottom:0.8rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div>7️⃣ Frontend parses JSON and updates UI</div>
+  </div></div>
+
+  <!-- 9. Deployment & Hosting -->
+  <h2 id="deploy">☁️ 9. Deployment & Hosting</h2>
+  <div class="card"><p><strong>Modern pipeline:</strong> GitHub → CI/CD (GitHub Actions) → Build → Deploy</p>
+  <div class="stats-grid"><div class="stat-card">Frontend: Vercel, Netlify</div><div class="stat-card">Backend: Render, Railway, Heroku</div><div class="stat-card">Database: MongoDB Atlas, Supabase</div><div class="stat-card">Container: Docker, Kubernetes</div></div>
+  <div class="code-block"><pre># Deploy frontend to Vercel
+vercel --prod
+
+# Deploy backend with Docker
+docker build -t myapp .
+docker run -p 3000:3000 myapp</pre></div></div>
+
+  <!-- 10. Security Best Practices -->
+  <h2 id="security">🛡️ 10. Security Best Practices</h2>
+  <div class="card"><div class="grid-2" style="display:flex; flex-wrap:wrap; gap:0.5rem;"><div style="flex:1;">✅ HTTPS everywhere</div><div style="flex:1;">✅ Hash passwords (bcrypt)</div><div style="flex:1;">✅ CSRF tokens</div><div style="flex:1;">✅ XSS sanitization</div><div style="flex:1;">✅ Rate limiting</div><div style="flex:1;">✅ Environment variables</div></div>
+  <div class="code-block"><pre>// Never hardcode secrets
+const dbPassword = process.env.DB_PASSWORD; // ✅</pre></div></div>
+
+  <!-- 11. Git Workflow -->
+  <h2 id="git"><i class="fab fa-github"></i> 11. Git & GitHub Workflow</h2>
+  <div class="card"><div class="timeline" style="position:relative; padding-left:1.5rem;"><div style="position:absolute; left:0; top:0; bottom:0; width:2px; background:#2c7da0;"></div>
+    <div style="margin-bottom:0.5rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div>git checkout -b feature/login</div>
+    <div style="margin-bottom:0.5rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div>git add . && git commit -m "feat: login"</div>
+    <div style="margin-bottom:0.5rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div>git push origin feature/login</div>
+    <div style="margin-bottom:0.5rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div>Open Pull Request → review → merge to main</div>
+    <div style="margin-bottom:0.5rem; position:relative; padding-left:1rem;"><div style="position:absolute; left:-1.5rem; top:0.3rem; width:10px; height:10px; background:#2c7da0; border-radius:50%;"></div>CI/CD auto-deploys</div>
+  </div></div>
+
+  <!-- 12. Modern Tools -->
+  <h2 id="tools">🧰 12. Essential Full Stack Tools (2025)</h2>
+  <div class="card"><div class="stats-grid"><div class="stat-card"><i class="fas fa-code"></i> VS Code</div><div class="stat-card"><i class="fas fa-database"></i> Postman</div><div class="stat-card"><i class="fab fa-docker"></i> Docker</div><div class="stat-card"><i class="fab fa-git-alt"></i> Git</div><div class="stat-card"><i class="fas fa-chart-line"></i> MongoDB Compass</div><div class="stat-card"><i class="fas fa-cloud"></i> Vercel / Render</div></div></div>
+
+  <!-- 13. Real-World Example -->
+  <h2>🛒 13. Real‑World Example: E‑commerce Store</h2>
+  <div class="card"><ul><li><strong>Frontend:</strong> Product grid, cart icon, checkout</li><li><strong>APIs:</strong> GET /api/products, POST /api/cart, POST /api/checkout</li><li><strong>Database tables:</strong> products, users, orders, cart_items</li><li><strong>Flow:</strong> Add to cart → POST to backend → update DB → return new count → frontend updates badge</li></ul></div>
+
+  <!-- 14. Interactive Simulation -->
+  <h2>🎮 14. Interactive Full Stack Simulation (Frontend → Backend → DB)</h2>
+  <div class="card"><div class="demo-area"><button id="simulateBtn" class="btn btn-primary">🚀 Simulate Full Request</button><div id="simLog" class="step-log">Click to start simulation.</div><div id="simResponse" class="code-block" style="background:#f1f5f9; color:#0f172a;">Response will appear here...</div></div></div>
+
+  <!-- 15. Login Form Demo (Frontend only with mock) -->
+  <h2>🔐 15. Practical Example: User Login Form (Bootstrap + Validation)</h2>
+  <div class="card"><div class="demo-area"><div class="row justify-content-center"><div class="col-md-8"><div class="card shadow-sm"><div class="card-body"><h4>Login to Dashboard</h4><form id="loginForm"><div class="mb-3"><label>Email</label><input type="email" id="loginEmail" class="form-control" required></div><div class="mb-3"><label>Password</label><input type="password" id="loginPassword" class="form-control" required></div><button type="submit" class="btn btn-primary w-100">Sign In (Mock)</button><div id="loginMsg" class="mt-3"></div></form></div></div></div></div><div id="loginLog" class="step-log mt-3">Try email: demo@example.com / password: 123456</div></div>
+  <div class="tip">✅ Bootstrap components used: Card, Form controls, Buttons, Alerts, Grid system.</div></div>
+
+  <!-- 16. Popular Stacks -->
+  <h2>📚 Popular Full Stack Technology Stacks</h2>
+  <div class="card"><ul><li><strong>MERN</strong> – MongoDB, Express, React, Node.js</li><li><strong>MEAN</strong> – MongoDB, Express, Angular, Node.js</li><li><strong>LAMP</strong> – Linux, Apache, MySQL, PHP</li><li><strong>Django + React + PostgreSQL</strong></li></ul></div>
+
+  <!-- 17. Skills Roadmap by Seniority -->
+  <h2>📈 Skills Roadmap by Seniority</h2>
+  <div class="card"><div><span class="badge">Junior</span> HTML/CSS/JS, Git, React basics, REST, SQL</div><div class="mt-2"><span class="badge">Mid‑level</span> Full framework, auth, Docker, cloud basics</div><div class="mt-2"><span class="badge">Senior</span> System design, microservices, Kubernetes, CI/CD, security</div></div>
+
+  <!-- 18. Developer Workflow -->
+  <h2>👨‍💻 Daily Developer Workflow</h2>
+  <div class="card"><ol><li>git pull origin main</li><li>Create feature branch</li><li>Run local dev (npm run dev)</li><li>Write code + test API with Postman</li><li>Commit & push → open PR</li><li>Deploy to staging for review</li></ol></div>
+
+  <!-- 19. Conclusion -->
+  <h2>✅ Conclusion</h2>
+  <div class="card"><div class="explanation">Full stack development combines frontend, backend, database, and DevOps. This page covered definitions, architecture, authentication, API lifecycle, deployment, security, Git, tools, real examples, simulations, and a complete learning roadmap. Master these to become a professional full stack developer.</div></div>
+
+  <!-- 20. References -->
+  <h2>📚 References</h2>
+  <div class="card"><ul><li>MDN Web Docs – HTML, CSS, JavaScript</li><li>Bootstrap Documentation v5.3</li><li>Node.js / Express official guides</li><li>MongoDB University</li></ul></div>
+
+  <footer>© 2025 Full Stack Mastery | Complete guide for beginners & intermediates</footer>
 </div>
 
 <script>
-  // Sidebar toggle for mobile
-  const hamburger = document.getElementById('hamburger');
-  const sidebar = document.getElementById('sidebar');
-  if (hamburger) {
-    hamburger.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-    });
+  // Full stack simulation
+  const simBtn = document.getElementById('simulateBtn');
+  const simLog = document.getElementById('simLog');
+  const simResp = document.getElementById('simResponse');
+  async function runSim() {
+    simLog.innerHTML = "📡 1. Frontend: Sending GET /api/user/42...";
+    simResp.innerHTML = "⏳ Waiting...";
+    await new Promise(r=>setTimeout(r,700));
+    simLog.innerHTML += "\n⚙️ 2. Backend: Received request. Validating...";
+    await new Promise(r=>setTimeout(r,600));
+    simLog.innerHTML += "\n🗄️ 3. Database: SELECT * FROM users WHERE id=42";
+    await new Promise(r=>setTimeout(r,800));
+    simLog.innerHTML += "\n🗄️ 4. Database: User found. Returning data.";
+    await new Promise(r=>setTimeout(r,500));
+    simLog.innerHTML += "\n⚙️ 5. Backend: Formatting JSON response.";
+    await new Promise(r=>setTimeout(r,500));
+    simLog.innerHTML += "\n🖥️ 6. Frontend: Updating UI with user data.";
+    simResp.innerHTML = "<strong>✅ Full stack request completed!</strong><br>Response: { id:42, name:'John Doe', email:'john@example.com' }";
+    simLog.innerHTML += "\n🎉 Simulation finished.";
   }
+  simBtn.addEventListener('click', ()=>{ simLog.innerHTML = "🚀 Starting simulation..."; runSim(); });
 
-  // Theme toggle
-  const themeToggle = document.getElementById('themeToggle');
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-  });
-  if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
-
-  // Tab switching for auth flow
-  const tabs = document.querySelectorAll('.tab-btn');
-  const contents = {
-    jwt: document.getElementById('jwt'),
-    session: document.getElementById('session')
-  };
-  tabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabs.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const which = btn.getAttribute('data-tab');
-      Object.keys(contents).forEach(key => {
-        contents[key].style.display = key === which ? 'block' : 'none';
-      });
-    });
-  });
-
-  // Live architecture animation
-  let animating = false;
-  const liveViz = document.getElementById('liveViz');
-  const animateBtn = document.getElementById('animateRequest');
-  const nodes = document.querySelectorAll('.layer-node');
-  function animateRequest() {
-    if (animating) return;
-    animating = true;
-    liveViz.innerHTML = '🚀 Request flow: ';
-    const steps = ['🖥️ Client', '🌐 HTTP', '⚙️ Backend API', '🗄️ Database', '⚙️ Backend', '🌐 Response', '🖥️ Client'];
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i >= steps.length) {
-        clearInterval(interval);
-        liveViz.innerHTML += ' ✅ Done.';
-        animating = false;
-        return;
-      }
-      liveViz.innerHTML += steps[i] + (i < steps.length-1 ? ' → ' : '');
-      i++;
-    }, 600);
-  }
-  if (animateBtn) animateBtn.addEventListener('click', animateRequest);
-
-  // active nav highlight on scroll
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('.sidebar nav a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
-      if (pageYOffset >= sectionTop) current = section.getAttribute('id');
-    });
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
-    });
+  // Login form demo
+  const loginForm = document.getElementById('loginForm');
+  const loginMsg = document.getElementById('loginMsg');
+  const loginLog = document.getElementById('loginLog');
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const pwd = document.getElementById('loginPassword').value;
+    if(!email || !pwd) { loginMsg.innerHTML='<div class="alert alert-danger">All fields required</div>'; return; }
+    loginMsg.innerHTML='<div class="alert alert-info">Mock authenticating...</div>';
+    loginLog.innerHTML = "📡 Frontend: POST /api/login with credentials";
+    await new Promise(r=>setTimeout(r,800));
+    if(email === "demo@example.com" && pwd === "123456") {
+      loginLog.innerHTML += "\n⚙️ Backend: Valid credentials. Generating JWT.";
+      await new Promise(r=>setTimeout(r,500));
+      loginMsg.innerHTML='<div class="alert alert-success">✅ Login successful! (Mock)</div>';
+      loginLog.innerHTML += "\n✅ Full stack auth simulation complete.";
+    } else {
+      loginLog.innerHTML += "\n❌ Backend: Invalid credentials.";
+      loginMsg.innerHTML='<div class="alert alert-danger">❌ Invalid email or password (use demo@example.com / 123456)</div>';
+    }
   });
 </script>
 </body>
