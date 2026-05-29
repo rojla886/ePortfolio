@@ -1,1021 +1,591 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Modern Full Stack Development</title>
-
-  <!-- Bootstrap -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-
-  <!-- Google Font -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full Stack Development – Ultimate Mastery Hub</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      scroll-behavior:smooth;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    body{
-      font-family:"Inter",sans-serif;
-      background:#0f172a;
-      color:#f8fafc;
-      overflow-x:hidden;
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-secondary: #334155;
+      --border: #e2e8f0;
+      --primary: #2c7da0;
+      --primary-dark: #0f3b5c;
+      --accent: #f59e0b;
+      --code-bg: #1e293b;
+      --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
     }
 
-    /* ================= NAVBAR ================= */
-
-    .navbar{
-      background:rgba(15,23,42,0.95);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(255,255,255,0.08);
+    body.dark {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --text: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --border: #334155;
+      --primary: #3b82f6;
+      --primary-dark: #1e40af;
+      --code-bg: #0a0f1a;
     }
 
-    .navbar-brand{
-      font-weight:800;
-      color:white !important;
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.2s;
+      scroll-behavior: smooth;
     }
 
-    .nav-link{
-      color:#cbd5e1 !important;
-      transition:0.3s;
+    /* Layout with sidebar */
+    .app-layout {
+      display: flex;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
     }
 
-    .nav-link:hover{
-      color:#38bdf8 !important;
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 1.5rem 1rem;
+      z-index: 10;
+      transition: transform 0.3s;
+    }
+    .sidebar h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      color: var(--primary);
+    }
+    .sidebar nav a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      margin: 0.3rem 0;
+      border-radius: 0.5rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+    .sidebar nav a:hover, .sidebar nav a.active {
+      background: var(--primary);
+      color: white;
+    }
+    .theme-toggle {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 2rem;
+      background: var(--border);
     }
 
-    /* ================= HERO ================= */
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:2rem;
-
-      background:
-      radial-gradient(circle at top left,#2563eb33,transparent),
-      radial-gradient(circle at bottom right,#7c3aed44,transparent),
-      #0f172a;
+    /* Main content */
+    .main-content {
+      flex: 1;
+      padding: 2rem 2rem 3rem;
     }
 
-    .hero h1{
-      font-size:4.5rem;
-      font-weight:800;
-      line-height:1.1;
-
-      background:linear-gradient(
-        90deg,
-        #38bdf8,
-        #818cf8
-      );
-
-      -webkit-background-clip:text;
-      color:transparent;
+    section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 1rem;
     }
-
-    .hero p{
-      max-width:800px;
-      margin:auto;
-      margin-top:1.5rem;
-      font-size:1.2rem;
-      color:#cbd5e1;
+    h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
     }
-
-    .hero button{
-      margin-top:2rem;
-      padding:1rem 2rem;
-      border:none;
-      border-radius:50px;
-
-      background:linear-gradient(
-        90deg,
-        #0ea5e9,
-        #6366f1
-      );
-
-      color:white;
-      font-weight:600;
-      transition:0.3s;
+    h2 {
+      font-size: 1.8rem;
+      margin: 1.5rem 0 1rem;
+      border-left: 4px solid var(--primary);
+      padding-left: 1rem;
     }
-
-    .hero button:hover{
-      transform:translateY(-5px);
-      box-shadow:0 10px 25px rgba(14,165,233,0.4);
+    h3 {
+      margin: 1rem 0 0.5rem;
+      color: var(--primary);
     }
-
-    /* ================= SECTION ================= */
-
-    section{
-      padding:5rem 0;
+    .stats-grid {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
     }
-
-    .section-title{
-      text-align:center;
-      margin-bottom:3rem;
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1rem;
+      flex: 1 1 150px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
     }
-
-    .section-title h2{
-      font-size:2.8rem;
-      font-weight:700;
-      margin-bottom:1rem;
+    .stat-card i {
+      font-size: 2rem;
+      color: var(--primary);
     }
-
-    .section-title p{
-      color:#94a3b8;
-      max-width:800px;
-      margin:auto;
+    .card-modern {
+      background: var(--surface);
+      border-radius: 1rem;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-
-    /* ================= GLASS CARD ================= */
-
-    .glass-card{
-      background:rgba(255,255,255,0.05);
-      backdrop-filter:blur(10px);
-
-      border:1px solid rgba(255,255,255,0.08);
-
-      border-radius:24px;
-
-      padding:2rem;
-
-      transition:0.3s;
-
-      height:100%;
+    .card-modern:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.15);
     }
-
-    .glass-card:hover{
-      transform:translateY(-8px);
-
-      box-shadow:
-      0 15px 40px rgba(0,0,0,0.3);
+    .code-tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1rem;
     }
-
-    /* ================= CODE BLOCK ================= */
-
-    .code-block{
-      background:#020617;
-      border-radius:20px;
-      padding:1.5rem;
-      overflow-x:auto;
-      margin-top:1rem;
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-weight: 600;
     }
-
-    pre{
-      color:#e2e8f0;
-      margin:0;
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
     }
-
-    /* ================= ARCHITECTURE ================= */
-
-    .architecture{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:1rem;
-      flex-wrap:wrap;
+    .code-block {
+      background: var(--code-bg);
+      border-radius: 0.75rem;
+      padding: 1rem;
+      overflow-x: auto;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: #e2e8f0;
     }
-
-    .arch-box{
-      width:260px;
-      padding:2rem;
-      text-align:center;
-
-      border-radius:20px;
-
-      background:rgba(255,255,255,0.05);
-
-      border:1px solid rgba(255,255,255,0.08);
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin: 1rem 0;
     }
-
-    .frontend{
-      border-top:5px solid #38bdf8;
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--primary);
     }
-
-    .backend{
-      border-top:5px solid #f59e0b;
+    .timeline-item {
+      margin-bottom: 1.5rem;
+      position: relative;
     }
-
-    .database{
-      border-top:5px solid #22c55e;
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0.2rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary);
     }
-
-    .arrow{
-      font-size:2rem;
-      color:#94a3b8;
+    .architecture-viz {
+      background: var(--surface);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
     }
-
-    /* ================= TIMELINE ================= */
-
-    .timeline{
-      border-left:3px solid #38bdf8;
-      padding-left:2rem;
+    .layer-group {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
-
-    .timeline-item{
-      margin-bottom:2rem;
+    .layer-node {
+      background: var(--primary-dark);
+      padding: 0.8rem;
+      border-radius: 1rem;
+      flex: 1;
+      color: white;
     }
-
-    .timeline-item h4{
-      color:#38bdf8;
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
     }
-
-    /* ================= WORKFLOW ================= */
-
-    .workflow{
-      display:grid;
-      grid-template-columns:
-      repeat(auto-fit,minmax(180px,1fr));
-
-      gap:1rem;
-    }
-
-    .workflow div{
-      background:rgba(255,255,255,0.05);
-
-      padding:1.5rem;
-
-      border-radius:15px;
-
-      text-align:center;
-    }
-
-    /* ================= TABLE ================= */
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-    }
-
-    th,td{
-      border:1px solid rgba(255,255,255,0.08);
-      padding:1rem;
-    }
-
-    th{
-      background:rgba(255,255,255,0.05);
-    }
-
-    /* ================= FOOTER ================= */
-
-    footer{
-      padding:2rem;
-      text-align:center;
-      border-top:1px solid rgba(255,255,255,0.08);
-      color:#94a3b8;
-    }
-
-    /* ================= RESPONSIVE ================= */
-
-    @media(max-width:768px){
-
-      .hero h1{
-        font-size:3rem;
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed;
+        transform: translateX(-100%);
+        z-index: 20;
       }
-
-      .architecture{
-        flex-direction:column;
+      .sidebar.open {
+        transform: translateX(0);
       }
-
-      .arrow{
-        transform:rotate(90deg);
+      .main-content {
+        padding: 1rem;
       }
-
+      .hamburger {
+        display: block;
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        z-index: 30;
+        background: var(--primary);
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        color: white;
+      }
     }
-
+    .hamburger {
+      display: none;
+    }
+    .btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      cursor: pointer;
+    }
+    .flow-diagram {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+    }
   </style>
 </head>
-
 <body>
-
-<!-- ================= NAVBAR ================= -->
-
-<nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container">
-
-    <a class="navbar-brand" href="#">
-      🌐 Full Stack
-    </a>
-
-    <button
-      class="navbar-toggler bg-light"
-      data-bs-toggle="collapse"
-      data-bs-target="#menu"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="menu">
-
-      <ul class="navbar-nav ms-auto">
-
-        <li class="nav-item">
-          <a class="nav-link" href="#html">
-            HTML
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#css">
-            CSS
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#javascript">
-            JavaScript
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#bootstrap">
-            Bootstrap
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#backend">
-            Backend
-          </a>
-        </li>
-
-      </ul>
-
+<div class="app-layout">
+  <div class="sidebar" id="sidebar">
+    <h3><i class="fas fa-code"></i> Full Stack Hub</h3>
+    <nav>
+      <a href="#overview" class="active"><i class="fas fa-home"></i> Overview</a>
+      <a href="#roadmap"><i class="fas fa-map"></i> Learning Roadmap</a>
+      <a href="#architecture"><i class="fas fa-project-diagram"></i> Architecture</a>
+      <a href="#auth-flow"><i class="fas fa-lock"></i> Auth Flow</a>
+      <a href="#api-lifecycle"><i class="fas fa-exchange-alt"></i> API Lifecycle</a>
+      <a href="#deployment"><i class="fas fa-cloud-upload-alt"></i> Deployment</a>
+      <a href="#security"><i class="fas fa-shield-alt"></i> Security</a>
+      <a href="#git-workflow"><i class="fab fa-git-alt"></i> Git Workflow</a>
+      <a href="#tools"><i class="fas fa-tools"></i> Modern Tools</a>
+      <a href="#skills"><i class="fas fa-chart-line"></i> Skills Roadmap</a>
+      <a href="#project-structure"><i class="fas fa-folder-tree"></i> Project Structure</a>
+      <a href="#developer-workflow"><i class="fas fa-user-check"></i> Dev Workflow</a>
+      <a href="#timeline"><i class="fas fa-history"></i> Timeline</a>
+    </nav>
+    <div class="theme-toggle" id="themeToggle">
+      <span><i class="fas fa-sun"></i> Light</span>
+      <span><i class="fas fa-moon"></i> Dark</span>
     </div>
-
   </div>
-</nav>
-
-<!-- ================= HERO ================= -->
-
-<section class="hero">
-
-  <div class="container">
-
-    <h1>
-      Full Stack Development
-    </h1>
-
-    <p>
-      Learn frontend, backend, APIs, databases,
-      authentication, deployment, and modern
-      full stack technologies in one complete guide.
-    </p>
-
-    <button onclick="scrollToSection()">
-      Explore Guide
-    </button>
-
-  </div>
-
-</section>
-
-<!-- ================= WHAT IS FULL STACK ================= -->
-
-<section id="about">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        📖 What is Full Stack Development?
-      </h2>
-
-      <p>
-        Full stack development means building both
-        frontend and backend systems together.
-      </p>
-
-    </div>
-
-    <div class="glass-card">
-
-      <p>
-        A Full Stack Developer works on:
-      </p>
-
-      <ul>
-        <li>Frontend interfaces</li>
-        <li>Backend server logic</li>
-        <li>Databases</li>
-        <li>APIs</li>
-        <li>Authentication</li>
-        <li>Deployment & hosting</li>
-      </ul>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= ARCHITECTURE ================= -->
-
-<section>
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        🏗️ Full Stack Architecture
-      </h2>
-
-    </div>
-
-    <div class="architecture">
-
-      <div class="arch-box frontend">
-        🖥️ Frontend
-        <br><br>
-        HTML<br>
-        CSS<br>
-        JavaScript<br>
-        React
+  <div class="main-content">
+    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    
+    <!-- Hero stats -->
+    <section id="overview">
+      <h1>🌐 Full Stack Development<br> <span style="font-size: 1.2rem;">Complete Architecture, Tools & Workflows</span></h1>
+      <div class="stats-grid">
+        <div class="stat-card"><i class="fas fa-layer-group"></i><h3>3+ Layers</h3><small>Frontend, Backend, DB</small></div>
+        <div class="stat-card"><i class="fas fa-rocket"></i><h3>50%</h3><small>Faster delivery</small></div>
+        <div class="stat-card"><i class="fas fa-users"></i><h3>#1</h3><small>In-demand role</small></div>
+        <div class="stat-card"><i class="fas fa-cloud"></i><h3>12+</h3><small>Modern tools</small></div>
       </div>
-
-      <div class="arrow">➡️</div>
-
-      <div class="arch-box backend">
-        ⚙️ Backend
-        <br><br>
-        Node.js<br>
-        Express<br>
-        Django
+      <div class="card-modern">
+        <p><strong>Full Stack Development</strong> = Frontend (UI) + Backend (logic) + Database (storage) + APIs + DevOps. This page gives you a complete map: from roadmap to deployment, authentication to Git workflows, with live visualizations.</p>
       </div>
+    </section>
 
-      <div class="arrow">➡️</div>
-
-      <div class="arch-box database">
-        🗄️ Database
-        <br><br>
-        MySQL<br>
-        PostgreSQL<br>
-        MongoDB
+    <!-- Learning Roadmap -->
+    <section id="roadmap">
+      <h2>📌 Learning Roadmap</h2>
+      <div class="timeline">
+        <div class="timeline-item"><strong>Phase 1:</strong> HTML, CSS, JavaScript, Git basics</div>
+        <div class="timeline-item"><strong>Phase 2:</strong> Frontend framework (React/Vue) + Bootstrap/Tailwind</div>
+        <div class="timeline-item"><strong>Phase 3:</strong> Backend (Node.js/Python) + REST APIs</div>
+        <div class="timeline-item"><strong>Phase 4:</strong> Databases (SQL, MongoDB) + Authentication</div>
+        <div class="timeline-item"><strong>Phase 5:</strong> Deployment (Vercel, Heroku, Docker) + CI/CD</div>
+        <div class="timeline-item"><strong>Phase 6:</strong> Advanced: GraphQL, WebSockets, Cloud (AWS)</div>
       </div>
+    </section>
 
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= HTML ================= -->
-
-<section id="html">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        🧱 HTML
-      </h2>
-
-      <p>
-        HTML provides the structure of webpages.
-      </p>
-
-    </div>
-
-    <div class="row g-4">
-
-      <div class="col-lg-6">
-
-        <div class="glass-card">
-
-          <h4>
-            HTML Example
-          </h4>
-
-          <div class="code-block">
-<pre>
-&lt;form&gt;
-
- &lt;input type="email"&gt;
-
- &lt;input type="password"&gt;
-
- &lt;button&gt;
-   Login
- &lt;/button&gt;
-
-&lt;/form&gt;
-</pre>
-          </div>
-
+    <!-- Architecture diagram live -->
+    <section id="architecture">
+      <h2>🏗️ Frontend ↔ Backend Architecture</h2>
+      <div class="architecture-viz">
+        <div class="layer-group">
+          <div class="layer-node">🖥️ Client (React/HTML/CSS)</div>
+          <div class="layer-node">🌐 HTTP / HTTPS</div>
+          <div class="layer-node">⚙️ Backend API (Node.js/Python)</div>
+          <div class="layer-node">🗄️ Database (SQL/NoSQL)</div>
         </div>
-
+        <div id="liveViz" style="margin-top: 1rem; font-size:0.9rem"></div>
+        <button id="animateRequest" class="btn" style="margin-top:0.8rem">▶️ Animate Request Flow</button>
       </div>
+    </section>
 
-      <div class="col-lg-6">
-
-        <div class="glass-card">
-
-          <h4>
-            HTML Features
-          </h4>
-
-          <ul>
-            <li>Semantic tags</li>
-            <li>Forms</li>
-            <li>Buttons</li>
-            <li>Sections</li>
-            <li>Navigation</li>
-          </ul>
-
+    <!-- Authentication Flow -->
+    <section id="auth-flow">
+      <h2>🔐 Authentication Flow (JWT / Session)</h2>
+      <div class="card-modern">
+        <div class="flow-diagram">
+          <span>User → Login → Frontend → POST /api/login → Backend → verify DB → JWT token → Frontend stores → Authorized requests</span>
         </div>
-
+        <div class="code-tabs">
+          <button class="tab-btn active" data-tab="jwt">JWT Flow</button>
+          <button class="tab-btn" data-tab="session">Session Cookie</button>
+        </div>
+        <div id="jwt" class="tab-content code-block">
+          <pre>1. Client sends credentials
+2. Server validates, creates JWT
+3. Client stores token (localStorage)
+4. Client sends token in Authorization header
+5. Server verifies signature → protected route</pre>
+        </div>
+        <div id="session" class="tab-content code-block" style="display:none">
+          <pre>1. Login → server creates session ID
+2. Set cookie (HttpOnly)
+3. Browser auto-sends cookie on each request
+4. Server validates session from store</pre>
+        </div>
       </div>
+    </section>
 
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= CSS ================= -->
-
-<section id="css">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        🎨 CSS
-      </h2>
-
-      <p>
-        CSS styles webpages and creates layouts.
-      </p>
-
-    </div>
-
-    <div class="glass-card">
-
-      <div class="code-block">
-<pre>
-.container{
-
- display:flex;
-
- justify-content:center;
-
- align-items:center;
-
- min-height:100vh;
-
- background:
- linear-gradient(
-   135deg,
-   #2563eb,
-   #7c3aed
- );
-
-}
-</pre>
+    <!-- API lifecycle -->
+    <section id="api-lifecycle">
+      <h2>🔄 API Request Lifecycle (REST)</h2>
+      <div class="card-modern">
+        <ol>
+          <li>Client → HTTP request (GET /api/users)</li>
+          <li>Backend route handler → validate params</li>
+          <li>Service layer → business logic</li>
+          <li>Database query → return result set</li>
+          <li>Backend formats JSON → HTTP response</li>
+          <li>Client parses JSON → updates UI</li>
+        </ol>
+        <div class="code-block">
+          <pre>// Example: Express + MongoDB
+app.get('/api/users', async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+});</pre>
+        </div>
       </div>
+    </section>
 
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= JAVASCRIPT ================= -->
-
-<section id="javascript">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        ⚡ JavaScript
-      </h2>
-
-      <p>
-        JavaScript adds interactivity and logic.
-      </p>
-
-    </div>
-
-    <div class="glass-card">
-
-      <div class="code-block">
-<pre>
-const button =
- document.getElementById("btn");
-
-button.addEventListener(
- "click",
- () => {
-   alert("Button clicked");
- }
-);
-</pre>
+    <!-- Deployment & hosting -->
+    <section id="deployment">
+      <h2>☁️ Deployment & Hosting</h2>
+      <div class="card-modern">
+        <p><strong>Modern deployment pipelines:</strong> GitHub → CI/CD (GitHub Actions) → Build → Deploy to Vercel/Netlify (frontend) + Heroku/AWS/Railway (backend). Containerization with Docker, orchestration with Kubernetes.</p>
+        <div class="stats-grid">
+          <div class="stat-card">Vercel / Netlify</div>
+          <div class="stat-card">Render / Railway</div>
+          <div class="stat-card">AWS EC2 / Lambda</div>
+          <div class="stat-card">Docker + NGINX</div>
+        </div>
       </div>
+    </section>
 
-    </div>
+    <!-- Security best practices -->
+    <section id="security">
+      <h2>🛡️ Security Best Practices</h2>
+      <div class="card-modern">
+        <ul>
+          <li>✅ HTTPS everywhere, HSTS headers</li>
+          <li>✅ Hash passwords (bcrypt, PBKDF2)</li>
+          <li>✅ CSRF protection (tokens)</li>
+          <li>✅ XSS sanitization (escape output)</li>
+          <li>✅ Rate limiting & input validation</li>
+          <li>✅ Environment variables (never commit secrets)</li>
+        </ul>
+      </div>
+    </section>
 
-  </div>
+    <!-- Git workflow -->
+    <section id="git-workflow">
+      <h2><i class="fab fa-github"></i> Git & GitHub Workflow</h2>
+      <div class="card-modern">
+        <div class="flow-diagram">main ← dev ← feature branches → PR → review → merge → CI/CD</div>
+        <div class="code-block">
+          <pre>git checkout -b feature/login
+git add .
+git commit -m "feat: login page"
+git push origin feature/login
+# create pull request → merge after review</pre>
+        </div>
+      </div>
+    </section>
 
-</section>
+    <!-- Modern tools -->
+    <section id="tools">
+      <h2>🧰 Modern Full Stack Toolchain</h2>
+      <div class="stats-grid">
+        <div class="stat-card">VS Code</div>
+        <div class="stat-card">Postman / Insomnia</div>
+        <div class="stat-card">Docker Desktop</div>
+        <div class="stat-card">MongoDB Compass</div>
+        <div class="stat-card">Prisma / TypeORM</div>
+        <div class="stat-card">Vite / Webpack</div>
+      </div>
+    </section>
 
-<!-- ================= BOOTSTRAP ================= -->
+    <!-- Skills roadmap -->
+    <section id="skills">
+      <h2>📈 Skills Roadmap (by seniority)</h2>
+      <div class="card-modern">
+        <div><strong>Junior:</strong> HTML/CSS/JS, Git, basic React, REST APIs, SQL</div>
+        <div><strong>Mid-level:</strong> Full framework (Next/Nest), Auth, Docker, cloud basics, testing</div>
+        <div><strong>Senior:</strong> System design, microservices, Kubernetes, CI/CD, performance optimization, security</div>
+      </div>
+    </section>
 
-<section id="bootstrap">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        🅱️ Bootstrap
-      </h2>
-
-      <p>
-        Bootstrap is a responsive frontend framework.
-      </p>
-
-    </div>
-
-    <div class="glass-card">
-
+    <!-- Project structure -->
+    <section id="project-structure">
+      <h2>📁 Real Project Structure (MERN example)</h2>
       <div class="code-block">
-<pre>
-<div class="container">
+        <pre>project/
+├── client/          # React frontend
+│   ├── src/
+│   └── public/
+├── server/          # Express backend
+│   ├── models/
+│   ├── routes/
+│   └── controllers/
+├── .env
+├── docker-compose.yml
+└── README.md</pre>
+      </div>
+    </section>
 
- <div class="card shadow">
+    <!-- Developer workflow -->
+    <section id="developer-workflow">
+      <h2>👨‍💻 Daily Developer Workflow</h2>
+      <div class="timeline">
+        <div class="timeline-item">1. Pull latest changes (git pull)</div>
+        <div class="timeline-item">2. Create feature branch</div>
+        <div class="timeline-item">3. Write code + tests + commit</div>
+        <div class="timeline-item">4. Run local dev environment (Docker compose)</div>
+        <div class="timeline-item">5. Push → open PR → review → deploy staging</div>
+      </div>
+    </section>
 
-   <div class="card-body">
+    <!-- Timeline -->
+    <section id="timeline">
+      <h2>⏳ Full Stack Journey Timeline (typical)</h2>
+      <div class="card-modern">
+        <div>📅 0–3 months: Fundamentals (HTML/CSS/JS)</div>
+        <div>📅 3–6 months: Framework + backend basics</div>
+        <div>📅 6–12 months: Full projects, databases, auth</div>
+        <div>📅 12–18 months: Deployment, DevOps, advanced patterns</div>
+      </div>
+    </section>
 
-     <button class="btn btn-primary">
-       Learn More
-     </button>
-
-   </div>
-
- </div>
-
+    <footer>
+      <p>🎯 Complete Full Stack reference – from request lifecycle to security, Git workflows, and deployment. Built with modern UI & interactive elements.</p>
+      <p>© 2025 Full Stack Mastery | <a href="#" style="color: var(--primary)">Back to top ↑</a></p>
+    </footer>
+  </div>
 </div>
-</pre>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= BACKEND ================= -->
-
-<section id="backend">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        ⚙️ Backend Development
-      </h2>
-
-    </div>
-
-    <div class="glass-card">
-
-      <div class="code-block">
-<pre>
-app.get('/users',(req,res)=>{
-
- res.json([
-   {name:'John'}
- ]);
-
-});
-</pre>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= DATABASE ================= -->
-
-<section>
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        🗄️ Database
-      </h2>
-
-    </div>
-
-    <div class="glass-card">
-
-      <div class="code-block">
-<pre>
-SELECT *
-FROM users
-WHERE active = true;
-</pre>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= API FLOW ================= -->
-
-<section>
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        📡 API Workflow
-      </h2>
-
-    </div>
-
-    <div class="workflow">
-
-      <div>User Login</div>
-
-      <div>Frontend Request</div>
-
-      <div>Backend API</div>
-
-      <div>Database Query</div>
-
-      <div>JSON Response</div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= AUTH ================= -->
-
-<section>
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        🔐 Authentication
-      </h2>
-
-    </div>
-
-    <div class="glass-card">
-
-      <ol>
-        <li>User enters credentials</li>
-        <li>Frontend validates form</li>
-        <li>Backend authenticates user</li>
-        <li>JWT token generated</li>
-        <li>User gains dashboard access</li>
-      </ol>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= DEPLOYMENT ================= -->
-
-<section>
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        ☁️ Deployment
-      </h2>
-
-    </div>
-
-    <div class="row g-4">
-
-      <div class="col-md-3">
-        <div class="glass-card">
-          AWS
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="glass-card">
-          Docker
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="glass-card">
-          GitHub
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="glass-card">
-          Vercel
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= ROADMAP ================= -->
-
-<section>
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        🧠 Learning Roadmap
-      </h2>
-
-    </div>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <h4>Step 1</h4>
-        <p>HTML & CSS</p>
-      </div>
-
-      <div class="timeline-item">
-        <h4>Step 2</h4>
-        <p>JavaScript</p>
-      </div>
-
-      <div class="timeline-item">
-        <h4>Step 3</h4>
-        <p>Bootstrap & React</p>
-      </div>
-
-      <div class="timeline-item">
-        <h4>Step 4</h4>
-        <p>Backend & APIs</p>
-      </div>
-
-      <div class="timeline-item">
-        <h4>Step 5</h4>
-        <p>Databases & Deployment</p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= TABLE ================= -->
-
-<section>
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        📊 Technology Comparison
-      </h2>
-
-    </div>
-
-    <div class="glass-card">
-
-      <table>
-
-        <thead>
-
-          <tr>
-            <th>Technology</th>
-            <th>Purpose</th>
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          <tr>
-            <td>HTML</td>
-            <td>Structure</td>
-          </tr>
-
-          <tr>
-            <td>CSS</td>
-            <td>Styling</td>
-          </tr>
-
-          <tr>
-            <td>JavaScript</td>
-            <td>Interactivity</td>
-          </tr>
-
-          <tr>
-            <td>Bootstrap</td>
-            <td>Responsive UI</td>
-          </tr>
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= CONCLUSION ================= -->
-
-<section>
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>
-        📌 Conclusion
-      </h2>
-
-    </div>
-
-    <div class="glass-card">
-
-      <p>
-        Full stack development combines frontend,
-        backend, APIs, databases, and deployment
-        into one complete system.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-  <p>
-    🌐 Modern Full Stack Development Portfolio
-  </p>
-
-</footer>
-
-<!-- Bootstrap JS -->
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-
-function scrollToSection(){
-
-  document.querySelector("#about")
-    .scrollIntoView({
-      behavior:"smooth"
+  // Sidebar toggle for mobile
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
     });
+  }
 
-}
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+  });
+  if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
 
+  // Tab switching for auth flow
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = {
+    jwt: document.getElementById('jwt'),
+    session: document.getElementById('session')
+  };
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const which = btn.getAttribute('data-tab');
+      Object.keys(contents).forEach(key => {
+        contents[key].style.display = key === which ? 'block' : 'none';
+      });
+    });
+  });
+
+  // Live architecture animation
+  let animating = false;
+  const liveViz = document.getElementById('liveViz');
+  const animateBtn = document.getElementById('animateRequest');
+  const nodes = document.querySelectorAll('.layer-node');
+  function animateRequest() {
+    if (animating) return;
+    animating = true;
+    liveViz.innerHTML = '🚀 Request flow: ';
+    const steps = ['🖥️ Client', '🌐 HTTP', '⚙️ Backend API', '🗄️ Database', '⚙️ Backend', '🌐 Response', '🖥️ Client'];
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i >= steps.length) {
+        clearInterval(interval);
+        liveViz.innerHTML += ' ✅ Done.';
+        animating = false;
+        return;
+      }
+      liveViz.innerHTML += steps[i] + (i < steps.length-1 ? ' → ' : '');
+      i++;
+    }, 600);
+  }
+  if (animateBtn) animateBtn.addEventListener('click', animateRequest);
+
+  // active nav highlight on scroll
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.sidebar nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (pageYOffset >= sectionTop) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  });
 </script>
-
 </body>
 </html>
-```
