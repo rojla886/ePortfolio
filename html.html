@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Full Stack Development – Complete Guide with Practical Examples</title>
-  <!-- Google Fonts & Font Awesome -->
+  <meta name="description" content="Complete HTML beginner guide with live demos and code examples">
+  <title>HTML for Beginners – Full Guide + Live Demos</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Bootstrap 5 CSS (for demo components) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -21,7 +19,7 @@
       color: #0f172a;
       line-height: 1.5;
     }
-    /* Navigation bar (same as first provided code) */
+    /* Navigation – same as Full Stack page */
     .site-nav {
       background: #0f3b5c;
       padding: 0.8rem 2rem;
@@ -54,7 +52,6 @@
       background: #2c7da0;
       color: white;
     }
-    /* Container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -115,6 +112,13 @@
       border-radius: 0.75rem;
       margin: 1rem 0;
     }
+    .demo-area {
+      background: white;
+      border: 1px solid #cbd5e6;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
     .code-block {
       background: #0f172a;
       color: #e2e8f0;
@@ -125,41 +129,30 @@
       font-size: 0.85rem;
       margin: 1rem 0;
     }
-    .component-table {
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+    table {
       width: 100%;
       border-collapse: collapse;
       margin: 1rem 0;
     }
-    .component-table th, .component-table td {
-      border: 1px solid #cbd5e1;
+    th, td {
+      border: 1px solid #cbd5e6;
       padding: 0.6rem;
       text-align: left;
     }
-    .component-table th {
-      background: #e2e8f0;
-    }
-    .demo-area {
-      background: #f1f5f9;
-      border-radius: 1rem;
-      padding: 1rem;
-      margin: 1rem 0;
-    }
-    .step-log {
-      background: #1e293b;
-      color: #a5f3c3;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      font-size: 0.8rem;
-      margin-top: 0.5rem;
-      white-space: pre-wrap;
+    th {
+      background: #e9f0f5;
     }
     footer {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       text-align: center;
-      border-top: 1px solid #cbd5e1;
+      border-top: 1px solid #cbd5e6;
       padding-top: 1.5rem;
       font-size: 0.85rem;
-      color: #475569;
+      color: #4a627a;
     }
     @media (max-width: 700px) {
       .site-nav-inner {
@@ -172,6 +165,9 @@
       .container {
         padding: 1rem;
       }
+      h1 {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
@@ -181,8 +177,8 @@
   <div class="site-nav-inner">
     <a href="#" class="site-brand">🧱 Web Guides</a>
     <div class="nav-links">
-      <a href="#" class="active">Full Stack</a>
-      <a href="#">HTML</a>
+      <a href="#">Full Stack</a>
+      <a href="#" class="active">HTML</a>
       <a href="#">CSS</a>
       <a href="#">JavaScript</a>
       <a href="#">Bootstrap</a>
@@ -191,426 +187,327 @@
 </nav>
 
 <div class="container">
-  <!-- Hero -->
   <div style="text-align: center; margin-bottom: 1rem;">
-    <h1>🌐 Full Stack Development – Complete Guide</h1>
+    <h1>🔥 HTML for Beginners – Complete Guide</h1>
     <div class="subhead" style="border-left: none; text-align: center;">
-      What it is, why it matters, how it works – with a real frontend login example, interactive simulation, and all essential concepts.
+      Learn HTML from scratch: every tag explained, live demos, and code snippets. No experience needed.
     </div>
   </div>
 
-  <!-- ========== 1. WHAT IS FULL STACK ========== -->
-  <h2>1. What is Full Stack Development?</h2>
+  <!-- ========== 1. WHAT IS HTML ========== -->
+  <h2>1. What is HTML?</h2>
   <div class="card">
     <div class="explanation">
-      <strong>Full stack development</strong> refers to the practice of building both the <strong>front end (client side)</strong> and <strong>back end (server side)</strong> of a web application, along with managing the database. A full stack developer is responsible for:
-      <ul style="margin-top: 0.5rem; margin-left: 1.2rem;">
-        <li>Designing user interfaces using HTML, CSS, and JavaScript.</li>
-        <li>Writing server side logic using frameworks such as Node.js, Django, or Laravel.</li>
-        <li>Creating and managing databases like MySQL, PostgreSQL, or MongoDB.</li>
-        <li>Ensuring smooth communication between the front end and back end via APIs and HTTP requests.</li>
-      </ul>
-      This holistic approach allows a developer to understand and control the entire application lifecycle, from user interaction to data storage and retrieval.
+      <strong>HTML (HyperText Markup Language)</strong> is the standard language for creating web pages. It describes the structure of a webpage using <strong>elements</strong> (tags). Think of it as the skeleton of a website – it holds everything together.
+    </div>
+    <div class="demo-area">
+      <p><strong>🌐 Live fact:</strong> This page you are reading right now is built with HTML. Right-click anywhere and select “View Page Source” to see the actual HTML code.</p>
+    </div>
+    <div class="code-block">
+      <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
     </div>
     <div class="tip">
-      🍽️ <strong>Restaurant analogy:</strong><br>
-      • <strong>Frontend</strong> = menu, tables, lighting (customer experience).<br>
-      • <strong>Backend</strong> = kitchen (prepares food, handles orders).<br>
-      • <strong>Database</strong> = fridge/pantry (stores ingredients).<br>
-      • <strong>API</strong> = waiter (takes order to kitchen, brings food back).
+      💡 HTML uses <strong>tags</strong> inside angle brackets: <code>&lt;p&gt;</code> (opening) and <code>&lt;/p&gt;</code> (closing). Most tags come in pairs.
     </div>
   </div>
 
-  <!-- ========== 2. WHY IMPORTANT ========== -->
-  <h2>2. Why is Full Stack Development Important?</h2>
+  <!-- ========== 2. DOCUMENT STRUCTURE ========== -->
+  <h2>2. Document Structure (The Skeleton)</h2>
   <div class="card">
-    <ul style="margin-left: 1.5rem;">
-      <li><strong>End to end understanding:</strong> Developers gain a complete view of how different parts of an application interact.</li>
-      <li><strong>Faster development cycles:</strong> Teams can build and iterate features more quickly.</li>
-      <li><strong>Easier troubleshooting:</strong> Full stack developers can trace issues from the user interface down to the database.</li>
-      <li><strong>Scalability:</strong> Applications can be scaled efficiently when the entire architecture is well understood.</li>
-      <li><strong>Career flexibility:</strong> Full stack skills are highly valued and open diverse job opportunities.</li>
-    </ul>
+    <h3>&lt;!DOCTYPE html&gt;</h3>
+    <div class="explanation">Declares that the document is HTML5 – must be the very first line.</div>
+    <h3>&lt;html&gt;</h3>
+    <div class="explanation">Root element that wraps all page content.</div>
+    <h3>&lt;head&gt;</h3>
+    <div class="explanation">Contains meta information (title, character set, CSS links) – not visible on the page.</div>
+    <h3>&lt;body&gt;</h3>
+    <div class="explanation">Contains everything visible: text, images, buttons, etc.</div>
+    <div class="code-block">
+      <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My Awesome Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome!&lt;/h1&gt;
+    &lt;p&gt;Visible content.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
   </div>
 
-  <!-- ========== 3. HOW IT WORKS ========== -->
-  <h2>3. How Full Stack Development Works</h2>
+  <!-- ========== 3. HEADINGS & TEXT ========== -->
+  <h2>3. Headings & Text Formatting</h2>
   <div class="card">
-    <div class="explanation">
-      The typical workflow of a full stack application includes:
-      <ol style="margin-left: 1.2rem; margin-top: 0.5rem;">
-        <li><strong>Frontend Design</strong> – Using HTML, CSS, and JavaScript frameworks (React, Vue, Angular) or libraries like Bootstrap.</li>
-        <li><strong>Backend Development</strong> – Writing server side logic and APIs (Node.js, Python, PHP, etc.).</li>
-        <li><strong>Database Management</strong> – Using SQL (MySQL, PostgreSQL) or NoSQL (MongoDB) databases.</li>
-        <li><strong>Integration</strong> – Connecting frontend and backend via HTTP requests (RESTful or GraphQL APIs).</li>
-        <li><strong>Deployment & Maintenance</strong> – Hosting on cloud platforms (AWS, Heroku) with containerisation (Docker, Kubernetes).</li>
-      </ol>
-      This assignment focuses on the frontend part of full stack development: building a responsive, styled login form using HTML, CSS, JavaScript, and Bootstrap.
-    </div>
-  </div>
-
-  <!-- ========== 4. PRACTICAL EXAMPLE: LOGIN FORM ========== -->
-  <h2>4. Practical Example: User Login Form (Frontend Only)</h2>
-  <div class="card">
-    <p>The following example demonstrates how to build a modern, responsive login form using HTML, CSS, JavaScript, and Bootstrap 5.</p>
-    
-    <h3>4.1 HTML Structure</h3>
-    <div class="code-block">
-      <pre>&lt;div class="container"&gt;
-  &lt;div class="row justify-content-center"&gt;
-    &lt;div class="col-md-6"&gt;
-      &lt;div class="card shadow"&gt;
-        &lt;div class="card-body"&gt;
-          &lt;h3&gt;Login&lt;/h3&gt;
-          &lt;input type="email" class="form-control" placeholder="Email" id="email"&gt;
-          &lt;input type="password" class="form-control mt-2" placeholder="Password" id="password"&gt;
-          &lt;button class="btn btn-primary w-100 mt-3" id="loginBtn"&gt;Sign In&lt;/button&gt;
-          &lt;div id="message"&gt;&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
-    </div>
-    <div class="explanation">
-      This HTML document includes Bootstrap 5 for responsive layout and pre‑styled components. It creates a centred card with a login form containing email and password fields. The <code>container, row, col-md-6, card</code> classes create a responsive, mobile‑friendly design. A <code>div</code> with <code>id="message"</code> is reserved for feedback messages.
-    </div>
-
-    <h3>4.2 Custom CSS (style.css)</h3>
-    <div class="code-block">
-      <pre>body {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-.card {
-  animation: fadeIn 0.5s ease;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.btn-primary:hover {
-  transform: scale(1.02);
-  transition: 0.2s;
-}</pre>
-    </div>
-    <div class="explanation">
-      • A gradient background gives a modern look.<br>
-      • Flexbox centres the form vertically and horizontally.<br>
-      • A fade‑in animation makes the card appear smoothly.<br>
-      • The login button has a hover effect (scale and colour change).<br>
-      • These styles complement Bootstrap, not replace it.
-    </div>
-
-    <h3>4.3 JavaScript (script.js) – Client Side Validation & Mock API Call</h3>
-    <div class="code-block">
-      <pre>document.getElementById('loginBtn').addEventListener('click', async () => {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const msgDiv = document.getElementById('message');
-
-  if (!email.includes('@') || password.length < 6) {
-    msgDiv.innerHTML = '&lt;div class="alert alert-danger"&gt;Invalid email or password (min 6 chars)&lt;/div&gt;';
-    return;
-  }
-
-  msgDiv.innerHTML = '&lt;div class="alert alert-info"&gt;Authenticating...&lt;/div&gt;';
-  
-  // Simulate backend API call
-  setTimeout(() => {
-    if (email === "demo@example.com" && password === "123456") {
-      msgDiv.innerHTML = '&lt;div class="alert alert-success"&gt;Login successful! (Mock)&lt;/div&gt;';
-    } else {
-      msgDiv.innerHTML = '&lt;div class="alert alert-danger"&gt;Invalid credentials&lt;/div&gt;';
-    }
-  }, 1000);
-});</pre>
-    </div>
-    <div class="explanation">
-      • The script prevents default form submission and reads the input values.<br>
-      • Client side validation checks for a basic email format and minimum password length.<br>
-      • It simulates an asynchronous login request (using <code>setTimeout</code>) and displays success/error messages using Bootstrap alert classes.<br>
-      • In a real full stack application, the fetch API would send the credentials to a backend endpoint like <code>/api/login</code>.
-    </div>
-
-    <h3>4.4 Bootstrap Components Used</h3>
-    <table class="component-table">
-      <thead><tr><th>Component</th><th>Bootstrap Class</th><th>Purpose</th></tr></thead>
-      <tbody>
-        <tr><td>Grid system</td><td>.container, .row, .col-md-6</td><td>Responsive layout</td></tr>
-        <tr><td>Card</td><td>.card, .card-body, .shadow</td><td>Styled container</td></tr>
-        <tr><td>Form controls</td><td>.form-control, .form-label</td><td>Styled inputs</td></tr>
-        <tr><td>Button</td><td>.btn, .btn-primary, .w-100</td><td>Styled login button</td></tr>
-        <tr><td>Alerts</td><td>.alert, .alert-danger, .alert-success</td><td>Feedback messages</td></tr>
-      </tbody>
-    </table>
-    <div class="tip">
-      No custom CSS is needed for basic functionality – Bootstrap alone can produce a clean login form, but the custom CSS adds a unique visual identity (gradient background, animations, hover effects).
-    </div>
-
-    <!-- Live interactive demo of the login form -->
-    <h3>🎮 Live Demo: Login Form (Mock API)</h3>
+    <h3>Headings (&lt;h1&gt; to &lt;h6&gt;)</h3>
+    <div class="explanation">Headings define titles and subtitles. <code>&lt;h1&gt;</code> is most important (usually the main title), <code>&lt;h2&gt;</code> to <code>&lt;h6&gt;</code> are subheadings. Search engines use them for SEO.</div>
     <div class="demo-area">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card shadow-sm border-0">
-            <div class="card-body p-4">
-              <h4 class="card-title text-center">🔐 Login to Dashboard</h4>
-              <form id="liveLoginForm">
-                <div class="mb-3">
-                  <label class="form-label">Email address</label>
-                  <input type="email" class="form-control" id="demoEmail" placeholder="demo@example.com" required>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Password</label>
-                  <input type="password" class="form-control" id="demoPassword" placeholder="Password (min 6 chars)" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100 py-2">Sign In (Mock Request)</button>
-                <div id="liveMessage" class="mt-3"></div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="loginSimLog" class="step-log mt-3">✨ Try email: demo@example.com / password: 123456. Validation + mock backend simulation.</div>
+      <h1>This is &lt;h1&gt;</h1>
+      <h2>This is &lt;h2&gt;</h2>
+      <h3>This is &lt;h3&gt;</h3>
+      <h4>&lt;h4&gt;</h4>
+      <h5>&lt;h5&gt;</h5>
+      <h6>&lt;h6&gt;</h6>
+    </div>
+    <h3>Paragraphs (&lt;p&gt;)</h3>
+    <div class="explanation">Defines a paragraph. Browsers add automatic spacing before and after.</div>
+    <div class="demo-area">
+      <p>This is the first paragraph. It contains some text.</p>
+      <p>This is the second paragraph. There is a gap between them.</p>
+    </div>
+    <h3>Inline Text Formatting</h3>
+    <div class="demo-area">
+      <p><strong>Strong</strong> – <strong>bold and important</strong></p>
+      <p><em>Emphasis</em> – <em>italic</em></p>
+      <p><mark>Mark</mark> – <mark>highlighted</mark></p>
+      <p><small>Small</small> – fine print</p>
+      <p><del>Deleted</del> – strikethrough</p>
+      <p><ins>Inserted</ins> – underlined</p>
+      <p>H<sub>2</sub>O (subscript) and x<sup>2</sup> (superscript)</p>
+      <p><code>Code</code> – <code>inline code</code></p>
+      <p>Press <kbd>Ctrl</kbd>+<kbd>C</kbd> to copy</p>
+    </div>
+    <div class="tip">✅ Use <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> instead of <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> – they add meaning, not just style.</div>
+  </div>
+
+  <!-- ========== 4. LISTS ========== -->
+  <h2>4. Lists (Organising Information)</h2>
+  <div class="card">
+    <h3>Unordered list (&lt;ul&gt; + &lt;li&gt;)</h3>
+    <div class="explanation">Bullet points – order doesn’t matter.</div>
+    <div class="demo-area">
+      <ul><li>Apples</li><li>Bananas</li><li>Oranges</li></ul>
+    </div>
+    <h3>Ordered list (&lt;ol&gt; + &lt;li&gt;)</h3>
+    <div class="explanation">Numbered list – sequence matters (steps, rankings).</div>
+    <div class="demo-area">
+      <ol><li>Wake up</li><li>Brush teeth</li><li>Eat breakfast</li></ol>
+    </div>
+    <h3>Description list (&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;)</h3>
+    <div class="explanation">Terms and definitions (glossary).</div>
+    <div class="demo-area">
+      <dl><dt>HTML</dt><dd>Structures the page.</dd><dt>CSS</dt><dd>Styles the page.</dd></dl>
     </div>
   </div>
 
-  <!-- ========== 5. EXTENDED FULL STACK CONCEPTS ========== -->
-  <h2>5. Full Stack Architecture & Communication</h2>
+  <!-- ========== 5. LINKS ========== -->
+  <h2>5. Links (&lt;a&gt; – The Anchor Tag)</h2>
   <div class="card">
-    <div class="explanation">
-      <strong>How frontend and backend connect:</strong> The frontend sends HTTP requests (GET, POST, PUT, DELETE) to backend API endpoints. The backend processes the request, interacts with the database, and returns a JSON response. The frontend then updates the UI dynamically.
+    <div class="explanation">Links make the web interconnected. The <code>href</code> attribute defines the destination.</div>
+    <div class="demo-area">
+      <p><a href="https://www.google.com" target="_blank">External link (opens new tab)</a></p>
+      <p><a href="#tables">Jump to Tables section below</a></p>
+      <p><a href="mailto:someone@example.com">Email link</a></p>
+      <p><a href="tel:+123456789">Phone link</a></p>
     </div>
     <div class="code-block">
-      <pre>// Real fetch example
-fetch('https://api.example.com/users')
-  .then(response => response.json())
-  .then(data => console.log(data));
-
-// Backend endpoint (Node.js/Express)
-app.get('/api/users', async (req, res) => {
-  const users = await db.query('SELECT * FROM users');
-  res.json(users);
-});</pre>
+      <pre>&lt;a href="https://example.com" target="_blank"&gt;Visit&lt;/a&gt;
+&lt;a href="#section2"&gt;Go to Section 2&lt;/a&gt;
+&lt;a href="mailto:hello@example.com"&gt;Email Us&lt;/a&gt;</pre>
     </div>
   </div>
 
-  <h2>6. API Request Lifecycle (REST)</h2>
+  <!-- ========== 6. IMAGES & MEDIA ========== -->
+  <h2>6. Images & Multimedia</h2>
   <div class="card">
-    <ol style="margin-left: 1.2rem;">
-      <li>Client → HTTP request (GET /api/products)</li>
-      <li>Backend route handler → validate params</li>
-      <li>Service layer → business logic</li>
-      <li>Database query → return result set</li>
-      <li>Backend formats JSON → HTTP response</li>
-      <li>Client parses JSON → updates UI</li>
-    </ol>
-    <div class="tip">💡 The browser never directly accesses the database – it always goes through the backend API. This keeps sensitive credentials secure.</div>
-  </div>
-
-  <h2>7. Authentication Flow (JWT)</h2>
-  <div class="card">
-    <ol style="margin-left: 1.2rem;">
-      <li>User submits credentials → frontend POST /api/login</li>
-      <li>Backend validates user against database</li>
-      <li>Backend generates signed JWT token</li>
-      <li>Frontend stores token (localStorage or cookie)</li>
-      <li>Subsequent requests include Authorization: Bearer &lt;token&gt;</li>
-      <li>Backend verifies token before sending protected data</li>
-    </ol>
+    <h3>&lt;img&gt; (Image)</h3>
+    <div class="explanation">Self‑closing tag. Requires <code>src</code> (source) and <code>alt</code> (alternative text for accessibility).</div>
+    <div class="demo-area">
+      <img src="https://picsum.photos/id/1/200/130" alt="Mountain" style="border-radius: 8px;">
+    </div>
+    <h3>&lt;audio&gt; and &lt;video&gt;</h3>
+    <div class="demo-area">
+      <audio controls><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio><br>
+      <video width="250" controls poster="https://picsum.photos/id/26/300/170">
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="code-block">
-      <pre>// JWT verification middleware (Node.js)
-function authenticateToken(req, res, next) {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
-  if (!token) return res.sendStatus(401);
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) return res.sendStatus(403);
-    req.user = user;
-    next();
-  });
-}</pre>
+      <pre>&lt;img src="photo.jpg" alt="Description" width="300"&gt;
+&lt;audio controls&gt;&lt;source src="song.mp3"&gt;&lt;/audio&gt;
+&lt;video controls&gt;&lt;source src="movie.mp4"&gt;&lt;/video&gt;</pre>
     </div>
   </div>
 
-  <h2>8. Deployment & Hosting</h2>
+  <!-- ========== 7. TABLES ========== -->
+  <h2 id="tables">7. Tables (Data in Rows & Columns)</h2>
   <div class="card">
-    <p><strong>Modern deployment pipeline:</strong> Code on GitHub → CI/CD (GitHub Actions) → Build → Deploy to platform.</p>
-    <ul style="margin-left: 1.5rem;">
-      <li><strong>Frontend:</strong> Vercel, Netlify, GitHub Pages</li>
-      <li><strong>Backend + Database:</strong> Render, Railway, Heroku, AWS</li>
-      <li><strong>Containerization:</strong> Docker, Kubernetes</li>
-    </ul>
+    <div class="explanation">Tables use <code>&lt;table&gt;</code>, rows <code>&lt;tr&gt;</code>, headers <code>&lt;th&gt;</code>, and data cells <code>&lt;td&gt;</code>.</div>
+    <div class="demo-area">
+      <table>
+        <thead><tr><th>Month</th><th>Revenue</th></tr></thead>
+        <tbody><tr><td>January</td><td>$5,000</td></tr><tr><td>February</td><td>$6,200</td></tr></tbody>
+        <tfoot><tr><td>Total</td><td>$11,200</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <!-- ========== 8. FORMS ========== -->
+  <h2>8. Forms & Inputs (Collecting Data)</h2>
+  <div class="card">
+    <div class="explanation">Forms let users submit data. Each input should have a <code>name</code> attribute.</div>
+    <div class="demo-area">
+      <form action="#" style="background:#f0f4fa; padding:1rem; border-radius:12px">
+        <label>Text: <input type="text" placeholder="Your name"></label><br><br>
+        <label>Email: <input type="email" placeholder="user@example.com"></label><br><br>
+        <label>Password: <input type="password"></label><br><br>
+        <label>Number: <input type="number" min="1" max="120"></label><br><br>
+        <label>Date: <input type="date"></label><br><br>
+        <p>Radio buttons:</p>
+        <input type="radio" name="gender" id="m"><label for="m"> Male</label>
+        <input type="radio" name="gender" id="f"><label for="f"> Female</label><br><br>
+        <p>Checkboxes:</p>
+        <input type="checkbox" id="read"><label for="read"> Reading</label>
+        <input type="checkbox" id="sport"><label for="sport"> Sports</label><br><br>
+        <label>Dropdown: <select><option>USA</option><option>UK</option></select></label><br><br>
+        <label>Message: <textarea rows="3" cols="30"></textarea></label><br><br>
+        <input type="submit" value="Submit">
+        <button type="button">Just a button</button>
+      </form>
+    </div>
+    <div class="tip">✨ The <code>name</code> attribute is critical – without it, the input’s value won’t be sent to the server.</div>
+  </div>
+
+  <!-- ========== 9. SEMANTIC HTML5 ========== -->
+  <h2>9. Semantic HTML5 (Meaningful Layout)</h2>
+  <div class="card">
+    <div class="explanation">Semantic elements describe their meaning to browsers and developers. Improves accessibility and SEO.</div>
+    <div class="demo-area">
+      <header style="background:#cfe7fc; padding:0.5rem">&lt;header&gt; – top of page</header>
+      <nav style="background:#d9e6f5; padding:0.5rem">&lt;nav&gt; – navigation links</nav>
+      <main style="background:#eef2fa; padding:0.5rem">&lt;main&gt; – primary content</main>
+      <article style="background:#e0f2e9; padding:0.5rem">&lt;article&gt; – blog post</article>
+      <section style="background:#fff0db; padding:0.5rem">&lt;section&gt; – thematic group</section>
+      <aside style="background:#fde2e2; padding:0.5rem">&lt;aside&gt; – sidebar</aside>
+      <footer style="background:#cfe7fc; padding:0.5rem">&lt;footer&gt; – copyright, contact</footer>
+    </div>
+  </div>
+
+  <!-- ========== 10. DIV & SPAN, CLASS & ID ========== -->
+  <h2>10. Div & Span – Grouping Elements</h2>
+  <div class="card">
+    <div class="explanation"><code>&lt;div&gt;</code> is a block‑level container; <code>&lt;span&gt;</code> is inline. They are used with <code>class</code> and <code>id</code> for styling and scripting.</div>
+    <div class="demo-area">
+      <div style="background:#eee; padding:0.5rem">This is a &lt;div&gt; (block).</div>
+      <span style="background:yellow">This is a &lt;span&gt; (inline).</span>
+      <p>You can target elements by <strong class="highlight">class</strong> or <strong id="unique-id">id</strong>.</p>
+    </div>
     <div class="code-block">
-      <pre># Deploy frontend to Vercel
-vercel --prod
-
-# Docker build for backend
-docker build -t myapp .
-docker run -p 3000:3000 myapp</pre>
+      <pre>&lt;div class="container"&gt;...&lt;/div&gt;
+&lt;span id="special"&gt;...&lt;/span&gt;</pre>
     </div>
   </div>
 
-  <h2>9. Security Best Practices</h2>
+  <!-- ========== 11. HTML ENTITIES ========== -->
+  <h2>11. HTML Entities (Special Characters)</h2>
   <div class="card">
-    <ul style="margin-left: 1.5rem;">
-      <li>✅ HTTPS everywhere, HSTS headers</li>
-      <li>✅ Hash passwords (bcrypt, PBKDF2)</li>
-      <li>✅ CSRF protection (tokens)</li>
-      <li>✅ XSS sanitization (escape output)</li>
-      <li>✅ Rate limiting & input validation</li>
-      <li>✅ Environment variables (never commit secrets)</li>
-    </ul>
+    <div class="explanation">Entities represent characters that would otherwise be interpreted as HTML code, like <code>&lt;</code> and <code>&gt;</code>.</div>
+    <div class="demo-area">
+      &lt; (less than) → <code>&amp;lt;</code><br>
+      &gt; (greater than) → <code>&amp;gt;</code><br>
+      &amp; (ampersand) → <code>&amp;amp;</code><br>
+      &copy; (copyright) → <code>&amp;copy;</code><br>
+      &hearts; (heart) → <code>&amp;hearts;</code>
+    </div>
   </div>
 
-  <h2>10. Git & GitHub Workflow</h2>
+  <!-- ========== 12. IFRAMES ========== -->
+  <h2>12. Iframes (Embed External Content)</h2>
   <div class="card">
+    <div class="explanation">Embed another webpage or a video inside your page.</div>
+    <div class="demo-area">
+      <iframe width="300" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video"></iframe>
+    </div>
     <div class="code-block">
-      <pre>git checkout -b feature/login
-git add .
-git commit -m "feat: login page"
-git push origin feature/login
-# open Pull Request → review → merge to main
-# CI/CD auto-deploys</pre>
+      <pre>&lt;iframe src="https://example.com" width="400" height="300"&gt;&lt;/iframe&gt;</pre>
     </div>
   </div>
 
-  <h2>11. Popular Full Stack Technology Stacks</h2>
+  <!-- ========== 13. META TAGS ========== -->
+  <h2>13. Meta Tags (Information for Browsers & SEO)</h2>
   <div class="card">
-    <ul style="margin-left: 1.5rem;">
-      <li><strong>MERN</strong> – MongoDB, Express.js, React, Node.js</li>
-      <li><strong>MEAN</strong> – MongoDB, Express.js, Angular, Node.js</li>
-      <li><strong>LAMP</strong> – Linux, Apache, MySQL, PHP</li>
-      <li><strong>Django + React + PostgreSQL</strong> – Python backend with modern frontend</li>
-    </ul>
+    <div class="explanation">Meta tags go inside <code>&lt;head&gt;</code>. They provide metadata like description, keywords, viewport settings.</div>
+    <div class="code-block">
+      <pre>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="description" content="Learn HTML easily"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
+    </div>
+    <div class="tip">🔍 The viewport meta tag is essential for responsive design on mobile devices.</div>
   </div>
 
-  <!-- ========== 12. INTERACTIVE FULL STACK SIMULATION ========== -->
-  <h2>12. Interactive Simulation: Full Stack Request</h2>
+  <!-- ========== 14. INTERACTIVE TAGS ========== -->
+  <h2>14. Interactive & Extra Tags</h2>
   <div class="card">
     <div class="demo-area">
-      <button id="simulateFullStackBtn" class="btn btn-primary">🚀 Simulate Full Request (Frontend → Backend → DB)</button>
-      <div id="simulationLog" class="step-log">Ready. Click to start simulation.</div>
-      <div id="simulationResponse" class="code-block" style="background:#f1f5f9; color:#0f172a;">Response will appear here...</div>
+      <details>
+        <summary>Click to expand (details + summary)</summary>
+        <p>Hidden content appears when you click.</p>
+      </details>
+      <progress value="70" max="100"></progress> Progress: 70%<br>
+      <meter value="0.6" min="0" max="1">60%</meter> Meter (disk usage)<br>
+      <hr> (horizontal rule)<br>
+      <blockquote>"The Web is for everyone." – Tim Berners-Lee</blockquote>
+      <pre>Preformatted text
+  preserves spaces</pre>
+      <dialog id="myDialog">
+        <p>This is a modal dialog.</p>
+        <button onclick="document.getElementById('myDialog').close()">Close</button>
+      </dialog>
+      <button onclick="document.getElementById('myDialog').showModal()">Open Dialog</button>
     </div>
   </div>
 
-  <!-- ========== 13. CONCLUSION ========== -->
-  <h2>13. Conclusion</h2>
+  <!-- ========== 15. HTML5 VALIDATION (Built-in) ========== -->
+  <h2>15. HTML5 Form Validation (No JavaScript Needed)</h2>
+  <div class="card">
+    <div class="explanation">HTML5 provides built‑in validation: <code>required</code>, <code>pattern</code>, <code>min</code>/<code>max</code>, <code>email</code>, etc.</div>
+    <div class="demo-area">
+      <form>
+        <input type="text" placeholder="Your name" required><br><br>
+        <input type="email" placeholder="Email" required><br><br>
+        <input type="number" min="18" max="99" required><br><br>
+        <input type="submit" value="Submit">
+      </form>
+      <p class="tip">Try submitting without filling – browser will show a validation message.</p>
+    </div>
+  </div>
+
+  <!-- ========== 16. BEST PRACTICES ========== -->
+  <h2>16. HTML Best Practices for Beginners</h2>
+  <div class="card">
+    <ul style="margin-left: 1.5rem">
+      <li>✅ Always include <code>&lt;!DOCTYPE html&gt;</code> and <code>&lt;meta charset="UTF-8"&gt;</code></li>
+      <li>✅ Use semantic tags (<code>&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;</code>) instead of too many <code>&lt;div&gt;</code>s</li>
+      <li>✅ Add <code>alt</code> attributes to all images</li>
+      <li>✅ Keep heading hierarchy logical (<code>&lt;h1&gt;</code> → <code>&lt;h2&gt;</code> → etc.)</li>
+      <li>✅ Close all tags (except self‑closing like <code>&lt;img&gt;</code>)</li>
+      <li>✅ Use lower case for tag names and attributes</li>
+      <li>✅ Test your HTML with the <a href="https://validator.w3.org/" target="_blank">W3C Validator</a></li>
+    </ul>
+  </div>
+
+  <!-- ========== 17. CONCLUSION ========== -->
+  <h2>17. Conclusion</h2>
   <div class="card">
     <div class="explanation">
-      The sequence of code and explanations above illustrates a frontend‑focused approach to a login form, covering:
-      <ul style="margin-left: 1.2rem;">
-        <li><strong>HTML</strong> – structure and semantic elements.</li>
-        <li><strong>CSS</strong> – custom styling, gradients, flexbox, and animations.</li>
-        <li><strong>JavaScript</strong> – form handling, validation, and mock asynchronous feedback.</li>
-        <li><strong>Bootstrap</strong> – responsive grid, cards, form styling, and alerts.</li>
-      </ul>
-      This represents the frontend layer of a full stack application. In a complete system, the JavaScript would communicate with a backend API (Node.js, Python, etc.) and a database. By mastering these frontend technologies, a full stack developer can build attractive, responsive user interfaces that integrate seamlessly with server side logic.<br><br>
-      Understanding HTML, CSS, JavaScript, and a framework like Bootstrap is the first step toward becoming a proficient full stack developer. The same principles apply when moving to more advanced frontend libraries (React, Vue) or backend technologies.
+      This guide covered <strong>over 70 HTML concepts</strong> – from basic structure to semantic tags, forms, media, iframes, meta tags, and modern validation. HTML is the foundation of every website. Practice by creating your own simple pages, inspect others’ code, and you’ll master it quickly.
     </div>
-  </div>
-
-  <!-- ========== 14. REFERENCES ========== -->
-  <h2>14. References</h2>
-  <div class="card">
-    <ul style="margin-left: 1.5rem;">
-      <li>Mozilla Developer Network. (2025). <em>HTML: HyperText Markup Language</em>. Retrieved from <a href="https://developer.mozilla.org/" target="_blank">https://developer.mozilla.org/</a></li>
-      <li>Mozilla Developer Network. (2025). <em>CSS: Cascading Style Sheets</em>. Retrieved from <a href="https://developer.mozilla.org/" target="_blank">https://developer.mozilla.org/</a></li>
-      <li>Mozilla Developer Network. (2025). <em>JavaScript</em>. Retrieved from <a href="https://developer.mozilla.org/" target="_blank">https://developer.mozilla.org/</a></li>
-      <li>Bootstrap Documentation. (2025). <em>Bootstrap v5.3</em>. Retrieved from <a href="https://getbootstrap.com/" target="_blank">https://getbootstrap.com/</a></li>
-    </ul>
   </div>
 
   <footer>
-    <p>🎯 Complete Full Stack Development guide – theory, practical examples, interactive demos, and real‑world workflows.</p>
-    <p>© 2025 – Full Stack Mastery | <a href="#">Back to top ↑</a></p>
+    <p>📌 Complete beginner‑friendly HTML documentation – live demos, code examples, and best practices for a Full Stack portfolio.</p>
+    <p>© 2025 – CET138 Assignment | <a href="#">Back to top ↑</a></p>
   </footer>
 </div>
-
-<script>
-  // Live login form demo
-  const liveForm = document.getElementById('liveLoginForm');
-  const demoEmail = document.getElementById('demoEmail');
-  const demoPassword = document.getElementById('demoPassword');
-  const liveMsg = document.getElementById('liveMessage');
-  const loginSimLog = document.getElementById('loginSimLog');
-
-  liveForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = demoEmail.value;
-    const pwd = demoPassword.value;
-
-    if (!email.includes('@')) {
-      liveMsg.innerHTML = '<div class="alert alert-danger">Please enter a valid email address.</div>';
-      loginSimLog.innerHTML = '❌ Validation failed: invalid email.';
-      return;
-    }
-    if (pwd.length < 6) {
-      liveMsg.innerHTML = '<div class="alert alert-danger">Password must be at least 6 characters.</div>';
-      loginSimLog.innerHTML = '❌ Validation failed: password too short.';
-      return;
-    }
-
-    liveMsg.innerHTML = '<div class="alert alert-info">🔄 Sending credentials to mock backend...</div>';
-    loginSimLog.innerHTML = '📡 Frontend: POST /api/login with credentials...';
-
-    await new Promise(r => setTimeout(r, 800));
-    loginSimLog.innerHTML += '\n⚙️ Backend: Received request. Checking credentials...';
-    await new Promise(r => setTimeout(r, 600));
-
-    if (email === 'demo@example.com' && pwd === '123456') {
-      loginSimLog.innerHTML += '\n🗄️ Database: User found. Password match.';
-      await new Promise(r => setTimeout(r, 500));
-      loginSimLog.innerHTML += '\n✅ Backend: Generating JWT token. Returning 200 OK.';
-      liveMsg.innerHTML = '<div class="alert alert-success">✅ Login successful! (Mock) Redirecting to dashboard...</div>';
-    } else {
-      loginSimLog.innerHTML += '\n🗄️ Database: User not found or wrong password.';
-      await new Promise(r => setTimeout(r, 500));
-      loginSimLog.innerHTML += '\n❌ Backend: Returning 401 Unauthorized.';
-      liveMsg.innerHTML = '<div class="alert alert-danger">❌ Invalid credentials. Use demo@example.com / 123456</div>';
-    }
-    loginSimLog.innerHTML += '\n🏁 End of simulation.';
-  });
-
-  // Full stack simulation
-  const simBtn = document.getElementById('simulateFullStackBtn');
-  const simLog = document.getElementById('simulationLog');
-  const simResp = document.getElementById('simulationResponse');
-
-  async function runFullSim() {
-    simLog.innerHTML = "📡 1. Frontend: Sending HTTP GET request to /api/user/42...";
-    simResp.innerHTML = "⏳ Waiting for backend response...";
-    await new Promise(r => setTimeout(r, 700));
-
-    simLog.innerHTML += "\n⚙️ 2. Backend: Received request. Validating user session...";
-    await new Promise(r => setTimeout(r, 600));
-
-    simLog.innerHTML += "\n🗄️ 3. Database: Executing SQL → SELECT * FROM users WHERE id = 42";
-    await new Promise(r => setTimeout(r, 800));
-
-    simLog.innerHTML += "\n🗄️ 4. Database: Found user record. Returning to backend.";
-    await new Promise(r => setTimeout(r, 500));
-
-    const mockUser = { id: 42, name: "Alex Johnson", email: "alex@example.com", memberSince: "2025-01-20" };
-    simLog.innerHTML += "\n⚙️ 5. Backend: Formatting JSON response and sending HTTP 200 OK.";
-    await new Promise(r => setTimeout(r, 600));
-
-    simLog.innerHTML += "\n🖥️ 6. Frontend: Received response. Updating UI with user data.";
-    simResp.innerHTML = `<strong>✅ Full stack request completed!</strong><br>
-      Response (JSON): <code>${JSON.stringify({ status: "success", user: mockUser }, null, 2)}</code><br>
-      ✔ Simulation: Frontend → Backend API → Database → Response to frontend.`;
-    simLog.innerHTML += "\n🎉 Simulation finished.";
-  }
-
-  simBtn.addEventListener('click', () => {
-    simLog.innerHTML = "🚀 Starting full stack simulation...";
-    simResp.innerHTML = "⏳ Simulating request...";
-    runFullSim();
-  });
-</script>
 </body>
 </html>
