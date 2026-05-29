@@ -126,6 +126,7 @@
       border-radius: 0.75rem;
       margin: 1rem 0;
       font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     .tip {
@@ -307,88 +308,124 @@
     </div>
   </div>
 
-  <!-- ========== 1. THREE WAYS TO ADD CSS ========== -->
-  <h2>📌 1. Three Ways to Add CSS (Inline, Internal, External)</h2>
-  <div class="explanation">
-    CSS can be added to HTML in three different ways. Each has its purpose. Below are live examples and the code to achieve them.
-  </div>
-
-  <!-- 1.1 Inline -->
+  <!-- ========== 1. WHAT IS CSS? (EXTENDED EXPLANATION) ========== -->
+  <h2>🎨 1. What is CSS?</h2>
   <div class="topic-card">
-    <h3>1.1 Inline CSS (inside an HTML element)</h3>
     <div class="explanation">
-      Written directly inside a tag using the <code>style</code> attribute. Affects only that single element.
+      <strong>CSS (Cascading Style Sheets)</strong> is the language that makes websites beautiful. If HTML is the skeleton of a webpage, CSS is the skin, clothes, and makeup – it controls colours, fonts, spacing, layout, animations, and even 3D effects. Without CSS, every website would look like a plain black‑and‑white document from the 1990s.
+      <br><br>
+      The word <strong>"Cascading"</strong> means that styles can flow (or cascade) from parent elements to children, and that multiple style rules can apply to the same element – with a well‑defined order of priority (specificity). <strong>"Style Sheets"</strong> refer to the fact that you write rules that define the visual presentation of HTML elements.
+      <br><br>
+      CSS was first proposed in 1994 by Håkon Wium Lie and became a web standard in 1996. Since then, it has evolved through versions CSS1, CSS2, CSS3 (which introduced modules like transforms, animations, grids, and flexbox), and today we use CSS3 with continuous updates.
     </div>
     <div class="demo-area">
-      <p style="color: var(--primary); font-weight: bold; font-size: 1.2rem;">
-        This paragraph is styled with <strong>inline CSS</strong>.
+      <div style="font-size: 1.2rem;">
+        <span style="color: gray;">Without CSS:</span> Plain text, no styling, ugly defaults.<br>
+        <span style="color: var(--primary); font-weight: bold;">With CSS:</span> Colours, bold, spacing, rounded corners, shadows, and smooth animations.
+      </div>
+      <div style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 1rem; transition: 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        This box uses CSS – gradient background, hover effect (scale), rounded corners, and a soft shadow.
+      </div>
+    </div>
+    <div class="code-block">
+      <pre>/* CSS syntax: selector { property: value; } */
+p {
+  color: navy;           /* text colour */
+  font-size: 18px;      /* font size */
+  background: #f0f0f0;  /* background colour */
+  border-radius: 8px;   /* rounded corners */
+  transition: 0.3s;     /* smooth hover effect */
+}
+p:hover {
+  transform: scale(1.02);
+}</pre>
+    </div>
+    <div class="tip">
+      💡 CSS follows a simple pattern: <strong>selector { property: value; }</strong> – choose an element, then decide how it should look. The <strong>cascade</strong> means later rules can override earlier ones, and children inherit some properties from their parents.
+    </div>
+  </div>
+
+  <!-- ========== 2. THREE WAYS TO ADD CSS ========== -->
+  <h2>📌 2. Three Ways to Add CSS (Inline, Internal, External)</h2>
+  <div class="explanation">
+    CSS can be added to HTML in three different ways. Each has its purpose. Think of it like decorating a house: you can paint a single room (inline), create a style guide for one house (internal), or have a central design manual for all houses (external). Understanding these methods is fundamental because they affect maintainability, reusability, and page loading speed.
+  </div>
+
+  <!-- 2.1 Inline -->
+  <div class="topic-card">
+    <h3>2.1 Inline CSS (inside an HTML element)</h3>
+    <div class="explanation">
+      <strong>How it works:</strong> You write CSS directly inside an HTML tag using the <code>style</code> attribute. This affects <strong>only that one element</strong>. It’s like putting a sticky note on a single item – quick but not reusable.
+      <br><br>
+      <strong>When to use:</strong> Only for quick testing, one‑off overrides, or when you need to apply a style that shouldn't affect anything else. In real projects, avoid inline CSS because it mixes content with presentation and is hard to maintain.
+    </div>
+    <div class="demo-area">
+      <p style="color: var(--primary); font-weight: bold; font-size: 1.2rem; background: #e0f2fe; padding: 0.5rem;">
+        This paragraph is styled with <strong>inline CSS</strong> – look at the code.
       </p>
       <div style="background: #fef9c3; padding: 0.5rem; border-radius: 8px; border: 1px solid #eab308;">
         This div also uses inline CSS – background, padding, border, etc.
       </div>
     </div>
     <div class="code-block">
-      <pre>&lt;p style="color: blue; font-weight: bold;"&gt;Text&lt;/p&gt;
-&lt;div style="background: yellow; padding: 0.5rem;"&gt;Box&lt;/div&gt;</pre>
+      <pre>&lt;p style="color: blue; font-weight: bold;"&gt;This is inline CSS&lt;/p&gt;
+&lt;div style="background: yellow; padding: 0.5rem;"&gt;Styled div&lt;/div&gt;</pre>
     </div>
-    <div class="tip">⚠️ Use inline CSS only for one‑off overrides. It mixes content with styling and is hard to maintain.</div>
+    <div class="tip">⚠️ Use inline CSS only for one‑off overrides. It mixes content with styling and is hard to maintain in large projects. It also overrides all other CSS because of high specificity.</div>
   </div>
 
-  <!-- 1.2 Internal -->
+  <!-- 2.2 Internal -->
   <div class="topic-card">
-    <h3>1.2 Internal CSS (inside &lt;style&gt; tag in &lt;head&gt;)</h3>
+    <h3>2.2 Internal CSS (inside &lt;style&gt; tag in &lt;head&gt;)</h3>
     <div class="explanation">
-      Written inside a <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code>. Applies to the entire HTML page.
+      <strong>How it works:</strong> You write CSS inside a <code>&lt;style&gt;</code> tag in the HTML <code>&lt;head&gt;</code>. This applies to the <strong>entire HTML page</strong>. It’s like having a style sheet for one room – good for single‑page demos or when you don't want an extra file.
+      <br><br>
+      <strong>When to use:</strong> Single‑page websites, quick prototypes, or when you want to demonstrate CSS without needing external files. However, if you have multiple pages, you'll repeat the same CSS, which is inefficient.
     </div>
     <div class="demo-area">
-      <p class="internal-demo">This paragraph uses an internal CSS class.</p>
-      <div class="internal-demo-box">Another internal CSS styled box</div>
+      <p class="internal-demo">This paragraph uses an internal CSS class – defined in the &lt;style&gt; tag of this page.</p>
+      <div class="internal-demo-box">Another internal CSS styled box.</div>
     </div>
     <style>
-      .internal-demo {
-        color: #10b981;
-        font-weight: bold;
-        border-left: 3px solid #10b981;
-        padding-left: 0.5rem;
-      }
-      .internal-demo-box {
-        background: #e0f2fe;
-        padding: 0.5rem;
-        border-radius: 8px;
-        margin-top: 0.5rem;
-      }
+      .internal-demo { color: #10b981; font-weight: bold; border-left: 3px solid #10b981; padding-left: 0.5rem; }
+      .internal-demo-box { background: #e0f2fe; padding: 0.5rem; border-radius: 8px; margin-top: 0.5rem; }
     </style>
     <div class="code-block">
       <pre>&lt;style&gt;
-  .internal-demo {
-    color: green;
-    font-weight: bold;
-  }
+  .internal-demo { color: green; font-weight: bold; }
+  .internal-demo-box { background: lightblue; padding: 0.5rem; }
 &lt;/style&gt;</pre>
     </div>
-    <div class="tip">✅ Internal CSS is good for single‑page demos. For multi‑page sites, external CSS is better.</div>
+    <div class="tip">✅ Internal CSS is great for single‑page prototypes. For multi‑page sites, external CSS is better (reusable and cacheable).</div>
   </div>
 
-  <!-- 1.3 External -->
+  <!-- 2.3 External -->
   <div class="topic-card">
-    <h3>1.3 External CSS (separate .css file)</h3>
+    <h3>2.3 External CSS (separate .css file)</h3>
     <div class="explanation">
-      Stored in a separate <code>.css</code> file and linked via <code>&lt;link&gt;</code>. Best practice for real websites.
+      <strong>How it works:</strong> You store all CSS in a separate <code>.css</code> file and link it using <code>&lt;link&gt;</code> in the HTML <code>&lt;head&gt;</code>. This is the <strong>best practice</strong> for real websites because one CSS file can style many HTML pages, and browsers can cache it for faster loading.
+      <br><br>
+      <strong>When to use:</strong> All professional projects, multi‑page websites, and team development. It separates concerns (HTML for structure, CSS for styling) and makes maintenance effortless – change one file, and every page updates.
     </div>
     <div class="demo-area">
-      <p>This page is styled with a mix of internal and external concepts. In a real project, all styles would be in an external file.</p>
+      <p>This entire page is styled with a mix of internal and external concepts. In a real project, all styles would be in an external file like <code>styles.css</code>.</p>
+      <p>For example, the global styles for this page (like the navigation bar, card designs, etc.) are written in a &lt;style&gt; block – but imagine they are in <code>style.css</code> and linked.</p>
     </div>
     <div class="code-block">
       <pre>&lt;!-- In HTML head --&gt;
 &lt;link rel="stylesheet" href="styles.css"&gt;
 
-/* styles.css */
+/* styles.css (separate file) */
 body {
   font-family: Arial;
   background: #f0f0f0;
+}
+button {
+  background: blue;
+  color: white;
 }</pre>
     </div>
-    <div class="tip">✅ External CSS keeps HTML clean, allows caching, and is reusable across many pages.</div>
+    <div class="tip">✅ External CSS keeps HTML clean, allows browser caching (faster subsequent page loads), and is reusable across many pages – essential for professional work.</div>
   </div>
 
   <!-- Comparison table -->
@@ -400,98 +437,148 @@ body {
         <tr><td>Where written</td><td>style attribute</td><td>&lt;style&gt; tag</td><td>Separate .css file</td></tr>
         <tr><td>Applies to</td><td>One element</td><td>One page</td><td>Any linked page</td></tr>
         <tr><td>Best for</td><td>Quick overrides</td><td>Single‑page demos</td><td>Professional sites</td></tr>
-        <tr><td>Maintainability</td><td>Hard</td><td>Medium</td><td>Easy</td></tr>
-        <tr><td>Caching</td><td>No</td><td>No</td><td>Yes (faster loading)</td></tr>
+        <tr><td>Maintainability</td><td>Hard (mixes with HTML)</td><td>Medium (one page)</td><td>Easy (centralised)</td></tr>
+        <tr><td>Browser caching</td><td>No</td><td>No</td><td>Yes (faster loading)</td></tr>
+        <tr><td>Specificity level</td><td>Highest (1000)</td><td>Normal</td><td>Normal</td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- ========== 2. CSS FUNDAMENTALS ========== -->
-  <h2>📚 2. CSS Fundamentals</h2>
+  <!-- ========== 3. CSS FUNDAMENTALS (EXPANDED) ========== -->
+  <h2>📚 3. CSS Fundamentals – Selectors, Colours, Box Model</h2>
   <div class="topic-card">
     <div class="explanation">
-      <strong>What is CSS?</strong> Cascading Style Sheets control the look and feel of HTML. Basic syntax: <code>selector { property: value; }</code>
+      <strong>The core of CSS:</strong> You select an HTML element, then you apply properties. Let’s break down the most important concepts that every developer must know.
+    </div>
+
+    <h3>🎯 Selectors – How to target HTML elements</h3>
+    <div class="explanation">
+      Selectors are patterns used to select the element(s) you want to style. There are several types:
+      <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+        <li><strong>Element selector</strong> – selects all elements of a given type: <code>p { }</code></li>
+        <li><strong>Class selector</strong> – selects elements with a specific class attribute: <code>.highlight { }</code></li>
+        <li><strong>ID selector</strong> – selects a unique element with a specific id: <code>#header { }</code></li>
+        <li><strong>Descendant selector</strong> – selects elements inside other elements: <code>div span { }</code></li>
+        <li><strong>Group selector</strong> – applies same styles to multiple selectors: <code>h1, h2, h3 { }</code></li>
+        <li><strong>Attribute selector</strong> – selects elements based on an attribute: <code>input[type="text"] { }</code></li>
+      </ul>
+    </div>
+    <div class="demo-area">
+      <p class="selector-demo">This paragraph uses a <strong>class selector</strong> (.selector-demo)</p>
+      <div id="unique-demo" style="background:#fef9c3; padding:0.5rem;">This div uses an <strong>ID selector</strong> (#unique-demo)</div>
+      <div><span>Descendant selector: </span><span style="color:var(--primary); font-weight:bold;">this span inside a div is targeted by "div span"</span></div>
     </div>
     <div class="code-block">
-      <pre>/* Example */
-p {
-  color: navy;
-  font-size: 18px;
-}</pre>
+      <pre>/* Element selector – targets all &lt;p&gt; */
+p { line-height: 1.5; }
+
+/* Class selector – targets elements with class="highlight" */
+.highlight { background: yellow; }
+
+/* ID selector – targets element with id="header" */
+#header { font-size: 2rem; }
+
+/* Descendant selector – targets &lt;span&gt; inside &lt;div&gt; */
+div span { color: blue; }
+
+/* Group selector */
+h1, h2, h3 { font-family: sans-serif; }</pre>
     </div>
 
-    <h3>🎯 Selectors – How to target elements</h3>
+    <h3>🎨 Colours & Backgrounds</h3>
+    <div class="explanation">
+      CSS supports many colour formats: 
+      <ul style="margin-left: 1.5rem;">
+        <li><strong>Hex</strong> – #RRGGBB (e.g., #ff5733)</li>
+        <li><strong>RGB</strong> – rgb(red, green, blue) (e.g., rgb(255,87,51))</li>
+        <li><strong>HSL</strong> – hsl(hue, saturation, lightness) (e.g., hsl(9, 100%, 60%))</li>
+        <li><strong>Named colours</strong> – red, blue, tomato, etc.</li>
+      </ul>
+      Backgrounds can be solid colours, gradients (linear or radial), or images.
+    </div>
     <div class="demo-area">
-      <p class="selector-demo">Class selector (.selector-demo)</p>
-      <div id="unique-demo" style="background:#fef9c3; padding:0.5rem;">ID selector (#unique-demo)</div>
-      <div><span>Descendant: </span><span style="color:var(--primary)">targeted span</span></div>
+      <div style="background:#ef4444; color:white; padding:0.5rem; border-radius:8px;">Hex colour (#ef4444) – red</div>
+      <div style="background:rgb(59,130,246); color:white; padding:0.5rem; margin-top:0.5rem; border-radius:8px;">RGB colour (59,130,246) – blue</div>
+      <div style="background:linear-gradient(90deg, #f97316, #dc2626); color:white; padding:0.5rem; margin-top:0.5rem; border-radius:8px;">Linear gradient – smooth transition between colours</div>
     </div>
     <div class="code-block">
-      <pre>/* Element selector */
-p { }
-
-/* Class selector */
-.className { }
-
-/* ID selector */
-#idName { }
-
-/* Descendant selector */
-div span { }</pre>
+      <pre>/* Color formats */
+color: #ff5733;        /* Hex */
+color: rgb(255, 87, 51); /* RGB */
+color: hsl(9, 100%, 60%); /* HSL */
+background: linear-gradient(to right, red, yellow);</pre>
     </div>
 
-    <h3>🎨 Colours, Backgrounds, Box Model</h3>
+    <h3>📦 Box Model (Margin, Border, Padding, Content)</h3>
+    <div class="explanation">
+      Every element in CSS is a rectangular box. The box model consists of:
+      <ul style="margin-left: 1.5rem;">
+        <li><strong>Content</strong> – the actual text or image</li>
+        <li><strong>Padding</strong> – space between content and border (inside the element)</li>
+        <li><strong>Border</strong> – a line around the padding (or content if no padding)</li>
+        <li><strong>Margin</strong> – space outside the border (between this element and others)</li>
+      </ul>
+      By default, width/height only apply to content. To make layouts predictable, use <code>box-sizing: border-box;</code> – then width includes padding and border.
+    </div>
     <div class="demo-area">
-      <div style="background:#ef4444; color:white; padding:0.5rem;">Hex (#ef4444)</div>
-      <div style="background:rgb(59,130,246); color:white; padding:0.5rem;">RGB</div>
-      <div style="background:linear-gradient(90deg, #f97316, #dc2626); color:white; padding:0.5rem;">Linear Gradient</div>
-      <div style="background:#e2e8f0; padding:1rem; margin-top:1rem;">
-        <div style="background:white; margin:20px; border:3px solid #2563eb; padding:20px;">Box Model: margin → border → padding → content</div>
+      <div style="background:#e2e8f0; padding:1rem; border-radius:12px;">
+        <div style="background:white; margin:20px; border:3px solid #2563eb; padding:20px; border-radius:8px;">
+          <strong>Content area</strong><br>
+          margin (space outside) → border → padding (space inside) → content
+        </div>
       </div>
     </div>
     <div class="code-block">
-      <pre>/* Colors */
-color: #ff5733;
-background: linear-gradient(to right, red, yellow);
-
-/* Box Model */
+      <pre>/* Box model */
 div {
-  margin: 20px;
+  margin: 20px;      /* space outside the border */
   border: 3px solid blue;
-  padding: 20px;
+  padding: 20px;     /* space inside the border, around content */
+  width: 200px;      /* content width */
+}
+
+/* Best practice: include padding/border in width */
+* {
+  box-sizing: border-box;
 }</pre>
     </div>
-    <div class="tip">⭐ Always add <code>box-sizing: border-box;</code> to include padding and border inside the element's total width.</div>
+    <div class="tip">⭐ Always add <code>box-sizing: border-box;</code> globally to make layouts predictable – it includes padding and border inside the element's total width/height.</div>
   </div>
 
-  <!-- ========== 3. SPECIFICITY, CASCADE, INHERITANCE ========== -->
-  <h2>⚖️ 3. Specificity, Cascade & Inheritance</h2>
+  <!-- ========== 4. SPECIFICITY, CASCADE, INHERITANCE ========== -->
+  <h2>⚖️ 4. Specificity, Cascade & Inheritance</h2>
   <div class="topic-card">
     <div class="explanation">
-      <strong>Specificity</strong> determines which rule wins when multiple rules target the same element. Order: <code>!important</code> > Inline style > ID > Class/attribute/pseudo‑class > Element.
+      <strong>Specificity</strong> decides which CSS rule wins when multiple rules target the same element. The browser calculates a score: inline styles (1000) > ID selectors (100) > class/attribute/pseudo-class selectors (10) > element selectors (1). If two rules have the same specificity, the later one (cascade) wins. <strong>Inheritance</strong> means some properties (like colour, font) are passed from parent to child elements automatically.
+      <br><br>
+      The interactive demo below changes the colour of the text using different selectors – click the button to see how higher specificity overrides lower ones.
     </div>
     <div class="demo-area">
-      <div class="specificity-demo" id="specExample" style="color: var(--primary);">This text changes colour based on selector priority.</div>
+      <div class="specificity-demo" id="specExample" style="color: var(--primary);">This text changes colour based on selector priority. Click the button to see specificity in action.</div>
       <button id="specificityBtn">Apply different rules</button>
       <div id="specMessage" class="tip" style="margin-top:0.5rem;"></div>
     </div>
     <div class="code-block">
-      <pre>/* Specificity hierarchy */
-#id { }      /* Highest (100 points) */
-.class { }   /* Medium (10 points) */
-element { }  /* Lowest (1 point) */</pre>
+      <pre>/* Specificity hierarchy (higher score wins) */
+#id { }      /* Score: 100 */
+.class { }   /* Score: 10 */
+element { }  /* Score: 1 */
+/* Inline style: score 1000 */
+/* !important: highest, but avoid if possible */</pre>
     </div>
-    <div class="tip">💡 Use classes instead of IDs for styling to keep specificity low and maintainable. Avoid <code>!important</code> unless absolutely necessary.</div>
+    <div class="tip">💡 Use classes instead of IDs for styling – lower specificity makes your code more reusable and easier to maintain. Avoid <code>!important</code> unless absolutely necessary (e.g., overriding third‑party styles).</div>
   </div>
 
-  <!-- ========== 4. CSS VARIABLES ========== -->
-  <h2>📦 4. CSS Variables (Custom Properties)</h2>
+  <!-- ========== 5. CSS VARIABLES ========== -->
+  <h2>📦 5. CSS Variables (Custom Properties)</h2>
   <div class="topic-card">
     <div class="explanation">
-      Variables store values for reuse. Define them in <code>:root</code> (global) or inside a selector.
+      <strong>What they are:</strong> CSS variables store values (colours, sizes, etc.) in one place, so you can reuse them throughout your stylesheet. Define them inside <code>:root</code> (global) or any selector. Then use <code>var(--name)</code> to apply them. Changing the variable once updates everywhere – perfect for theming (light/dark modes), consistent design systems, and easier maintenance.
+      <br><br>
+      Variables are also inherited (child elements can use parent variables) and can be updated with JavaScript.
     </div>
     <div class="demo-area">
-      <div style="background: var(--primary); color:white; padding:0.5rem; --custom-bg: #10b981; background: var(--custom-bg);">Background set via variable</div>
+      <div style="background: var(--primary); color:white; padding:0.5rem; border-radius:8px; --custom-bg: #10b981; background: var(--custom-bg);">Background set via CSS variable – change one line, update everywhere.</div>
     </div>
     <div class="code-block">
       <pre>:root {
@@ -505,87 +592,86 @@ button {
     </div>
   </div>
 
-  <!-- ========== 5. PSEUDO-CLASSES & PSEUDO-ELEMENTS ========== -->
-  <h2>🎭 5. Pseudo‑classes & Pseudo‑elements</h2>
+  <!-- ========== 6. PSEUDO-CLASSES & PSEUDO-ELEMENTS ========== -->
+  <h2>🎭 6. Pseudo‑classes & Pseudo‑elements</h2>
   <div class="topic-card">
     <div class="explanation">
-      Pseudo‑classes (<code>:hover</code>, <code>:first-child</code>) style elements based on state. Pseudo‑elements (<code>::first-line</code>, <code>::before</code>) style parts of an element.
+      <strong>Pseudo‑classes</strong> (like <code>:hover</code>, <code>:focus</code>, <code>:first-child</code>) style elements based on state or position. <strong>Pseudo‑elements</strong> (like <code>::first-line</code>, <code>::before</code>, <code>::after</code>) style specific parts of an element.
+      <br><br>
+      Examples: <code>:hover</code> changes style when mouse is over, <code>:first-child</code> targets the first child element, <code>::first-line</code> styles only the first line of text, <code>::before</code> inserts content before an element (often used for icons).
     </div>
     <div class="demo-area">
-      <button class="pseudo-btn">Hover me (pseudo-class)</button>
-      <p class="first-line-demo">This paragraph has a pseudo-element ::first-line that styles the first line differently. Resize the browser to see the effect.</p>
-      <ul class="pseudo-list">
-        <li>First child (green)</li>
+      <button class="pseudo-btn" style="background: var(--primary); color: white; padding: 0.5rem 1rem; border: none; border-radius: 2rem; cursor: pointer;">Hover over me (pseudo-class)</button>
+      <p class="first-line-demo" style="margin-top: 1rem;">This paragraph uses ::first-line pseudo‑element – the first line is bold and blue. Resize the browser to see it change.</p>
+      <ul class="pseudo-list" style="list-style: none; padding: 0;">
+        <li style="margin: 0.2rem;">First child (styled differently)</li>
         <li>Second child</li>
         <li>Third child</li>
       </ul>
     </div>
     <style>
-      .pseudo-btn:hover { background: #1e40af; transform: scale(1.05); }
+      .pseudo-btn:hover { background: #1e40af !important; transform: scale(1.05); }
       .first-line-demo::first-line { font-weight: bold; color: #2563eb; }
       .pseudo-list li:first-child { color: #10b981; font-weight: bold; }
     </style>
     <div class="code-block">
-      <pre>/* Pseudo-class */
-button:hover {
-  background: darkblue;
-}
+      <pre>/* Pseudo-class – styles based on user interaction */
+button:hover { background: darkblue; }
 
-/* Pseudo-element */
-p::first-line {
-  font-weight: bold;
-  color: blue;
-}
+/* Pseudo-element – styles part of an element */
+p::first-line { font-weight: bold; }
 
 /* Structural pseudo-class */
-li:first-child {
-  color: green;
-}</pre>
+li:first-child { color: green; }</pre>
     </div>
   </div>
 
-  <!-- ========== 6. RESPONSIVE DESIGN (MEDIA QUERIES) ========== -->
-  <h2>📱 6. Responsive Design – Media Queries</h2>
+  <!-- ========== 7. RESPONSIVE DESIGN ========== -->
+  <h2>📱 7. Responsive Design – Media Queries</h2>
   <div class="topic-card">
     <div class="explanation">
-      Media queries apply CSS based on screen size, orientation, etc. <strong>Resize your browser window</strong> to see the box below change colour when the width is less than 600px.
+      <strong>Media queries</strong> allow you to apply different CSS rules based on screen size, orientation, or device type. This is how websites work on phones, tablets, and desktops. The concept is "mobile‑first" – write styles for small screens first, then use <code>min-width</code> to add enhancements for larger screens.
+      <br><br>
+      <strong>Resize your browser window</strong> – the box below changes colour when the width is less than 600px (phone) and again when it's larger (tablet/desktop).
     </div>
     <div class="demo-area">
-      <div class="responsive-box" style="background: var(--primary); padding: 1rem; color: white; transition: background 0.3s;">Resize me (width &lt; 600px turns red)</div>
+      <div class="responsive-box" style="background: var(--primary); padding: 1rem; color: white; transition: background 0.3s; border-radius: 8px;">Resize me (width &lt; 600px turns red, ≥600px green, ≥1024px purple)</div>
     </div>
     <div class="code-block">
-      <pre>/* Mobile first: default styles for small screens */
+      <pre>/* Mobile first: default styles for small screens (under 600px) */
 .responsive-box { background: blue; }
 
-/* Tablet and up */
+/* Tablet and up (min-width 600px) */
 @media (min-width: 600px) {
   .responsive-box { background: green; }
 }
 
-/* Desktop */
+/* Desktop (min-width 1024px) */
 @media (min-width: 1024px) {
   .responsive-box { background: purple; }
 }</pre>
     </div>
-    <div class="tip">💡 Always use relative units (rem, %, vw) and media queries to make your designs mobile‑friendly.</div>
+    <div class="tip">💡 Always use relative units (rem, %, vw) and media queries to make your designs mobile‑friendly. Test on actual devices or browser DevTools.</div>
   </div>
 
-  <!-- ========== 7. 2D TRANSFORMS ========== -->
-  <h2>🔄 7. 2D Transforms (Interactive)</h2>
+  <!-- ========== 8. 2D TRANSFORMS ========== -->
+  <h2>🔄 8. 2D Transforms (Interactive)</h2>
   <div class="topic-card">
     <div class="explanation">
-      <code>transform</code> lets you <strong>rotate, scale, move (translate), or skew</strong> elements. Hover over the boxes below or use the sliders.
+      <strong>Transform</strong> lets you <strong>rotate, scale, move (translate), or skew</strong> elements. These are CSS3 features that enable smooth, hardware‑accelerated animations (better performance than animating width/height). Use them for hover effects, interactive UI, and creative designs.
+      <br><br>
+      Hover over the boxes below or use the sliders to see the 2D playground in action.
     </div>
     <div class="demo-area">
       <div class="flex-row">
-        <div class="demo-box" id="rotateBox">Hover → Rotate</div>
-        <div class="demo-box" id="scaleBox" style="background: var(--success);">Hover → Scale</div>
-        <div class="demo-box" id="translateBox" style="background: var(--warning);">Hover → Move</div>
-        <div class="demo-box" id="skewBox" style="background: var(--danger);">Hover → Skew</div>
+        <div class="demo-box" id="rotateBox" style="cursor: pointer;">Hover → Rotate</div>
+        <div class="demo-box" id="scaleBox" style="background: var(--success); cursor: pointer;">Hover → Scale</div>
+        <div class="demo-box" id="translateBox" style="background: var(--warning); cursor: pointer;">Hover → Move</div>
+        <div class="demo-box" id="skewBox" style="background: var(--danger); cursor: pointer;">Hover → Skew</div>
       </div>
     </div>
     <div class="control-panel">
-      <div class="demo-box" id="comboBox" style="margin:0 auto">2D Playground</div>
+      <div class="demo-box" id="comboBox" style="margin:0 auto; cursor: default;">2D Playground</div>
       <div>
         <label>Rotate: <input type="range" id="rot2D" min="-180" max="180" value="0"><span id="rotVal">0°</span></label>
         <label>Scale: <input type="range" id="sc2D" min="0.5" max="2" step="0.01" value="1"><span id="scaleVal">1.00</span></label>
@@ -595,24 +681,26 @@ li:first-child {
       <button id="reset2D">Reset</button>
     </div>
     <div class="code-block">
-      <pre>/* 2D transform examples */
+      <pre>/* Basic 2D transforms */
 .rotate:hover { transform: rotate(15deg); }
 .scale:hover { transform: scale(1.2); }
 .translate:hover { transform: translate(20px, 20px); }
 .skew:hover { transform: skew(10deg, 5deg); }
 
-/* Combined */
+/* Multiple transforms */
 .combined {
   transform: rotate(30deg) scale(1.5) translate(10px, 10px);
 }</pre>
     </div>
   </div>
 
-  <!-- ========== 8. 3D TRANSFORMS ========== -->
-  <h2>🧊 8. 3D Transforms & Perspective</h2>
+  <!-- ========== 9. 3D TRANSFORMS ========== -->
+  <h2>🧊 9. 3D Transforms & Perspective</h2>
   <div class="topic-card">
     <div class="explanation">
-      Use <code>rotateX</code>, <code>rotateY</code>, <code>rotateZ</code> and <code>perspective</code> to create 3D effects. Drag the sliders below to see the box rotate in 3D space.
+      <strong>3D transforms</strong> add depth to elements. Use <code>rotateX</code> (tilt forward/back), <code>rotateY</code> (turn left/right), <code>rotateZ</code> (spin like a record), and <code>perspective</code> (how strong the 3D effect is). The <code>transform-style: preserve-3d</code> allows child elements to be positioned in 3D space.
+      <br><br>
+      Drag the sliders below to see the cube rotate in 3D space, and try the hover flip card.
     </div>
     <div class="control-panel">
       <div class="scene3d-interactive" id="sceneContainer" style="perspective:800px">
@@ -640,10 +728,11 @@ li:first-child {
       </div>
     </div>
     <div class="code-block">
-      <pre>/* 3D transform example */
+      <pre>/* 3D transform – rotate in 3D space */
 .card {
   transform: rotateX(20deg) rotateY(30deg);
   perspective: 800px;
+  transform-style: preserve-3d;
   transition: transform 0.6s;
 }
 .card:hover {
@@ -652,11 +741,13 @@ li:first-child {
     </div>
   </div>
 
-  <!-- ========== 9. FILTERS & ANIMATIONS ========== -->
-  <h2>🎨 9. CSS Filters & Keyframe Animations</h2>
+  <!-- ========== 10. FILTERS & ANIMATIONS ========== -->
+  <h2>🎨 10. CSS Filters & Keyframe Animations</h2>
   <div class="topic-card">
     <div class="explanation">
-      <strong>Filters</strong> (blur, grayscale, sepia, brightness) and <strong>backdrop-filter</strong> create visual effects. <strong>Keyframe animations</strong> allow complex, repeated movements.
+      <strong>Filters</strong> (blur, grayscale, sepia, brightness, contrast, hue-rotate, etc.) apply visual effects directly to images or elements. <strong>backdrop-filter</strong> affects the area behind an element (creating glassmorphism effects). 
+      <br><br>
+      <strong>Keyframe animations</strong> allow complex, repeated movements – you define keyframes (states) with <code>@keyframes</code> and then animate between them. This is more powerful than transitions because you can have multiple steps and loops.
     </div>
     <div class="demo-area">
       <div class="flex-row">
@@ -665,13 +756,13 @@ li:first-child {
         <img src="https://picsum.photos/id/100/120/120" style="filter: sepia(80%); border-radius:12px;" alt="sepia">
         <img src="https://picsum.photos/id/100/120/120" style="filter: brightness(1.5); border-radius:12px;" alt="brightness">
       </div>
-      <div style="background: url('https://picsum.photos/id/104/600/300') no-repeat center/cover; min-height:180px; display:flex; align-items:center; justify-content:center; margin-top:1rem;">
+      <div style="background: url('https://picsum.photos/id/104/600/300') no-repeat center/cover; min-height:180px; display:flex; align-items:center; justify-content:center; margin-top:1rem; border-radius: 12px;">
         <div style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.2); padding:1rem; border-radius:1rem; color:white; font-weight:bold;">Glassmorphism (backdrop-filter)</div>
       </div>
       <div class="flex-row" style="margin-top:1rem;">
-        <div class="demo-box animate-bounce" style="background:var(--primary);">Bounce</div>
-        <div class="demo-box animate-spin" style="background:var(--success);">Spin</div>
-        <div class="demo-box" style="background:var(--warning);" onmouseover="this.classList.add('animate-spin')" onmouseout="this.classList.remove('animate-spin')">Hover to spin</div>
+        <div class="demo-box animate-bounce" style="background:var(--primary); cursor: pointer;">Bounce</div>
+        <div class="demo-box animate-spin" style="background:var(--success); cursor: pointer;">Spin</div>
+        <div class="demo-box" style="background:var(--warning); cursor: pointer;" onmouseover="this.classList.add('animate-spin')" onmouseout="this.classList.remove('animate-spin')">Hover to spin</div>
       </div>
     </div>
     <div class="code-block">
@@ -686,32 +777,36 @@ img {
   50% { transform: translateY(-20px); }
 }
 .bounce {
-  animation: bounce 1s infinite;
+  animation: bounce 1s infinite ease;
 }</pre>
     </div>
   </div>
 
-  <!-- ========== 10. FLEXBOX & GRID ========== -->
-  <h2>📐 10. Layout: Flexbox & CSS Grid</h2>
+  <!-- ========== 11. FLEXBOX & GRID ========== -->
+  <h2>📐 11. Layout: Flexbox & CSS Grid</h2>
   <div class="topic-card">
     <div class="explanation">
-      <strong>Flexbox</strong> for one‑dimensional layouts (rows or columns). <strong>CSS Grid</strong> for two‑dimensional layouts (both rows and columns).
+      <strong>Flexbox</strong> is for one‑dimensional layouts – arranging items in a row or column, with powerful alignment options (justify-content, align-items). It's perfect for navigation bars, card layouts, and centering.
+      <br><br>
+      <strong>CSS Grid</strong> is for two‑dimensional layouts – creating complex grids of rows and columns. You can define both row and column tracks, place items precisely, and create responsive layouts without media queries (using auto-fit/minmax).
+      <br><br>
+      Both are essential for modern responsive web design and are supported in all modern browsers.
     </div>
     <div class="demo-area">
-      <h3>Flexbox Example (horizontal distribution)</h3>
-      <div style="display:flex; gap:1rem; background:#e2e8f0; padding:1rem; border-radius:12px; justify-content:center;">
-        <div style="background:var(--primary); padding:0.5rem 1rem;">Flex 1</div>
-        <div style="background:var(--success); padding:0.5rem 1rem;">Flex 2</div>
-        <div style="background:var(--danger); padding:0.5rem 1rem;">Flex 3</div>
+      <h3>Flexbox Example (horizontal row)</h3>
+      <div style="display:flex; gap:1rem; background:#e2e8f0; padding:1rem; border-radius:12px; justify-content:center; flex-wrap:wrap;">
+        <div style="background:var(--primary); padding:0.5rem 1rem; border-radius:8px;">Flex 1</div>
+        <div style="background:var(--success); padding:0.5rem 1rem; border-radius:8px;">Flex 2</div>
+        <div style="background:var(--danger); padding:0.5rem 1rem; border-radius:8px;">Flex 3</div>
       </div>
-      <h3 style="margin-top:1rem;">CSS Grid Example (3 columns)</h3>
+      <h3 style="margin-top:1rem;">CSS Grid Example (3 columns, responsive)</h3>
       <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:0.5rem; background:#e2e8f0; padding:1rem; border-radius:12px;">
-        <div style="background:var(--warning); padding:0.5rem;">Grid 1</div>
-        <div style="background:var(--secondary); padding:0.5rem;">Grid 2</div>
-        <div style="background:var(--danger); padding:0.5rem;">Grid 3</div>
-        <div style="background:var(--primary); padding:0.5rem;">Grid 4</div>
-        <div style="background:var(--success); padding:0.5rem;">Grid 5</div>
-        <div style="background:var(--warning); padding:0.5rem;">Grid 6</div>
+        <div style="background:var(--warning); padding:0.5rem; border-radius:8px;">Grid 1</div>
+        <div style="background:var(--secondary); padding:0.5rem; border-radius:8px;">Grid 2</div>
+        <div style="background:var(--danger); padding:0.5rem; border-radius:8px;">Grid 3</div>
+        <div style="background:var(--primary); padding:0.5rem; border-radius:8px;">Grid 4</div>
+        <div style="background:var(--success); padding:0.5rem; border-radius:8px;">Grid 5</div>
+        <div style="background:var(--warning); padding:0.5rem; border-radius:8px;">Grid 6</div>
       </div>
     </div>
     <div class="code-block">
@@ -720,6 +815,7 @@ img {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 /* CSS Grid – create a responsive 3‑column layout */
@@ -731,32 +827,38 @@ img {
     </div>
   </div>
 
-  <!-- ========== 11. BEST PRACTICES ========== -->
-  <h2>✅ 11. CSS Best Practices</h2>
+  <!-- ========== 12. BEST PRACTICES ========== -->
+  <h2>✅ 12. CSS Best Practices</h2>
   <div class="topic-card">
+    <div class="explanation">
+      Following these best practices will make your CSS maintainable, performant, and professional.
+    </div>
     <ul style="margin-left: 1.5rem;">
-      <li>✔ Use <strong>external CSS</strong> for real projects (separate concerns).</li>
-      <li>✔ Prefer classes over IDs for styling (lower specificity, more reusable).</li>
-      <li>✔ Use <code>transform</code> and <code>opacity</code> for smooth animations (GPU accelerated).</li>
-      <li>✔ Always include <code>box-sizing: border-box;</code> globally.</li>
-      <li>✔ Write responsive styles with <code>@media</code> queries (mobile‑first approach).</li>
+      <li>✔ Use <strong>external CSS</strong> for real projects (separate concerns – HTML for structure, CSS for styling).</li>
+      <li>✔ Prefer classes over IDs for styling (lower specificity, more reusable, easier to override).</li>
+      <li>✔ Use <code>transform</code> and <code>opacity</code> for smooth animations (GPU accelerated, better performance). Avoid animating <code>width/height/top/left</code>.</li>
+      <li>✔ Always include <code>box-sizing: border-box;</code> globally to make layouts predictable.</li>
+      <li>✔ Write responsive styles with <code>@media</code> queries using a mobile‑first approach (default styles for small screens, then add with min-width).</li>
       <li>✔ Use CSS variables for consistent theming and easy updates.</li>
-      <li>✔ Comment your code and keep selectors shallow (avoid deep nesting).</li>
-      <li>✔ Avoid <code>!important</code> unless overriding third‑party styles.</li>
-      <li>✔ Test your website on multiple browsers and devices.</li>
+      <li>✔ Comment your code and keep selectors shallow (avoid deep nesting like <code>.nav .menu ul li a</code>).</li>
+      <li>✔ Avoid <code>!important</code> unless overriding third‑party styles – it breaks the natural cascade.</li>
+      <li>✔ Test your website on multiple browsers and devices (Chrome DevTools has device emulation).</li>
+      <li>✔ Use browser DevTools (F12) to inspect and experiment with CSS live – it's the best learning tool.</li>
     </ul>
   </div>
 
-  <!-- ========== 12. CONCLUSION ========== -->
-  <h2>📌 12. Conclusion</h2>
+  <!-- ========== 13. CONCLUSION ========== -->
+  <h2>📌 13. Conclusion</h2>
   <div class="topic-card">
     <div class="explanation">
-      This guide covered <strong>everything you need to start writing CSS</strong>: from the three ways to add CSS (inline, internal, external), selectors, box model, specificity, variables, pseudo‑classes, responsive design, 2D/3D transforms, filters, animations, Flexbox, Grid, and best practices. Every concept includes live examples and the exact code to copy. Practice by modifying these examples and building your own layouts. CSS is a powerful tool – master it, and you can create any design you imagine.
+      This guide covered <strong>everything you need to start writing CSS professionally</strong>: from the three ways to add CSS (inline, internal, external), selectors, box model, specificity, variables, pseudo‑classes, responsive design, 2D/3D transforms, filters, animations, Flexbox, Grid, and best practices.
+      <br><br>
+      Every concept includes live examples and the exact code to copy. CSS is what turns plain HTML into beautiful, interactive websites. Practice by modifying these examples, use browser DevTools to experiment, and you'll master it quickly. The key to becoming a great front‑end developer is constant practice – rebuild websites you like, experiment with new properties, and always check browser compatibility.
     </div>
   </div>
 
   <footer>
-    <p>🎯 Complete CSS documentation – from inline vs external to advanced 3D transforms, animations, and responsive layouts.</p>
+    <p>🎯 Complete CSS documentation – from inline vs external to advanced 3D transforms, animations, and responsive layouts. Perfect for your Full Stack portfolio.</p>
     <p>© 2025 – CET138 Full Stack Development | <a href="#">Back to top ↑</a></p>
   </footer>
 </div>
@@ -853,9 +955,11 @@ img {
     }
   });
 
-  // Media query demo (inline style for responsive box)
+  // Media query demo for responsive box
   const style = document.createElement('style');
-  style.textContent = `@media (max-width: 600px) { .responsive-box { background: #ef4444 !important; } }`;
+  style.textContent = `@media (max-width: 600px) { .responsive-box { background: #ef4444 !important; } }
+                        @media (min-width: 600px) and (max-width: 1023px) { .responsive-box { background: #10b981 !important; } }
+                        @media (min-width: 1024px) { .responsive-box { background: #8b5cf6 !important; } }`;
   document.head.appendChild(style);
 </script>
 </body>
