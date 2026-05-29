@@ -1,1038 +1,706 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=yes"
-    />
-    <title>CSS : Inline, Internal, External + Interactive 2D/3D</title>
-    <link rel="stylesheet" href="./style.css" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>CSS Complete Documentation – Inline, Internal, External + 2D/3D</title>
+  <style>
+    /* ========== GLOBAL STYLES (Internal/External demo) ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --secondary: #7c3aed;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --gray-bg: #f8fafc;
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+      background: #f1f5f9;
+      color: #0f172a;
+      line-height: 1.5;
+      padding: 0 1rem 2rem;
+    }
+
+    .site-nav {
+      background: #0f3b5c;
+      padding: 0.8rem 2rem;
+      border-radius: 0 0 1rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .site-nav-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .site-brand {
+      color: white;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .nav-links a {
+      color: #e2e8f0;
+      text-decoration: none;
+      margin-left: 1.2rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 2rem;
+      transition: 0.2s;
+    }
+    .nav-links a.active, .nav-links a:hover {
+      background: #2c7da0;
+      color: white;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #0f172a, var(--primary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subhead {
+      font-size: 1.2rem;
+      color: #334155;
+      border-left: 4px solid var(--primary);
+      padding-left: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin: 2rem 0 1rem;
+      border-bottom: 3px solid #e2e8f0;
+      color: #0f172a;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin: 1.5rem 0 0.75rem;
+      color: #1e293b;
+    }
+
+    .topic-card {
+      background: #ffffff;
+      border-radius: 1rem;
+      margin: 1.8rem 0;
+      padding: 1.2rem;
+      border: 1px solid #e2e8f0;
+      transition: var(--transition);
+    }
+    .topic-card:hover {
+      box-shadow: var(--card-shadow);
+    }
+
+    .explanation {
+      background: #eef2ff;
+      border-left: 5px solid var(--primary);
+      padding: 0.8rem 1rem;
+      border-radius: 0.75rem;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    .tip {
+      background: #fef9c3;
+      border-left: 5px solid #eab308;
+      padding: 0.8rem 1rem;
+      border-radius: 0.75rem;
+      margin: 0.8rem 0;
+    }
+
+    .demo-area {
+      background: #f9fafb;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    .code-block {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      overflow-x: auto;
+      font-family: 'Fira Code', 'Courier New', monospace;
+      font-size: 0.85rem;
+      margin: 1rem 0;
+    }
+    .code-block pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    .style-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .style-table th, .style-table td {
+      border: 1px solid #cbd5e1;
+      padding: 0.6rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    .style-table th {
+      background: #e2e8f0;
+    }
+
+    .demo-box {
+      width: 180px;
+      height: 180px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1rem;
+      font-weight: 600;
+      margin: 0.5rem;
+      transition: var(--transition);
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .control-panel {
+      background: #e2e8f0;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin: 0.25rem;
+    }
+    button:hover {
+      background: var(--primary-dark);
+      transform: scale(1.02);
+    }
+
+    /* 3D card styles */
+    .scene3d-interactive {
+      perspective: 800px;
+      display: inline-block;
+      margin: 1rem;
+    }
+    .card3d {
+      width: 200px;
+      height: 200px;
+      transition: transform 0.1s ease;
+      transform-style: preserve-3d;
+      border-radius: 1rem;
+      position: relative;
+    }
+    .card3d-front, .card3d-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1rem;
+      font-weight: bold;
+    }
+    .card3d-front {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+    }
+    .card3d-back {
+      background: var(--warning);
+      color: #0f172a;
+      transform: rotateY(180deg);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .animate-bounce { animation: bounce 1s infinite ease; }
+    .animate-spin { animation: spin 2s infinite linear; }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #475569;
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 1rem; }
+      .demo-box { width: 140px; height: 140px; }
+      .card3d { width: 150px; height: 150px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="#" class="site-brand">🧱 Web Guides</a>
+    <div class="nav-links">
+      <a href="#">Full Stack</a>
+      <a href="#">HTML</a>
+      <a href="#" class="active">CSS</a>
+      <a href="#">JavaScript</a>
+      <a href="#">Bootstrap</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div style="text-align: center; margin-bottom: 1rem;">
+    <h1>🎨 CSS Complete Documentation</h1>
+    <div class="subhead" style="border-left: none; text-align: center;">
+      Inline vs Internal vs External • Specificity • 2D/3D Transforms • Animations • Layout • Best Practices
+    </div>
+  </div>
+
+  <!-- ========== 1. THREE WAYS TO WRITE CSS ========== -->
+  <h2>📌 1. Three Ways to Add CSS (Inline, Internal, External)</h2>
+  <div class="explanation">
+    CSS can be added to HTML in three different ways. Each has its own purpose and use case.
+  </div>
+
+  <div class="topic-card">
+    <h3>1.1 Inline CSS (inside an HTML element)</h3>
+    <div class="explanation">
+      Written directly inside an HTML tag using the <code>style</code> attribute. Affects only that single element.
+    </div>
+    <div class="demo-area">
+      <p style="color: var(--primary); font-weight: bold; font-size: 1.2rem;">
+        This paragraph is styled with <strong>inline CSS</strong>.
+      </p>
+      <div style="background: #fef9c3; padding: 0.5rem; border-radius: 8px; border: 1px solid #eab308;">
+        This div also uses inline CSS.
+      </div>
+    </div>
+    <div class="code-block">
+      <pre>&lt;p style="color: blue; font-weight: bold;"&gt;Text&lt;/p&gt;</pre>
+    </div>
+    <div class="tip">⚠️ Use inline CSS only for one‑off overrides. It mixes content with styling and is hard to maintain.</div>
+  </div>
+
+  <div class="topic-card">
+    <h3>1.2 Internal CSS (inside &lt;style&gt; tag in &lt;head&gt;)</h3>
+    <div class="explanation">
+      Written inside a <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code>. Applies to the entire HTML page.
+    </div>
+    <div class="demo-area">
+      <p class="internal-demo">This paragraph uses an internal CSS class.</p>
+      <div class="internal-demo-box">Another internal CSS styled box</div>
+    </div>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      :root {
-        --primary: #2563eb;
-        --primary-dark: #1e40af;
-        --secondary: #7c3aed;
-        --success: #10b981;
-        --warning: #f59e0b;
-        --danger: #ef4444;
-        --gray-bg: #f8fafc;
-        --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        --transition: all 0.3s ease;
-      }
-
-      body {
-        font-family: "Segoe UI", "Inter", system-ui, sans-serif;
-        background: #f1f5f9;
-        color: #0f172a;
-        line-height: 1.5;
-        padding: 0 1rem 2rem;
-      }
-
-      .container {
-        max-width: 1300px;
-        margin: 0 auto;
-        background: white;
-        border-radius: 1.5rem;
-        box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
-        padding: 2rem;
-      }
-
-      h1 {
-        font-size: 2.5rem;
-        background: linear-gradient(135deg, #0f172a, var(--primary));
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        margin-bottom: 0.5rem;
-      }
-
-      .subhead {
-        font-size: 1.2rem;
-        color: #334155;
-        border-left: 4px solid var(--primary);
-        padding-left: 1rem;
-        margin-bottom: 2rem;
-      }
-
-      h2 {
-        font-size: 1.8rem;
-        margin: 2rem 0 1rem;
-        border-bottom: 3px solid #e2e8f0;
-        color: #0f172a;
-      }
-
-      h3 {
-        font-size: 1.3rem;
-        margin: 1.5rem 0 0.75rem;
-        color: #1e293b;
-      }
-
-      .topic-card {
-        background: #ffffff;
-        border-radius: 1rem;
-        margin: 1.8rem 0;
-        padding: 1.2rem;
-        border: 1px solid #e2e8f0;
-        transition: var(--transition);
-      }
-
-      .topic-card:hover {
-        box-shadow: var(--card-shadow);
-      }
-
-      .explanation {
-        background: #eef2ff;
-        border-left: 5px solid var(--primary);
-        padding: 0.8rem 1rem;
-        border-radius: 0.75rem;
-        margin: 1rem 0;
-        font-size: 0.95rem;
-      }
-
-      .tip {
-        background: #fef9c3;
-        border-left: 5px solid #eab308;
-        padding: 0.8rem 1rem;
-        border-radius: 0.75rem;
-        margin: 0.8rem 0;
-      }
-
-      .demo-area {
-        background: #f9fafb;
-        border: 1px solid #e2e8f0;
-        border-radius: 1rem;
-        padding: 1.5rem;
-        margin: 1rem 0;
-        text-align: center;
-      }
-
-      .code-block {
-        background: #0f172a;
-        color: #e2e8f0;
-        padding: 1rem;
-        border-radius: 0.75rem;
-        overflow-x: auto;
-        font-family: "Fira Code", "Courier New", monospace;
-        font-size: 0.85rem;
-        margin: 1rem 0;
-      }
-
-      .code-block pre {
-        margin: 0;
-        white-space: pre-wrap;
-        word-break: break-word;
-      }
-
-      .demo-box {
-        width: 180px;
-        height: 180px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: white;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 1rem;
-        font-weight: 600;
-        margin: 0.5rem;
-        transition: var(--transition);
-        cursor: pointer;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      }
-
-      .flex-row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-      }
-
-      .control-panel {
-        background: #e2e8f0;
-        border-radius: 1rem;
-        padding: 1rem;
-        margin: 1rem 0;
-        text-align: center;
-      }
-
-      .control-panel input {
-        margin: 0 0.5rem;
-        vertical-align: middle;
-      }
-
-      button {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 2rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: var(--transition);
-        margin: 0.25rem;
-      }
-
-      button:hover {
-        background: var(--primary-dark);
-        transform: scale(1.02);
-      }
-
-      /* 3D scene */
-      .scene3d-interactive {
-        perspective: 800px;
-        display: inline-block;
-        margin: 1rem;
-      }
-
-      .card3d {
-        width: 200px;
-        height: 200px;
-        transition: transform 0.1s ease;
-        transform-style: preserve-3d;
-        border-radius: 1rem;
-        position: relative;
-      }
-
-      .card3d-front,
-      .card3d-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 1rem;
+      .internal-demo {
+        color: #10b981;
         font-weight: bold;
+        border-left: 3px solid #10b981;
+        padding-left: 0.5rem;
       }
-
-      .card3d-front {
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: white;
-      }
-
-      .card3d-back {
-        background: var(--warning);
-        color: #0f172a;
-        transform: rotateY(180deg);
-      }
-
-      /* Fixed animations */
-      @keyframes bounce {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-20px);
-        }
-      }
-      @keyframes spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-      .animate-bounce {
-        animation: bounce 1s infinite ease;
-      }
-      .animate-spin {
-        animation: spin 2s infinite linear;
-      }
-
-      .style-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 1rem 0;
-      }
-      .style-table th,
-      .style-table td {
-        border: 1px solid #cbd5e1;
-        padding: 0.6rem;
-        text-align: left;
-        vertical-align: top;
-      }
-      .style-table th {
-        background: #e2e8f0;
-      }
-
-      footer {
-        margin-top: 3rem;
-        text-align: center;
-        border-top: 1px solid #cbd5e1;
-        padding-top: 1.5rem;
-        font-size: 0.85rem;
-        color: #475569;
-      }
-
-      @media (max-width: 700px) {
-        .container {
-          padding: 1rem;
-        }
-        .demo-box {
-          width: 140px;
-          height: 140px;
-        }
-        .card3d {
-          width: 150px;
-          height: 150px;
-        }
+      .internal-demo-box {
+        background: #e0f2fe;
+        padding: 0.5rem;
+        border-radius: 8px;
+        margin-top: 0.5rem;
       }
     </style>
-  </head>
-  <body>
-    <nav class="site-nav">
-      <div class="site-nav-inner">
-        <a href="./index.html" class="site-brand">🧱 Web Guides</a>
-        <div class="nav-links">
-          <a href="./fullstack.html">Full Stack</a>
-          <a href="./index.html">HTML</a>
-          <a href="./Css.html" class="active">CSS</a>
-          <a href="./javascript.html">JavaScript</a>
-          <a href="./Bootstrap.html">Bootstrap</a>
-        </div>
-      </div>
-    </nav>
-    <div class="container page-container" style="margin-top: 20px">
-      <section class="hero-banner">
-        <h1>🎨 CSS: Complete Guide</h1>
-        <div class="subhead hero-subtitle">
-          Inline vs Internal vs External CSS + Interactive 2D/3D Transforms &
-          Animations
-        </div>
-      </section>
+    <div class="code-block">
+      <pre>&lt;style&gt;
+  .internal-demo { color: green; }
+&lt;/style&gt;</pre>
+    </div>
+    <div class="tip">✅ Internal CSS is good for single‑page demos. For multi‑page sites, external CSS is better.</div>
+  </div>
 
-      <!-- ========== NEW SECTION: TYPES OF CSS ========== -->
-      <h2>📌 1. Three Ways to Write CSS (Inline, Internal, External)</h2>
-      <div class="explanation">
-        CSS can be added to HTML in three different ways. Each has its own
-        purpose and use case. Let's explore them with live examples.
-      </div>
-
-      <div class="topic-card">
-        <h3>1.1 Inline CSS (inside an HTML element)</h3>
-        <div class="explanation">
-          Inline CSS is written directly inside an HTML tag using the
-          <code>style</code> attribute. It affects only that single element.
-        </div>
-        <div class="demo-area">
-          <p
-            style="color: var(--primary); font-weight: bold; font-size: 1.2rem"
-          >
-            This paragraph is styled with <strong>inline CSS</strong> (look at
-            the code).
-          </p>
-          <div
-            style="
-              background: #fef9c3;
-              padding: 0.5rem;
-              border-radius: 8px;
-              border: 1px solid #eab308;
-            "
-          >
-            This div also uses inline CSS – background, padding, border, etc.
-          </div>
-        </div>
-        <div class="code-block">
-          <pre>
-&lt;p style="color: blue; font-weight: bold;"&gt;Text&lt;/p&gt;</pre
-          >
-        </div>
-        <div class="tip">
-          ✅ Use inline CSS only for very specific, one‑off overrides. It’s not
-          recommended for large projects because it mixes content with styling
-          and is hard to maintain.
-        </div>
-      </div>
-
-      <div class="topic-card">
-        <h3>1.2 Internal CSS (inside &lt;style&gt; tag in &lt;head&gt;)</h3>
-        <div class="explanation">
-          Internal CSS is written inside a <code>&lt;style&gt;</code> tag in the
-          <code>&lt;head&gt;</code> section. It applies to the entire HTML page.
-        </div>
-        <div class="demo-area">
-          <!-- Example of internal CSS applied to this page -->
-          <p class="internal-demo">
-            This paragraph uses an internal CSS class (look at the style block
-            in the head).
-          </p>
-          <div class="internal-demo-box">Another internal CSS styled box</div>
-        </div>
-        <style>
-          /* This is internal CSS (inside this page's <style> tag) */
-          .internal-demo {
-            color: #10b981;
-            font-weight: bold;
-            border-left: 3px solid #10b981;
-            padding-left: 0.5rem;
-          }
-          .internal-demo-box {
-            background: #e0f2fe;
-            padding: 0.5rem;
-            border-radius: 8px;
-            margin-top: 0.5rem;
-          }
-        </style>
-        <div class="code-block">
-          <pre>
-&lt;style&gt;
-    .internal-demo {
-        color: green;
-        font-weight: bold;
-    }
-&lt;/style&gt;</pre
-          >
-        </div>
-        <div class="tip">
-          ✅ Internal CSS is good for single‑page websites or quick prototypes.
-          For multi‑page sites, external CSS is better.
-        </div>
-      </div>
-
-      <div class="topic-card">
-        <h3>1.3 External CSS (separate .css file)</h3>
-        <div class="explanation">
-          External CSS is stored in a separate <code>.css</code> file and linked
-          using <code>&lt;link&gt;</code>. This is the best practice for real
-          websites – one CSS file can style many HTML pages.
-        </div>
-        <div class="demo-area">
-          <p>
-            This entire page is styled with <strong>external CSS</strong> (the
-            styles you see in the &lt;style&gt; tag could be moved to a .css
-            file).
-          </p>
-          <p>
-            For demonstration, imagine a file called <code>styles.css</code>:
-          </p>
-        </div>
-        <div class="code-block">
-          <pre>
-&lt;!-- In HTML head --&gt;
+  <div class="topic-card">
+    <h3>1.3 External CSS (separate .css file)</h3>
+    <div class="explanation">
+      Stored in a separate <code>.css</code> file and linked via <code>&lt;link&gt;</code>. Best practice for real websites.
+    </div>
+    <div class="code-block">
+      <pre>&lt;!-- In HTML head --&gt;
 &lt;link rel="stylesheet" href="styles.css"&gt;
 
 /* styles.css */
-body {
-    font-family: Arial;
-    background: #f0f0f0;
-}</pre
-          >
-        </div>
-        <div class="tip">
-          ✅ External CSS keeps your HTML clean, makes styling reusable, and
-          allows browser caching for faster loading.
-        </div>
-      </div>
-
-      <div class="topic-card">
-        <h3>📊 Comparison Table: Inline vs Internal vs External</h3>
-        <table class="style-table">
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>Inline CSS</th>
-              <th>Internal CSS</th>
-              <th>External CSS</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Where it's written</td>
-              <td>Inside style attribute of an element</td>
-              <td>Inside &lt;style&gt; tag in &lt;head&gt;</td>
-              <td>Separate .css file linked via &lt;link&gt;</td>
-            </tr>
-            <tr>
-              <td>Applies to</td>
-              <td>Only one element</td>
-              <td>Whole HTML page</td>
-              <td>Any page that links to it</td>
-            </tr>
-            <tr>
-              <td>Best for</td>
-              <td>Quick, one‑off overrides</td>
-              <td>Single‑page demos</td>
-              <td>Professional, multi‑page websites</td>
-            </tr>
-            <tr>
-              <td>Maintainability</td>
-              <td>Hard (mixes content & style)</td>
-              <td>Medium</td>
-              <td>Easy (centralised)</td>
-            </tr>
-            <tr>
-              <td>Performance</td>
-              <td>Slow if overused</td>
-              <td>Good for one page</td>
-              <td>Best (cached by browser)</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="tip">
-          💡 For your portfolio, you will mostly use
-          <strong>external CSS</strong> or <strong>internal CSS</strong> for
-          single‑page demos. Inline is rarely used in real projects.
-        </div>
-      </div>
-
-      <!-- ========== REST OF THE CSS GUIDE (Fundamentals, 2D/3D, etc.) ========== -->
-      <h2>📚 2. CSS Fundamentals</h2>
-      <div class="topic-card">
-        <div class="explanation">
-          <strong>What is CSS?</strong> CSS (Cascading Style Sheets) makes
-          websites beautiful. It controls colours, fonts, spacing, and even 3D
-          effects.
-        </div>
-        <div class="code-block">
-          <pre>
-/* Syntax: selector { property: value; } */
-p {
-    color: blue;
-    font-size: 18px;
-}</pre
-          >
-        </div>
-      </div>
-
-      <div class="topic-card">
-        <h3>🎯 Selectors – How to target HTML elements</h3>
-        <div class="demo-area">
-          <p class="selector-demo" style="color: #2563eb; font-weight: bold">
-            Class selector (.selector-demo)
-          </p>
-          <div
-            id="unique-demo"
-            style="background: #fef9c3; padding: 0.5rem; border-radius: 8px"
-          >
-            ID selector (#unique-demo)
-          </div>
-        </div>
-        <div class="code-block">
-          <pre>
-/* Element */ p { line-height: 1.5; }
-/* Class */ .selector-demo { color: blue; }
-/* ID */ #unique-demo { background: yellow; }</pre
-          >
-        </div>
-      </div>
-
-      <div class="topic-card">
-        <h3>🎨 Colours & Backgrounds</h3>
-        <div class="demo-area">
-          <div style="background: #ef4444; color: white; padding: 0.5rem">
-            Hex (#ef4444)
-          </div>
-          <div
-            style="background: rgb(59, 130, 246); color: white; padding: 0.5rem"
-          >
-            RGB
-          </div>
-          <div
-            style="
-              background: linear-gradient(90deg, #f97316, #dc2626);
-              color: white;
-              padding: 0.5rem;
-            "
-          >
-            Linear Gradient
-          </div>
-        </div>
-        <div class="code-block">
-          <pre>
-color: #ff5733;
-background: linear-gradient(to right, red, yellow);</pre
-          >
-        </div>
-      </div>
-
-      <div class="topic-card">
-        <h3>📦 Box Model (Margin, Border, Padding, Content)</h3>
-        <div class="demo-area">
-          <div style="background: #e2e8f0; padding: 1rem">
-            <div
-              style="
-                background: white;
-                margin: 20px;
-                border: 3px solid #2563eb;
-                padding: 20px;
-              "
-            >
-              Content area
-            </div>
-          </div>
-        </div>
-        <div class="tip">
-          ⭐ Always add <code>box-sizing: border-box;</code> to include padding
-          and border inside the element's total width.
-        </div>
-      </div>
-
-      <!-- ========== 2D TRANSFORMS ========== -->
-      <h2>🔄 3. 2D Transforms (Interactive)</h2>
-      <div class="explanation">
-        <code>transform</code> lets you rotate, scale, move, or skew elements.
-        Hover over the boxes or use sliders.
-      </div>
-
-      <div class="topic-card">
-        <div class="demo-area">
-          <div class="flex-row">
-            <div class="demo-box" id="rotateBox">Hover → Rotate</div>
-            <div
-              class="demo-box"
-              id="scaleBox"
-              style="background: var(--success)"
-            >
-              Hover → Scale
-            </div>
-            <div
-              class="demo-box"
-              id="translateBox"
-              style="background: var(--warning)"
-            >
-              Hover → Move
-            </div>
-            <div
-              class="demo-box"
-              id="skewBox"
-              style="background: var(--danger)"
-            >
-              Hover → Skew
-            </div>
-          </div>
-        </div>
-        <div class="control-panel">
-          <div class="demo-box" id="comboBox" style="margin: 0 auto">
-            2D Playground
-          </div>
-          <div>
-            <label
-              >Rotate:
-              <input
-                type="range"
-                id="rot2D"
-                min="-180"
-                max="180"
-                value="0"
-              /><span id="rotVal">0°</span></label
-            >
-            <label
-              >Scale:
-              <input
-                type="range"
-                id="sc2D"
-                min="0.5"
-                max="2"
-                step="0.01"
-                value="1"
-              /><span id="scaleVal">1.00</span></label
-            >
-            <label
-              >Translate X:
-              <input type="range" id="tx2D" min="-50" max="50" value="0" /><span
-                id="txVal"
-                >0px</span
-              ></label
-            >
-            <label
-              >Translate Y:
-              <input type="range" id="ty2D" min="-50" max="50" value="0" /><span
-                id="tyVal"
-                >0px</span
-              ></label
-            >
-          </div>
-          <button id="reset2D">Reset</button>
-        </div>
-      </div>
-
-      <!-- ========== 3D TRANSFORMS (FULLY INTERACTIVE) ========== -->
-      <h2>🧊 4. 3D Transforms – Depth & Perspective</h2>
-      <div class="explanation">
-        Use <code>rotateX</code>, <code>rotateY</code>, <code>rotateZ</code> and
-        <code>perspective</code> to create 3D effects. Drag the sliders below to
-        see the box rotate in real time.
-      </div>
-
-      <div class="topic-card">
-        <div class="control-panel">
-          <div
-            class="scene3d-interactive"
-            id="sceneContainer"
-            style="perspective: 800px"
-          >
-            <div
-              id="interactive3dCard"
-              class="card3d"
-              style="transform: rotateX(20deg) rotateY(30deg) rotateZ(0deg)"
-            >
-              <div class="card3d-front">3D Box</div>
-              <div class="card3d-back">Back side</div>
-            </div>
-          </div>
-          <div>
-            <label
-              >rotateX:
-              <input
-                type="range"
-                id="rotX3D"
-                min="-180"
-                max="180"
-                value="20"
-                step="1"
-              /><span id="rotXVal">20°</span></label
-            >
-            <label
-              >rotateY:
-              <input
-                type="range"
-                id="rotY3D"
-                min="-180"
-                max="180"
-                value="30"
-                step="1"
-              /><span id="rotYVal">30°</span></label
-            >
-            <label
-              >rotateZ:
-              <input
-                type="range"
-                id="rotZ3D"
-                min="-180"
-                max="180"
-                value="0"
-                step="1"
-              /><span id="rotZVal">0°</span></label
-            >
-            <label
-              >Perspective:
-              <input
-                type="range"
-                id="perspectiveSlider"
-                min="200"
-                max="1200"
-                value="800"
-                step="10"
-              /><span id="perspVal">800px</span></label
-            >
-          </div>
-          <div>
-            <button id="reset3DDefault">Reset to default</button>
-            <button id="reset3DZero">Zero rotations</button>
-          </div>
-        </div>
-        <div class="tip">
-          💡 Lower perspective = stronger depth (e.g., 200px makes the box look
-          very close).
-        </div>
-      </div>
-
-      <div class="topic-card">
-        <h3>✨ 3D Card Flip (hover)</h3>
-        <div class="demo-area">
-          <div class="scene3d-interactive" style="perspective: 600px">
-            <div
-              class="card3d"
-              style="transition: transform 0.6s; transform-style: preserve-3d"
-              onmouseover="this.style.transform = 'rotateY(180deg)'"
-              onmouseout="this.style.transform = 'rotateY(0deg)'"
-            >
-              <div class="card3d-front">Hover to flip →</div>
-              <div class="card3d-back">🎉 Flipped!</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== FILTERS & ANIMATIONS ========== -->
-      <h2>🎭 5. CSS Filters & Animations</h2>
-      <div class="topic-card">
-        <div class="demo-area">
-          <div class="flex-row">
-            <img
-              src="https://picsum.photos/id/100/120/120"
-              style="filter: blur(2px); border-radius: 12px"
-              alt="blur"
-            />
-            <img
-              src="https://picsum.photos/id/100/120/120"
-              style="filter: grayscale(100%); border-radius: 12px"
-              alt="grayscale"
-            />
-            <img
-              src="https://picsum.photos/id/100/120/120"
-              style="filter: sepia(80%); border-radius: 12px"
-              alt="sepia"
-            />
-            <img
-              src="https://picsum.photos/id/100/120/120"
-              style="filter: brightness(1.5); border-radius: 12px"
-              alt="brightness"
-            />
-          </div>
-        </div>
-        <div
-          class="demo-area"
-          style="
-            background: url(&quot;https://picsum.photos/id/104/600/300&quot;)
-              no-repeat center/cover;
-            min-height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          "
-        >
-          <div
-            style="
-              backdrop-filter: blur(10px) brightness(1.1);
-              background: rgba(255, 255, 255, 0.2);
-              padding: 1rem;
-              border-radius: 1rem;
-              color: white;
-              font-weight: bold;
-            "
-          >
-            Glassmorphism (backdrop-filter)
-          </div>
-        </div>
-        <div class="demo-area">
-          <div class="flex-row">
-            <div
-              class="demo-box animate-bounce"
-              style="background: var(--primary)"
-            >
-              Bounce
-            </div>
-            <div
-              class="demo-box animate-spin"
-              style="background: var(--success)"
-            >
-              Spin
-            </div>
-            <div
-              class="demo-box"
-              style="background: var(--warning)"
-              onmouseover="this.classList.add('animate-spin')"
-              onmouseout="this.classList.remove('animate-spin')"
-            >
-              Hover to spin
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== LAYOUT ========== -->
-      <h2>📐 6. Layout with Flexbox & Grid</h2>
-      <div class="topic-card">
-        <div class="demo-area">
-          <div
-            style="
-              display: flex;
-              gap: 1rem;
-              background: #e2e8f0;
-              padding: 1rem;
-              border-radius: 12px;
-              justify-content: center;
-            "
-          >
-            <div style="background: var(--primary); padding: 0.5rem 1rem">
-              Flex 1
-            </div>
-            <div style="background: var(--success); padding: 0.5rem 1rem">
-              Flex 2
-            </div>
-          </div>
-          <div
-            style="
-              display: grid;
-              grid-template-columns: repeat(3, 1fr);
-              gap: 0.5rem;
-              background: #e2e8f0;
-              padding: 1rem;
-              border-radius: 12px;
-              margin-top: 1rem;
-            "
-          >
-            <div style="background: var(--warning); padding: 0.5rem">
-              Grid 1
-            </div>
-            <div style="background: var(--secondary); padding: 0.5rem">
-              Grid 2
-            </div>
-            <div style="background: var(--danger); padding: 0.5rem">Grid 3</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== BEST PRACTICES ========== -->
-      <h2>✅ 7. Best Practices</h2>
-      <div class="topic-card">
-        <ul style="margin-left: 1.5rem">
-          <li>✔ Use <strong>external CSS</strong> for multi‑page websites.</li>
-          <li>
-            ✔ Use <code>transform</code> and <code>opacity</code> for smooth
-            animations (GPU accelerated).
-          </li>
-          <li>
-            ✔ Always include <code>box-sizing: border-box;</code> globally.
-          </li>
-          <li>✔ Use meaningful class names (e.g., <code>.nav-bar</code>).</li>
-          <li>✔ Test responsiveness with media queries.</li>
-        </ul>
-      </div>
-
-      <footer>
-        <p>
-          🎯 This guide covers all CSS basics, three styling methods, and
-          interactive 2D/3D transforms. Perfect for beginners and to demonstrate
-          <strong>Excellent</strong> understanding in your ePortfolio.
-        </p>
-        <p>
-          © 2025 – CET138 Full Stack Development | <a href="#">Back to top ↑</a>
-        </p>
-      </footer>
+body { font-family: Arial; background: #f0f0f0; }</pre>
     </div>
+    <div class="tip">✅ External CSS keeps HTML clean, allows caching, and is reusable across many pages.</div>
+  </div>
 
-    <script>
-      // 2D interactive
-      const comboBox = document.getElementById("comboBox");
-      const rot2D = document.getElementById("rot2D");
-      const sc2D = document.getElementById("sc2D");
-      const tx2D = document.getElementById("tx2D");
-      const ty2D = document.getElementById("ty2D");
-      const reset2D = document.getElementById("reset2D");
-      const rotVal = document.getElementById("rotVal");
-      const scaleVal = document.getElementById("scaleVal");
-      const txVal = document.getElementById("txVal");
-      const tyVal = document.getElementById("tyVal");
+  <div class="topic-card">
+    <h3>📊 Comparison Table</h3>
+    <table class="style-table">
+      <thead><tr><th>Feature</th><th>Inline</th><th>Internal</th><th>External</th></tr></thead>
+      <tbody>
+        <tr><td>Where it's written</td><td>style attribute</td><td>&lt;style&gt; tag</td><td>Separate .css file</td></tr>
+        <tr><td>Applies to</td><td>One element</td><td>One page</td><td>Any linked page</td></tr>
+        <tr><td>Best for</td><td>Quick overrides</td><td>Single‑page demos</td><td>Professional sites</td></tr>
+        <tr><td>Maintainability</td><td>Hard</td><td>Medium</td><td>Easy</td></tr>
+        <tr><td>Caching</td><td>No</td><td>No</td><td>Yes (faster loading)</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-      function update2D() {
-        const r = rot2D.value;
-        const s = sc2D.value;
-        const tx = tx2D.value;
-        const ty = ty2D.value;
-        comboBox.style.transform = `rotate(${r}deg) scale(${s}) translate(${tx}px, ${ty}px)`;
-        rotVal.innerText = r + "°";
-        scaleVal.innerText = parseFloat(s).toFixed(2);
-        txVal.innerText = tx + "px";
-        tyVal.innerText = ty + "px";
-      }
-      rot2D.addEventListener("input", update2D);
-      sc2D.addEventListener("input", update2D);
-      tx2D.addEventListener("input", update2D);
-      ty2D.addEventListener("input", update2D);
-      reset2D.addEventListener("click", () => {
-        rot2D.value = 0;
-        sc2D.value = 1;
-        tx2D.value = 0;
-        ty2D.value = 0;
-        update2D();
-      });
-      update2D();
+  <!-- ========== 2. CSS FUNDAMENTALS ========== -->
+  <h2>📚 2. CSS Fundamentals</h2>
+  <div class="topic-card">
+    <div class="explanation">
+      <strong>What is CSS?</strong> Cascading Style Sheets control the look and feel of HTML. Syntax: <code>selector { property: value; }</code>
+    </div>
+    <div class="code-block"><pre>/* Example */
+p {
+  color: navy;
+  font-size: 18px;
+}</pre></div>
+  </div>
 
-      // 3D interactive
-      const interactiveCard = document.getElementById("interactive3dCard");
-      const rotX3D = document.getElementById("rotX3D");
-      const rotY3D = document.getElementById("rotY3D");
-      const rotZ3D = document.getElementById("rotZ3D");
-      const perspectiveSlider = document.getElementById("perspectiveSlider");
-      const sceneContainer = document.getElementById("sceneContainer");
-      const resetDefault = document.getElementById("reset3DDefault");
-      const resetZero = document.getElementById("reset3DZero");
-      const rotXVal = document.getElementById("rotXVal");
-      const rotYVal = document.getElementById("rotYVal");
-      const rotZVal = document.getElementById("rotZVal");
-      const perspVal = document.getElementById("perspVal");
+  <div class="topic-card">
+    <h3>🎯 Selectors – How to target elements</h3>
+    <div class="demo-area">
+      <p class="selector-demo">Class selector (.selector-demo)</p>
+      <div id="unique-demo" style="background:#fef9c3; padding:0.5rem;">ID selector (#unique-demo)</div>
+      <div><span>Descendant: </span><span style="color:var(--primary)">targeted span</span></div>
+    </div>
+    <div class="code-block"><pre>/* Element */ p { }
+/* Class */ .selector-demo { }
+/* ID */ #unique-demo { }
+/* Descendant */ div span { }</pre></div>
+  </div>
 
-      function update3D() {
-        const x = rotX3D.value;
-        const y = rotY3D.value;
-        const z = rotZ3D.value;
-        interactiveCard.style.transform = `rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z}deg)`;
-        rotXVal.innerText = x + "°";
-        rotYVal.innerText = y + "°";
-        rotZVal.innerText = z + "°";
-      }
-      function updatePerspective() {
-        const p = perspectiveSlider.value;
-        sceneContainer.style.perspective = p + "px";
-        perspVal.innerText = p + "px";
-      }
-      rotX3D.addEventListener("input", update3D);
-      rotY3D.addEventListener("input", update3D);
-      rotZ3D.addEventListener("input", update3D);
-      perspectiveSlider.addEventListener("input", updatePerspective);
-      resetDefault.addEventListener("click", () => {
-        rotX3D.value = 20;
-        rotY3D.value = 30;
-        rotZ3D.value = 0;
-        perspectiveSlider.value = 800;
-        update3D();
-        updatePerspective();
-      });
-      resetZero.addEventListener("click", () => {
-        rotX3D.value = 0;
-        rotY3D.value = 0;
-        rotZ3D.value = 0;
-        update3D();
-      });
-      update3D();
-      updatePerspective();
+  <div class="topic-card">
+    <h3>🎨 Colours, Backgrounds, Box Model</h3>
+    <div class="demo-area">
+      <div style="background:#ef4444; color:white; padding:0.5rem;">Hex (#ef4444)</div>
+      <div style="background:rgb(59,130,246); color:white; padding:0.5rem;">RGB</div>
+      <div style="background:linear-gradient(90deg, #f97316, #dc2626); color:white; padding:0.5rem;">Linear Gradient</div>
+      <div style="background:#e2e8f0; padding:1rem; margin-top:1rem;">
+        <div style="background:white; margin:20px; border:3px solid #2563eb; padding:20px;">Box Model: margin → border → padding → content</div>
+      </div>
+    </div>
+    <div class="tip">⭐ Always add <code>box-sizing: border-box;</code> to include padding/border inside element's total width.</div>
+  </div>
 
-      // Hover effects for basic boxes
-      const rotateBox = document.getElementById("rotateBox");
-      const scaleBox = document.getElementById("scaleBox");
-      const translateBox = document.getElementById("translateBox");
-      const skewBox = document.getElementById("skewBox");
-      if (rotateBox) {
-        rotateBox.addEventListener(
-          "mouseenter",
-          () => (rotateBox.style.transform = "rotate(15deg)"),
-        );
-        rotateBox.addEventListener(
-          "mouseleave",
-          () => (rotateBox.style.transform = "rotate(0deg)"),
-        );
-      }
-      if (scaleBox) {
-        scaleBox.addEventListener(
-          "mouseenter",
-          () => (scaleBox.style.transform = "scale(1.2)"),
-        );
-        scaleBox.addEventListener(
-          "mouseleave",
-          () => (scaleBox.style.transform = "scale(1)"),
-        );
-      }
-      if (translateBox) {
-        translateBox.addEventListener(
-          "mouseenter",
-          () => (translateBox.style.transform = "translate(20px, 20px)"),
-        );
-        translateBox.addEventListener(
-          "mouseleave",
-          () => (translateBox.style.transform = "translate(0,0)"),
-        );
-      }
-      if (skewBox) {
-        skewBox.addEventListener(
-          "mouseenter",
-          () => (skewBox.style.transform = "skew(10deg, 5deg)"),
-        );
-        skewBox.addEventListener(
-          "mouseleave",
-          () => (skewBox.style.transform = "skew(0deg)"),
-        );
-      }
-    </script>
-  </body>
+  <!-- ========== 3. SPECIFICITY, CASCADE, INHERITANCE ========== -->
+  <h2>⚖️ 3. Specificity, Cascade & Inheritance</h2>
+  <div class="topic-card">
+    <div class="explanation">
+      <strong>Specificity</strong> determines which rule wins when multiple rules target the same element. Order: <code>!important</code> > Inline > ID > Class/attribute/pseudo-class > Element.
+    </div>
+    <div class="demo-area">
+      <div class="specificity-demo" id="specExample" style="color: var(--primary);">This text changes colour based on selector priority.</div>
+      <button id="specificityBtn">Apply different rules</button>
+      <div id="specMessage" class="tip" style="margin-top:0.5rem;"></div>
+    </div>
+    <div class="code-block"><pre>/* Specificity hierarchy */
+#id { }      /* Highest (100) */
+.class { }   /* Medium (10) */
+element { }  /* Lowest (1) */</pre></div>
+    <div class="tip">💡 Use classes instead of IDs for styling to keep specificity low and maintainable.</div>
+  </div>
+
+  <!-- ========== 4. CSS VARIABLES ========== -->
+  <h2>📦 4. CSS Variables (Custom Properties)</h2>
+  <div class="topic-card">
+    <div class="explanation">
+      Variables store values for reuse. Define them in <code>:root</code> (global) or inside a selector.
+    </div>
+    <div class="demo-area">
+      <div style="background: var(--primary); color:white; padding:0.5rem; --custom-bg: #10b981; background: var(--custom-bg);">Background set via variable</div>
+    </div>
+    <div class="code-block"><pre>:root {
+  --primary-color: #2563eb;
+}
+button {
+  background: var(--primary-color);
+}</pre></div>
+  </div>
+
+  <!-- ========== 5. PSEUDO-CLASSES & PSEUDO-ELEMENTS ========== -->
+  <h2>🎭 5. Pseudo‑classes & Pseudo‑elements</h2>
+  <div class="topic-card">
+    <div class="demo-area">
+      <button class="pseudo-btn">Hover me (pseudo-class)</button>
+      <p class="first-line-demo">This paragraph has a pseudo-element ::first-line that styles the first line differently.</p>
+      <ul class="pseudo-list">
+        <li>First child</li>
+        <li>Second child</li>
+        <li>Third child</li>
+      </ul>
+    </div>
+    <div class="code-block"><pre>.pseudo-btn:hover { background: darkblue; }
+.first-line-demo::first-line { font-weight: bold; }
+.pseudo-list li:first-child { color: green; }</pre></div>
+  </div>
+
+  <!-- ========== 6. RESPONSIVE DESIGN (MEDIA QUERIES) ========== -->
+  <h2>📱 6. Responsive Design – Media Queries</h2>
+  <div class="topic-card">
+    <div class="explanation">
+      Media queries apply CSS based on screen size, orientation, etc. Resize your browser to see the box below change.
+    </div>
+    <div class="demo-area">
+      <div class="responsive-box" style="background: var(--primary); padding: 1rem; color: white;">Resize me (width < 600px turns red)</div>
+    </div>
+    <div class="code-block"><pre>@media (max-width: 600px) {
+  .responsive-box {
+    background: red;
+  }
+}</pre></div>
+  </div>
+
+  <!-- ========== 7. 2D TRANSFORMS ========== -->
+  <h2>🔄 7. 2D Transforms (Interactive)</h2>
+  <div class="topic-card">
+    <div class="demo-area">
+      <div class="flex-row">
+        <div class="demo-box" id="rotateBox">Hover → Rotate</div>
+        <div class="demo-box" id="scaleBox" style="background: var(--success);">Hover → Scale</div>
+        <div class="demo-box" id="translateBox" style="background: var(--warning);">Hover → Move</div>
+        <div class="demo-box" id="skewBox" style="background: var(--danger);">Hover → Skew</div>
+      </div>
+    </div>
+    <div class="control-panel">
+      <div class="demo-box" id="comboBox" style="margin:0 auto">2D Playground</div>
+      <div>
+        <label>Rotate: <input type="range" id="rot2D" min="-180" max="180" value="0"><span id="rotVal">0°</span></label>
+        <label>Scale: <input type="range" id="sc2D" min="0.5" max="2" step="0.01" value="1"><span id="scaleVal">1.00</span></label>
+        <label>Translate X: <input type="range" id="tx2D" min="-50" max="50" value="0"><span id="txVal">0px</span></label>
+        <label>Translate Y: <input type="range" id="ty2D" min="-50" max="50" value="0"><span id="tyVal">0px</span></label>
+      </div>
+      <button id="reset2D">Reset</button>
+    </div>
+  </div>
+
+  <!-- ========== 8. 3D TRANSFORMS ========== -->
+  <h2>🧊 8. 3D Transforms & Perspective</h2>
+  <div class="topic-card">
+    <div class="control-panel">
+      <div class="scene3d-interactive" id="sceneContainer" style="perspective:800px">
+        <div id="interactive3dCard" class="card3d" style="transform: rotateX(20deg) rotateY(30deg);">
+          <div class="card3d-front">3D Box</div>
+          <div class="card3d-back">Back side</div>
+        </div>
+      </div>
+      <div>
+        <label>rotateX: <input type="range" id="rotX3D" min="-180" max="180" value="20" step="1"><span id="rotXVal">20°</span></label>
+        <label>rotateY: <input type="range" id="rotY3D" min="-180" max="180" value="30" step="1"><span id="rotYVal">30°</span></label>
+        <label>rotateZ: <input type="range" id="rotZ3D" min="-180" max="180" value="0"><span id="rotZVal">0°</span></label>
+        <label>Perspective: <input type="range" id="perspectiveSlider" min="200" max="1200" value="800"><span id="perspVal">800px</span></label>
+      </div>
+      <button id="reset3DDefault">Reset default</button>
+    </div>
+    <div class="demo-area">
+      <div class="scene3d-interactive" style="perspective:600px">
+        <div class="card3d" style="transition: transform 0.6s; transform-style:preserve-3d" onmouseover="this.style.transform='rotateY(180deg)'" onmouseout="this.style.transform='rotateY(0deg)'">
+          <div class="card3d-front">Hover to flip →</div>
+          <div class="card3d-back">🎉 Flipped!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 9. FILTERS & ANIMATIONS ========== -->
+  <h2>🎨 9. CSS Filters & Keyframe Animations</h2>
+  <div class="topic-card">
+    <div class="demo-area">
+      <div class="flex-row">
+        <img src="https://picsum.photos/id/100/120/120" style="filter: blur(2px); border-radius:12px;" alt="blur">
+        <img src="https://picsum.photos/id/100/120/120" style="filter: grayscale(100%); border-radius:12px;" alt="grayscale">
+        <img src="https://picsum.photos/id/100/120/120" style="filter: sepia(80%); border-radius:12px;" alt="sepia">
+        <img src="https://picsum.photos/id/100/120/120" style="filter: brightness(1.5); border-radius:12px;" alt="brightness">
+      </div>
+      <div style="background: url('https://picsum.photos/id/104/600/300') no-repeat center/cover; min-height:180px; display:flex; align-items:center; justify-content:center; margin-top:1rem;">
+        <div style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.2); padding:1rem; border-radius:1rem; color:white;">Glassmorphism (backdrop-filter)</div>
+      </div>
+      <div class="flex-row" style="margin-top:1rem;">
+        <div class="demo-box animate-bounce" style="background:var(--primary);">Bounce</div>
+        <div class="demo-box animate-spin" style="background:var(--success);">Spin</div>
+        <div class="demo-box" style="background:var(--warning);" onmouseover="this.classList.add('animate-spin')" onmouseout="this.classList.remove('animate-spin')">Hover to spin</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 10. FLEXBOX & GRID ========== -->
+  <h2>📐 10. Layout: Flexbox & CSS Grid</h2>
+  <div class="topic-card">
+    <div class="demo-area">
+      <div style="display:flex; gap:1rem; background:#e2e8f0; padding:1rem; border-radius:12px; justify-content:center;">
+        <div style="background:var(--primary); padding:0.5rem 1rem;">Flex 1</div>
+        <div style="background:var(--success); padding:0.5rem 1rem;">Flex 2</div>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:0.5rem; background:#e2e8f0; padding:1rem; border-radius:12px; margin-top:1rem;">
+        <div style="background:var(--warning); padding:0.5rem;">Grid 1</div>
+        <div style="background:var(--secondary); padding:0.5rem;">Grid 2</div>
+        <div style="background:var(--danger); padding:0.5rem;">Grid 3</div>
+      </div>
+    </div>
+    <div class="code-block"><pre>/* Flexbox */
+.container { display: flex; justify-content: center; gap: 1rem; }
+
+/* CSS Grid */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }</pre></div>
+  </div>
+
+  <!-- ========== 11. BEST PRACTICES ========== -->
+  <h2>✅ 11. CSS Best Practices</h2>
+  <div class="topic-card">
+    <ul style="margin-left: 1.5rem;">
+      <li>✔ Use <strong>external CSS</strong> for real projects.</li>
+      <li>✔ Prefer classes over IDs for styling (lower specificity).</li>
+      <li>✔ Use <code>transform</code> and <code>opacity</code> for smooth animations (GPU accelerated).</li>
+      <li>✔ Always include <code>box-sizing: border-box;</code> globally.</li>
+      <li>✔ Write responsive styles with <code>@media</code> queries.</li>
+      <li>✔ Use CSS variables for consistent theming.</li>
+      <li>✔ Comment your code and keep selectors shallow.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>🎯 Complete CSS documentation – from inline vs external to 2D/3D transforms, specificity, variables, pseudo‑classes, animations, and responsive design.</p>
+    <p>© 2025 – CET138 Full Stack Development | <a href="#">Back to top ↑</a></p>
+  </footer>
+</div>
+
+<script>
+  // 2D interactive sliders
+  const comboBox = document.getElementById("comboBox");
+  const rot2D = document.getElementById("rot2D");
+  const sc2D = document.getElementById("sc2D");
+  const tx2D = document.getElementById("tx2D");
+  const ty2D = document.getElementById("ty2D");
+  const reset2D = document.getElementById("reset2D");
+  function update2D() {
+    comboBox.style.transform = `rotate(${rot2D.value}deg) scale(${sc2D.value}) translate(${tx2D.value}px, ${ty2D.value}px)`;
+    document.getElementById("rotVal").innerText = rot2D.value + "°";
+    document.getElementById("scaleVal").innerText = parseFloat(sc2D.value).toFixed(2);
+    document.getElementById("txVal").innerText = tx2D.value + "px";
+    document.getElementById("tyVal").innerText = ty2D.value + "px";
+  }
+  rot2D.addEventListener("input", update2D);
+  sc2D.addEventListener("input", update2D);
+  tx2D.addEventListener("input", update2D);
+  ty2D.addEventListener("input", update2D);
+  reset2D.addEventListener("click", () => { rot2D.value=0; sc2D.value=1; tx2D.value=0; ty2D.value=0; update2D(); });
+  update2D();
+
+  // 3D sliders
+  const card = document.getElementById("interactive3dCard");
+  const rotX = document.getElementById("rotX3D");
+  const rotY = document.getElementById("rotY3D");
+  const rotZ = document.getElementById("rotZ3D");
+  const persp = document.getElementById("perspectiveSlider");
+  const scene = document.getElementById("sceneContainer");
+  function update3D() {
+    card.style.transform = `rotateX(${rotX.value}deg) rotateY(${rotY.value}deg) rotateZ(${rotZ.value}deg)`;
+    document.getElementById("rotXVal").innerText = rotX.value + "°";
+    document.getElementById("rotYVal").innerText = rotY.value + "°";
+    document.getElementById("rotZVal").innerText = rotZ.value + "°";
+  }
+  function updatePersp() {
+    scene.style.perspective = persp.value + "px";
+    document.getElementById("perspVal").innerText = persp.value + "px";
+  }
+  rotX.addEventListener("input", update3D);
+  rotY.addEventListener("input", update3D);
+  rotZ.addEventListener("input", update3D);
+  persp.addEventListener("input", updatePersp);
+  document.getElementById("reset3DDefault").addEventListener("click", () => {
+    rotX.value = 20; rotY.value = 30; rotZ.value = 0; persp.value = 800;
+    update3D(); updatePersp();
+  });
+  update3D(); updatePersp();
+
+  // Hover effects for 2D boxes
+  const rotateBox = document.getElementById("rotateBox");
+  const scaleBox = document.getElementById("scaleBox");
+  const translateBox = document.getElementById("translateBox");
+  const skewBox = document.getElementById("skewBox");
+  if(rotateBox) rotateBox.addEventListener("mouseenter",()=>rotateBox.style.transform="rotate(15deg)");
+  if(rotateBox) rotateBox.addEventListener("mouseleave",()=>rotateBox.style.transform="rotate(0deg)");
+  if(scaleBox) scaleBox.addEventListener("mouseenter",()=>scaleBox.style.transform="scale(1.2)");
+  if(scaleBox) scaleBox.addEventListener("mouseleave",()=>scaleBox.style.transform="scale(1)");
+  if(translateBox) translateBox.addEventListener("mouseenter",()=>translateBox.style.transform="translate(20px,20px)");
+  if(translateBox) translateBox.addEventListener("mouseleave",()=>translateBox.style.transform="translate(0,0)");
+  if(skewBox) skewBox.addEventListener("mouseenter",()=>skewBox.style.transform="skew(10deg,5deg)");
+  if(skewBox) skewBox.addEventListener("mouseleave",()=>skewBox.style.transform="skew(0deg)");
+
+  // Specificity demo
+  const specDemo = document.querySelector(".specificity-demo");
+  const specMsg = document.getElementById("specMessage");
+  const specBtn = document.getElementById("specificityBtn");
+  let specStep = 0;
+  specBtn.addEventListener("click", () => {
+    specStep = (specStep + 1) % 4;
+    if(specStep === 0) {
+      specDemo.style.cssText = "color: var(--primary);";
+      specMsg.innerText = "Current: Inline style (highest specificity). Click to see element selector (lowest).";
+    } else if(specStep === 1) {
+      specDemo.style.cssText = "";
+      specDemo.style.color = "red";
+      specMsg.innerText = "Element selector (color: red) – specificity 1. Now ID selector will override.";
+    } else if(specStep === 2) {
+      specDemo.setAttribute("id", "specExample");
+      specDemo.style.color = "green";
+      specMsg.innerText = "ID selector (color: green) – specificity 100. Now class selector.";
+    } else {
+      specDemo.setAttribute("id", "specExample");
+      specDemo.style.color = "purple";
+      specMsg.innerText = "Class selector (color: purple) – specificity 10. Click to reset.";
+    }
+  });
+
+  // Media query demo (inline style for responsive box)
+  const style = document.createElement('style');
+  style.textContent = `@media (max-width: 600px) { .responsive-box { background: #ef4444 !important; } }`;
+  document.head.appendChild(style);
+</script>
+</body>
 </html>
