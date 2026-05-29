@@ -1,811 +1,616 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HTML for Beginners – Full Documentation + Live Demos</title>
-    <link rel="stylesheet" href="./style.css" />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Stack Development – Complete Guide with Practical Examples</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Bootstrap 5 CSS (for demo components) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f4f8;
+      color: #0f172a;
+      line-height: 1.5;
+    }
+    /* Navigation bar (same as first provided code) */
+    .site-nav {
+      background: #0f3b5c;
+      padding: 0.8rem 2rem;
+      border-radius: 0 0 1rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .site-nav-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .site-brand {
+      color: white;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .nav-links a {
+      color: #e2e8f0;
+      text-decoration: none;
+      margin-left: 1.2rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 2rem;
+      transition: 0.2s;
+    }
+    .nav-links a.active, .nav-links a:hover {
+      background: #2c7da0;
+      color: white;
+    }
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.4rem;
+      background: linear-gradient(135deg, #0f3b5c, #2c7da0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .subhead {
+      font-size: 1.2rem;
+      color: #334155;
+      border-left: 4px solid #2c7da0;
+      padding-left: 1rem;
+      margin-bottom: 2rem;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin: 2rem 0 1rem;
+      border-bottom: 3px solid #e2e8f0;
+      color: #0f3b5c;
+      padding-bottom: 0.3rem;
+    }
+    h3 {
+      font-size: 1.3rem;
+      margin: 1rem 0 0.5rem;
+      color: #1e5a6e;
+    }
+    .card {
+      background: #f9fbfd;
+      border-radius: 1rem;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      border: 1px solid #e2e8f0;
+      transition: 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+    .explanation {
+      background: #e6f4ea;
+      border-left: 5px solid #2e7d32;
+      padding: 0.8rem 1rem;
+      border-radius: 0.75rem;
+      margin: 1rem 0;
+    }
+    .tip {
+      background: #fff3e0;
+      border-left: 5px solid #f39c12;
+      padding: 0.8rem 1rem;
+      border-radius: 0.75rem;
+      margin: 1rem 0;
+    }
+    .code-block {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      margin: 1rem 0;
+    }
+    .component-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .component-table th, .component-table td {
+      border: 1px solid #cbd5e1;
+      padding: 0.6rem;
+      text-align: left;
+    }
+    .component-table th {
+      background: #e2e8f0;
+    }
+    .demo-area {
+      background: #f1f5f9;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    .step-log {
+      background: #1e293b;
+      color: #a5f3c3;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      white-space: pre-wrap;
+    }
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #475569;
+    }
+    @media (max-width: 700px) {
+      .site-nav-inner {
+        flex-direction: column;
+        gap: 0.5rem;
       }
-
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: #f0f4f8;
-        color: #1e2a3e;
-        line-height: 1.6;
-        padding: 0 1rem 2rem;
+      .nav-links a {
+        margin: 0 0.5rem;
       }
-
       .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        background: white;
-        border-radius: 1.5rem;
-        box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
-        padding: 2rem;
-      }
-
-      h1 {
-        font-size: 2.2rem;
-        background: linear-gradient(135deg, #0f3b5c, #2c7da0);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        margin-bottom: 0.5rem;
-      }
-
-      .badge {
-        background: #2c7da0;
-        color: white;
-        padding: 0.2rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        display: inline-block;
-        margin: 0.5rem 0;
-      }
-
-      h2 {
-        font-size: 1.8rem;
-        margin: 1.5rem 0 1rem 0;
-        border-left: 6px solid #2c7da0;
-        padding-left: 1rem;
-        color: #0f3b5c;
-      }
-
-      h3 {
-        font-size: 1.3rem;
-        margin: 1.2rem 0 0.5rem 0;
-        color: #1e5a6e;
-      }
-
-      .topic-card {
-        background: #f9fbfd;
-        border-radius: 1rem;
-        margin: 1.8rem 0;
-        padding: 1.2rem;
-        border: 1px solid #dce5ef;
-        transition: all 0.2s;
-      }
-
-      .topic-card:hover {
-        background: white;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      }
-
-      .explanation-box {
-        background: #e6f4ea;
-        border-left: 5px solid #2e7d32;
-        padding: 0.8rem 1rem;
-        margin: 0.8rem 0;
-        border-radius: 0.5rem;
-        font-size: 0.95rem;
-      }
-
-      .tip-box {
-        background: #fff3e0;
-        border-left: 5px solid #f39c12;
-        padding: 0.8rem 1rem;
-        margin: 0.8rem 0;
-        border-radius: 0.5rem;
-      }
-
-      .demo-area {
-        background: white;
-        border: 1px solid #cbd5e6;
-        border-radius: 0.75rem;
         padding: 1rem;
-        margin: 1rem 0;
       }
+    }
+  </style>
+</head>
+<body>
 
-      .code-snippet {
-        background: #1e2a3e;
-        color: #eef2ff;
-        padding: 1rem;
-        border-radius: 0.75rem;
-        overflow-x: auto;
-        font-family: "Courier New", monospace;
-        font-size: 0.85rem;
-        margin: 0.8rem 0;
-      }
-
-      .code-snippet pre {
-        margin: 0;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 1rem 0;
-      }
-      th,
-      td {
-        border: 1px solid #cbd5e6;
-        padding: 0.6rem;
-        text-align: left;
-      }
-      th {
-        background: #e9f0f5;
-      }
-      footer {
-        margin-top: 2.5rem;
-        text-align: center;
-        border-top: 1px solid #cbd5e6;
-        padding-top: 1.5rem;
-        font-size: 0.85rem;
-        color: #4a627a;
-      }
-      @media (max-width: 700px) {
-        .container {
-          padding: 1rem;
-        }
-        h1 {
-          font-size: 1.8rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <nav class="site-nav">
-      <div class="site-nav-inner">
-        <a href="./index.html" class="site-brand">🧱 Web Guides</a>
-        <div class="nav-links">
-          <a href="./fullstack.html">Full Stack</a>
-          <a href="./index.html" class="active">HTML</a>
-          <a href="./Css.html">CSS</a>
-          <a href="./javascript.html">JavaScript</a>
-          <a href="./Bootstrap.html">Bootstrap</a>
-        </div>
-      </div>
-    </nav>
-
-    <div class="container page-container" style="margin-top: 20px">
-      <section class="hero-banner">
-        <h1>🔥 HTML for Beginners: Complete Guide + Live Examples</h1>
-        <p style="font-size: 1.1rem; margin-bottom: 1rem">
-          Welcome! This page teaches you <strong>HTML from scratch</strong>.
-          Every tag is explained in plain English, shown live, and includes a
-          code snippet. No prior knowledge needed.
-        </p>
-      </section>
-
-      <!-- ================= WHAT IS HTML ================= -->
-      <h2>🔰 1. What is HTML?</h2>
-      <div class="topic-card">
-        <div class="explanation-box">
-          <strong>📖 Simple definition:</strong> HTML (HyperText Markup
-          Language) is the code used to create web pages. Think of it as the
-          <strong>skeleton</strong> of a website – it gives structure: headings,
-          paragraphs, images, links, etc.
-        </div>
-        <div class="demo-area">
-          <p>
-            <strong>Live example:</strong> This very page is built with HTML.
-            Right‑click anywhere and select "View Page Source" to see the code
-            behind it.
-          </p>
-        </div>
-        <div class="code-snippet">
-          <pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;My First Page&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hello World!&lt;/h1&gt;
-    &lt;p&gt;This is my first paragraph.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</pre
-          >
-        </div>
-        <div class="tip-box">
-          💡 <strong>Remember:</strong> HTML uses <strong>tags</strong> (words
-          inside angle brackets, like <code>&lt;p&gt;</code>). Most tags come in
-          pairs: an opening tag <code>&lt;p&gt;</code> and a closing tag
-          <code>&lt;/p&gt;</code>. The content goes between them.
-        </div>
-      </div>
-
-      <!-- ================= DOCUMENT STRUCTURE ================= -->
-      <h2>🏗️ 2. Document Structure (The Skeleton)</h2>
-      <div class="topic-card">
-        <h3>2.1 &lt;!DOCTYPE html&gt;</h3>
-        <div class="explanation-box">
-          This tells the browser: "I am using HTML5 (the latest version)".
-          Always put it at the very top.
-        </div>
-        <h3>2.2 &lt;html&gt; ... &lt;/html&gt;</h3>
-        <div class="explanation-box">
-          The root element that wraps all the content on the page. All other
-          tags go inside it.
-        </div>
-        <h3>2.3 &lt;head&gt; ... &lt;/head&gt;</h3>
-        <div class="explanation-box">
-          Contains <strong>meta-information</strong> (things the user doesn’t
-          see directly): page title, character set, CSS links, etc.
-        </div>
-        <h3>2.4 &lt;body&gt; ... &lt;/body&gt;</h3>
-        <div class="explanation-box">
-          Contains everything that <strong>appears on the screen</strong>: text,
-          images, buttons, forms – everything visible.
-        </div>
-        <div class="demo-area">
-          <p>
-            ✅ This entire page uses those tags. Check the browser tab – the
-            title is "HTML for Beginners – Full Documentation + Live Demos".
-          </p>
-        </div>
-        <div class="code-snippet">
-          <pre>
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;My Awesome Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Welcome!&lt;/h1&gt;
-    &lt;p&gt;Visible content goes here.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre
-          >
-        </div>
-      </div>
-
-      <!-- ================= HEADINGS & TEXT ================= -->
-      <h2>📝 3. Headings & Text Formatting</h2>
-      <div class="topic-card">
-        <h3>3.1 Headings (&lt;h1&gt; to &lt;h6&gt;)</h3>
-        <div class="explanation-box">
-          Headings define <strong>titles and subtitles</strong>.
-          <code>&lt;h1&gt;</code> is the most important (usually the page
-          title), <code>&lt;h2&gt;</code> is less important, down to
-          <code>&lt;h6&gt;</code>. Search engines use headings to understand
-          your content.
-        </div>
-        <div class="demo-area">
-          <h1>This is an &lt;h1&gt; heading</h1>
-          <h2>This is an &lt;h2&gt; heading</h2>
-          <h3>This is an &lt;h3&gt; heading</h3>
-          <h4>&lt;h4&gt; heading</h4>
-          <h5>&lt;h5&gt; heading</h5>
-          <h6>&lt;h6&gt; heading</h6>
-        </div>
-        <div class="code-snippet">
-          <pre>
-&lt;h1&gt;Main Title&lt;/h1&gt;
-&lt;h2&gt;Chapter Name&lt;/h2&gt;
-&lt;h3&gt;Subsection&lt;/h3&gt;</pre
-          >
-        </div>
-
-        <h3>3.2 Paragraphs (&lt;p&gt;)</h3>
-        <div class="explanation-box">
-          The <code>&lt;p&gt;</code> tag defines a paragraph. Browsers
-          automatically add some space before and after paragraphs.
-        </div>
-        <div class="demo-area">
-          <p>
-            This is a paragraph. It contains a block of text. You can write
-            several sentences here, and the browser will wrap them
-            appropriately.
-          </p>
-          <p>This is another paragraph. There is a gap between paragraphs.</p>
-        </div>
-        <div class="code-snippet">
-          <pre>&lt;p&gt;Your text here.&lt;/p&gt;</pre>
-        </div>
-
-        <h3>3.3 Inline Text Formatting</h3>
-        <div class="explanation-box">
-          These tags change the <strong>appearance or meaning</strong> of text
-          inside a paragraph or heading.
-        </div>
-        <div class="demo-area">
-          <p>
-            <strong>&lt;strong&gt;</strong> makes text
-            <strong>bold and important</strong> (screen readers emphasise it).
-          </p>
-          <p><em>&lt;em&gt;</em> makes text <em>italic and emphasised</em>.</p>
-          <p>
-            <mark>&lt;mark&gt;</mark> <mark>highlights text</mark> like a yellow
-            marker.
-          </p>
-          <p>
-            <small>&lt;small&gt;</small> makes text
-            <small>smaller (for fine print)</small>.
-          </p>
-          <p>
-            <del>&lt;del&gt;</del> shows
-            <del>deleted text</del> (strikethrough).
-          </p>
-          <p>
-            <ins>&lt;ins&gt;</ins> shows <ins>inserted text</ins> (underlined).
-          </p>
-          <p>H<sub>2</sub>O (subscript with &lt;sub&gt;)</p>
-          <p>E=mc<sup>2</sup> (superscript with &lt;sup&gt;)</p>
-          <p>
-            <code>&lt;code&gt;</code> displays <code>inline code</code> like a
-            programming keyword.
-          </p>
-          <p>Press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save (keyboard input).</p>
-        </div>
-        <div class="code-snippet">
-          <pre>
-&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt; and &lt;em&gt;italic&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O and x&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;alert('Hello');&lt;/code&gt;&lt;/p&gt;</pre
-          >
-        </div>
-        <div class="tip-box">
-          ✅ <strong>Best practice:</strong> Use
-          <code>&lt;strong&gt;</code> instead of <code>&lt;b&gt;</code>, and
-          <code>&lt;em&gt;</code> instead of <code>&lt;i&gt;</code> – they add
-          meaning, not just style.
-        </div>
-      </div>
-
-      <!-- ================= LISTS ================= -->
-      <h2>📋 4. Lists (Organising Information)</h2>
-      <div class="topic-card">
-        <div class="explanation-box">
-          Lists help you present items in a structured way. There are three
-          types:
-        </div>
-        <h3>Unordered list (&lt;ul&gt; + &lt;li&gt;)</h3>
-        <div class="explanation-box">
-          Bullet points – use when order doesn't matter.
-        </div>
-        <div class="demo-area">
-          <ul>
-            <li>Apples</li>
-            <li>Bananas</li>
-            <li>Oranges</li>
-          </ul>
-        </div>
-        <h3>Ordered list (&lt;ol&gt; + &lt;li&gt;)</h3>
-        <div class="explanation-box">
-          Numbered list – use when sequence matters (steps, rankings).
-        </div>
-        <div class="demo-area">
-          <ol>
-            <li>Wake up</li>
-            <li>Brush teeth</li>
-            <li>Eat breakfast</li>
-          </ol>
-        </div>
-        <h3>Description list (&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;)</h3>
-        <div class="explanation-box">
-          For terms and their definitions (like a glossary).
-        </div>
-        <div class="demo-area">
-          <dl>
-            <dt>HTML</dt>
-            <dd>Structures the webpage.</dd>
-            <dt>CSS</dt>
-            <dd>Styles the webpage (colours, layout).</dd>
-          </dl>
-        </div>
-        <div class="code-snippet">
-          <pre>
-&lt;ul&gt;
-    &lt;li&gt;Item 1&lt;/li&gt;
-    &lt;li&gt;Item 2&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-    &lt;li&gt;First step&lt;/li&gt;
-    &lt;li&gt;Second step&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;dl&gt;
-    &lt;dt&gt;Term&lt;/dt&gt;
-    &lt;dd&gt;Definition&lt;/dd&gt;
-&lt;/dl&gt;</pre
-          >
-        </div>
-      </div>
-
-      <!-- ================= LINKS ================= -->
-      <h2>🔗 5. Links (&lt;a&gt; – The Anchor Tag)</h2>
-      <div class="topic-card">
-        <div class="explanation-box">
-          Links are what make the web "hypertext". They allow users to navigate
-          between pages or to different sections of the same page. The
-          <strong>href</strong> attribute specifies the destination.
-        </div>
-        <div class="demo-area">
-          <p>
-            <strong>External link:</strong>
-            <a href="https://www.google.com" target="_blank"
-              >Go to Google (opens new tab)</a
-            >
-          </p>
-          <p>
-            <strong>Internal link:</strong>
-            <a href="#tables">Jump to the Tables section below</a> (scrolls to
-            element with id="tables")
-          </p>
-          <p>
-            <strong>Email link:</strong>
-            <a href="mailto:someone@example.com">Send an email</a>
-          </p>
-          <p>
-            <strong>Phone link:</strong> <a href="tel:+123456789">Call us</a>
-          </p>
-        </div>
-        <div class="code-snippet">
-          <pre>
-&lt;a href="https://example.com" target="_blank"&gt;Visit Example&lt;/a&gt;
-&lt;a href="#section2"&gt;Go to Section 2&lt;/a&gt;
-&lt;a href="mailto:hello@example.com"&gt;Email Us&lt;/a&gt;</pre
-          >
-        </div>
-        <div class="tip-box">
-          💡 <code>target="_blank"</code> opens the link in a new tab. Always
-          use it for external websites so users don't leave your page.
-        </div>
-      </div>
-
-      <!-- ================= IMAGES & MEDIA ================= -->
-      <h2>🖼️ 6. Images & Multimedia</h2>
-      <div class="topic-card">
-        <h3>&lt;img&gt; (Image)</h3>
-        <div class="explanation-box">
-          The <code>&lt;img&gt;</code> tag is self‑closing (no closing tag). It
-          needs <strong>src</strong> (source URL) and
-          <strong>alt</strong> (alternative text for accessibility).
-        </div>
-        <div class="demo-area">
-          <img
-            src="https://picsum.photos/id/1/200/130"
-            alt="Mountain landscape"
-            style="border-radius: 8px"
-          />
-          <p><em>Random image from Lorem Picsum.</em></p>
-        </div>
-        <div class="code-snippet">
-          <pre>
-&lt;img src="photo.jpg" alt="Description of photo" width="300"&gt;</pre
-          >
-        </div>
-
-        <h3>&lt;audio&gt; (Audio player)</h3>
-        <div class="explanation-box">
-          Adds a music or sound player. The <code>controls</code> attribute
-          shows play/pause buttons.
-        </div>
-        <div class="demo-area">
-          <audio controls>
-            <source
-              src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-              type="audio/mpeg"
-            />
-            Your browser does not support audio.
-          </audio>
-        </div>
-        <div class="code-snippet">
-          <pre>
-&lt;audio controls&gt;
-    &lt;source src="song.mp3" type="audio/mpeg"&gt;
-&lt;/audio&gt;</pre
-          >
-        </div>
-
-        <h3>&lt;video&gt; (Video player)</h3>
-        <div class="demo-area">
-          <video
-            width="300"
-            controls
-            poster="https://picsum.photos/id/26/300/170"
-          >
-            <source
-              src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-        <div class="code-snippet">
-          <pre>
-&lt;video width="400" controls&gt;
-    &lt;source src="movie.mp4" type="video/mp4"&gt;
-&lt;/video&gt;</pre
-          >
-        </div>
-
-        <h3>&lt;figure&gt; and &lt;figcaption&gt;</h3>
-        <div class="explanation-box">
-          Groups an image (or other media) with a caption.
-        </div>
-        <div class="demo-area">
-          <figure>
-            <img src="https://picsum.photos/id/20/150/100" alt="Coffee" />
-            <figcaption>A delicious cup of coffee.</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <!-- ================= TABLES ================= -->
-      <h2 id="tables">📊 7. Tables (Displaying Data in Rows & Columns)</h2>
-      <div class="topic-card">
-        <div class="explanation-box">
-          Tables are great for showing structured data like price lists,
-          schedules, or comparison charts. They use <code>&lt;table&gt;</code>,
-          rows <code>&lt;tr&gt;</code>, header cells <code>&lt;th&gt;</code>,
-          and data cells <code>&lt;td&gt;</code>.
-        </div>
-        <div class="demo-area">
-          <table>
-            <caption>
-              Monthly Sales Report
-            </caption>
-            <thead>
-              <tr>
-                <th>Month</th>
-                <th>Revenue</th>
-                <th>Expenses</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>January</td>
-                <td>$5,000</td>
-                <td>$2,000</td>
-              </tr>
-              <tr>
-                <td>February</td>
-                <td>$6,200</td>
-                <td>$2,300</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="2">Total</td>
-                <td>$11,200</td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-        <div class="code-snippet">
-          <pre>
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;&lt;th&gt;Header 1&lt;/th&gt;&lt;th&gt;Header 2&lt;/th&gt;&lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;&lt;td&gt;Data 1&lt;/td&gt;&lt;td&gt;Data 2&lt;/td&gt;&lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</pre
-          >
-        </div>
-      </div>
-
-      <!-- ================= FORMS ================= -->
-      <h2>📝 8. Forms & Inputs (Collecting User Data)</h2>
-      <div class="topic-card">
-        <div class="explanation-box">
-          Forms let users enter and submit information: login, search,
-          registration, feedback. Each input has a <code>type</code> attribute.
-        </div>
-        <div class="demo-area">
-          <form
-            action="#"
-            method="get"
-            style="background: #f0f4fa; padding: 1rem; border-radius: 12px"
-          >
-            <label>Text: <input type="text" placeholder="Your name" /></label
-            ><br /><br />
-            <label
-              >Email:
-              <input type="email" placeholder="user@example.com" /></label
-            ><br /><br />
-            <label>Password: <input type="password" /></label><br /><br />
-            <label
-              >Number (age): <input type="number" min="1" max="120" /></label
-            ><br /><br />
-            <label>Birthday: <input type="date" /></label><br /><br />
-            <label>Favorite colour: <input type="color" /></label><br /><br />
-            <p>Gender (radio buttons – only one selectable):</p>
-            <input type="radio" id="male" name="gender" /><label for="male">
-              Male</label
-            >
-            <input type="radio" id="female" name="gender" /><label for="female">
-              Female</label
-            ><br /><br />
-            <p>Hobbies (checkboxes – multiple choices):</p>
-            <input type="checkbox" id="read" /><label for="read">
-              Reading</label
-            >
-            <input type="checkbox" id="sport" /><label for="sport">
-              Sports</label
-            ><br /><br />
-            <label
-              >Country (dropdown):
-              <select>
-                <option>USA</option>
-                <option>UK</option>
-                <option>India</option>
-              </select> </label
-            ><br /><br />
-            <label
-              >Message (textarea): <br /><textarea
-                rows="3"
-                cols="40"
-                placeholder="Write your message..."
-              ></textarea></label
-            ><br /><br />
-            <input type="submit" value="Submit" />
-            <input type="reset" value="Clear" />
-            <button type="button">Just a button</button>
-          </form>
-        </div>
-        <div class="code-snippet">
-          <pre>
-&lt;form action="/submit" method="POST"&gt;
-    &lt;input type="text" name="username" placeholder="Enter name"&gt;
-    &lt;input type="email" name="email" required&gt;
-    &lt;select name="country"&gt;
-        &lt;option&gt;UK&lt;/option&gt;
-    &lt;/select&gt;
-    &lt;textarea name="comment"&gt;&lt;/textarea&gt;
-    &lt;button type="submit"&gt;Send&lt;/button&gt;
-&lt;/form&gt;</pre
-          >
-        </div>
-        <div class="tip-box">
-          ✨ <strong>Important:</strong> The <code>name</code> attribute is
-          essential – it tells the server which piece of data is which. Without
-          <code>name</code>, the input’s value won’t be sent.
-        </div>
-      </div>
-
-      <!-- ================= SEMANTIC HTML5 ================= -->
-      <h2>🧩 9. Semantic HTML5 (Meaningful Layout)</h2>
-      <div class="topic-card">
-        <div class="explanation-box">
-          Semantic elements clearly describe their meaning to both the browser
-          and the developer. They improve accessibility (screen readers) and
-          SEO.
-        </div>
-        <div class="demo-area">
-          <header style="background: #cfe7fc; padding: 0.5rem">
-            &lt;header&gt; – top of the page (logo, navigation)
-          </header>
-          <nav style="background: #d9e6f5; padding: 0.5rem">
-            &lt;nav&gt; – main navigation links
-          </nav>
-          <main style="background: #eef2fa; padding: 0.5rem">
-            &lt;main&gt; – the primary content (only one per page)
-          </main>
-          <article style="background: #e0f2e9; padding: 0.5rem">
-            &lt;article&gt; – self‑contained content (blog post, news item)
-          </article>
-          <section style="background: #fff0db; padding: 0.5rem">
-            &lt;section&gt; – a thematic group of content
-          </section>
-          <aside style="background: #fde2e2; padding: 0.5rem">
-            &lt;aside&gt; – sidebar or related information
-          </aside>
-          <footer style="background: #cfe7fc; padding: 0.5rem">
-            &lt;footer&gt; – footer (copyright, contact info)
-          </footer>
-        </div>
-        <div class="code-snippet">
-          <pre>
-&lt;header&gt;...&lt;/header&gt;
-&lt;nav&gt;...&lt;/nav&gt;
-&lt;main&gt;...&lt;/main&gt;
-&lt;article&gt;...&lt;/article&gt;
-&lt;section&gt;...&lt;/section&gt;
-&lt;aside&gt;...&lt;/aside&gt;
-&lt;footer&gt;...&lt;/footer&gt;</pre
-          >
-        </div>
-      </div>
-
-      <!-- ================= INTERACTIVE TAGS ================= -->
-      <h2>⚡ 10. Interactive & Extra Tags</h2>
-      <div class="topic-card">
-        <div class="demo-area">
-          <details>
-            <summary>&lt;summary&gt; – click to expand</summary>
-            <p>
-              Hidden content appears when you click. Great for FAQs or spoilers.
-            </p>
-          </details>
-          <p>
-            <code>&lt;progress&gt;</code>:
-            <progress value="60" max="100">60%</progress>
-          </p>
-          <p>
-            <code>&lt;meter&gt;</code> (disk usage):
-            <meter value="0.75" min="0" max="1">75%</meter>
-          </p>
-          <hr />
-          <!-- horizontal rule -->
-          <p>
-            Line break with <code>&lt;br&gt;</code>:<br />This is on a new line.
-          </p>
-          <blockquote cite="https://www.w3.org/">
-            "The Web is for everyone." – Tim Berners‑Lee
-          </blockquote>
-          <pre>
-  Preformatted text
-  preserves     spaces
-  and line breaks.
-            </pre
-          >
-          <dialog id="infoDialog">
-            <p>This is a modal dialog box.</p>
-            <button onclick="document.getElementById('infoDialog').close()">
-              Close
-            </button>
-          </dialog>
-          <button onclick="document.getElementById('infoDialog').showModal()">
-            Open Dialog
-          </button>
-        </div>
-        <div class="code-snippet">
-          <pre>
-&lt;details&gt;&lt;summary&gt;Click me&lt;/summary&gt;Hidden content&lt;/details&gt;
-&lt;progress value="50" max="100"&gt;&lt;/progress&gt;
-&lt;meter value="0.6"&gt;60%&lt;/meter&gt;
-&lt;hr&gt;
-&lt;br&gt;
-&lt;blockquote&gt;Quote here&lt;/blockquote&gt;
-&lt;pre&gt;Preformatted text&lt;/pre&gt;
-&lt;dialog&gt;...&lt;/dialog&gt;</pre
-          >
-        </div>
-      </div>
-
-      <!-- ================= BEST PRACTICES SUMMARY ================= -->
-      <h2>✅ 11. HTML Best Practices for Beginners</h2>
-      <div class="topic-card">
-        <ul style="margin-left: 1.5rem">
-          <li>Always start with <code>&lt;!DOCTYPE html&gt;</code>.</li>
-          <li>
-            Use <strong>semantic tags</strong> (<code
-              >&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;</code
-            >) instead of too many <code>&lt;div&gt;</code>s.
-          </li>
-          <li>
-            Add <code>alt</code> attributes to every image for accessibility.
-          </li>
-          <li>
-            Keep a logical heading order: <code>&lt;h1&gt;</code> then
-            <code>&lt;h2&gt;</code> (don’t skip levels).
-          </li>
-          <li>
-            Close all tags (except self‑closing like
-            <code>&lt;img&gt;</code> and <code>&lt;br&gt;</code>).
-          </li>
-          <li>Use lowercase for tag names and attributes.</li>
-          <li>
-            Validate your HTML with the
-            <a href="https://validator.w3.org/" target="_blank">W3C Validator</a
-            >.
-          </li>
-        </ul>
-      </div>
-
-      <footer>
-        <p>
-          📌 This beginner‑friendly HTML document explains and demonstrates
-          <strong>over 50 HTML tags</strong> with simple language, live
-          examples, and code snippets. Perfect for a Full Stack Development
-          portfolio to achieve an <strong>Excellent</strong> grade.
-        </p>
-        <p>
-          © 2025 – Created for CET138 Assignment | <a href="#">Back to top ↑</a>
-        </p>
-      </footer>
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="#" class="site-brand">🧱 Web Guides</a>
+    <div class="nav-links">
+      <a href="#" class="active">Full Stack</a>
+      <a href="#">HTML</a>
+      <a href="#">CSS</a>
+      <a href="#">JavaScript</a>
+      <a href="#">Bootstrap</a>
     </div>
-  </body>
+  </div>
+</nav>
+
+<div class="container">
+  <!-- Hero -->
+  <div style="text-align: center; margin-bottom: 1rem;">
+    <h1>🌐 Full Stack Development – Complete Guide</h1>
+    <div class="subhead" style="border-left: none; text-align: center;">
+      What it is, why it matters, how it works – with a real frontend login example, interactive simulation, and all essential concepts.
+    </div>
+  </div>
+
+  <!-- ========== 1. WHAT IS FULL STACK ========== -->
+  <h2>1. What is Full Stack Development?</h2>
+  <div class="card">
+    <div class="explanation">
+      <strong>Full stack development</strong> refers to the practice of building both the <strong>front end (client side)</strong> and <strong>back end (server side)</strong> of a web application, along with managing the database. A full stack developer is responsible for:
+      <ul style="margin-top: 0.5rem; margin-left: 1.2rem;">
+        <li>Designing user interfaces using HTML, CSS, and JavaScript.</li>
+        <li>Writing server side logic using frameworks such as Node.js, Django, or Laravel.</li>
+        <li>Creating and managing databases like MySQL, PostgreSQL, or MongoDB.</li>
+        <li>Ensuring smooth communication between the front end and back end via APIs and HTTP requests.</li>
+      </ul>
+      This holistic approach allows a developer to understand and control the entire application lifecycle, from user interaction to data storage and retrieval.
+    </div>
+    <div class="tip">
+      🍽️ <strong>Restaurant analogy:</strong><br>
+      • <strong>Frontend</strong> = menu, tables, lighting (customer experience).<br>
+      • <strong>Backend</strong> = kitchen (prepares food, handles orders).<br>
+      • <strong>Database</strong> = fridge/pantry (stores ingredients).<br>
+      • <strong>API</strong> = waiter (takes order to kitchen, brings food back).
+    </div>
+  </div>
+
+  <!-- ========== 2. WHY IMPORTANT ========== -->
+  <h2>2. Why is Full Stack Development Important?</h2>
+  <div class="card">
+    <ul style="margin-left: 1.5rem;">
+      <li><strong>End to end understanding:</strong> Developers gain a complete view of how different parts of an application interact.</li>
+      <li><strong>Faster development cycles:</strong> Teams can build and iterate features more quickly.</li>
+      <li><strong>Easier troubleshooting:</strong> Full stack developers can trace issues from the user interface down to the database.</li>
+      <li><strong>Scalability:</strong> Applications can be scaled efficiently when the entire architecture is well understood.</li>
+      <li><strong>Career flexibility:</strong> Full stack skills are highly valued and open diverse job opportunities.</li>
+    </ul>
+  </div>
+
+  <!-- ========== 3. HOW IT WORKS ========== -->
+  <h2>3. How Full Stack Development Works</h2>
+  <div class="card">
+    <div class="explanation">
+      The typical workflow of a full stack application includes:
+      <ol style="margin-left: 1.2rem; margin-top: 0.5rem;">
+        <li><strong>Frontend Design</strong> – Using HTML, CSS, and JavaScript frameworks (React, Vue, Angular) or libraries like Bootstrap.</li>
+        <li><strong>Backend Development</strong> – Writing server side logic and APIs (Node.js, Python, PHP, etc.).</li>
+        <li><strong>Database Management</strong> – Using SQL (MySQL, PostgreSQL) or NoSQL (MongoDB) databases.</li>
+        <li><strong>Integration</strong> – Connecting frontend and backend via HTTP requests (RESTful or GraphQL APIs).</li>
+        <li><strong>Deployment & Maintenance</strong> – Hosting on cloud platforms (AWS, Heroku) with containerisation (Docker, Kubernetes).</li>
+      </ol>
+      This assignment focuses on the frontend part of full stack development: building a responsive, styled login form using HTML, CSS, JavaScript, and Bootstrap.
+    </div>
+  </div>
+
+  <!-- ========== 4. PRACTICAL EXAMPLE: LOGIN FORM ========== -->
+  <h2>4. Practical Example: User Login Form (Frontend Only)</h2>
+  <div class="card">
+    <p>The following example demonstrates how to build a modern, responsive login form using HTML, CSS, JavaScript, and Bootstrap 5.</p>
+    
+    <h3>4.1 HTML Structure</h3>
+    <div class="code-block">
+      <pre>&lt;div class="container"&gt;
+  &lt;div class="row justify-content-center"&gt;
+    &lt;div class="col-md-6"&gt;
+      &lt;div class="card shadow"&gt;
+        &lt;div class="card-body"&gt;
+          &lt;h3&gt;Login&lt;/h3&gt;
+          &lt;input type="email" class="form-control" placeholder="Email" id="email"&gt;
+          &lt;input type="password" class="form-control mt-2" placeholder="Password" id="password"&gt;
+          &lt;button class="btn btn-primary w-100 mt-3" id="loginBtn"&gt;Sign In&lt;/button&gt;
+          &lt;div id="message"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+    <div class="explanation">
+      This HTML document includes Bootstrap 5 for responsive layout and pre‑styled components. It creates a centred card with a login form containing email and password fields. The <code>container, row, col-md-6, card</code> classes create a responsive, mobile‑friendly design. A <code>div</code> with <code>id="message"</code> is reserved for feedback messages.
+    </div>
+
+    <h3>4.2 Custom CSS (style.css)</h3>
+    <div class="code-block">
+      <pre>body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.card {
+  animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.btn-primary:hover {
+  transform: scale(1.02);
+  transition: 0.2s;
+}</pre>
+    </div>
+    <div class="explanation">
+      • A gradient background gives a modern look.<br>
+      • Flexbox centres the form vertically and horizontally.<br>
+      • A fade‑in animation makes the card appear smoothly.<br>
+      • The login button has a hover effect (scale and colour change).<br>
+      • These styles complement Bootstrap, not replace it.
+    </div>
+
+    <h3>4.3 JavaScript (script.js) – Client Side Validation & Mock API Call</h3>
+    <div class="code-block">
+      <pre>document.getElementById('loginBtn').addEventListener('click', async () => {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const msgDiv = document.getElementById('message');
+
+  if (!email.includes('@') || password.length < 6) {
+    msgDiv.innerHTML = '&lt;div class="alert alert-danger"&gt;Invalid email or password (min 6 chars)&lt;/div&gt;';
+    return;
+  }
+
+  msgDiv.innerHTML = '&lt;div class="alert alert-info"&gt;Authenticating...&lt;/div&gt;';
+  
+  // Simulate backend API call
+  setTimeout(() => {
+    if (email === "demo@example.com" && password === "123456") {
+      msgDiv.innerHTML = '&lt;div class="alert alert-success"&gt;Login successful! (Mock)&lt;/div&gt;';
+    } else {
+      msgDiv.innerHTML = '&lt;div class="alert alert-danger"&gt;Invalid credentials&lt;/div&gt;';
+    }
+  }, 1000);
+});</pre>
+    </div>
+    <div class="explanation">
+      • The script prevents default form submission and reads the input values.<br>
+      • Client side validation checks for a basic email format and minimum password length.<br>
+      • It simulates an asynchronous login request (using <code>setTimeout</code>) and displays success/error messages using Bootstrap alert classes.<br>
+      • In a real full stack application, the fetch API would send the credentials to a backend endpoint like <code>/api/login</code>.
+    </div>
+
+    <h3>4.4 Bootstrap Components Used</h3>
+    <table class="component-table">
+      <thead><tr><th>Component</th><th>Bootstrap Class</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>Grid system</td><td>.container, .row, .col-md-6</td><td>Responsive layout</td></tr>
+        <tr><td>Card</td><td>.card, .card-body, .shadow</td><td>Styled container</td></tr>
+        <tr><td>Form controls</td><td>.form-control, .form-label</td><td>Styled inputs</td></tr>
+        <tr><td>Button</td><td>.btn, .btn-primary, .w-100</td><td>Styled login button</td></tr>
+        <tr><td>Alerts</td><td>.alert, .alert-danger, .alert-success</td><td>Feedback messages</td></tr>
+      </tbody>
+    </table>
+    <div class="tip">
+      No custom CSS is needed for basic functionality – Bootstrap alone can produce a clean login form, but the custom CSS adds a unique visual identity (gradient background, animations, hover effects).
+    </div>
+
+    <!-- Live interactive demo of the login form -->
+    <h3>🎮 Live Demo: Login Form (Mock API)</h3>
+    <div class="demo-area">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+              <h4 class="card-title text-center">🔐 Login to Dashboard</h4>
+              <form id="liveLoginForm">
+                <div class="mb-3">
+                  <label class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="demoEmail" placeholder="demo@example.com" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Password</label>
+                  <input type="password" class="form-control" id="demoPassword" placeholder="Password (min 6 chars)" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-2">Sign In (Mock Request)</button>
+                <div id="liveMessage" class="mt-3"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="loginSimLog" class="step-log mt-3">✨ Try email: demo@example.com / password: 123456. Validation + mock backend simulation.</div>
+    </div>
+  </div>
+
+  <!-- ========== 5. EXTENDED FULL STACK CONCEPTS ========== -->
+  <h2>5. Full Stack Architecture & Communication</h2>
+  <div class="card">
+    <div class="explanation">
+      <strong>How frontend and backend connect:</strong> The frontend sends HTTP requests (GET, POST, PUT, DELETE) to backend API endpoints. The backend processes the request, interacts with the database, and returns a JSON response. The frontend then updates the UI dynamically.
+    </div>
+    <div class="code-block">
+      <pre>// Real fetch example
+fetch('https://api.example.com/users')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+// Backend endpoint (Node.js/Express)
+app.get('/api/users', async (req, res) => {
+  const users = await db.query('SELECT * FROM users');
+  res.json(users);
+});</pre>
+    </div>
+  </div>
+
+  <h2>6. API Request Lifecycle (REST)</h2>
+  <div class="card">
+    <ol style="margin-left: 1.2rem;">
+      <li>Client → HTTP request (GET /api/products)</li>
+      <li>Backend route handler → validate params</li>
+      <li>Service layer → business logic</li>
+      <li>Database query → return result set</li>
+      <li>Backend formats JSON → HTTP response</li>
+      <li>Client parses JSON → updates UI</li>
+    </ol>
+    <div class="tip">💡 The browser never directly accesses the database – it always goes through the backend API. This keeps sensitive credentials secure.</div>
+  </div>
+
+  <h2>7. Authentication Flow (JWT)</h2>
+  <div class="card">
+    <ol style="margin-left: 1.2rem;">
+      <li>User submits credentials → frontend POST /api/login</li>
+      <li>Backend validates user against database</li>
+      <li>Backend generates signed JWT token</li>
+      <li>Frontend stores token (localStorage or cookie)</li>
+      <li>Subsequent requests include Authorization: Bearer &lt;token&gt;</li>
+      <li>Backend verifies token before sending protected data</li>
+    </ol>
+    <div class="code-block">
+      <pre>// JWT verification middleware (Node.js)
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  if (!token) return res.sendStatus(401);
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403);
+    req.user = user;
+    next();
+  });
+}</pre>
+    </div>
+  </div>
+
+  <h2>8. Deployment & Hosting</h2>
+  <div class="card">
+    <p><strong>Modern deployment pipeline:</strong> Code on GitHub → CI/CD (GitHub Actions) → Build → Deploy to platform.</p>
+    <ul style="margin-left: 1.5rem;">
+      <li><strong>Frontend:</strong> Vercel, Netlify, GitHub Pages</li>
+      <li><strong>Backend + Database:</strong> Render, Railway, Heroku, AWS</li>
+      <li><strong>Containerization:</strong> Docker, Kubernetes</li>
+    </ul>
+    <div class="code-block">
+      <pre># Deploy frontend to Vercel
+vercel --prod
+
+# Docker build for backend
+docker build -t myapp .
+docker run -p 3000:3000 myapp</pre>
+    </div>
+  </div>
+
+  <h2>9. Security Best Practices</h2>
+  <div class="card">
+    <ul style="margin-left: 1.5rem;">
+      <li>✅ HTTPS everywhere, HSTS headers</li>
+      <li>✅ Hash passwords (bcrypt, PBKDF2)</li>
+      <li>✅ CSRF protection (tokens)</li>
+      <li>✅ XSS sanitization (escape output)</li>
+      <li>✅ Rate limiting & input validation</li>
+      <li>✅ Environment variables (never commit secrets)</li>
+    </ul>
+  </div>
+
+  <h2>10. Git & GitHub Workflow</h2>
+  <div class="card">
+    <div class="code-block">
+      <pre>git checkout -b feature/login
+git add .
+git commit -m "feat: login page"
+git push origin feature/login
+# open Pull Request → review → merge to main
+# CI/CD auto-deploys</pre>
+    </div>
+  </div>
+
+  <h2>11. Popular Full Stack Technology Stacks</h2>
+  <div class="card">
+    <ul style="margin-left: 1.5rem;">
+      <li><strong>MERN</strong> – MongoDB, Express.js, React, Node.js</li>
+      <li><strong>MEAN</strong> – MongoDB, Express.js, Angular, Node.js</li>
+      <li><strong>LAMP</strong> – Linux, Apache, MySQL, PHP</li>
+      <li><strong>Django + React + PostgreSQL</strong> – Python backend with modern frontend</li>
+    </ul>
+  </div>
+
+  <!-- ========== 12. INTERACTIVE FULL STACK SIMULATION ========== -->
+  <h2>12. Interactive Simulation: Full Stack Request</h2>
+  <div class="card">
+    <div class="demo-area">
+      <button id="simulateFullStackBtn" class="btn btn-primary">🚀 Simulate Full Request (Frontend → Backend → DB)</button>
+      <div id="simulationLog" class="step-log">Ready. Click to start simulation.</div>
+      <div id="simulationResponse" class="code-block" style="background:#f1f5f9; color:#0f172a;">Response will appear here...</div>
+    </div>
+  </div>
+
+  <!-- ========== 13. CONCLUSION ========== -->
+  <h2>13. Conclusion</h2>
+  <div class="card">
+    <div class="explanation">
+      The sequence of code and explanations above illustrates a frontend‑focused approach to a login form, covering:
+      <ul style="margin-left: 1.2rem;">
+        <li><strong>HTML</strong> – structure and semantic elements.</li>
+        <li><strong>CSS</strong> – custom styling, gradients, flexbox, and animations.</li>
+        <li><strong>JavaScript</strong> – form handling, validation, and mock asynchronous feedback.</li>
+        <li><strong>Bootstrap</strong> – responsive grid, cards, form styling, and alerts.</li>
+      </ul>
+      This represents the frontend layer of a full stack application. In a complete system, the JavaScript would communicate with a backend API (Node.js, Python, etc.) and a database. By mastering these frontend technologies, a full stack developer can build attractive, responsive user interfaces that integrate seamlessly with server side logic.<br><br>
+      Understanding HTML, CSS, JavaScript, and a framework like Bootstrap is the first step toward becoming a proficient full stack developer. The same principles apply when moving to more advanced frontend libraries (React, Vue) or backend technologies.
+    </div>
+  </div>
+
+  <!-- ========== 14. REFERENCES ========== -->
+  <h2>14. References</h2>
+  <div class="card">
+    <ul style="margin-left: 1.5rem;">
+      <li>Mozilla Developer Network. (2025). <em>HTML: HyperText Markup Language</em>. Retrieved from <a href="https://developer.mozilla.org/" target="_blank">https://developer.mozilla.org/</a></li>
+      <li>Mozilla Developer Network. (2025). <em>CSS: Cascading Style Sheets</em>. Retrieved from <a href="https://developer.mozilla.org/" target="_blank">https://developer.mozilla.org/</a></li>
+      <li>Mozilla Developer Network. (2025). <em>JavaScript</em>. Retrieved from <a href="https://developer.mozilla.org/" target="_blank">https://developer.mozilla.org/</a></li>
+      <li>Bootstrap Documentation. (2025). <em>Bootstrap v5.3</em>. Retrieved from <a href="https://getbootstrap.com/" target="_blank">https://getbootstrap.com/</a></li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>🎯 Complete Full Stack Development guide – theory, practical examples, interactive demos, and real‑world workflows.</p>
+    <p>© 2025 – Full Stack Mastery | <a href="#">Back to top ↑</a></p>
+  </footer>
+</div>
+
+<script>
+  // Live login form demo
+  const liveForm = document.getElementById('liveLoginForm');
+  const demoEmail = document.getElementById('demoEmail');
+  const demoPassword = document.getElementById('demoPassword');
+  const liveMsg = document.getElementById('liveMessage');
+  const loginSimLog = document.getElementById('loginSimLog');
+
+  liveForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = demoEmail.value;
+    const pwd = demoPassword.value;
+
+    if (!email.includes('@')) {
+      liveMsg.innerHTML = '<div class="alert alert-danger">Please enter a valid email address.</div>';
+      loginSimLog.innerHTML = '❌ Validation failed: invalid email.';
+      return;
+    }
+    if (pwd.length < 6) {
+      liveMsg.innerHTML = '<div class="alert alert-danger">Password must be at least 6 characters.</div>';
+      loginSimLog.innerHTML = '❌ Validation failed: password too short.';
+      return;
+    }
+
+    liveMsg.innerHTML = '<div class="alert alert-info">🔄 Sending credentials to mock backend...</div>';
+    loginSimLog.innerHTML = '📡 Frontend: POST /api/login with credentials...';
+
+    await new Promise(r => setTimeout(r, 800));
+    loginSimLog.innerHTML += '\n⚙️ Backend: Received request. Checking credentials...';
+    await new Promise(r => setTimeout(r, 600));
+
+    if (email === 'demo@example.com' && pwd === '123456') {
+      loginSimLog.innerHTML += '\n🗄️ Database: User found. Password match.';
+      await new Promise(r => setTimeout(r, 500));
+      loginSimLog.innerHTML += '\n✅ Backend: Generating JWT token. Returning 200 OK.';
+      liveMsg.innerHTML = '<div class="alert alert-success">✅ Login successful! (Mock) Redirecting to dashboard...</div>';
+    } else {
+      loginSimLog.innerHTML += '\n🗄️ Database: User not found or wrong password.';
+      await new Promise(r => setTimeout(r, 500));
+      loginSimLog.innerHTML += '\n❌ Backend: Returning 401 Unauthorized.';
+      liveMsg.innerHTML = '<div class="alert alert-danger">❌ Invalid credentials. Use demo@example.com / 123456</div>';
+    }
+    loginSimLog.innerHTML += '\n🏁 End of simulation.';
+  });
+
+  // Full stack simulation
+  const simBtn = document.getElementById('simulateFullStackBtn');
+  const simLog = document.getElementById('simulationLog');
+  const simResp = document.getElementById('simulationResponse');
+
+  async function runFullSim() {
+    simLog.innerHTML = "📡 1. Frontend: Sending HTTP GET request to /api/user/42...";
+    simResp.innerHTML = "⏳ Waiting for backend response...";
+    await new Promise(r => setTimeout(r, 700));
+
+    simLog.innerHTML += "\n⚙️ 2. Backend: Received request. Validating user session...";
+    await new Promise(r => setTimeout(r, 600));
+
+    simLog.innerHTML += "\n🗄️ 3. Database: Executing SQL → SELECT * FROM users WHERE id = 42";
+    await new Promise(r => setTimeout(r, 800));
+
+    simLog.innerHTML += "\n🗄️ 4. Database: Found user record. Returning to backend.";
+    await new Promise(r => setTimeout(r, 500));
+
+    const mockUser = { id: 42, name: "Alex Johnson", email: "alex@example.com", memberSince: "2025-01-20" };
+    simLog.innerHTML += "\n⚙️ 5. Backend: Formatting JSON response and sending HTTP 200 OK.";
+    await new Promise(r => setTimeout(r, 600));
+
+    simLog.innerHTML += "\n🖥️ 6. Frontend: Received response. Updating UI with user data.";
+    simResp.innerHTML = `<strong>✅ Full stack request completed!</strong><br>
+      Response (JSON): <code>${JSON.stringify({ status: "success", user: mockUser }, null, 2)}</code><br>
+      ✔ Simulation: Frontend → Backend API → Database → Response to frontend.`;
+    simLog.innerHTML += "\n🎉 Simulation finished.";
+  }
+
+  simBtn.addEventListener('click', () => {
+    simLog.innerHTML = "🚀 Starting full stack simulation...";
+    simResp.innerHTML = "⏳ Simulating request...";
+    runFullSim();
+  });
+</script>
+</body>
 </html>
