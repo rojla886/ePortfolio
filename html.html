@@ -8,22 +8,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
       background: #f0f4f8;
       color: #0f172a;
       line-height: 1.5;
     }
+
+    /* ── NAV ── */
     .site-nav {
       background: #0f3b5c;
       padding: 0.8rem 2rem;
       border-radius: 0 0 1rem 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0;
     }
     .site-nav-inner {
       max-width: 1300px;
@@ -33,145 +31,205 @@
       align-items: center;
       flex-wrap: wrap;
     }
-    .site-brand {
-      color: white;
-      font-size: 1.4rem;
-      font-weight: bold;
-      text-decoration: none;
-    }
+    .site-brand { color: white; font-size: 1.4rem; font-weight: bold; text-decoration: none; }
     .nav-links a {
-      color: #e2e8f0;
-      text-decoration: none;
-      margin-left: 1.2rem;
-      padding: 0.3rem 0.6rem;
-      border-radius: 2rem;
-      transition: 0.2s;
+      color: #e2e8f0; text-decoration: none; margin-left: 1.2rem;
+      padding: 0.3rem 0.6rem; border-radius: 2rem; transition: 0.2s;
     }
-    .nav-links a.active, .nav-links a:hover {
-      background: #2c7da0;
-      color: white;
+    .nav-links a.active, .nav-links a:hover { background: #2c7da0; color: white; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0b2f47 0%, #0f3b5c 45%, #1a5c82 100%);
+      padding: 4rem 2rem 3.5rem;
+      position: relative;
+      overflow: hidden;
     }
-    .container {
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(44,125,160,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
       max-width: 1200px;
       margin: 0 auto;
-      background: white;
-      border-radius: 1.5rem;
-      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
     }
-    h1 {
-      font-size: 2.4rem;
-      background: linear-gradient(135deg, #0f3b5c, #2c7da0);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      margin-bottom: 0.5rem;
+    .hero-text { position: relative; z-index: 2; }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(44,125,160,0.3);
+      border: 1px solid rgba(44,125,160,0.6);
+      color: #7dd3fc;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 2rem;
+      margin-bottom: 1.25rem;
     }
-    .subhead {
-      font-size: 1.2rem;
-      color: #334155;
-      border-left: 4px solid #2c7da0;
-      padding-left: 1rem;
+    .hero-eyebrow span { width: 6px; height: 6px; border-radius: 50%; background: #7dd3fc; display: inline-block; }
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .hero-title .accent { color: #38bdf8; }
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      line-height: 1.7;
+      max-width: 460px;
       margin-bottom: 2rem;
     }
-    h2 {
-      font-size: 1.8rem;
-      margin: 2rem 0 1rem;
-      border-bottom: 3px solid #e2e8f0;
-      color: #0f3b5c;
-      padding-bottom: 0.3rem;
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
-    h3 {
-      font-size: 1.3rem;
-      margin: 1rem 0 0.5rem;
-      color: #1e5a6e;
+    .hero-stat { text-align: center; }
+    .hero-stat-num {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #38bdf8;
+      display: block;
+      line-height: 1;
     }
-    .card {
-      background: #f9fbfd;
+    .hero-stat-label { font-size: 0.72rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ── CODE WINDOW ── */
+    .hero-code-wrap { position: relative; z-index: 2; }
+    .code-window {
+      background: #0d1117;
       border-radius: 1rem;
-      padding: 1.2rem;
-      margin: 1rem 0;
-      border: 1px solid #e2e8f0;
-      transition: 0.2s;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
     }
-    .card:hover {
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    .code-window-bar {
+      background: #1c2128;
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-red { background: #ff5f57; }
+    .dot-yellow { background: #febc2e; }
+    .dot-green { background: #28c840; }
+    .code-window-filename {
+      margin-left: 0.75rem;
+      font-size: 0.75rem;
+      color: #8b949e;
+      font-family: 'Courier New', monospace;
+    }
+    .code-window-body {
+      padding: 1.25rem 1.5rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #e6edf3;
+      overflow-x: auto;
+    }
+    .code-window-body .ln { color: #484f58; user-select: none; display: inline-block; width: 1.6rem; }
+    .ck-tag    { color: #7ee787; }
+    .ck-attr   { color: #79c0ff; }
+    .ck-val    { color: #ffa657; }
+    .ck-text   { color: #e6edf3; }
+    .ck-comment{ color: #8b949e; font-style: italic; }
+    .ck-special{ color: #d2a8ff; }
+
+    /* Preview pane */
+    .preview-pane {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background: #fff;
+      padding: 0.85rem 1.2rem;
+    }
+    .preview-pane-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+      margin-bottom: 0.5rem;
+      font-family: 'Inter', sans-serif;
+    }
+    .preview-pane h1 { font-size: 1rem; color: #0f3b5c; margin-bottom: 0.2rem; }
+    .preview-pane p  { font-size: 0.8rem; color: #334155; }
+
+    /* ── CONTENT ── */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+    h2 {
+      font-size: 1.8rem; margin: 2rem 0 1rem;
+      border-bottom: 3px solid #e2e8f0; color: #0f3b5c; padding-bottom: 0.3rem;
+    }
+    h3 { font-size: 1.3rem; margin: 1rem 0 0.5rem; color: #1e5a6e; }
+    .card {
+      background: #f9fbfd; border-radius: 1rem; padding: 1.2rem;
+      margin: 1rem 0; border: 1px solid #e2e8f0; transition: 0.2s;
+    }
+    .card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
     .explanation {
-      background: #e6f4ea;
-      border-left: 5px solid #2e7d32;
-      padding: 0.8rem 1rem;
-      border-radius: 0.75rem;
-      margin: 1rem 0;
+      background: #e6f4ea; border-left: 5px solid #2e7d32;
+      padding: 0.8rem 1rem; border-radius: 0.75rem; margin: 1rem 0;
     }
     .tip {
-      background: #fff3e0;
-      border-left: 5px solid #f39c12;
-      padding: 0.8rem 1rem;
-      border-radius: 0.75rem;
-      margin: 1rem 0;
+      background: #fff3e0; border-left: 5px solid #f39c12;
+      padding: 0.8rem 1rem; border-radius: 0.75rem; margin: 1rem 0;
     }
     .demo-area {
-      background: white;
-      border: 1px solid #cbd5e6;
-      border-radius: 0.75rem;
-      padding: 1rem;
-      margin: 1rem 0;
+      background: white; border: 1px solid #cbd5e6;
+      border-radius: 0.75rem; padding: 1rem; margin: 1rem 0;
     }
     .code-block {
-      background: #0f172a;
-      color: #e2e8f0;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      overflow-x: auto;
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
-      margin: 1rem 0;
+      background: #0f172a; color: #e2e8f0; padding: 1rem;
+      border-radius: 0.75rem; overflow-x: auto;
+      font-family: 'Courier New', monospace; font-size: 0.85rem; margin: 1rem 0;
     }
-    .code-block pre {
-      margin: 0;
-      white-space: pre-wrap;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-    }
-    th, td {
-      border: 1px solid #cbd5e6;
-      padding: 0.6rem;
-      text-align: left;
-    }
-    th {
-      background: #e9f0f5;
-    }
+    .code-block pre { margin: 0; white-space: pre-wrap; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th, td { border: 1px solid #cbd5e6; padding: 0.6rem; text-align: left; }
+    th { background: #e9f0f5; }
     footer {
-      margin-top: 2.5rem;
-      text-align: center;
-      border-top: 1px solid #cbd5e6;
-      padding-top: 1.5rem;
-      font-size: 0.85rem;
-      color: #4a627a;
+      margin-top: 2.5rem; text-align: center;
+      border-top: 1px solid #cbd5e6; padding-top: 1.5rem;
+      font-size: 0.85rem; color: #4a627a;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-code-wrap { display: none; }
+      .hero-title { font-size: 2.2rem; }
     }
     @media (max-width: 700px) {
-      .site-nav-inner {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .nav-links a {
-        margin: 0 0.5rem;
-      }
-      .container {
-        padding: 1rem;
-      }
-      h1 {
-        font-size: 1.8rem;
-      }
+      .site-nav-inner { flex-direction: column; gap: 0.5rem; }
+      .nav-links a { margin: 0 0.5rem; }
+      .container { padding: 1rem; }
+      .hero { padding: 2.5rem 1.2rem 2rem; }
     }
   </style>
 </head>
 <body>
 
+<!-- ── NAV ── -->
 <nav class="site-nav">
   <div class="site-nav-inner">
     <a href="#" class="site-brand">🧱 Web Guides</a>
@@ -185,22 +243,89 @@
   </div>
 </nav>
 
-<div class="container">
-  <div style="text-align: center; margin-bottom: 1rem;">
-    <h1>🔥 HTML for Beginners – Complete Guide</h1>
-    <div class="subhead" style="border-left: none; text-align: center;">
-      Learn HTML from scratch: every tag explained, live demos, and code snippets. No experience needed.
-    </div>
-  </div>
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
 
-  <!-- ========== 1. WHAT IS HTML ========== -->
+    <!-- Left: text -->
+    <div class="hero-text">
+      <div class="hero-eyebrow"><span></span> Beginner Friendly Guide</div>
+      <h1 class="hero-title">
+        Build the Web<br>
+        with <span class="accent">HTML</span>
+      </h1>
+      <p class="hero-subtitle">
+        Every tag explained with live demos and copy-paste code snippets.
+        Go from blank file to structured web page — no prior experience needed.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">17</span>
+          <span class="hero-stat-label">Chapters</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">70+</span>
+          <span class="hero-stat-label">Concepts</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">30+</span>
+          <span class="hero-stat-label">Code Examples</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: code window -->
+    <div class="hero-code-wrap">
+      <div class="code-window">
+        <div class="code-window-bar">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+          <span class="code-window-filename">index.html</span>
+        </div>
+        <div class="code-window-body">
+<span class="ln">1</span><span class="ck-comment">&lt;!-- Your first HTML page --&gt;</span>
+<span class="ln">2</span><span class="ck-special">&lt;!DOCTYPE html&gt;</span>
+<span class="ln">3</span><span class="ck-tag">&lt;html</span> <span class="ck-attr">lang</span>=<span class="ck-val">"en"</span><span class="ck-tag">&gt;</span>
+<span class="ln">4</span><span class="ck-tag">&lt;head&gt;</span>
+<span class="ln">5</span>  <span class="ck-tag">&lt;meta</span> <span class="ck-attr">charset</span>=<span class="ck-val">"UTF-8"</span><span class="ck-tag">&gt;</span>
+<span class="ln">6</span>  <span class="ck-tag">&lt;title&gt;</span><span class="ck-text">My First Page</span><span class="ck-tag">&lt;/title&gt;</span>
+<span class="ln">7</span><span class="ck-tag">&lt;/head&gt;</span>
+<span class="ln">8</span><span class="ck-tag">&lt;body&gt;</span>
+<span class="ln">9</span>
+<span class="ln">10</span>  <span class="ck-tag">&lt;h1&gt;</span><span class="ck-text">Hello, World! 👋</span><span class="ck-tag">&lt;/h1&gt;</span>
+<span class="ln">11</span>  <span class="ck-tag">&lt;p&gt;</span><span class="ck-text">Welcome to my website.</span><span class="ck-tag">&lt;/p&gt;</span>
+<span class="ln">12</span>  <span class="ck-tag">&lt;a</span> <span class="ck-attr">href</span>=<span class="ck-val">"about.html"</span><span class="ck-tag">&gt;</span>
+<span class="ln">13</span>    <span class="ck-text">Learn more →</span>
+<span class="ln">14</span>  <span class="ck-tag">&lt;/a&gt;</span>
+<span class="ln">15</span>
+<span class="ln">16</span><span class="ck-tag">&lt;/body&gt;</span>
+<span class="ln">17</span><span class="ck-tag">&lt;/html&gt;</span>
+        </div>
+        <!-- mini live preview -->
+        <div class="preview-pane">
+          <div class="preview-pane-label">▶ Preview</div>
+          <h1>Hello, World! 👋</h1>
+          <p>Welcome to my website.</p>
+          <a href="#" style="color:#2c7da0; font-size:0.85rem;">Learn more →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── MAIN CONTENT ── -->
+<div class="container">
+
+  <!-- 1. WHAT IS HTML -->
   <h2>1. What is HTML?</h2>
   <div class="card">
     <div class="explanation">
       <strong>HTML (HyperText Markup Language)</strong> is the standard language for creating web pages. It describes the structure of a webpage using <strong>elements</strong> (tags). Think of it as the skeleton of a website – it holds everything together.
     </div>
     <div class="demo-area">
-      <p><strong>🌐 Live fact:</strong> This page you are reading right now is built with HTML. Right-click anywhere and select “View Page Source” to see the actual HTML code.</p>
+      <p><strong>🌐 Live fact:</strong> This page you are reading right now is built with HTML. Right-click anywhere and select "View Page Source" to see the actual HTML code.</p>
     </div>
     <div class="code-block">
       <pre>&lt;!DOCTYPE html&gt;
@@ -219,7 +344,7 @@
     </div>
   </div>
 
-  <!-- ========== 2. DOCUMENT STRUCTURE ========== -->
+  <!-- 2. DOCUMENT STRUCTURE -->
   <h2>2. Document Structure (The Skeleton)</h2>
   <div class="card">
     <h3>&lt;!DOCTYPE html&gt;</h3>
@@ -245,26 +370,21 @@
     </div>
   </div>
 
-  <!-- ========== 3. HEADINGS & TEXT ========== -->
+  <!-- 3. HEADINGS & TEXT -->
   <h2>3. Headings & Text Formatting</h2>
   <div class="card">
     <h3>Headings (&lt;h1&gt; to &lt;h6&gt;)</h3>
-    <div class="explanation">Headings define titles and subtitles. <code>&lt;h1&gt;</code> is most important (usually the main title), <code>&lt;h2&gt;</code> to <code>&lt;h6&gt;</code> are subheadings. Search engines use them for SEO.</div>
+    <div class="explanation">Headings define titles and subtitles. <code>&lt;h1&gt;</code> is most important, <code>&lt;h2&gt;</code> to <code>&lt;h6&gt;</code> are subheadings. Search engines use them for SEO.</div>
     <div class="demo-area">
       <h1>This is &lt;h1&gt;</h1>
       <h2>This is &lt;h2&gt;</h2>
       <h3>This is &lt;h3&gt;</h3>
-      <h4>&lt;h4&gt;</h4>
-      <h5>&lt;h5&gt;</h5>
-      <h6>&lt;h6&gt;</h6>
+      <h4>&lt;h4&gt;</h4><h5>&lt;h5&gt;</h5><h6>&lt;h6&gt;</h6>
     </div>
     <div class="code-block">
       <pre>&lt;h1&gt;Main Title&lt;/h1&gt;
 &lt;h2&gt;Subheading&lt;/h2&gt;
-&lt;h3&gt;Section title&lt;/h3&gt;
-&lt;h4&gt;Level 4&lt;/h4&gt;
-&lt;h5&gt;Level 5&lt;/h5&gt;
-&lt;h6&gt;Level 6&lt;/h6&gt;</pre>
+&lt;h3&gt;Section title&lt;/h3&gt;</pre>
     </div>
 
     <h3>Paragraphs (&lt;p&gt;)</h3>
@@ -274,82 +394,58 @@
       <p>This is the second paragraph. There is a gap between them.</p>
     </div>
     <div class="code-block">
-      <pre>&lt;p&gt;This is the first paragraph. It contains some text.&lt;/p&gt;
-&lt;p&gt;This is the second paragraph. There is a gap between them.&lt;/p&gt;</pre>
+      <pre>&lt;p&gt;This is the first paragraph.&lt;/p&gt;
+&lt;p&gt;This is the second paragraph.&lt;/p&gt;</pre>
     </div>
 
     <h3>Inline Text Formatting</h3>
     <div class="demo-area">
-      <p><strong>Strong</strong> – <strong>bold and important</strong></p>
-      <p><em>Emphasis</em> – <em>italic</em></p>
-      <p><mark>Mark</mark> – <mark>highlighted</mark></p>
+      <p><strong>Strong</strong> – bold and important</p>
+      <p><em>Emphasis</em> – italic</p>
+      <p><mark>Mark</mark> – highlighted</p>
       <p><small>Small</small> – fine print</p>
-      <p><del>Deleted</del> – strikethrough</p>
-      <p><ins>Inserted</ins> – underlined</p>
-      <p>H<sub>2</sub>O (subscript) and x<sup>2</sup> (superscript)</p>
-      <p><code>Code</code> – <code>inline code</code></p>
-      <p>Press <kbd>Ctrl</kbd>+<kbd>C</kbd> to copy</p>
+      <p><del>Deleted</del> – strikethrough &nbsp; <ins>Inserted</ins> – underlined</p>
+      <p>H<sub>2</sub>O (subscript) &nbsp; x<sup>2</sup> (superscript)</p>
+      <p><code>Code</code> – inline code &nbsp; Press <kbd>Ctrl</kbd>+<kbd>C</kbd></p>
     </div>
     <div class="code-block">
-      <pre>&lt;strong&gt;Bold and important&lt;/strong&gt;
-&lt;em&gt;Italic and emphasised&lt;/em&gt;
-&lt;mark&gt;Highlighted&lt;/mark&gt;
-&lt;small&gt;Small text&lt;/small&gt;
-&lt;del&gt;Deleted text&lt;/del&gt;
-&lt;ins&gt;Inserted text&lt;/ins&gt;
-H&lt;sub&gt;2&lt;/sub&gt;O
-x&lt;sup&gt;2&lt;/sup&gt;
-&lt;code&gt;inline code&lt;/code&gt;
-Press &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;C&lt;/kbd&gt;</pre>
+      <pre>&lt;strong&gt;Bold&lt;/strong&gt;  &lt;em&gt;Italic&lt;/em&gt;  &lt;mark&gt;Highlighted&lt;/mark&gt;
+&lt;del&gt;Deleted&lt;/del&gt;  &lt;ins&gt;Inserted&lt;/ins&gt;
+H&lt;sub&gt;2&lt;/sub&gt;O  x&lt;sup&gt;2&lt;/sup&gt;
+&lt;code&gt;inline code&lt;/code&gt;  &lt;kbd&gt;Ctrl&lt;/kbd&gt;</pre>
     </div>
     <div class="tip">✅ Use <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> instead of <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> – they add meaning, not just style.</div>
   </div>
 
-  <!-- ========== 4. LISTS ========== -->
+  <!-- 4. LISTS -->
   <h2>4. Lists (Organising Information)</h2>
   <div class="card">
     <h3>Unordered list (&lt;ul&gt; + &lt;li&gt;)</h3>
-    <div class="explanation">Bullet points – order doesn’t matter.</div>
-    <div class="demo-area">
-      <ul><li>Apples</li><li>Bananas</li><li>Oranges</li></ul>
-    </div>
-    <div class="code-block">
-      <pre>&lt;ul&gt;
+    <div class="explanation">Bullet points – order doesn't matter.</div>
+    <div class="demo-area"><ul><li>Apples</li><li>Bananas</li><li>Oranges</li></ul></div>
+    <div class="code-block"><pre>&lt;ul&gt;
   &lt;li&gt;Apples&lt;/li&gt;
   &lt;li&gt;Bananas&lt;/li&gt;
-  &lt;li&gt;Oranges&lt;/li&gt;
-&lt;/ul&gt;</pre>
-    </div>
+&lt;/ul&gt;</pre></div>
 
     <h3>Ordered list (&lt;ol&gt; + &lt;li&gt;)</h3>
-    <div class="explanation">Numbered list – sequence matters (steps, rankings).</div>
-    <div class="demo-area">
-      <ol><li>Wake up</li><li>Brush teeth</li><li>Eat breakfast</li></ol>
-    </div>
-    <div class="code-block">
-      <pre>&lt;ol&gt;
+    <div class="explanation">Numbered list – sequence matters.</div>
+    <div class="demo-area"><ol><li>Wake up</li><li>Brush teeth</li><li>Eat breakfast</li></ol></div>
+    <div class="code-block"><pre>&lt;ol&gt;
   &lt;li&gt;Wake up&lt;/li&gt;
   &lt;li&gt;Brush teeth&lt;/li&gt;
-  &lt;li&gt;Eat breakfast&lt;/li&gt;
-&lt;/ol&gt;</pre>
-    </div>
+&lt;/ol&gt;</pre></div>
 
     <h3>Description list (&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;)</h3>
     <div class="explanation">Terms and definitions (glossary).</div>
-    <div class="demo-area">
-      <dl><dt>HTML</dt><dd>Structures the page.</dd><dt>CSS</dt><dd>Styles the page.</dd></dl>
-    </div>
-    <div class="code-block">
-      <pre>&lt;dl&gt;
+    <div class="demo-area"><dl><dt>HTML</dt><dd>Structures the page.</dd><dt>CSS</dt><dd>Styles the page.</dd></dl></div>
+    <div class="code-block"><pre>&lt;dl&gt;
   &lt;dt&gt;HTML&lt;/dt&gt;
   &lt;dd&gt;Structures the page.&lt;/dd&gt;
-  &lt;dt&gt;CSS&lt;/dt&gt;
-  &lt;dd&gt;Styles the page.&lt;/dd&gt;
-&lt;/dl&gt;</pre>
-    </div>
+&lt;/dl&gt;</pre></div>
   </div>
 
-  <!-- ========== 5. LINKS ========== -->
+  <!-- 5. LINKS -->
   <h2>5. Links (&lt;a&gt; – The Anchor Tag)</h2>
   <div class="card">
     <div class="explanation">Links make the web interconnected. The <code>href</code> attribute defines the destination.</div>
@@ -359,78 +455,68 @@ Press &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;C&lt;/kbd&gt;</pre>
       <p><a href="mailto:someone@example.com">Email link</a></p>
       <p><a href="tel:+123456789">Phone link</a></p>
     </div>
-    <div class="code-block">
-      <pre>&lt;a href="https://example.com" target="_blank"&gt;Visit&lt;/a&gt;
+    <div class="code-block"><pre>&lt;a href="https://example.com" target="_blank"&gt;Visit&lt;/a&gt;
 &lt;a href="#section2"&gt;Go to Section 2&lt;/a&gt;
 &lt;a href="mailto:hello@example.com"&gt;Email Us&lt;/a&gt;
-&lt;a href="tel:+123456789"&gt;Call Us&lt;/a&gt;</pre>
-    </div>
+&lt;a href="tel:+123456789"&gt;Call Us&lt;/a&gt;</pre></div>
   </div>
 
-  <!-- ========== 6. IMAGES & MEDIA ========== -->
+  <!-- 6. IMAGES & MEDIA -->
   <h2>6. Images & Multimedia</h2>
   <div class="card">
     <h3>&lt;img&gt; (Image)</h3>
-    <div class="explanation">Self‑closing tag. Requires <code>src</code> (source) and <code>alt</code> (alternative text for accessibility).</div>
-    <div class="demo-area">
-      <img src="https://picsum.photos/id/1/200/130" alt="Mountain" style="border-radius: 8px;">
-    </div>
-    <div class="code-block">
-      <pre>&lt;img src="photo.jpg" alt="Description of image" width="300"&gt;</pre>
-    </div>
+    <div class="explanation">Self-closing tag. Requires <code>src</code> and <code>alt</code> for accessibility.</div>
+    <div class="demo-area"><img src="https://picsum.photos/id/1/200/130" alt="Mountain" style="border-radius:8px;"></div>
+    <div class="code-block"><pre>&lt;img src="photo.jpg" alt="Description" width="300"&gt;</pre></div>
 
     <h3>&lt;audio&gt; and &lt;video&gt;</h3>
     <div class="demo-area">
-      <audio controls><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio><br>
+      <audio controls><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio><br><br>
       <video width="250" controls poster="https://picsum.photos/id/26/300/170">
         <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
       </video>
     </div>
-    <div class="code-block">
-      <pre>&lt;audio controls&gt;
+    <div class="code-block"><pre>&lt;audio controls&gt;
   &lt;source src="song.mp3" type="audio/mpeg"&gt;
 &lt;/audio&gt;
 &lt;video width="250" controls&gt;
   &lt;source src="movie.mp4" type="video/mp4"&gt;
-&lt;/video&gt;</pre>
-    </div>
+&lt;/video&gt;</pre></div>
   </div>
 
-  <!-- ========== 7. TABLES ========== -->
+  <!-- 7. TABLES -->
   <h2 id="tables">7. Tables (Data in Rows & Columns)</h2>
   <div class="card">
     <div class="explanation">Tables use <code>&lt;table&gt;</code>, rows <code>&lt;tr&gt;</code>, headers <code>&lt;th&gt;</code>, and data cells <code>&lt;td&gt;</code>.</div>
     <div class="demo-area">
       <table>
         <thead><tr><th>Month</th><th>Revenue</th></tr></thead>
-        <tbody><tr><td>January</td><td>$5,000</td></tr>
+        <tbody>
+          <tr><td>January</td><td>$5,000</td></tr>
           <tr><td>February</td><td>$6,200</td></tr>
         </tbody>
         <tfoot><tr><td>Total</td><td>$11,200</td></tr></tfoot>
       </table>
     </div>
-    <div class="code-block">
-      <pre>&lt;table&gt;
+    <div class="code-block"><pre>&lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;&lt;th&gt;Month&lt;/th&gt;&lt;th&gt;Revenue&lt;/th&gt;&lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;&lt;td&gt;January&lt;/td&gt;&lt;td&gt;$5,000&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td&gt;February&lt;/td&gt;&lt;td&gt;$6,200&lt;/td&gt;&lt;/tr&gt;
   &lt;/tbody&gt;
   &lt;tfoot&gt;
     &lt;tr&gt;&lt;td&gt;Total&lt;/td&gt;&lt;td&gt;$11,200&lt;/td&gt;&lt;/tr&gt;
   &lt;/tfoot&gt;
-&lt;/table&gt;</pre>
-    </div>
+&lt;/table&gt;</pre></div>
   </div>
 
-  <!-- ========== 8. FORMS ========== -->
+  <!-- 8. FORMS -->
   <h2>8. Forms & Inputs (Collecting Data)</h2>
   <div class="card">
     <div class="explanation">Forms let users submit data. Each input should have a <code>name</code> attribute.</div>
     <div class="demo-area">
-      <form action="#" style="background:#f0f4fa; padding:1rem; border-radius:12px">
+      <form action="#" style="background:#f0f4fa;padding:1rem;border-radius:12px">
         <label>Text: <input type="text" placeholder="Your name"></label><br><br>
         <label>Email: <input type="email" placeholder="user@example.com"></label><br><br>
         <label>Password: <input type="password"></label><br><br>
@@ -448,127 +534,104 @@ Press &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;C&lt;/kbd&gt;</pre>
         <button type="button">Just a button</button>
       </form>
     </div>
-    <div class="code-block">
-      <pre>&lt;form action="/submit" method="POST"&gt;
-  &lt;input type="text" name="name" placeholder="Your name"&gt;
-  &lt;input type="email" name="email" placeholder="user@example.com"&gt;
+    <div class="code-block"><pre>&lt;form action="/submit" method="POST"&gt;
+  &lt;input type="text"     name="name"&gt;
+  &lt;input type="email"    name="email"&gt;
   &lt;input type="password" name="password"&gt;
-  &lt;input type="number" name="age" min="1" max="120"&gt;
-  &lt;input type="date" name="birthday"&gt;
-  
-  &lt;input type="radio" name="gender" value="male"&gt; Male
-  &lt;input type="radio" name="gender" value="female"&gt; Female
-  
-  &lt;input type="checkbox" name="hobby" value="reading"&gt; Reading
-  &lt;input type="checkbox" name="hobby" value="sports"&gt; Sports
-  
+  &lt;input type="radio"    name="gender" value="male"&gt; Male
+  &lt;input type="checkbox" name="hobby"  value="reading"&gt; Reading
   &lt;select name="country"&gt;
     &lt;option&gt;USA&lt;/option&gt;
-    &lt;option&gt;UK&lt;/option&gt;
   &lt;/select&gt;
-  
-  &lt;textarea name="message" rows="3" cols="30"&gt;&lt;/textarea&gt;
+  &lt;textarea name="message"&gt;&lt;/textarea&gt;
   &lt;input type="submit" value="Submit"&gt;
-  &lt;button type="button"&gt;Just a button&lt;/button&gt;
-&lt;/form&gt;</pre>
-    </div>
-    <div class="tip">✨ The <code>name</code> attribute is critical – without it, the input’s value won’t be sent to the server.</div>
+&lt;/form&gt;</pre></div>
+    <div class="tip">✨ The <code>name</code> attribute is critical – without it, the input's value won't be sent to the server.</div>
   </div>
 
-  <!-- ========== 9. SEMANTIC HTML5 ========== -->
+  <!-- 9. SEMANTIC HTML5 -->
   <h2>9. Semantic HTML5 (Meaningful Layout)</h2>
   <div class="card">
     <div class="explanation">Semantic elements describe their meaning to browsers and developers. Improves accessibility and SEO.</div>
     <div class="demo-area">
-      <header style="background:#cfe7fc; padding:0.5rem">&lt;header&gt; – top of page</header>
-      <nav style="background:#d9e6f5; padding:0.5rem">&lt;nav&gt; – navigation links</nav>
-      <main style="background:#eef2fa; padding:0.5rem">&lt;main&gt; – primary content</main>
-      <article style="background:#e0f2e9; padding:0.5rem">&lt;article&gt; – blog post</article>
-      <section style="background:#fff0db; padding:0.5rem">&lt;section&gt; – thematic group</section>
-      <aside style="background:#fde2e2; padding:0.5rem">&lt;aside&gt; – sidebar</aside>
-      <footer style="background:#cfe7fc; padding:0.5rem">&lt;footer&gt; – copyright, contact</footer>
+      <header style="background:#cfe7fc;padding:0.5rem">&lt;header&gt; – top of page</header>
+      <nav style="background:#d9e6f5;padding:0.5rem">&lt;nav&gt; – navigation links</nav>
+      <main style="background:#eef2fa;padding:0.5rem">&lt;main&gt; – primary content</main>
+      <article style="background:#e0f2e9;padding:0.5rem">&lt;article&gt; – blog post</article>
+      <section style="background:#fff0db;padding:0.5rem">&lt;section&gt; – thematic group</section>
+      <aside style="background:#fde2e2;padding:0.5rem">&lt;aside&gt; – sidebar</aside>
+      <footer style="background:#cfe7fc;padding:0.5rem">&lt;footer&gt; – copyright, contact</footer>
     </div>
-    <div class="code-block">
-      <pre>&lt;header&gt;...&lt;/header&gt;
+    <div class="code-block"><pre>&lt;header&gt;...&lt;/header&gt;
 &lt;nav&gt;...&lt;/nav&gt;
 &lt;main&gt;...&lt;/main&gt;
 &lt;article&gt;...&lt;/article&gt;
 &lt;section&gt;...&lt;/section&gt;
 &lt;aside&gt;...&lt;/aside&gt;
-&lt;footer&gt;...&lt;/footer&gt;</pre>
-    </div>
+&lt;footer&gt;...&lt;/footer&gt;</pre></div>
   </div>
 
-  <!-- ========== 10. DIV & SPAN, CLASS & ID ========== -->
+  <!-- 10. DIV & SPAN -->
   <h2>10. Div & Span – Grouping Elements</h2>
   <div class="card">
-    <div class="explanation"><code>&lt;div&gt;</code> is a block‑level container; <code>&lt;span&gt;</code> is inline. They are used with <code>class</code> and <code>id</code> for styling and scripting.</div>
+    <div class="explanation"><code>&lt;div&gt;</code> is a block-level container; <code>&lt;span&gt;</code> is inline. Used with <code>class</code> and <code>id</code> for styling and scripting.</div>
     <div class="demo-area">
-      <div style="background:#eee; padding:0.5rem">This is a &lt;div&gt; (block).</div>
+      <div style="background:#eee;padding:0.5rem">This is a &lt;div&gt; (block).</div>
       <span style="background:yellow">This is a &lt;span&gt; (inline).</span>
-      <p>You can target elements by <strong class="highlight">class</strong> or <strong id="unique-id">id</strong>.</p>
     </div>
-    <div class="code-block">
-      <pre>&lt;div class="container"&gt;...&lt;/div&gt;
-&lt;span id="special"&gt;...&lt;/span&gt;</pre>
-    </div>
+    <div class="code-block"><pre>&lt;div class="container"&gt;...&lt;/div&gt;
+&lt;span id="special"&gt;...&lt;/span&gt;</pre></div>
   </div>
 
-  <!-- ========== 11. HTML ENTITIES ========== -->
+  <!-- 11. HTML ENTITIES -->
   <h2>11. HTML Entities (Special Characters)</h2>
   <div class="card">
-    <div class="explanation">Entities represent characters that would otherwise be interpreted as HTML code, like <code>&lt;</code> and <code>&gt;</code>.</div>
+    <div class="explanation">Entities represent characters that would otherwise be interpreted as HTML code.</div>
     <div class="demo-area">
-      &lt; (less than) → <code>&amp;lt;</code><br>
-      &gt; (greater than) → <code>&amp;gt;</code><br>
-      &amp; (ampersand) → <code>&amp;amp;</code><br>
-      &copy; (copyright) → <code>&amp;copy;</code><br>
-      &hearts; (heart) → <code>&amp;hearts;</code>
+      &lt; → <code>&amp;lt;</code> &nbsp;
+      &gt; → <code>&amp;gt;</code> &nbsp;
+      &amp; → <code>&amp;amp;</code> &nbsp;
+      &copy; → <code>&amp;copy;</code> &nbsp;
+      &hearts; → <code>&amp;hearts;</code>
     </div>
-    <div class="code-block">
-      <pre>&amp;lt;  →  &lt;
-&amp;gt;  →  &gt;
-&amp;amp;  →  &amp;
-&amp;copy; → ©
-&amp;hearts; → ♥</pre>
-    </div>
+    <div class="code-block"><pre>&amp;lt;    →  &lt;
+&amp;gt;    →  &gt;
+&amp;amp;   →  &amp;
+&amp;copy;  →  ©
+&amp;hearts; →  ♥</pre></div>
   </div>
 
-  <!-- ========== 12. IFRAMES ========== -->
+  <!-- 12. IFRAMES -->
   <h2>12. Iframes (Embed External Content)</h2>
   <div class="card">
     <div class="explanation">Embed another webpage or a video inside your page.</div>
     <div class="demo-area">
       <iframe width="300" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video"></iframe>
     </div>
-    <div class="code-block">
-      <pre>&lt;iframe src="https://example.com" width="400" height="300"&gt;&lt;/iframe&gt;</pre>
-    </div>
+    <div class="code-block"><pre>&lt;iframe src="https://example.com" width="400" height="300"&gt;&lt;/iframe&gt;</pre></div>
   </div>
 
-  <!-- ========== 13. META TAGS ========== -->
+  <!-- 13. META TAGS -->
   <h2>13. Meta Tags (Information for Browsers & SEO)</h2>
   <div class="card">
-    <div class="explanation">Meta tags go inside <code>&lt;head&gt;</code>. They provide metadata like description, keywords, viewport settings.</div>
-    <div class="code-block">
-      <pre>&lt;meta charset="UTF-8"&gt;
+    <div class="explanation">Meta tags go inside <code>&lt;head&gt;</code>. They provide metadata like description, keywords, and viewport settings.</div>
+    <div class="code-block"><pre>&lt;meta charset="UTF-8"&gt;
 &lt;meta name="description" content="Learn HTML easily"&gt;
-&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
-    </div>
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre></div>
     <div class="tip">🔍 The viewport meta tag is essential for responsive design on mobile devices.</div>
   </div>
 
-  <!-- ========== 14. INTERACTIVE TAGS ========== -->
+  <!-- 14. INTERACTIVE TAGS -->
   <h2>14. Interactive & Extra Tags</h2>
   <div class="card">
     <div class="demo-area">
       <details>
         <summary>Click to expand (details + summary)</summary>
         <p>Hidden content appears when you click.</p>
-      </details>
-      <progress value="70" max="100"></progress> Progress: 70%<br>
-      <meter value="0.6" min="0" max="1">60%</meter> Meter (disk usage)<br>
-      <hr> (horizontal rule)<br>
+      </details><br>
+      <progress value="70" max="100"></progress> Progress: 70%<br><br>
+      <meter value="0.6" min="0" max="1">60%</meter> Meter (disk usage)<br><br>
+      <hr>
       <blockquote>"The Web is for everyone." – Tim Berners-Lee</blockquote>
       <pre>Preformatted text
   preserves spaces</pre>
@@ -578,35 +641,27 @@ Press &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;C&lt;/kbd&gt;</pre>
       </dialog>
       <button onclick="document.getElementById('myDialog').showModal()">Open Dialog</button>
     </div>
-    <div class="code-block">
-      <pre>&lt;details&gt;
+    <div class="code-block"><pre>&lt;details&gt;
   &lt;summary&gt;Click to expand&lt;/summary&gt;
-  &lt;p&gt;Hidden content appears when you click.&lt;/p&gt;
+  &lt;p&gt;Hidden content.&lt;/p&gt;
 &lt;/details&gt;
 
 &lt;progress value="70" max="100"&gt;&lt;/progress&gt;
-
 &lt;meter value="0.6" min="0" max="1"&gt;60%&lt;/meter&gt;
-
 &lt;hr&gt;
-
-&lt;blockquote&gt;"The Web is for everyone." – Tim Berners-Lee&lt;/blockquote&gt;
-
-&lt;pre&gt;Preformatted text
-  preserves spaces&lt;/pre&gt;
+&lt;blockquote&gt;"Quote here"&lt;/blockquote&gt;
 
 &lt;dialog id="myDialog"&gt;
-  &lt;p&gt;This is a modal dialog.&lt;/p&gt;
+  &lt;p&gt;Modal content.&lt;/p&gt;
   &lt;button onclick="close()"&gt;Close&lt;/button&gt;
 &lt;/dialog&gt;
-&lt;button onclick="document.getElementById('myDialog').showModal()"&gt;Open Dialog&lt;/button&gt;</pre>
-    </div>
+&lt;button onclick="myDialog.showModal()"&gt;Open Dialog&lt;/button&gt;</pre></div>
   </div>
 
-  <!-- ========== 15. HTML5 VALIDATION (Built-in) ========== -->
+  <!-- 15. FORM VALIDATION -->
   <h2>15. HTML5 Form Validation (No JavaScript Needed)</h2>
   <div class="card">
-    <div class="explanation">HTML5 provides built‑in validation: <code>required</code>, <code>pattern</code>, <code>min</code>/<code>max</code>, <code>email</code>, etc.</div>
+    <div class="explanation">HTML5 provides built-in validation: <code>required</code>, <code>pattern</code>, <code>min</code>/<code>max</code>, <code>email</code>, etc.</div>
     <div class="demo-area">
       <form>
         <input type="text" placeholder="Your name" required><br><br>
@@ -614,42 +669,41 @@ Press &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;C&lt;/kbd&gt;</pre>
         <input type="number" min="18" max="99" required><br><br>
         <input type="submit" value="Submit">
       </form>
-      <p class="tip">Try submitting without filling – browser will show a validation message.</p>
+      <p class="tip" style="margin-top:0.5rem">Try submitting without filling – browser will show a validation message.</p>
     </div>
-    <div class="code-block">
-      <pre>&lt;input type="text" placeholder="Your name" required&gt;
-&lt;input type="email" placeholder="Email" required&gt;
-&lt;input type="number" min="18" max="99" required&gt;
-&lt;input type="submit" value="Submit"&gt;</pre>
-    </div>
+    <div class="code-block"><pre>&lt;input type="text"   placeholder="Your name" required&gt;
+&lt;input type="email"  placeholder="Email"     required&gt;
+&lt;input type="number" min="18" max="99"       required&gt;
+&lt;input type="submit" value="Submit"&gt;</pre></div>
   </div>
 
-  <!-- ========== 16. BEST PRACTICES ========== -->
+  <!-- 16. BEST PRACTICES -->
   <h2>16. HTML Best Practices for Beginners</h2>
   <div class="card">
-    <ul style="margin-left: 1.5rem">
+    <ul style="margin-left:1.5rem">
       <li>✅ Always include <code>&lt;!DOCTYPE html&gt;</code> and <code>&lt;meta charset="UTF-8"&gt;</code></li>
       <li>✅ Use semantic tags (<code>&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;</code>) instead of too many <code>&lt;div&gt;</code>s</li>
       <li>✅ Add <code>alt</code> attributes to all images</li>
       <li>✅ Keep heading hierarchy logical (<code>&lt;h1&gt;</code> → <code>&lt;h2&gt;</code> → etc.)</li>
-      <li>✅ Close all tags (except self‑closing like <code>&lt;img&gt;</code>)</li>
+      <li>✅ Close all tags (except self-closing like <code>&lt;img&gt;</code>)</li>
       <li>✅ Use lower case for tag names and attributes</li>
       <li>✅ Test your HTML with the <a href="https://validator.w3.org/" target="_blank">W3C Validator</a></li>
     </ul>
   </div>
 
-  <!-- ========== 17. CONCLUSION ========== -->
+  <!-- 17. CONCLUSION -->
   <h2>17. Conclusion</h2>
   <div class="card">
     <div class="explanation">
-      This guide covered <strong>over 70 HTML concepts</strong> – from basic structure to semantic tags, forms, media, iframes, meta tags, and modern validation. HTML is the foundation of every website. Practice by creating your own simple pages, inspect others’ code, and you’ll master it quickly.
+      This guide covered <strong>over 70 HTML concepts</strong> – from basic structure to semantic tags, forms, media, iframes, meta tags, and modern validation. HTML is the foundation of every website. Practice by creating your own simple pages, inspect others' code, and you'll master it quickly.
     </div>
   </div>
 
   <footer>
-    <p>📌 Complete beginner‑friendly HTML documentation – live demos, code examples, and best practices for a Full Stack portfolio.</p>
+    <p>📌 Complete beginner-friendly HTML documentation – live demos, code examples, and best practices.</p>
     <p>© 2025 – CET138 Assignment | <a href="#">Back to top ↑</a></p>
   </footer>
 </div>
+
 </body>
 </html>
