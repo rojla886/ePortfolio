@@ -96,7 +96,7 @@
             margin-bottom: 1rem;
         }
 
-        /* Doc Section Cards (same as HTML guide) */
+        /* Doc Section Cards */
         .doc-section {
             background: white;
             border-radius: 24px;
@@ -259,6 +259,7 @@
         @media (max-width: 700px) {
             .doc-section { padding: 1.2rem; }
             .demo-box { width: 120px; height: 120px; }
+            .card3d { width: 140px; height: 140px; }
         }
     </style>
 </head>
@@ -404,66 +405,144 @@
 <span style="color:#7dd3fc">.class</span> { <span style="color:#fbbf24">color</span>: <span style="color:#34d399">blue</span>; }  <span style="color:#64748b">/* specificity 10 */</span></code></pre></div>
     </section>
 
-    <!-- 2D TRANSFORMS interactive -->
+    <!-- 2D TRANSFORMS interactive (FIXED) -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 05</span>
         <h2>2D Transforms (rotate, scale, translate, skew)</h2>
-        <div class="control-panel">
-            <div class="demo-box" id="comboTransform" style="margin:0 auto 15px auto;">2D Playground</div>
-            <div><label>Rotate: <input type="range" id="rot2d" min="-180" max="180" value="0"><span id="rot2dVal">0°</span></label>
-            <label>Scale: <input type="range" id="scale2d" min="0.5" max="2" step="0.01" value="1"><span id="scale2dVal">1</span></label>
-            <label>Translate X: <input type="range" id="tx2d" min="-50" max="50" value="0"><span id="tx2dVal">0px</span></label>
-            <button id="reset2dBtn">Reset</button></div>
+        <div class="explanation">
+            <strong>2D transforms</strong> allow you to move, rotate, scale, and skew elements. They are GPU‑accelerated and perfect for interactive UIs. Properties: <code>transform: rotate(deg) scale() translate(x, y) skew(xdeg, ydeg);</code> <br>
+            Use them on <code>:hover</code> or with JavaScript for dynamic effects. The interactive panel below lets you combine all transforms in real time.
         </div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">.box:hover</span> {
-  <span style="color:#fbbf24">transform</span>: <span style="color:#34d399">rotate(15deg) scale(1.2) translate(10px, 10px)</span>;
-}</code></pre></div>
+        <div class="control-panel">
+            <div class="demo-box" id="comboTransform" style="margin:0 auto 15px auto; transition: none;">2D Playground</div>
+            <div>
+                <label>Rotate: <input type="range" id="rot2d" min="-180" max="180" value="0" step="1"><span id="rot2dVal">0°</span></label>
+                <label>Scale: <input type="range" id="scale2d" min="0.5" max="2" step="0.01" value="1"><span id="scale2dVal">1.00</span></label>
+                <label>Translate X: <input type="range" id="tx2d" min="-80" max="80" value="0"><span id="tx2dVal">0px</span></label>
+                <label>Translate Y: <input type="range" id="ty2d" min="-80" max="80" value="0"><span id="ty2dVal">0px</span></label>
+                <label>Skew X: <input type="range" id="skewX2d" min="-45" max="45" value="0"><span id="skewXVal">0deg</span></label>
+                <button id="reset2dBtn">Reset</button>
+            </div>
+        </div>
+        <div class="demo-area">
+            <div class="flex-row">
+                <div class="demo-box" id="rotateDemo" style="background:#0ea5e9;">Hover → Rotate</div>
+                <div class="demo-box" id="scaleDemo" style="background:#10b981;">Hover → Scale</div>
+                <div class="demo-box" id="translateDemo" style="background:#f59e0b;">Hover → Move</div>
+                <div class="demo-box" id="skewDemo" style="background:#ef4444;">Hover → Skew</div>
+            </div>
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">/* Basic 2D transforms */</span>
+<span style="color:#7dd3fc">.rotate:hover</span> { <span style="color:#fbbf24">transform</span>: <span style="color:#34d399">rotate(15deg)</span>; }
+<span style="color:#7dd3fc">.scale:hover</span> { <span style="color:#fbbf24">transform</span>: <span style="color:#34d399">scale(1.2)</span>; }
+<span style="color:#7dd3fc">.translate:hover</span> { <span style="color:#fbbf24">transform</span>: <span style="color:#34d399">translate(20px, 20px)</span>; }
+<span style="color:#7dd3fc">.skew:hover</span> { <span style="color:#fbbf24">transform</span>: <span style="color:#34d399">skew(10deg, 5deg)</span>; }
+
+<span style="color:#7dd3fc">/* Combined transforms (order matters!) */</span>
+<span style="color:#7dd3fc">.combined</span> {
+  <span style="color:#fbbf24">transform</span>: <span style="color:#34d399">rotate(30deg) scale(1.5) translate(20px, 20px) skew(5deg)</span>;
+}</code></pre>
+        </div>
+        <div class="tip">✨ <strong>Order matters!</strong> Transform functions are applied left to right. For example, <code>translate(50px) rotate(45deg)</code> is different from <code>rotate(45deg) translate(50px)</code>.</div>
     </section>
 
-    <!-- 3D TRANSFORMS -->
+    <!-- 3D TRANSFORMS (FIXED) -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 06</span>
         <h2>3D Transforms & Perspective</h2>
+        <div class="explanation">
+            <strong>3D transforms</strong> add depth by rotating elements around X, Y, or Z axes. You need <code>perspective</code> on the parent container to create the 3D effect. 
+            <code>transform-style: preserve-3d</code> allows children to be positioned in 3D space. <br>
+            Use <code>rotateX()</code> (tilt forward/back), <code>rotateY()</code> (turn left/right), and <code>rotateZ()</code> (spin). 
+            The interactive sliders below let you control the 3D card in real time.
+        </div>
         <div class="control-panel">
-            <div style="perspective:800px; display:inline-block;" id="scene3dContainer">
-                <div id="card3dObj" class="card3d" style="transform: rotateX(20deg) rotateY(30deg);">
+            <div style="perspective:800px; display:inline-block; margin-bottom:1rem;" id="scene3dContainer">
+                <div id="card3dObj" class="card3d" style="transform: rotateX(20deg) rotateY(30deg); transition: transform 0.1s ease;">
                     <div class="card3d-front">3D Card</div>
-                    <div class="card3d-back">Back</div>
+                    <div class="card3d-back">Back side</div>
                 </div>
             </div>
-            <div><label>rotateX: <input type="range" id="rotX3d" min="-180" max="180" value="20"><span id="rotXval">20°</span></label>
-            <label>rotateY: <input type="range" id="rotY3d" min="-180" max="180" value="30"><span id="rotYval">30°</span></label>
-            <label>Perspective: <input type="range" id="persp3d" min="200" max="1200" value="800"><span id="perspVal">800px</span></label>
-            <button id="reset3dBtn">Reset</button></div>
+            <div>
+                <label>rotateX: <input type="range" id="rotX3d" min="-180" max="180" value="20" step="1"><span id="rotXval">20°</span></label>
+                <label>rotateY: <input type="range" id="rotY3d" min="-180" max="180" value="30" step="1"><span id="rotYval">30°</span></label>
+                <label>rotateZ: <input type="range" id="rotZ3d" min="-180" max="180" value="0" step="1"><span id="rotZval">0°</span></label>
+                <label>Perspective: <input type="range" id="persp3d" min="200" max="1200" value="800" step="10"><span id="perspVal">800px</span></label>
+                <button id="reset3dBtn">Reset to 20°/30°</button>
+                <button id="zero3dBtn">Zero rotations</button>
+            </div>
         </div>
         <div class="demo-area">
+            <h5>✨ 3D Card Flip (hover me)</h5>
             <div style="perspective:600px; display:inline-block;">
                 <div class="card3d" style="transition: transform 0.6s;" onmouseover="this.style.transform='rotateY(180deg)'" onmouseout="this.style.transform='rotateY(0deg)'">
                     <div class="card3d-front">Hover to flip</div>
-                    <div class="card3d-back">✨ 3D Flip!</div>
+                    <div class="card3d-back">🎉 3D Flip!</div>
                 </div>
             </div>
         </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">/* 3D container */</span>
+<span style="color:#7dd3fc">.scene</span> {
+  <span style="color:#fbbf24">perspective</span>: <span style="color:#34d399">800px</span>;
+}
+<span style="color:#7dd3fc">.card</span> {
+  <span style="color:#fbbf24">width</span>: <span style="color:#34d399">200px</span>;
+  <span style="color:#fbbf24">height</span>: <span style="color:#34d399">200px</span>;
+  <span style="color:#fbbf24">transform-style</span>: <span style="color:#34d399">preserve-3d</span>;
+  <span style="color:#fbbf24">transition</span>: <span style="color:#34d399">transform 0.6s</span>;
+}
+<span style="color:#7dd3fc">.card:hover</span> {
+  <span style="color:#fbbf24">transform</span>: <span style="color:#34d399">rotateY(180deg)</span>;
+}
+<span style="color:#7dd3fc">.card-front, .card-back</span> {
+  <span style="color:#fbbf24">position</span>: <span style="color:#34d399">absolute</span>;
+  <span style="color:#fbbf24">backface-visibility</span>: <span style="color:#34d399">hidden</span>;
+}
+<span style="color:#7dd3fc">.card-back</span> {
+  <span style="color:#fbbf24">transform</span>: <span style="color:#34d399">rotateY(180deg)</span>;
+}</code></pre>
+        </div>
+        <div class="tip">🎯 <strong>Perspective</strong> defines how strong the 3D effect is (lower value = more dramatic). <code>transform-style: preserve-3d</code> is required for nested 3D elements.</div>
     </section>
 
     <!-- FILTERS & ANIMATIONS -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 07</span>
         <h2>Filters & Keyframe Animations</h2>
+        <div class="explanation">
+            <strong>Filters</strong> (blur, grayscale, sepia, brightness, contrast, hue-rotate) apply visual effects similar to Photoshop. <br>
+            <strong>Keyframe animations</strong> let you create complex, repeating movements using <code>@keyframes</code>.
+        </div>
         <div class="flex-row">
             <img src="https://picsum.photos/id/20/100/100" style="filter: blur(2px); border-radius:12px;">
             <img src="https://picsum.photos/id/20/100/100" style="filter: grayscale(1); border-radius:12px;">
             <img src="https://picsum.photos/id/20/100/100" style="filter: sepia(0.8); border-radius:12px;">
+            <img src="https://picsum.photos/id/20/100/100" style="filter: brightness(1.5); border-radius:12px;">
         </div>
         <div class="flex-row mt-3">
             <div class="demo-box animate-bounce" style="background: #0ea5e9;">Bounce</div>
             <div class="demo-box animate-spin" style="background: #10b981;">Spin</div>
         </div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">@keyframes bounce</span> {
-  0%,100% { <span style="color:#fbbf24">transform</span>: <span style="color:#34d399">translateY(0)</span>; }
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">/* Filters */</span>
+img {
+  <span style="color:#fbbf24">filter</span>: <span style="color:#34d399">blur(2px) grayscale(50%) sepia(20%) brightness(1.2)</span>;
+}
+
+<span style="color:#7dd3fc">/* Keyframe animation */</span>
+<span style="color:#7dd3fc">@keyframes bounce</span> {
+  0%, 100% { <span style="color:#fbbf24">transform</span>: <span style="color:#34d399">translateY(0)</span>; }
   50% { <span style="color:#fbbf24">transform</span>: <span style="color:#34d399">translateY(-20px)</span>; }
 }
-<span style="color:#7dd3fc">.bounce</span> { <span style="color:#fbbf24">animation</span>: <span style="color:#34d399">bounce 1s infinite</span>; }</code></pre></div>
+<span style="color:#7dd3fc">.bounce</span> {
+  <span style="color:#fbbf24">animation</span>: <span style="color:#34d399">bounce 1s infinite ease</span>;
+}</code></pre>
+        </div>
     </section>
 
     <!-- FLEXBOX & GRID -->
@@ -492,28 +571,45 @@
     <section class="doc-section">
         <span class="chapter-badge">Chapter 09</span>
         <h2>Responsive Design & Media Queries</h2>
+        <div class="explanation">
+            <strong>Media queries</strong> apply CSS only when certain conditions are met (e.g., screen width). Mobile‑first means write default styles for small screens, then use <code>min-width</code> for larger devices.
+        </div>
         <div class="demo-area">
             <div id="responsiveBox" style="background: var(--primary); padding:1rem; color:white; border-radius:12px; text-align:center;">Resize browser → my background changes! (blue: <600px, green: 600-1023px, purple: ≥1024px)</div>
         </div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">@media (max-width: 600px)</span> { <span style="color:#7dd3fc">.box</span> { <span style="color:#fbbf24">background</span>: <span style="color:#34d399">blue</span>; } }
-<span style="color:#7dd3fc">@media (min-width: 600px) and (max-width: 1023px)</span> { <span style="color:#7dd3fc">.box</span> { <span style="color:#fbbf24">background</span>: <span style="color:#34d399">green</span>; } }</code></pre></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">/* Mobile first: default for small screens */</span>
+<span style="color:#7dd3fc">.box</span> { <span style="color:#fbbf24">background</span>: <span style="color:#34d399">blue</span>; }
+<span style="color:#7dd3fc">@media (min-width: 600px)</span> {
+  <span style="color:#7dd3fc">.box</span> { <span style="color:#fbbf24">background</span>: <span style="color:#34d399">green</span>; }
+}
+<span style="color:#7dd3fc">@media (min-width: 1024px)</span> {
+  <span style="color:#7dd3fc">.box</span> { <span style="color:#fbbf24">background</span>: <span style="color:#34d399">purple</span>; }
+}</code></pre></div>
     </section>
 
     <!-- CSS VARIABLES & PSEUDO CLASSES -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 10</span>
         <h2>CSS Variables & Pseudo-classes</h2>
-        <div class="explanation">Variables (<code>--primary-color</code>) make theming easy. Pseudo‑classes like <code>:hover</code>, <code>:first-child</code> style based on state/position.</div>
+        <div class="explanation">
+            <strong>CSS Variables</strong> (custom properties) store values for reuse. <strong>Pseudo-classes</strong> like <code>:hover</code>, <code>:first-child</code>, <code>:nth-child()</code> style elements based on state or position.
+        </div>
         <div class="demo-area">
             <button style="--btn-bg: #0ea5e9; background: var(--btn-bg); padding:0.5rem 1.5rem; border:none; border-radius:40px;">Hover me (scale & shadow)</button>
             <ul class="mt-3" style="list-style:none">
-                <li style="color:#10b981;">First child (green)</li>
-                <li>Second child</li>
-                <li>Third child</li>
+                <li style="color:#10b981;">✅ First child (green)</li>
+                <li>🔹 Second child</li>
+                <li>🔹 Third child</li>
             </ul>
         </div>
         <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">:root</span> { <span style="color:#fbbf24">--primary</span>: <span style="color:#34d399">#0ea5e9</span>; }
-<span style="color:#7dd3fc">button:hover</span> { <span style="color:#fbbf24">transform</span>: <span style="color:#34d399">scale(1.05)</span>; }</code></pre></div>
+<span style="color:#7dd3fc">button</span> {
+  <span style="color:#fbbf24">background</span>: <span style="color:#34d399">var(--primary)</span>;
+}
+<span style="color:#7dd3fc">button:hover</span> {
+  <span style="color:#fbbf24">transform</span>: <span style="color:#34d399">scale(1.05)</span>;
+}
+<span style="color:#7dd3fc">li:first-child</span> { <span style="color:#fbbf24">color</span>: <span style="color:#34d399">green</span>; }</code></pre></div>
     </section>
 
     <!-- BEST PRACTICES -->
@@ -522,14 +618,15 @@
         <h2>CSS Best Practices</h2>
         <ul>
             <li>✅ Use external CSS for real projects.</li>
-            <li>✅ Prefer classes over IDs for styling.</li>
-            <li>✅ Animate <code>transform</code> and <code>opacity</code> (GPU accelerated).</li>
+            <li>✅ Prefer classes over IDs for styling (lower specificity, more reusable).</li>
+            <li>✅ Animate <code>transform</code> and <code>opacity</code> (GPU accelerated, smoother).</li>
             <li>✅ Always set <code>box-sizing: border-box;</code> globally.</li>
             <li>✅ Write mobile‑first media queries.</li>
             <li>✅ Avoid <code>!important</code> except for utility overrides.</li>
             <li>✅ Use CSS variables for consistent theming.</li>
+            <li>✅ Test with browser DevTools (F12).</li>
         </ul>
-        <div class="tip">🔥 Always test with Chrome DevTools (F12) – it's your best friend for debugging CSS.</div>
+        <div class="tip">🔥 Pro tip: Use <code>will-change: transform</code> for elements you plan to animate frequently to improve performance.</div>
     </section>
 
     <!-- CONCLUSION -->
@@ -558,36 +655,59 @@
         });
     }
 
-    // 2D transform interactive
+    // ========== 2D TRANSFORM INTERACTIVE (FIXED) ==========
     const combo = document.getElementById('comboTransform');
     const rot2d = document.getElementById('rot2d');
     const scale2d = document.getElementById('scale2d');
     const tx2d = document.getElementById('tx2d');
     const ty2d = document.getElementById('ty2d');
+    const skewX = document.getElementById('skewX2d');
     function update2D() {
-        combo.style.transform = `rotate(${rot2d.value}deg) scale(${scale2d.value}) translate(${tx2d.value}px, ${ty2d.value}px)`;
-        document.getElementById('rot2dVal').innerText = rot2d.value + "°";
-        document.getElementById('scale2dVal').innerText = parseFloat(scale2d.value).toFixed(2);
-        document.getElementById('tx2dVal').innerText = tx2d.value + "px";
-        document.getElementById('ty2dVal').innerText = ty2d.value + "px";
+        const rot = rot2d.value;
+        const scale = scale2d.value;
+        const tx = tx2d.value;
+        const ty = ty2d.value;
+        const skew = skewX.value;
+        combo.style.transform = `rotate(${rot}deg) scale(${scale}) translate(${tx}px, ${ty}px) skew(${skew}deg)`;
+        document.getElementById('rot2dVal').innerText = rot + "°";
+        document.getElementById('scale2dVal').innerText = parseFloat(scale).toFixed(2);
+        document.getElementById('tx2dVal').innerText = tx + "px";
+        document.getElementById('ty2dVal').innerText = ty + "px";
+        document.getElementById('skewXVal').innerText = skew + "deg";
     }
     rot2d.addEventListener('input', update2D);
     scale2d.addEventListener('input', update2D);
     tx2d.addEventListener('input', update2D);
     ty2d.addEventListener('input', update2D);
-    document.getElementById('reset2dBtn').addEventListener('click', () => { rot2d.value = 0; scale2d.value = 1; tx2d.value = 0; ty2d.value = 0; update2D(); });
+    skewX.addEventListener('input', update2D);
+    document.getElementById('reset2dBtn').addEventListener('click', () => {
+        rot2d.value = 0; scale2d.value = 1; tx2d.value = 0; ty2d.value = 0; skewX.value = 0;
+        update2D();
+    });
     update2D();
 
-    // 3D transforms
+    // Hover demos for 2D transforms
+    document.getElementById('rotateDemo')?.addEventListener('mouseenter', function() { this.style.transform = 'rotate(15deg)'; });
+    document.getElementById('rotateDemo')?.addEventListener('mouseleave', function() { this.style.transform = ''; });
+    document.getElementById('scaleDemo')?.addEventListener('mouseenter', function() { this.style.transform = 'scale(1.2)'; });
+    document.getElementById('scaleDemo')?.addEventListener('mouseleave', function() { this.style.transform = ''; });
+    document.getElementById('translateDemo')?.addEventListener('mouseenter', function() { this.style.transform = 'translate(20px, 20px)'; });
+    document.getElementById('translateDemo')?.addEventListener('mouseleave', function() { this.style.transform = ''; });
+    document.getElementById('skewDemo')?.addEventListener('mouseenter', function() { this.style.transform = 'skew(10deg, 5deg)'; });
+    document.getElementById('skewDemo')?.addEventListener('mouseleave', function() { this.style.transform = ''; });
+
+    // ========== 3D TRANSFORM INTERACTIVE (FIXED) ==========
     const card3d = document.getElementById('card3dObj');
     const rotX = document.getElementById('rotX3d');
     const rotY = document.getElementById('rotY3d');
+    const rotZ = document.getElementById('rotZ3d');
     const perspSlider = document.getElementById('persp3d');
     const sceneContainer = document.getElementById('scene3dContainer');
     function update3D() {
-        card3d.style.transform = `rotateX(${rotX.value}deg) rotateY(${rotY.value}deg)`;
+        card3d.style.transform = `rotateX(${rotX.value}deg) rotateY(${rotY.value}deg) rotateZ(${rotZ.value}deg)`;
         document.getElementById('rotXval').innerText = rotX.value + "°";
         document.getElementById('rotYval').innerText = rotY.value + "°";
+        document.getElementById('rotZval').innerText = rotZ.value + "°";
     }
     function updatePersp() {
         sceneContainer.style.perspective = perspSlider.value + "px";
@@ -595,10 +715,15 @@
     }
     rotX.addEventListener('input', update3D);
     rotY.addEventListener('input', update3D);
+    rotZ.addEventListener('input', update3D);
     perspSlider.addEventListener('input', updatePersp);
     document.getElementById('reset3dBtn').addEventListener('click', () => {
-        rotX.value = 20; rotY.value = 30; perspSlider.value = 800;
+        rotX.value = 20; rotY.value = 30; rotZ.value = 0; perspSlider.value = 800;
         update3D(); updatePersp();
+    });
+    document.getElementById('zero3dBtn').addEventListener('click', () => {
+        rotX.value = 0; rotY.value = 0; rotZ.value = 0;
+        update3D();
     });
     update3D(); updatePersp();
 
@@ -612,7 +737,7 @@
         else { specPara.style.cssText = "color: purple;"; }
     });
 
-    // Responsive media query demo dynamic (we add style)
+    // Responsive media query demo dynamic (add style)
     const styleResponsive = document.createElement('style');
     styleResponsive.textContent = `@media (max-width: 600px) { #responsiveBox { background: #ef4444 !important; } }
                                    @media (min-width: 600px) and (max-width: 1023px) { #responsiveBox { background: #10b981 !important; } }
