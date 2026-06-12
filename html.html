@@ -210,8 +210,8 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="#">Full Stack</a></li>
-                <li class="nav-item"><a class="nav-link" href="./html.html">HTML</a></li>
-                <li class="nav-item"><a class="nav-link active" href="./Css.html">CSS</a></li>
+                <li class="nav-item"><a class="nav-link active" href="./html.html">HTML</a></li>
+                <li class="nav-item"><a class="nav-link " href="./Css.html">CSS</a></li>
                 <li class="nav-item"><a class="nav-link" href="./javascript.html">JavaScript</a></li>
                 <li class="nav-item"><a class="nav-link" href="./Bootstrap.html">Bootstrap</a></li>
             </ul>
@@ -219,7 +219,7 @@
     </div>
 </nav>
 
-<!-- HERO SECTION with managed colors (deep tech gradient) -->
+<!-- HERO SECTION with working buttons -->
 <header class="hero">
     <div class="container">
         <div class="row align-items-center">
@@ -258,17 +258,23 @@
         <section id="section1" class="doc-section">
             <span class="chapter-badge">Chapter 01</span>
             <h2 class="fw-bold">What is HTML?</h2>
-            <p class="mt-3">HTML (**HyperText Markup Language**) is the most basic building block of the Web. It defines the meaning and structure of web content. It's not a programming language, but a <strong>markup language</strong> that uses tags to annotate text, images, and other content for display in a Web browser.</p>
+            <p class="mt-3">HTML (HyperText Markup Language) is the most basic building block of the Web. It defines the meaning and structure of web content. It's not a programming language, but a <strong>markup language</strong> that uses tags to annotate text, images, and other content for display in a Web browser.</p>
             <div class="info-box">
                 <strong>Why learn it?</strong> Every single website, from Google to Facebook, is built on a foundation of HTML. Without it, the web would be plain text.
             </div>
             <p class="extra-desc">✨ HTML tags usually come in pairs: an opening tag like <code>&lt;p&gt;</code> and a closing tag <code>&lt;/p&gt;</code>. The content lives between them. Browsers interpret these tags to create headings, paragraphs, links, forms, and rich media.</p>
             <div class="code-window">
-                <div class="code-header">
-                    <div class="mac-dots"><span></span><span></span><span></span></div>
-                    <button class="btn-copy" onclick="copyCode(this)">Copy</button>
-                </div>
-                <pre><code><span class="t-tag">&lt;p&gt;</span>This is a paragraph tag.<span class="t-tag">&lt;/p&gt;</span></code></pre>
+                <div class="code-header"><div class="mac-dots"><span></span><span></span><span></span></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                <pre><code><span class="t-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="t-tag">&lt;html&gt;</span>
+<span class="t-tag">&lt;head&gt;</span>
+    <span class="t-tag">&lt;title&gt;</span>My First Page<span class="t-tag">&lt;/title&gt;</span>
+<span class="t-tag">&lt;/head&gt;</span>
+<span class="t-tag">&lt;body&gt;</span>
+    <span class="t-tag">&lt;h1&gt;</span>Welcome to HTML<span class="t-tag">&lt;/h1&gt;</span>
+    <span class="t-tag">&lt;p&gt;</span>This is a paragraph.<span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;/body&gt;</span>
+<span class="t-tag">&lt;/html&gt;</span></code></pre>
             </div>
         </section>
 
@@ -279,10 +285,7 @@
             <p>Every HTML file must follow this exact document structure to be rendered correctly by browsers.</p>
             <p class="extra-desc">📄 The <code>&lt;!DOCTYPE html&gt;</code> declaration ensures the browser uses modern standards mode. The <code>&lt;head&gt;</code> holds metadata, and everything visible goes inside the <code>&lt;body&gt;</code>.</p>
             <div class="code-window">
-                <div class="code-header">
-                    <div class="mac-dots"><span></span><span></span><span></span></div>
-                    <button class="btn-copy" onclick="copyCode(this)">Copy</button>
-                </div>
+                <div class="code-header"><div class="mac-dots"><span></span><span></span><span></span></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
                 <pre><code><span class="t-tag">&lt;!DOCTYPE html&gt;</span>
 <span class="t-tag">&lt;html</span> <span class="t-attr">lang</span>=<span class="t-val">"en"</span><span class="t-tag">&gt;</span>
 <span class="t-tag">&lt;head&gt;</span>
@@ -305,14 +308,19 @@
             <div class="row g-4 align-items-center">
                 <div class="col-md-6">
                     <pre class="bg-dark p-3 rounded"><code><span class="t-tag">&lt;h1&gt;</span>Main Title<span class="t-tag">&lt;/h1&gt;</span>
-<span class="t-tag">&lt;p&gt;</span>This is a <span class="t-tag">&lt;strong&gt;</span>bold<span class="t-tag">&lt;/strong&gt;</span> word.<span class="t-tag">&lt;/p&gt;</span></code></pre>
+<span class="t-tag">&lt;h2&gt;</span>Subheading<span class="t-tag">&lt;/h2&gt;</span>
+<span class="t-tag">&lt;p&gt;</span>This is a <span class="t-tag">&lt;strong&gt;</span>bold<span class="t-tag">&lt;/strong&gt;</span> word and <span class="t-tag">&lt;em&gt;</span>italic<span class="t-tag">&lt;/em&gt;</span>.<span class="t-tag">&lt;/p&gt;</span></code></pre>
                 </div>
                 <div class="col-md-6">
                     <div class="demo-area">
                         <h1 class="h3">Main Title</h1>
-                        <p class="mb-0">This is a <strong>bold</strong> word.</p>
+                        <h2 class="h5">Subheading</h2>
+                        <p class="mb-0">This is a <strong>bold</strong> word and <em>italic</em>.</p>
                     </div>
                 </div>
+            </div>
+            <div class="inline-code-snip mt-3">
+                <span class="t-tag">&lt;h1&gt;</span> to <span class="t-tag">&lt;h6&gt;</span> for headings, <span class="t-tag">&lt;p&gt;</span> for paragraphs, <span class="t-tag">&lt;br&gt;</span> for line break.
             </div>
         </section>
 
@@ -329,6 +337,7 @@
                         <ol class="mb-0">
                             <li>Wake up</li>
                             <li>Code</li>
+                            <li>Repeat</li>
                         </ol>
                     </div>
                 </div>
@@ -338,15 +347,19 @@
                         <ul class="mb-0">
                             <li>HTML</li>
                             <li>CSS</li>
+                            <li>JavaScript</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="inline-code-snip mt-4">
-                <span class="text-info">&lt;ul&gt;</span><br>
-                &nbsp;&nbsp;<span class="text-info">&lt;li&gt;</span>Item 1<span class="text-info">&lt;/li&gt;</span><br>
-                &nbsp;&nbsp;<span class="text-info">&lt;li&gt;</span>Item 2<span class="text-info">&lt;/li&gt;</span><br>
-                <span class="text-info">&lt;/ul&gt;</span>
+            <div class="code-window mt-3">
+                <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                <pre><code><span class="t-tag">&lt;ul&gt;</span>
+  <span class="t-tag">&lt;li&gt;</span>Unordered item<span class="t-tag">&lt;/li&gt;</span>
+<span class="t-tag">&lt;/ul&gt;</span>
+<span class="t-tag">&lt;ol&gt;</span>
+  <span class="t-tag">&lt;li&gt;</span>First step<span class="t-tag">&lt;/li&gt;</span>
+<span class="t-tag">&lt;/ol&gt;</span></code></pre>
             </div>
         </section>
 
@@ -357,10 +370,13 @@
             <p>The <code>&lt;a&gt;</code> tag allows users to navigate between pages using the <code>href</code> attribute.</p>
             <p class="extra-desc">🔗 Use <code>target="_blank"</code> to open links in a new tab. Absolute links go to external URLs, relative links navigate within your site.</p>
             <div class="code-window">
-                <pre><code><span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"https://google.com"</span> <span class="t-attr">target</span>=<span class="t-val">"_blank"</span><span class="t-tag">&gt;</span>Open Google<span class="t-tag">&lt;/a&gt;</span></code></pre>
+                <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                <pre><code><span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"https://google.com"</span> <span class="t-attr">target</span>=<span class="t-val">"_blank"</span><span class="t-tag">&gt;</span>Open Google<span class="t-tag">&lt;/a&gt;</span>
+<span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"about.html"</span><span class="t-tag">&gt;</span>About Us<span class="t-tag">&lt;/a&gt;</span>
+<span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"#section1"</span><span class="t-tag">&gt;</span>Jump to Intro<span class="t-tag">&lt;/a&gt;</span></code></pre>
             </div>
             <div class="demo-area">
-                <a href="#" class="btn btn-primary btn-sm">Clickable Link Button</a>
+                <a href="#" class="btn btn-primary btn-sm">Example Link Button</a>
             </div>
         </section>
 
@@ -381,8 +397,12 @@
                     <video controls class="w-100 rounded shadow-sm"><source src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
                 </div>
             </div>
-            <div class="inline-code-snip mt-3">
-                <span class="t-tag">&lt;img</span> <span class="t-attr">src</span>=<span class="t-val">"photo.jpg"</span> <span class="t-attr">alt</span>=<span class="t-val">"description"</span><span class="t-tag">&gt;</span>
+            <div class="code-window mt-3">
+                <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                <pre><code><span class="t-tag">&lt;img</span> <span class="t-attr">src</span>=<span class="t-val">"photo.jpg"</span> <span class="t-attr">alt</span>=<span class="t-val">"Description"</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;audio</span> <span class="t-attr">controls</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;source</span> <span class="t-attr">src</span>=<span class="t-val">"audio.mp3"</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;/audio&gt;</span></code></pre>
             </div>
         </section>
 
@@ -401,11 +421,12 @@
                     <tr><td>Pro</td><td>$19</td><td>Unlimited</td></tr>
                 </tbody>
             </table>
-            <div class="inline-code-snip mt-3">
-                <span class="text-info">&lt;table&gt;</span><br>
-                &nbsp;&nbsp;<span class="text-info">&lt;tr&gt;&lt;th&gt;</span>Name<span class="text-info">&lt;/th&gt;&lt;th&gt;</span>Value<span class="text-info">&lt;/th&gt;&lt;/tr&gt;</span><br>
-                &nbsp;&nbsp;<span class="text-info">&lt;tr&gt;&lt;td&gt;</span>Apple<span class="text-info">&lt;/td&gt;&lt;td&gt;</span>$2<span class="text-info">&lt;/td&gt;&lt;/tr&gt;</span><br>
-                <span class="text-info">&lt;/table&gt;</span>
+            <div class="code-window mt-3">
+                <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                <pre><code><span class="t-tag">&lt;table&gt;</span>
+  <span class="t-tag">&lt;tr&gt;</span><span class="t-tag">&lt;th&gt;</span>Name<span class="t-tag">&lt;/th&gt;</span><span class="t-tag">&lt;th&gt;</span>Value<span class="t-tag">&lt;/th&gt;</span><span class="t-tag">&lt;/tr&gt;</span>
+  <span class="t-tag">&lt;tr&gt;</span><span class="t-tag">&lt;td&gt;</span>Apple<span class="t-tag">&lt;/td&gt;</span><span class="t-tag">&lt;td&gt;</span>$2<span class="t-tag">&lt;/td&gt;</span><span class="t-tag">&lt;/tr&gt;</span>
+<span class="t-tag">&lt;/table&gt;</span></code></pre>
             </div>
         </section>
 
@@ -422,8 +443,12 @@
                     <div class="col-12"><button type="button" class="btn btn-dark">Send Data</button></div>
                 </form>
             </div>
-            <div class="inline-code-snip mt-3">
-                <span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"text"</span> <span class="t-attr">placeholder</span>=<span class="t-val">"Your name"</span><span class="t-tag">&gt;</span>
+            <div class="code-window mt-3">
+                <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                <pre><code><span class="t-tag">&lt;form</span> <span class="t-attr">action</span>=<span class="t-val">"/submit"</span> <span class="t-attr">method</span>=<span class="t-val">"post"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"text"</span> <span class="t-attr">name</span>=<span class="t-val">"name"</span> <span class="t-attr">placeholder</span>=<span class="t-val">"Your name"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;button</span> <span class="t-attr">type</span>=<span class="t-val">"submit"</span><span class="t-tag">&gt;</span>Send<span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;/form&gt;</span></code></pre>
             </div>
         </section>
 
@@ -441,9 +466,13 @@
                 </div>
                 <div class="p-2 mt-2 border border-dark text-dark fw-bold">&lt;footer&gt;</div>
             </div>
-            <div class="inline-code-snip mt-3 text-start">
-                <span class="t-tag">&lt;article&gt;</span> ... <span class="t-tag">&lt;/article&gt;</span> &nbsp;|&nbsp;
-                <span class="t-tag">&lt;section&gt;</span> ... <span class="t-tag">&lt;/section&gt;</span>
+            <div class="code-window mt-3 text-start">
+                <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                <pre><code><span class="t-tag">&lt;header&gt;</span>Site Header<span class="t-tag">&lt;/header&gt;</span>
+<span class="t-tag">&lt;nav&gt;</span>Navigation<span class="t-tag">&lt;/nav&gt;</span>
+<span class="t-tag">&lt;main&gt;</span>Main content<span class="t-tag">&lt;/main&gt;</span>
+<span class="t-tag">&lt;article&gt;</span>Blog post<span class="t-tag">&lt;/article&gt;</span>
+<span class="t-tag">&lt;footer&gt;</span>Footer<span class="t-tag">&lt;/footer&gt;</span></code></pre>
             </div>
         </section>
 
@@ -455,9 +484,10 @@
             <p class="extra-desc">🎨 Use <code>div</code> for layout wrappers and <code>span</code> for small inline styling like highlighting words.</p>
             <div class="bg-secondary text-white p-3 mb-2 rounded">I am a div - I fill the space.</div>
             <p>I contain a <span class="badge bg-primary">span element</span> inside a sentence.</p>
-            <div class="inline-code-snip mt-2">
-                <span class="t-tag">&lt;div&gt;</span>Block container<span class="t-tag">&lt;/div&gt;</span> &nbsp; 
-                <span class="t-tag">&lt;span&gt;</span>inline text<span class="t-tag">&lt;/span&gt;</span>
+            <div class="code-window mt-3">
+                <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                <pre><code><span class="t-tag">&lt;div&gt;</span>Block container<span class="t-tag">&lt;/div&gt;</span>
+<span class="t-tag">&lt;span&gt;</span>inline highlight<span class="t-tag">&lt;/span&gt;</span></code></pre>
             </div>
         </section>
 
@@ -473,8 +503,10 @@
                     <tr><td>&amp;hearts;</td><td>&hearts; (Heart)</td></tr>
                 </table>
             </div>
-            <div class="inline-code-snip">
-                &amp;copy; → © &nbsp;&nbsp; &amp;nbsp; → non-breaking space
+            <div class="code-window mt-2">
+                <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                <pre><code><span class="t-tag">&lt;p&gt;</span>Copyright &amp;copy; 2025<span class="t-tag">&lt;/p&gt;</span>
+5 &amp;lt; 10  →  5 &lt; 10</code></pre>
             </div>
         </section>
 
@@ -487,8 +519,9 @@
             <div class="ratio ratio-16x9 rounded overflow-hidden shadow">
                 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube" allowfullscreen></iframe>
             </div>
-            <div class="inline-code-snip mt-3">
-                <span class="t-tag">&lt;iframe</span> <span class="t-attr">src</span>=<span class="t-val">"url"</span> <span class="t-attr">width</span>=<span class="t-val">"560"</span> <span class="t-attr">height</span>=<span class="t-val">"315"</span><span class="t-tag">&gt;&lt;/iframe&gt;</span>
+            <div class="code-window mt-3">
+                <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                <pre><code><span class="t-tag">&lt;iframe</span> <span class="t-attr">src</span>=<span class="t-val">"https://www.youtube.com/embed/VIDEO_ID"</span> <span class="t-attr">width</span>=<span class="t-val">"560"</span> <span class="t-attr">height</span>=<span class="t-val">"315"</span><span class="t-tag">&gt;&lt;/iframe&gt;</span></code></pre>
             </div>
         </section>
 
@@ -499,8 +532,11 @@
             <p>Information inside the <code>&lt;head&gt;</code> that helps Google understand your site.</p>
             <p class="extra-desc">🔍 Meta descriptions appear in search results. Viewport tag ensures mobile responsiveness.</p>
             <div class="code-window">
-                <pre><code><span class="t-tag">&lt;meta</span> <span class="t-attr">name</span>=<span class="t-val">"description"</span> <span class="t-attr">content</span>=<span class="t-val">"Free HTML Guide"</span><span class="t-tag">&gt;</span>
-<span class="t-tag">&lt;meta</span> <span class="t-attr">name</span>=<span class="t-val">"viewport"</span> <span class="t-attr">content</span>=<span class="t-val">"width=device-width"</span><span class="t-tag">&gt;</span></code></pre>
+                <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                <pre><code><span class="t-tag">&lt;meta</span> <span class="t-attr">charset</span>=<span class="t-val">"UTF-8"</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;meta</span> <span class="t-attr">name</span>=<span class="t-val">"description"</span> <span class="t-attr">content</span>=<span class="t-val">"Free HTML Guide"</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;meta</span> <span class="t-attr">name</span>=<span class="t-val">"viewport"</span> <span class="t-attr">content</span>=<span class="t-val">"width=device-width, initial-scale=1.0"</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;meta</span> <span class="t-attr">name</span>=<span class="t-val">"author"</span> <span class="t-attr">content</span>=<span class="t-val">"Your Name"</span><span class="t-tag">&gt;</span></code></pre>
             </div>
         </section>
 
@@ -515,8 +551,13 @@
             </details>
             <label>Loading Progress:</label>
             <progress class="w-100" value="70" max="100"></progress>
-            <div class="inline-code-snip mt-3">
-                <span class="t-tag">&lt;details&gt;&lt;summary&gt;</span>Title<span class="t-tag">&lt;/summary&gt;</span> hidden text <span class="t-tag">&lt;/details&gt;</span>
+            <div class="code-window mt-3">
+                <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                <pre><code><span class="t-tag">&lt;details&gt;</span>
+  <span class="t-tag">&lt;summary&gt;</span>Read more<span class="t-tag">&lt;/summary&gt;</span>
+  <span class="t-tag">&lt;p&gt;</span>Hidden content appears when clicked.<span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;/details&gt;</span>
+<span class="t-tag">&lt;progress</span> <span class="t-attr">value</span>=<span class="t-val">"50"</span> <span class="t-attr">max</span>=<span class="t-val">"100"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;/progress&gt;</span></code></pre>
             </div>
         </section>
 
@@ -530,8 +571,11 @@
                 <input type="email" class="form-control mb-2" placeholder="Email (Required)" required>
                 <button type="submit" class="btn btn-success">Submit Test</button>
             </form>
-            <div class="inline-code-snip mt-3">
-                <span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"email"</span> <span class="t-attr">required</span><span class="t-tag">&gt;</span>
+            <div class="code-window mt-3">
+                <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                <pre><code><span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"email"</span> <span class="t-attr">required</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"number"</span> <span class="t-attr">min</span>=<span class="t-val">"1"</span> <span class="t-attr">max</span>=<span class="t-val">"10"</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">pattern</span>=<span class="t-val">"[A-Za-z]{3}"</span> <span class="t-attr">title</span>=<span class="t-val">"3 letters"</span><span class="t-tag">&gt;</span></code></pre>
             </div>
         </section>
 
@@ -547,6 +591,7 @@
                             <li>Use Semantic Tags</li>
                             <li>Include <code>alt</code> for images</li>
                             <li>Keep tags lowercase</li>
+                            <li>Validate your HTML</li>
                         </ul>
                     </div>
                 </div>
@@ -557,11 +602,15 @@
                             <li>Don't use Tables for layout</li>
                             <li>Don't skip the <code>&lt;!DOCTYPE&gt;</code></li>
                             <li>Avoid inline styles</li>
+                            <li>Don't forget accessibility</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <p class="extra-desc mt-3">✨ Validate your HTML with W3C Validator and always write accessible code. This makes your site future-proof and inclusive.</p>
+            <div class="inline-code-snip mt-2">
+                <span class="t-comm">&lt;!-- Always close tags, use indentation, and add lang attribute --&gt;</span>
+            </div>
         </section>
 
         <!-- 17. CONCLUSION -->
@@ -591,8 +640,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     function copyCode(button) {
-        const code = button.parentElement.nextElementSibling.innerText;
-        navigator.clipboard.writeText(code).then(() => {
+        const codeBlock = button.parentElement.nextElementSibling;
+        let codeText = "";
+        if (codeBlock.tagName === 'PRE') {
+            codeText = codeBlock.innerText;
+        } else {
+            codeText = codeBlock.querySelector('code')?.innerText || codeBlock.innerText;
+        }
+        navigator.clipboard.writeText(codeText).then(() => {
             const originalText = button.innerText;
             button.innerText = "Copied!";
             button.style.color = "#34d399";
