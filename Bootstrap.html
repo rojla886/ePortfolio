@@ -1,512 +1,630 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Bootstrap 5 Complete Guide – Components, Grid, Utilities + Code</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: #f1f5f9;
-      color: #0f172a;
-      line-height: 1.5;
-      padding: 0 1rem 2rem;
-    }
-    /* Navigation – same as other pages */
-    .site-nav {
-      background: #0f3b5c;
-      padding: 0.8rem 2rem;
-      border-radius: 0 0 1rem 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .site-nav-inner {
-      max-width: 1300px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .site-brand {
-      color: white;
-      font-size: 1.4rem;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .nav-links a {
-      color: #e2e8f0;
-      text-decoration: none;
-      margin-left: 1.2rem;
-      padding: 0.3rem 0.6rem;
-      border-radius: 2rem;
-      transition: 0.2s;
-    }
-    .nav-links a.active, .nav-links a:hover {
-      background: #2c7da0;
-      color: white;
-    }
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 1.5rem;
-      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.15);
-      padding: 2rem;
-    }
-    h1 {
-      font-size: 2.5rem;
-      background: linear-gradient(135deg, #0f172a, #0d6efd);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      margin-bottom: 0.5rem;
-    }
-    .subhead {
-      font-size: 1.2rem;
-      color: #334155;
-      border-left: 4px solid #0d6efd;
-      padding-left: 1rem;
-      margin-bottom: 2rem;
-    }
-    h2 {
-      font-size: 1.8rem;
-      margin: 2rem 0 1rem;
-      border-bottom: 3px solid #e2e8f0;
-      color: #0f172a;
-    }
-    h3 {
-      font-size: 1.3rem;
-      margin: 1.5rem 0 0.75rem;
-      color: #1e293b;
-    }
-    .card-custom {
-      background: #ffffff;
-      border-radius: 1rem;
-      margin: 1.8rem 0;
-      padding: 1.2rem;
-      border: 1px solid #e2e8f0;
-      transition: all 0.3s ease;
-    }
-    .card-custom:hover {
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
-    }
-    .explanation {
-      background: #eef2ff;
-      border-left: 5px solid #0d6efd;
-      padding: 0.8rem 1rem;
-      border-radius: 0.75rem;
-      margin: 1rem 0;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    .tip {
-      background: #fef9c3;
-      border-left: 5px solid #eab308;
-      padding: 0.8rem 1rem;
-      border-radius: 0.75rem;
-      margin: 0.8rem 0;
-    }
-    .code-block {
-      background: #0f172a;
-      color: #e2e8f0;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      overflow-x: auto;
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
-      margin: 1rem 0;
-    }
-    .demo-area {
-      background: #f9fafb;
-      border: 1px solid #e2e8f0;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      text-align: center;
-    }
-    .component-demo {
-      background: #f9fafb;
-      border-radius: 0.75rem;
-      padding: 1rem;
-      margin: 1rem 0;
-    }
-    footer {
-      margin-top: 2.5rem;
-      text-align: center;
-      border-top: 1px solid #cbd5e1;
-      padding-top: 1.5rem;
-      font-size: 0.85rem;
-      color: #475569;
-    }
-    @media (max-width: 700px) {
-      .container { padding: 1rem; }
-      .site-nav-inner { flex-direction: column; gap: 0.5rem; }
-      .nav-links a { margin: 0 0.5rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bootstrap 5 Master Encyclopedia | Grid · Components · Utilities</title>
+    
+    <!-- Bootstrap 5 CSS (needed for components) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --dark: #0f172a;
+            --light-bg: #f8fafc;
+            --code-bg: #1e1e1e;
+            --nav-bg: #0a0f1f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--light-bg);
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        /* Horizontal spacing: only 10px on sides */
+        .container {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+            max-width: 1200px;
+        }
+
+        /* Modern Navbar (matching other pages) */
+        .navbar {
+            background: rgba(10, 15, 31, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+            padding: 1rem 0;
+        }
+        .navbar-brand { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+        .nav-link { 
+            font-weight: 500; 
+            color: #cbd5e1 !important; 
+            margin: 0 10px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .nav-link:hover, .nav-link.active { 
+            color: var(--primary) !important; 
+            text-shadow: 0 0 6px rgba(14,165,233,0.3);
+        }
+
+        /* Premium Hero Section */
+        .hero {
+            background: radial-gradient(circle at 80% 20%, #14283c, #050a14);
+            padding: 80px 0 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.1;
+        }
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(to right, #fff, #7dd3fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-tag {
+            background: rgba(14, 165, 233, 0.25);
+            color: #7dd3fc;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Doc Section Cards (matching HTML/CSS/JS) */
+        .doc-section {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 10px 15px -3px rgba(0,0,0,0.03);
+        }
+        .chapter-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Code Windows with Copy Button */
+        .code-window {
+            background: var(--code-bg);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        .code-header {
+            background: #2d2d2d;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .mac-dots span {
+            height: 10px; width: 10px; border-radius: 50%; display: inline-block; margin-right: 5px;
+        }
+        pre { 
+            margin: 0; padding: 20px; color: #e2e8f0; 
+            font-family: 'Fira Code', monospace; font-size: 0.85rem; 
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .btn-copy {
+            background: transparent; border: 1px solid #4b5563; color: #94a3b8;
+            font-size: 0.7rem; padding: 2px 12px; border-radius: 6px; transition: 0.3s;
+        }
+        .btn-copy:hover { border-color: var(--primary); color: white; }
+
+        .explanation {
+            background: #eef2ff;
+            border-left: 5px solid var(--primary);
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+        .demo-area {
+            background: #f9fafb;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.2rem 0;
+            position: relative;
+        }
+        .demo-area::after {
+            content: "LIVE PREVIEW";
+            position: absolute;
+            top: -10px; right: 20px;
+            background: #cbd5e1;
+            font-size: 0.65rem; font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+        .tip {
+            background: #fef9c3;
+            border-left: 5px solid #eab308;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 2rem;
+            border-radius: 2rem 2rem 0 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        /* Fix Bootstrap conflicting styles inside demo-area */
+        .demo-area .btn, .demo-area .progress, .demo-area .spinner-border,
+        .demo-area .dropdown, .demo-area .offcanvas, .demo-area .toast {
+            margin: 0.25rem;
+        }
+        .demo-area .card {
+            margin-bottom: 0;
+        }
+        @media (max-width: 700px) {
+            .doc-section { padding: 1.2rem; }
+        }
+    </style>
 </head>
 <body>
 
-<nav class="site-nav">
-  <div class="site-nav-inner">
-    <a href="#" class="site-brand">🧱 Web Guides</a>
-    <div class="nav-links">
-      <a href="#">Full Stack</a>
-      <a href="./html.html">HTML</a>
-      <a href="Css.html">CSS</a>
-      <a href="javascript.html">JavaScript</a>
-      <a href="Bootstrap.html" class="active">Bootstrap</a>
+<!-- Navbar identical to other pages -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#"><i class="fas fa-cubes text-info me-2"></i>WEB GUIDES</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Full Stack</a></li>
+                <li class="nav-item"><a class="nav-link" href="./html.html">HTML</a></li>
+                <li class="nav-item"><a class="nav-link" href="./Css.html">CSS</a></li>
+                <li class="nav-item"><a class="nav-link" href="./javascript.html">JavaScript</a></li>
+                <li class="nav-item"><a class="nav-link active" href="./Bootstrap.html">Bootstrap</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
 
-<div class="container">
-  <div style="text-align: center; margin-bottom: 1rem;">
-    <h1>🎨 Bootstrap 5 Complete Guide</h1>
-    <div class="subhead" style="border-left: none; text-align: center;">
-      Grid • Components • Utilities • Forms • JavaScript Plugins • Every concept with live demo + code
-    </div>
-  </div>
-
-  <!-- ========== INTRODUCTION ========== -->
-  <div class="card-custom">
-    <div class="explanation">
-      <strong>What is Bootstrap?</strong> Bootstrap is the world's most popular front‑end framework. It provides a responsive 12‑column grid system, hundreds of pre‑styled components (cards, modals, navbars, carousels…), utility classes for spacing/alignment, and JavaScript plugins. With Bootstrap, you build professional, mobile‑friendly websites <strong>fast</strong> – without writing custom CSS for every element.
-    </div>
-    <div class="demo-area">
-      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bootstrapModal">
-        <i class="bi bi-info-circle"></i> What’s in Bootstrap? (Modal)
-      </button>
-    </div>
-    <div class="code-block">
-      <pre>&lt;!-- Include Bootstrap CSS and JS --&gt;
-&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"&gt;
-&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</pre>
-    </div>
-  </div>
-
-  <!-- Modal (explanation) -->
-  <div class="modal fade" id="bootstrapModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Bootstrap 5 Components</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+<!-- Hero section -->
+<header class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <span class="hero-tag">Bootstrap 5 – Build Fast, Responsive</span>
+                <h1 class="hero-title">Rapid UI Development<br>with Bootstrap 5.</h1>
+                <p class="lead text-white-50 mt-3">Complete guide: grid system, 20+ components, utilities, forms, and JavaScript plugins. Every concept includes live demos and ready‑to‑copy code.</p>
+                <div class="d-flex gap-3 mt-4">
+                    <a href="#grid" class="btn btn-primary btn-lg px-4 rounded-pill fw-bold">Start Learning</a>
+                    <a href="#components" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-bold">Explore Components</a>
+                </div>
+            </div>
+            <div class="col-lg-4 d-none d-lg-block">
+                <div class="code-window mb-0">
+                    <div class="code-header">
+                        <div class="mac-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div>
+                        <small class="text-muted">bootstrap-demo.html</small>
+                    </div>
+                    <pre><code><span style="color:#7dd3fc">&lt;div class="container"&gt;</span>
+  <span style="color:#7dd3fc">&lt;div class="row"&gt;</span>
+    <span style="color:#7dd3fc">&lt;div class="col-md-6"&gt;</span>
+      <span style="color:#7dd3fc">&lt;button class="btn btn-primary"&gt;</span>Click<span style="color:#7dd3fc">&lt;/button&gt;</span>
+    <span style="color:#7dd3fc">&lt;/div&gt;</span>
+  <span style="color:#7dd3fc">&lt;/div&gt;</span>
+<span style="color:#7dd3fc">&lt;/div&gt;</span></code></pre>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <ul>
-            <li>Responsive grid system (12 columns)</li>
-            <li>Pre‑styled components (cards, buttons, navbars, alerts…)</li>
-            <li>JavaScript plugins (modals, carousels, tooltips, toasts…)</li>
-            <li>Utility classes (spacing, flex, display, typography)</li>
-          </ul>
+    </div>
+</header>
+
+<div class="container mt-4">
+    <!-- INTRODUCTION -->
+    <section class="doc-section">
+        <span class="chapter-badge">Chapter 01</span>
+        <h2 class="fw-bold">What is Bootstrap?</h2>
+        <p>Bootstrap is the world's most popular front‑end framework. It provides a responsive 12‑column grid system, hundreds of pre‑styled components (cards, modals, navbars, carousels…), utility classes for spacing/alignment, and JavaScript plugins. With Bootstrap, you build professional, mobile‑friendly websites <strong>fast</strong> – without writing custom CSS for every element.</p>
+        <div class="explanation">
+            💡 <strong>Why Bootstrap?</strong> Saves development time, ensures cross‑browser consistency, and is fully responsive out of the box. Used by millions of websites.
         </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="demo-area">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bootstrapModal">
+                <i class="fas fa-info-circle"></i> What's in Bootstrap? (Modal)
+            </button>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========== 1. GRID SYSTEM ========== -->
-  <h2>📐 1. Grid System (12 columns)</h2>
-  <div class="card-custom">
-    <div class="explanation">
-      Bootstrap’s grid is built with flexbox. Use <code>.container</code> (or <code>.container-fluid</code>), <code>.row</code>, and <code>.col-*</code> classes. Columns add up to 12. Breakpoints: <code>col-sm</code>, <code>col-md</code>, <code>col-lg</code>, <code>col-xl</code>, <code>col-xxl</code>.
-    </div>
-    <div class="component-demo">
-      <div class="row g-3">
-        <div class="col-md-4"><div class="bg-primary text-white p-3 text-center rounded">.col-md-4</div></div>
-        <div class="col-md-4"><div class="bg-success text-white p-3 text-center rounded">.col-md-4</div></div>
-        <div class="col-md-4"><div class="bg-warning p-3 text-center rounded">.col-md-4</div></div>
-      </div>
-      <div class="row g-3 mt-2">
-        <div class="col-6 col-md-3"><div class="bg-info p-3 text-center rounded">.col-6 .col-md-3</div></div>
-        <div class="col-6 col-md-3"><div class="bg-info p-3 text-center rounded">.col-6 .col-md-3</div></div>
-        <div class="col-6 col-md-3"><div class="bg-info p-3 text-center rounded">.col-6 .col-md-3</div></div>
-        <div class="col-6 col-md-3"><div class="bg-info p-3 text-center rounded">.col-6 .col-md-3</div></div>
-      </div>
-    </div>
-    <div class="code-block">
-      <pre>&lt;div class="container"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-md-4"&gt;...&lt;/div&gt;
-    &lt;div class="col-md-4"&gt;...&lt;/div&gt;
-    &lt;div class="col-md-4"&gt;...&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
-    </div>
-    <div class="tip">💡 Columns automatically wrap when they exceed 12. Use <code>g-3</code> for gutters (gap between columns).</div>
-  </div>
-
-  <!-- ========== 2. COMPONENTS (Accordion, Cards, Carousel, Offcanvas, Dropdowns, Tooltips, Popovers, Toasts, Progress, Spinners, Badges, Breadcrumbs, List Groups, Buttons) ========== -->
-  <h2>🧩 2. Bootstrap Components</h2>
-
-  <!-- Accordion -->
-  <div class="card-custom">
-    <h3>📂 Accordion</h3>
-    <div class="explanation">Vertically collapsing panels. Great for FAQs or sections where you want to save space. Each panel toggles independently.</div>
-    <div class="component-demo">
-      <div class="accordion" id="demoAccordion">
-        <div class="accordion-item">
-          <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne">Item 1</button></h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#demoAccordion"><div class="accordion-body">Content for item 1.</div></div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"><span></span><span></span><span></span></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">&lt;!-- Include Bootstrap CSS --&gt;</span>
+<span style="color:#7dd3fc">&lt;link</span> <span style="color:#fbbf24">href</span>=<span style="color:#34d399">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"</span><span style="color:#7dd3fc">&gt;</span>
+<span style="color:#7dd3fc">&lt;!-- Include Bootstrap JS Bundle (includes Popper) --&gt;</span>
+<span style="color:#7dd3fc">&lt;script</span> <span style="color:#fbbf24">src</span>=<span style="color:#34d399">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"</span><span style="color:#7dd3fc">&gt;&lt;/script&gt;</span></code></pre>
         </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">Item 2</button></h2>
-          <div id="collapseTwo" class="accordion-collapse collapse"><div class="accordion-body">Content for item 2.</div></div>
+    </section>
+
+    <!-- Modal (explanation) -->
+    <div class="modal fade" id="bootstrapModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Bootstrap 5 Features</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>Responsive grid system (12 columns, 6 breakpoints)</li>
+                        <li>Pre‑styled components (cards, buttons, navbars, alerts…)</li>
+                        <li>JavaScript plugins (modals, carousels, tooltips, toasts…)</li>
+                        <li>Utility classes for spacing, flex, display, typography</li>
+                        <li>Customizable via Sass variables</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="code-block"><pre>&lt;div class="accordion" id="myAccordion"&gt;
-  &lt;div class="accordion-item"&gt;
-    &lt;h2 class="accordion-header"&gt;
-      &lt;button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse1"&gt;Title&lt;/button&gt;
-    &lt;/h2&gt;
-    &lt;div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#myAccordion"&gt;
-      &lt;div class="accordion-body"&gt;Content&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre></div>
-  </div>
 
-  <!-- Cards -->
-  <div class="card-custom">
-    <h3>🃏 Cards</h3>
-    <div class="explanation">Flexible content containers with headers, footers, images, and buttons. Used for product listings, user profiles, blog previews.</div>
-    <div class="component-demo">
-      <div class="row">
-        <div class="col-md-4"><div class="card"><div class="card-body"><h5 class="card-title">Basic Card</h5><p class="card-text">Simple card.</p></div></div></div>
-        <div class="col-md-4"><div class="card"><img src="https://picsum.photos/id/26/300/150" class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title">Image Card</h5><button class="btn btn-primary">Button</button></div></div></div>
-        <div class="col-md-4"><div class="card"><div class="card-header">Featured</div><div class="card-body"><h5 class="card-title">Header/Footer</h5></div><div class="card-footer">Footer</div></div></div>
-      </div>
-    </div>
-    <div class="code-block"><pre>&lt;div class="card" style="width: 18rem;"&gt;
-  &lt;img src="..." class="card-img-top"&gt;
-  &lt;div class="card-body"&gt;
-    &lt;h5 class="card-title"&gt;Title&lt;/h5&gt;
-    &lt;p class="card-text"&gt;Content&lt;/p&gt;
-    &lt;a href="#" class="btn btn-primary"&gt;Button&lt;/a&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre></div>
-  </div>
-
-  <!-- Carousel -->
-  <div class="card-custom">
-    <h3>🎠 Carousel (Image Slider)</h3>
-    <div class="explanation">Cycles through images with slide/transition effects. Requires Bootstrap’s JavaScript.</div>
-    <div class="component-demo">
-      <div id="carouselDemo" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner rounded">
-          <div class="carousel-item active"><img src="https://picsum.photos/id/101/800/250" class="d-block w-100" alt="..."></div>
-          <div class="carousel-item"><img src="https://picsum.photos/id/104/800/250" class="d-block w-100" alt="..."></div>
-          <div class="carousel-item"><img src="https://picsum.photos/id/106/800/250" class="d-block w-100" alt="..."></div>
+    <!-- ========== 1. GRID SYSTEM ========== -->
+    <section id="grid" class="doc-section">
+        <span class="chapter-badge">Chapter 02</span>
+        <h2 class="fw-bold">Grid System (12 columns)</h2>
+        <div class="explanation">
+            Bootstrap’s grid is built with flexbox. Use <code>.container</code> (or <code>.container-fluid</code>), <code>.row</code>, and <code>.col-*</code> classes. Columns sum to 12. Breakpoints: <code>col-sm</code>, <code>col-md</code>, <code>col-lg</code>, <code>col-xl</code>, <code>col-xxl</code>.
         </div>
-        <button class="carousel-control-prev" data-bs-target="#carouselDemo" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-        <button class="carousel-control-next" data-bs-target="#carouselDemo" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-      </div>
-    </div>
-    <div class="code-block"><pre>&lt;div id="myCarousel" class="carousel slide" data-bs-ride="carousel"&gt;
-  &lt;div class="carousel-inner"&gt;
-    &lt;div class="carousel-item active"&gt;&lt;img src="..."&gt;&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;button class="carousel-control-prev" data-bs-target="#myCarousel" data-bs-slide="prev"&gt;&lt;/button&gt;
-&lt;/div&gt;</pre></div>
-  </div>
+        <div class="demo-area">
+            <div class="row g-3">
+                <div class="col-md-4"><div class="bg-primary text-white p-3 text-center rounded">.col-md-4</div></div>
+                <div class="col-md-4"><div class="bg-success text-white p-3 text-center rounded">.col-md-4</div></div>
+                <div class="col-md-4"><div class="bg-warning p-3 text-center rounded">.col-md-4</div></div>
+            </div>
+            <div class="row g-3 mt-2">
+                <div class="col-6 col-md-3"><div class="bg-info p-3 text-center rounded">.col-6 .col-md-3</div></div>
+                <div class="col-6 col-md-3"><div class="bg-info p-3 text-center rounded">.col-6 .col-md-3</div></div>
+                <div class="col-6 col-md-3"><div class="bg-info p-3 text-center rounded">.col-6 .col-md-3</div></div>
+                <div class="col-6 col-md-3"><div class="bg-info p-3 text-center rounded">.col-6 .col-md-3</div></div>
+            </div>
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">&lt;div class="container"&gt;</span>
+  <span style="color:#7dd3fc">&lt;div class="row"&gt;</span>
+    <span style="color:#7dd3fc">&lt;div class="col-md-4"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
+    <span style="color:#7dd3fc">&lt;div class="col-md-4"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
+    <span style="color:#7dd3fc">&lt;div class="col-md-4"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
+  <span style="color:#7dd3fc">&lt;/div&gt;</span>
+<span style="color:#7dd3fc">&lt;/div&gt;</span></code></pre>
+        </div>
+        <div class="tip">💡 Columns automatically wrap when they exceed 12. Use <code>g-3</code> for gutters (gap between columns).</div>
+    </section>
 
-  <!-- Offcanvas -->
-  <div class="card-custom">
-    <h3>📂 Offcanvas (Sidebar)</h3>
-    <div class="explanation">Hidden sidebar that slides in from left, right, or bottom. Great for mobile menus.</div>
-    <div class="component-demo"><button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDemo">Open Offcanvas</button></div>
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDemo"><div class="offcanvas-header"><h5 class="offcanvas-title">Menu</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div><div class="offcanvas-body"><p>Offcanvas content here.</p></div></div>
-    <div class="code-block"><pre>&lt;button data-bs-toggle="offcanvas" data-bs-target="#myOffcanvas"&gt;Open&lt;/button&gt;
-&lt;div class="offcanvas offcanvas-start" id="myOffcanvas"&gt;
-  &lt;div class="offcanvas-header"&gt;...&lt;/div&gt;
-  &lt;div class="offcanvas-body"&gt;...&lt;/div&gt;
-&lt;/div&gt;</pre></div>
-  </div>
+    <!-- ========== 2. COMPONENTS (Multiple) ========== -->
+    <h2 class="fw-bold mt-4 mb-3" id="components">🧩 Bootstrap Components</h2>
 
-  <!-- Dropdowns -->
-  <div class="card-custom">
-    <h3>📌 Dropdowns</h3>
-    <div class="explanation">Toggleable contextual menus. Use <code>data-bs-toggle="dropdown"</code>.</div>
-    <div class="component-demo"><div class="dropdown"><button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#">Action</a></li><li><a class="dropdown-item" href="#">Another</a></li></ul></div></div>
-    <div class="code-block"><pre>&lt;div class="dropdown"&gt;
-  &lt;button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"&gt;Dropdown&lt;/button&gt;
-  &lt;ul class="dropdown-menu"&gt;
-    &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;</pre></div>
-  </div>
+    <!-- Accordion -->
+    <section class="doc-section">
+        <span class="chapter-badge">Component 01</span>
+        <h3>📂 Accordion</h3>
+        <div class="explanation">Vertically collapsing panels. Great for FAQs or sections where you want to save space. Each panel toggles independently.</div>
+        <div class="demo-area">
+            <div class="accordion" id="demoAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne">Item 1</button></h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#demoAccordion"><div class="accordion-body">Content for item 1.</div></div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">Item 2</button></h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse"><div class="accordion-body">Content for item 2.</div></div>
+                </div>
+            </div>
+        </div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="accordion" id="myAccordion"&gt;</span>
+  <span style="color:#7dd3fc">&lt;div class="accordion-item"&gt;</span>
+    <span style="color:#7dd3fc">&lt;h2 class="accordion-header"&gt;</span>
+      <span style="color:#7dd3fc">&lt;button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse1"&gt;</span>Title<span style="color:#7dd3fc">&lt;/button&gt;</span>
+    <span style="color:#7dd3fc">&lt;/h2&gt;</span>
+    <span style="color:#7dd3fc">&lt;div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#myAccordion"&gt;</span>
+      <span style="color:#7dd3fc">&lt;div class="accordion-body"&gt;</span>Content<span style="color:#7dd3fc">&lt;/div&gt;</span>
+    <span style="color:#7dd3fc">&lt;/div&gt;</span>
+  <span style="color:#7dd3fc">&lt;/div&gt;</span>
+<span style="color:#7dd3fc">&lt;/div&gt;</span></code></pre></div>
+    </section>
 
-  <!-- Tooltips & Popovers -->
-  <div class="card-custom">
-    <h3>💬 Tooltips & Popovers</h3>
-    <div class="explanation">Tooltips appear on hover; popovers are clickable cards. Must be initialised with JavaScript.</div>
-    <div class="component-demo">
-      <button class="btn btn-outline-secondary" data-bs-toggle="tooltip" title="Tooltip text">Hover me</button>
-      <button class="btn btn-outline-danger ms-2" data-bs-toggle="popover" title="Popover Title" data-bs-content="Popover content">Click me</button>
-    </div>
-    <div class="code-block"><pre>&lt;button data-bs-toggle="tooltip" title="Tooltip"&gt;Hover&lt;/button&gt;
-&lt;button data-bs-toggle="popover" title="Title" data-bs-content="Content"&gt;Click&lt;/button&gt;
-&lt;script&gt;
-  var tooltips = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(t => new bootstrap.Tooltip(t));
-  var popovers = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).map(p => new bootstrap.Popover(p));
-&lt;/script&gt;</pre></div>
-  </div>
+    <!-- Cards -->
+    <section class="doc-section">
+        <span class="chapter-badge">Component 02</span>
+        <h3>🃏 Cards</h3>
+        <div class="explanation">Flexible content containers with headers, footers, images, and buttons. Used for product listings, user profiles, blog previews.</div>
+        <div class="demo-area">
+            <div class="row">
+                <div class="col-md-4"><div class="card"><div class="card-body"><h5 class="card-title">Basic Card</h5><p class="card-text">Simple card.</p></div></div></div>
+                <div class="col-md-4"><div class="card"><img src="https://picsum.photos/id/26/300/150" class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title">Image Card</h5><button class="btn btn-primary">Button</button></div></div></div>
+                <div class="col-md-4"><div class="card"><div class="card-header">Featured</div><div class="card-body"><h5 class="card-title">Header/Footer</h5></div><div class="card-footer">Footer</div></div></div>
+            </div>
+        </div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="card" style="width: 18rem;"&gt;</span>
+  <span style="color:#7dd3fc">&lt;img src="..." class="card-img-top"&gt;</span>
+  <span style="color:#7dd3fc">&lt;div class="card-body"&gt;</span>
+    <span style="color:#7dd3fc">&lt;h5 class="card-title"&gt;</span>Title<span style="color:#7dd3fc">&lt;/h5&gt;</span>
+    <span style="color:#7dd3fc">&lt;p class="card-text"&gt;</span>Content<span style="color:#7dd3fc">&lt;/p&gt;</span>
+    <span style="color:#7dd3fc">&lt;a href="#" class="btn btn-primary"&gt;</span>Button<span style="color:#7dd3fc">&lt;/a&gt;</span>
+  <span style="color:#7dd3fc">&lt;/div&gt;</span>
+<span style="color:#7dd3fc">&lt;/div&gt;</span></code></pre></div>
+    </section>
 
-  <!-- Toast -->
-  <div class="card-custom">
-    <h3>🍞 Toast Notifications</h3>
-    <div class="explanation">Lightweight notifications that auto‑hide. Commonly used for success/error messages.</div>
-    <div class="component-demo"><button class="btn btn-warning" id="toastBtn">Show Toast</button></div>
-    <div class="toast-container position-fixed bottom-0 end-0 p-3"><div class="toast" id="liveToast" role="alert" data-bs-autohide="true" data-bs-delay="3000"><div class="toast-header"><strong class="me-auto">Bootstrap</strong><button type="button" class="btn-close" data-bs-dismiss="toast"></button></div><div class="toast-body">Hello! This is a toast.</div></div></div>
-    <div class="code-block"><pre>&lt;div class="toast"&gt;
-  &lt;div class="toast-header"&gt;...&lt;/div&gt;
-  &lt;div class="toast-body"&gt;Message&lt;/div&gt;
-&lt;/div&gt;
-&lt;script&gt;new bootstrap.Toast(toastElement).show();&lt;/script&gt;</pre></div>
-  </div>
+    <!-- Carousel -->
+    <section class="doc-section">
+        <span class="chapter-badge">Component 03</span>
+        <h3>🎠 Carousel (Image Slider)</h3>
+        <div class="explanation">Cycles through images with slide/transition effects. Requires Bootstrap’s JavaScript.</div>
+        <div class="demo-area">
+            <div id="carouselDemo" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner rounded">
+                    <div class="carousel-item active"><img src="https://picsum.photos/id/101/800/250" class="d-block w-100" alt="..."></div>
+                    <div class="carousel-item"><img src="https://picsum.photos/id/104/800/250" class="d-block w-100" alt="..."></div>
+                    <div class="carousel-item"><img src="https://picsum.photos/id/106/800/250" class="d-block w-100" alt="..."></div>
+                </div>
+                <button class="carousel-control-prev" data-bs-target="#carouselDemo" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                <button class="carousel-control-next" data-bs-target="#carouselDemo" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+            </div>
+        </div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div id="myCarousel" class="carousel slide" data-bs-ride="carousel"&gt;</span>
+  <span style="color:#7dd3fc">&lt;div class="carousel-inner"&gt;</span>
+    <span style="color:#7dd3fc">&lt;div class="carousel-item active"&gt;&lt;img src="..."&gt;&lt;/div&gt;</span>
+  <span style="color:#7dd3fc">&lt;/div&gt;</span>
+  <span style="color:#7dd3fc">&lt;button class="carousel-control-prev" data-bs-target="#myCarousel" data-bs-slide="prev"&gt;&lt;/button&gt;</span>
+<span style="color:#7dd3fc">&lt;/div&gt;</span></code></pre></div>
+    </section>
 
-  <!-- Progress Bars & Spinners -->
-  <div class="card-custom">
-    <h3>⏳ Progress Bars & Spinners</h3>
-    <div class="explanation">Progress bars show task completion; spinners indicate loading.</div>
-    <div class="component-demo">
-      <div class="progress mb-2"><div class="progress-bar bg-success" style="width: 65%">65%</div></div>
-      <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
-      <div class="spinner-grow text-success ms-2" role="status"><span class="visually-hidden">Loading...</span></div>
-    </div>
-    <div class="code-block"><pre>&lt;div class="progress"&gt;&lt;div class="progress-bar" style="width: 65%"&gt;65%&lt;/div&gt;&lt;/div&gt;
-&lt;div class="spinner-border text-primary"&gt;&lt;/div&gt;</pre></div>
-  </div>
+    <!-- Offcanvas -->
+    <section class="doc-section">
+        <span class="chapter-badge">Component 04</span>
+        <h3>📂 Offcanvas (Sidebar)</h3>
+        <div class="explanation">Hidden sidebar that slides in from left, right, or bottom. Great for mobile menus.</div>
+        <div class="demo-area">
+            <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDemo">Open Offcanvas</button>
+        </div>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDemo"><div class="offcanvas-header"><h5 class="offcanvas-title">Menu</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div><div class="offcanvas-body"><p>Offcanvas content here.</p></div></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;button data-bs-toggle="offcanvas" data-bs-target="#myOffcanvas"&gt;</span>Open<span style="color:#7dd3fc">&lt;/button&gt;</span>
+<span style="color:#7dd3fc">&lt;div class="offcanvas offcanvas-start" id="myOffcanvas"&gt;</span>
+  <span style="color:#7dd3fc">&lt;div class="offcanvas-header"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
+  <span style="color:#7dd3fc">&lt;div class="offcanvas-body"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
+<span style="color:#7dd3fc">&lt;/div&gt;</span></code></pre></div>
+    </section>
 
-  <!-- Badges & Breadcrumbs -->
-  <div class="card-custom">
-    <h3>🏷️ Badges & Breadcrumbs</h3>
-    <div class="explanation">Badges for counts/labels; breadcrumbs for navigation hierarchy.</div>
-    <div class="component-demo">
-      <span class="badge bg-primary">New</span> <span class="badge bg-secondary rounded-pill">Pill</span>
-      <nav aria-label="breadcrumb" class="mt-2"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="#">Home</a></li><li class="breadcrumb-item active">Library</li></ol></nav>
-    </div>
-    <div class="code-block"><pre>&lt;span class="badge bg-primary"&gt;New&lt;/span&gt;
-&lt;nav aria-label="breadcrumb"&gt;&lt;ol class="breadcrumb"&gt;&lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/nav&gt;</pre></div>
-  </div>
+    <!-- Dropdowns -->
+    <section class="doc-section">
+        <span class="chapter-badge">Component 05</span>
+        <h3>📌 Dropdowns</h3>
+        <div class="explanation">Toggleable contextual menus. Use <code>data-bs-toggle="dropdown"</code>.</div>
+        <div class="demo-area">
+            <div class="dropdown"><button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#">Action</a></li><li><a class="dropdown-item" href="#">Another</a></li></ul></div>
+        </div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="dropdown"&gt;</span>
+  <span style="color:#7dd3fc">&lt;button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"&gt;</span>Dropdown<span style="color:#7dd3fc">&lt;/button&gt;</span>
+  <span style="color:#7dd3fc">&lt;ul class="dropdown-menu"&gt;</span>
+    <span style="color:#7dd3fc">&lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;</span>Action<span style="color:#7dd3fc">&lt;/a&gt;&lt;/li&gt;</span>
+  <span style="color:#7dd3fc">&lt;/ul&gt;</span>
+<span style="color:#7dd3fc">&lt;/div&gt;</span></code></pre></div>
+    </section>
 
-  <!-- List Groups -->
-  <div class="card-custom">
-    <h3>📋 List Groups</h3>
-    <div class="explanation">Display lists of items, links, or buttons. Can be interactive.</div>
-    <div class="component-demo"><ul class="list-group"><li class="list-group-item active">Active item</li><li class="list-group-item">Second</li><li class="list-group-item disabled">Disabled</li></ul></div>
-    <div class="code-block"><pre>&lt;ul class="list-group"&gt;&lt;li class="list-group-item"&gt;Item&lt;/li&gt;&lt;/ul&gt;</pre></div>
-  </div>
+    <!-- Tooltips & Popovers -->
+    <section class="doc-section">
+        <span class="chapter-badge">Component 06</span>
+        <h3>💬 Tooltips & Popovers</h3>
+        <div class="explanation">Tooltips appear on hover; popovers are clickable cards. Must be initialised with JavaScript.</div>
+        <div class="demo-area">
+            <button class="btn btn-outline-secondary" data-bs-toggle="tooltip" title="Tooltip text">Hover me</button>
+            <button class="btn btn-outline-danger ms-2" data-bs-toggle="popover" title="Popover Title" data-bs-content="Popover content">Click me</button>
+        </div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;button data-bs-toggle="tooltip" title="Tooltip"&gt;</span>Hover<span style="color:#7dd3fc">&lt;/button&gt;</span>
+<span style="color:#7dd3fc">&lt;button data-bs-toggle="popover" title="Title" data-bs-content="Content"&gt;</span>Click<span style="color:#7dd3fc">&lt;/button&gt;</span>
+<span style="color:#7dd3fc">&lt;script&gt;</span>
+  <span style="color:#7dd3fc">var tooltips = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(t => new bootstrap.Tooltip(t));</span>
+  <span style="color:#7dd3fc">var popovers = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).map(p => new bootstrap.Popover(p));</span>
+<span style="color:#7dd3fc">&lt;/script&gt;</span></code></pre></div>
+    </section>
 
-  <!-- Buttons & Button Groups -->
-  <div class="card-custom">
-    <h3>🔘 Buttons & Button Groups</h3>
-    <div class="explanation">Bootstrap provides multiple button styles, sizes, and groups (toolbar).</div>
-    <div class="component-demo">
-      <button class="btn btn-primary">Primary</button>
-      <button class="btn btn-success">Success</button>
-      <button class="btn btn-outline-danger">Outline Danger</button>
-      <div class="btn-group mt-2" role="group"><button class="btn btn-outline-secondary">Left</button><button class="btn btn-outline-secondary">Middle</button><button class="btn btn-outline-secondary">Right</button></div>
-    </div>
-    <div class="code-block"><pre>&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
-&lt;div class="btn-group" role="group"&gt;&lt;button&gt;Left&lt;/button&gt;&lt;button&gt;Right&lt;/button&gt;&lt;/div&gt;</pre></div>
-  </div>
+    <!-- Toast -->
+    <section class="doc-section">
+        <span class="chapter-badge">Component 07</span>
+        <h3>🍞 Toast Notifications</h3>
+        <div class="explanation">Lightweight notifications that auto‑hide. Commonly used for success/error messages.</div>
+        <div class="demo-area">
+            <button class="btn btn-warning" id="toastBtn">Show Toast</button>
+        </div>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;"><div class="toast" id="liveToast" role="alert" data-bs-autohide="true" data-bs-delay="3000"><div class="toast-header"><strong class="me-auto">Bootstrap</strong><button type="button" class="btn-close" data-bs-dismiss="toast"></button></div><div class="toast-body">Hello! This is a toast.</div></div></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="toast"&gt;</span>
+  <span style="color:#7dd3fc">&lt;div class="toast-header"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
+  <span style="color:#7dd3fc">&lt;div class="toast-body"&gt;</span>Message<span style="color:#7dd3fc">&lt;/div&gt;</span>
+<span style="color:#7dd3fc">&lt;/div&gt;</span>
+<span style="color:#7dd3fc">&lt;script&gt;new bootstrap.Toast(toastElement).show();&lt;/script&gt;</span></code></pre></div>
+    </section>
 
-  <!-- ========== 3. FORMS & VALIDATION ========== -->
-  <h2>📝 3. Forms & Validation</h2>
-  <div class="card-custom">
-    <div class="explanation">Bootstrap styles all form controls (<code>.form-control</code>, <code>.form-select</code>). Use <code>.needs-validation</code> and custom JavaScript for real‑time validation.</div>
-    <div class="component-demo">
-      <form id="demoForm" class="needs-validation" novalidate>
-        <div class="form-floating mb-3"><input type="text" class="form-control" id="nameInput" placeholder="Name" required><label for="nameInput">Full name</label><div class="invalid-feedback">Required.</div></div>
-        <div class="form-floating mb-3"><input type="email" class="form-control" id="emailInput" placeholder="Email" required><label for="emailInput">Email address</label><div class="invalid-feedback">Valid email required.</div></div>
-        <div class="mb-3"><label class="form-label">Select</label><select class="form-select" required><option value="">Choose...</option><option>Option 1</option></select></div>
-        <div class="mb-3 form-check"><input type="checkbox" class="form-check-input" id="termsCheck" required><label class="form-check-label" for="termsCheck">Agree to terms</label></div>
-        <button class="btn btn-primary" type="submit">Submit</button>
-      </form>
-      <div id="formResult" class="mt-2"></div>
-    </div>
-    <div class="code-block"><pre>&lt;form class="needs-validation" novalidate&gt;
-  &lt;div class="form-floating mb-3"&gt;
-    &lt;input type="text" class="form-control" required&gt;
-    &lt;label&gt;Name&lt;/label&gt;
-    &lt;div class="invalid-feedback"&gt;Required&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;button type="submit"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</pre></div>
-  </div>
+    <!-- Progress Bars & Spinners -->
+    <section class="doc-section">
+        <span class="chapter-badge">Component 08</span>
+        <h3>⏳ Progress Bars & Spinners</h3>
+        <div class="explanation">Progress bars show task completion; spinners indicate loading.</div>
+        <div class="demo-area">
+            <div class="progress mb-2"><div class="progress-bar bg-success" style="width: 65%">65%</div></div>
+            <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+            <div class="spinner-grow text-success ms-2" role="status"><span class="visually-hidden">Loading...</span></div>
+        </div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="progress"&gt;&lt;div class="progress-bar" style="width: 65%"&gt;</span>65%<span style="color:#7dd3fc">&lt;/div&gt;&lt;/div&gt;</span>
+<span style="color:#7dd3fc">&lt;div class="spinner-border text-primary"&gt;&lt;/div&gt;</span></code></pre></div>
+    </section>
 
-  <!-- ========== 4. UTILITY CLASSES ========== -->
-  <h2>🎯 4. Utility Classes (Spacing, Flex, Display)</h2>
-  <div class="card-custom">
-    <div class="explanation">Bootstrap has hundreds of utility classes to control spacing (<code>p-3</code>, <code>m-2</code>), flexbox (<code>d-flex</code>, <code>justify-content-between</code>), display (<code>d-none</code>, <code>d-block</code>), and more – without writing custom CSS.</div>
-    <div class="component-demo">
-      <div class="d-flex justify-content-between align-items-center border p-3 mb-3">
-        <div class="bg-primary text-white p-2">Flex 1</div>
-        <div class="bg-success text-white p-2">Flex 2</div>
-        <div class="bg-warning p-2">Flex 3</div>
-      </div>
-      <div class="text-center p-3 bg-light rounded">Centered text with <code>.text-center .p-3</code></div>
-      <div class="mt-3"><span class="me-2 bg-secondary text-white p-1">.me-2</span><span class="mx-3 bg-info p-1">.mx-3</span><span class="mb-0 d-block bg-warning p-1">.mb-0</span></div>
-    </div>
-    <div class="code-block"><pre>&lt;div class="d-flex justify-content-between align-items-center"&gt;...&lt;/div&gt;
-&lt;div class="text-center p-3"&gt;Centered&lt;/div&gt;
-&lt;span class="me-2"&gt;Margin right&lt;/span&gt;</pre></div>
-  </div>
+    <!-- Badges & Breadcrumbs -->
+    <section class="doc-section">
+        <span class="chapter-badge">Component 09</span>
+        <h3>🏷️ Badges & Breadcrumbs</h3>
+        <div class="explanation">Badges for counts/labels; breadcrumbs for navigation hierarchy.</div>
+        <div class="demo-area">
+            <span class="badge bg-primary">New</span> <span class="badge bg-secondary rounded-pill">Pill</span>
+            <nav aria-label="breadcrumb" class="mt-2"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="#">Home</a></li><li class="breadcrumb-item active">Library</li></ol></nav>
+        </div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;span class="badge bg-primary"&gt;</span>New<span style="color:#7dd3fc">&lt;/span&gt;</span>
+<span style="color:#7dd3fc">&lt;nav aria-label="breadcrumb"&gt;&lt;ol class="breadcrumb"&gt;&lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;</span>Home<span style="color:#7dd3fc">&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/nav&gt;</span></code></pre></div>
+    </section>
 
-  <!-- ========== 5. CONCLUSION ========== -->
-  <div class="card-custom bg-light">
-    <div class="text-center">
-      <h3>✅ Full Bootstrap 5 Mastery</h3>
-      <p>This guide covered <strong>over 20 Bootstrap components</strong>, the grid system, utilities, forms, and all JavaScript plugins. Each concept includes a live demo and the exact code to copy. Bootstrap saves hours of development and guarantees responsive, consistent design.</p>
-      <button class="btn btn-primary mt-2" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top ↑</button>
-    </div>
-  </div>
+    <!-- List Groups -->
+    <section class="doc-section">
+        <span class="chapter-badge">Component 10</span>
+        <h3>📋 List Groups</h3>
+        <div class="explanation">Display lists of items, links, or buttons. Can be interactive.</div>
+        <div class="demo-area"><ul class="list-group"><li class="list-group-item active">Active item</li><li class="list-group-item">Second</li><li class="list-group-item disabled">Disabled</li></ul></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;ul class="list-group"&gt;&lt;li class="list-group-item"&gt;</span>Item<span style="color:#7dd3fc">&lt;/li&gt;&lt;/ul&gt;</span></code></pre></div>
+    </section>
 
-  <footer>
-    <p>🎯 Complete Bootstrap 5 documentation – from grid to advanced components. Every example is functional and explained.</p>
-    <p>© 2025 – CET138 Full Stack Development</p>
-  </footer>
+    <!-- Buttons & Button Groups -->
+    <section class="doc-section">
+        <span class="chapter-badge">Component 11</span>
+        <h3>🔘 Buttons & Button Groups</h3>
+        <div class="explanation">Bootstrap provides multiple button styles, sizes, and groups (toolbar).</div>
+        <div class="demo-area">
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-success">Success</button>
+            <button class="btn btn-outline-danger">Outline Danger</button>
+            <div class="btn-group mt-2" role="group"><button class="btn btn-outline-secondary">Left</button><button class="btn btn-outline-secondary">Middle</button><button class="btn btn-outline-secondary">Right</button></div>
+        </div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;button class="btn btn-primary"&gt;</span>Primary<span style="color:#7dd3fc">&lt;/button&gt;</span>
+<span style="color:#7dd3fc">&lt;div class="btn-group" role="group"&gt;&lt;button&gt;</span>Left<span style="color:#7dd3fc">&lt;/button&gt;&lt;button&gt;</span>Right<span style="color:#7dd3fc">&lt;/button&gt;&lt;/div&gt;</span></code></pre></div>
+    </section>
+
+    <!-- ========== 3. FORMS & VALIDATION ========== -->
+    <section class="doc-section">
+        <span class="chapter-badge">Chapter 03</span>
+        <h2 class="fw-bold">Forms & Validation</h2>
+        <div class="explanation">Bootstrap styles all form controls (<code>.form-control</code>, <code>.form-select</code>). Use <code>.needs-validation</code> and custom JavaScript for real‑time validation.</div>
+        <div class="demo-area">
+            <form id="demoForm" class="needs-validation" novalidate>
+                <div class="form-floating mb-3"><input type="text" class="form-control" id="nameInput" placeholder="Name" required><label for="nameInput">Full name</label><div class="invalid-feedback">Required.</div></div>
+                <div class="form-floating mb-3"><input type="email" class="form-control" id="emailInput" placeholder="Email" required><label for="emailInput">Email address</label><div class="invalid-feedback">Valid email required.</div></div>
+                <div class="mb-3"><label class="form-label">Select</label><select class="form-select" required><option value="">Choose...</option><option>Option 1</option></select></div>
+                <div class="mb-3 form-check"><input type="checkbox" class="form-check-input" id="termsCheck" required><label class="form-check-label" for="termsCheck">Agree to terms</label></div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+            <div id="formResult" class="mt-2"></div>
+        </div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;form class="needs-validation" novalidate&gt;</span>
+  <span style="color:#7dd3fc">&lt;div class="form-floating mb-3"&gt;</span>
+    <span style="color:#7dd3fc">&lt;input type="text" class="form-control" required&gt;</span>
+    <span style="color:#7dd3fc">&lt;label&gt;</span>Name<span style="color:#7dd3fc">&lt;/label&gt;</span>
+    <span style="color:#7dd3fc">&lt;div class="invalid-feedback"&gt;</span>Required<span style="color:#7dd3fc">&lt;/div&gt;</span>
+  <span style="color:#7dd3fc">&lt;/div&gt;</span>
+  <span style="color:#7dd3fc">&lt;button type="submit"&gt;</span>Submit<span style="color:#7dd3fc">&lt;/button&gt;</span>
+<span style="color:#7dd3fc">&lt;/form&gt;</span></code></pre></div>
+    </section>
+
+    <!-- ========== 4. UTILITY CLASSES ========== -->
+    <section class="doc-section">
+        <span class="chapter-badge">Chapter 04</span>
+        <h2 class="fw-bold">Utility Classes (Spacing, Flex, Display)</h2>
+        <div class="explanation">Bootstrap has hundreds of utility classes to control spacing (<code>p-3</code>, <code>m-2</code>), flexbox (<code>d-flex</code>, <code>justify-content-between</code>), display (<code>d-none</code>, <code>d-block</code>), and more – without writing custom CSS.</div>
+        <div class="demo-area">
+            <div class="d-flex justify-content-between align-items-center border p-3 mb-3">
+                <div class="bg-primary text-white p-2">Flex 1</div>
+                <div class="bg-success text-white p-2">Flex 2</div>
+                <div class="bg-warning p-2">Flex 3</div>
+            </div>
+            <div class="text-center p-3 bg-light rounded">Centered text with <code>.text-center .p-3</code></div>
+            <div class="mt-3"><span class="me-2 bg-secondary text-white p-1">.me-2</span><span class="mx-3 bg-info p-1">.mx-3</span><span class="mb-0 d-block bg-warning p-1">.mb-0</span></div>
+        </div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="d-flex justify-content-between align-items-center"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
+<span style="color:#7dd3fc">&lt;div class="text-center p-3"&gt;</span>Centered<span style="color:#7dd3fc">&lt;/div&gt;</span>
+<span style="color:#7dd3fc">&lt;span class="me-2"&gt;</span>Margin right<span style="color:#7dd3fc">&lt;/span&gt;</span></code></pre></div>
+    </section>
+
+    <!-- ========== 5. CONCLUSION ========== -->
+    <section class="doc-section text-center">
+        <span class="chapter-badge">Final Chapter</span>
+        <h2 class="fw-bold display-6">You've Mastered Bootstrap 5! 🚀</h2>
+        <p class="lead">From grid system to 20+ components, utilities, and forms – you can now build responsive, professional websites rapidly.</p>
+        <p>Next: combine Bootstrap with JavaScript frameworks like React or Vue for dynamic SPAs.</p>
+        <a href="#" class="btn btn-primary btn-lg rounded-pill px-5 mt-3">Start Your Next Project</a>
+    </section>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<footer>
+    <p>© 2025 Web Guides – Complete Bootstrap 5 Encyclopedia | Grid · Components · Utilities · Forms</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // Tooltips & Popovers
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-  tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
-  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-  popoverTriggerList.forEach(el => new bootstrap.Popover(el));
+    // Copy function (same as other pages)
+    function copyCode(btn) {
+        const pre = btn.parentElement.nextElementSibling;
+        const code = pre.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            const old = btn.innerText;
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = old, 1500);
+        });
+    }
 
-  // Toast
-  const toastBtn = document.getElementById('toastBtn');
-  const toastLive = document.getElementById('liveToast');
-  if (toastBtn && toastLive) {
-    toastBtn.addEventListener('click', () => new bootstrap.Toast(toastLive).show());
-  }
+    // Tooltips & Popovers (Bootstrap JS)
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.forEach(el => new bootstrap.Popover(el));
 
-  // Form validation (Bootstrap's default)
-  const form = document.getElementById('demoForm');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      if (!form.checkValidity()) {
-        e.preventDefault();
-        e.stopPropagation();
-      } else {
-        e.preventDefault();
-        document.getElementById('formResult').innerHTML = '<div class="alert alert-success">✅ Form submitted! (demo)</div>';
-        form.reset();
-      }
-      form.classList.add('was-validated');
-    });
-  }
+    // Toast button
+    const toastBtn = document.getElementById('toastBtn');
+    const toastLive = document.getElementById('liveToast');
+    if (toastBtn && toastLive) {
+        toastBtn.addEventListener('click', () => new bootstrap.Toast(toastLive).show());
+    }
+
+    // Form validation (Bootstrap's default)
+    const form = document.getElementById('demoForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            if (!form.checkValidity()) {
+                e.preventDefault();
+                e.stopPropagation();
+            } else {
+                e.preventDefault();
+                document.getElementById('formResult').innerHTML = '<div class="alert alert-success">✅ Form submitted! (demo)</div>';
+                form.reset();
+                form.classList.remove('was-validated');
+            }
+            form.classList.add('was-validated');
+        });
+    }
 </script>
 </body>
 </html>
