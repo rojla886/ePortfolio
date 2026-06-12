@@ -1,701 +1,793 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>JavaScript Complete Guide – Concepts, Demos & Explanations</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: #f1f5f9;
-      color: #0f172a;
-      line-height: 1.5;
-      padding: 0 1rem 2rem;
-    }
-    .site-nav {
-      background: #0f3b5c;
-      padding: 0.8rem 2rem;
-      border-radius: 0 0 1rem 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .site-nav-inner {
-      max-width: 1300px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .site-brand { color: white; font-size: 1.4rem; font-weight: bold; text-decoration: none; }
-    .nav-links a {
-      color: #e2e8f0;
-      text-decoration: none;
-      margin-left: 1.2rem;
-      padding: 0.3rem 0.6rem;
-      border-radius: 2rem;
-      transition: 0.2s;
-    }
-    .nav-links a.active, .nav-links a:hover { background: #2c7da0; color: white; }
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 1.5rem;
-      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.15);
-      padding: 2rem;
-    }
-    h1 {
-      font-size: 2.5rem;
-      background: linear-gradient(135deg, #0f172a, #2c7da0);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      margin-bottom: 0.5rem;
-    }
-    .subhead {
-      font-size: 1.2rem;
-      color: #334155;
-      border-left: 4px solid #2c7da0;
-      padding-left: 1rem;
-      margin-bottom: 2rem;
-    }
-    h2 {
-      font-size: 1.8rem;
-      margin: 2rem 0 1rem;
-      border-bottom: 3px solid #e2e8f0;
-      color: #0f172a;
-    }
-    h3 {
-      font-size: 1.3rem;
-      margin: 1.5rem 0 0.75rem;
-      color: #1e293b;
-    }
-    .card {
-      background: #ffffff;
-      border-radius: 1rem;
-      margin: 1.8rem 0;
-      padding: 1.2rem;
-      border: 1px solid #e2e8f0;
-      transition: all 0.3s ease;
-    }
-    .card:hover { box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
-    .explanation {
-      background: #eef2ff;
-      border-left: 5px solid #2c7da0;
-      padding: 0.8rem 1rem;
-      border-radius: 0.75rem;
-      margin: 1rem 0;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    .tip {
-      background: #fef9c3;
-      border-left: 5px solid #eab308;
-      padding: 0.8rem 1rem;
-      border-radius: 0.75rem;
-      margin: 0.8rem 0;
-    }
-    .code-block {
-      background: #0f172a;
-      color: #e2e8f0;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      overflow-x: auto;
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
-      margin: 1rem 0;
-    }
-    .demo-area {
-      background: #f9fafb;
-      border: 1px solid #e2e8f0;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      text-align: center;
-    }
-    button {
-      background: #2c7da0;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 2rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.2s;
-      margin: 0.25rem;
-    }
-    button:hover { background: #0f3b5c; transform: scale(1.02); }
-    input, select { padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 0.5rem; width: 100%; }
-    .flex { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .task-item {
-      background: #f8fafc;
-      padding: 0.6rem 1rem;
-      border-radius: 0.75rem;
-      margin: 0.5rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid #e2e8f0;
-    }
-    .task-text { cursor: pointer; flex: 1; }
-    .completed { text-decoration: line-through; color: #94a3b8; }
-    .delete-btn { background: #ef4444; padding: 0.2rem 0.8rem; border-radius: 1.5rem; font-size: 0.8rem; margin-left: 0.5rem; }
-    .progress { background: #e2e8f0; border-radius: 1rem; height: 8px; margin: 0.5rem 0; }
-    .progress-bar { background: #10b981; height: 8px; border-radius: 1rem; width: 0%; }
-    .filter-btn { background: #94a3b8; }
-    .filter-btn.active { background: #2c7da0; }
-    .error { color: #dc2626; font-size: 0.8rem; margin-top: 0.2rem; }
-    footer {
-      margin-top: 2.5rem;
-      text-align: center;
-      border-top: 1px solid #cbd5e1;
-      padding-top: 1.5rem;
-      font-size: 0.85rem;
-      color: #475569;
-    }
-    @media (max-width: 700px) {
-      .container { padding: 1rem; }
-      .site-nav-inner { flex-direction: column; gap: 0.5rem; }
-      .nav-links a { margin: 0 0.5rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>JavaScript Master Encyclopedia | DOM · Async · OOP · Demos</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --dark: #0f172a;
+            --light-bg: #f8fafc;
+            --code-bg: #1e1e1e;
+            --nav-bg: #0a0f1f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--light-bg);
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        /* Horizontal spacing: only 10px on sides */
+        .container {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+            max-width: 1200px;
+        }
+
+        /* Modern Navbar (same as HTML/CSS pages) */
+        .navbar {
+            background: rgba(10, 15, 31, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+            padding: 1rem 0;
+        }
+        .navbar-brand { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+        .nav-link { 
+            font-weight: 500; 
+            color: #cbd5e1 !important; 
+            margin: 0 10px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .nav-link:hover, .nav-link.active { 
+            color: var(--primary) !important; 
+            text-shadow: 0 0 6px rgba(14,165,233,0.3);
+        }
+
+        /* Premium Hero Section */
+        .hero {
+            background: radial-gradient(circle at 80% 20%, #14283c, #050a14);
+            padding: 80px 0 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.1;
+        }
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(to right, #fff, #7dd3fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-tag {
+            background: rgba(14, 165, 233, 0.25);
+            color: #7dd3fc;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Doc Section Cards (matching HTML/CSS) */
+        .doc-section {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 10px 15px -3px rgba(0,0,0,0.03);
+        }
+        .chapter-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Code Windows with Copy Button */
+        .code-window {
+            background: var(--code-bg);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        .code-header {
+            background: #2d2d2d;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .mac-dots span {
+            height: 10px; width: 10px; border-radius: 50%; display: inline-block; margin-right: 5px;
+        }
+        pre { 
+            margin: 0; padding: 20px; color: #e2e8f0; 
+            font-family: 'Fira Code', monospace; font-size: 0.85rem; 
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .btn-copy {
+            background: transparent; border: 1px solid #4b5563; color: #94a3b8;
+            font-size: 0.7rem; padding: 2px 12px; border-radius: 6px; transition: 0.3s;
+        }
+        .btn-copy:hover { border-color: var(--primary); color: white; }
+
+        .explanation {
+            background: #eef2ff;
+            border-left: 5px solid var(--primary);
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+        .demo-area {
+            background: #f9fafb;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.2rem 0;
+            position: relative;
+        }
+        .demo-area::after {
+            content: "LIVE PREVIEW";
+            position: absolute;
+            top: -10px; right: 20px;
+            background: #cbd5e1;
+            font-size: 0.65rem; font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+        .tip {
+            background: #fef9c3;
+            border-left: 5px solid #eab308;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+        button {
+            background: var(--primary);
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            color: white;
+            transition: 0.2s;
+        }
+        button:hover { background: var(--primary-dark); transform: scale(1.02); }
+        input, select { padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 0.75rem; width: 100%; }
+        .task-item {
+            background: #f8fafc;
+            padding: 0.6rem 1rem;
+            border-radius: 0.75rem;
+            margin: 0.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+        }
+        .task-text { cursor: pointer; flex: 1; }
+        .completed { text-decoration: line-through; color: #94a3b8; }
+        .delete-btn { background: #ef4444; padding: 0.2rem 0.8rem; border-radius: 1.5rem; font-size: 0.8rem; margin-left: 0.5rem; }
+        .progress { background: #e2e8f0; border-radius: 1rem; height: 8px; margin: 0.5rem 0; }
+        .progress-bar { background: #10b981; height: 8px; border-radius: 1rem; width: 0%; }
+        .filter-btn { background: #94a3b8; }
+        .filter-btn.active { background: var(--primary); }
+        .error { color: #dc2626; font-size: 0.8rem; margin-top: 0.2rem; }
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 2rem;
+            border-radius: 2rem 2rem 0 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        @media (max-width: 700px) {
+            .doc-section { padding: 1.2rem; }
+        }
+    </style>
 </head>
 <body>
-<nav class="site-nav">
-  <div class="site-nav-inner">
-    <a href="#" class="site-brand">🧱 Web Guides</a>
-    <div class="nav-links">
-      <a href="#">Full Stack</a>
-      <a href="./html.html">HTML</a>
-      <a href="./Css.html">CSS</a>
-      <a href="./javascript.html" class="active">JavaScript</a>
-      <a href="./Bootstrap.html">Bootstrap</a>
+
+<!-- Navbar identical to HTML/CSS pages -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#"><i class="fas fa-cubes text-info me-2"></i>WEB GUIDES</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Full Stack</a></li>
+                <li class="nav-item"><a class="nav-link" href="./html.html">HTML</a></li>
+                <li class="nav-item"><a class="nav-link" href="./Css.html">CSS</a></li>
+                <li class="nav-item"><a class="nav-link active" href="./javascript.html">JavaScript</a></li>
+                <li class="nav-item"><a class="nav-link" href="./Bootstrap.html">Bootstrap</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
 
-<div class="container">
-  <div style="text-align: center; margin-bottom: 1rem;">
-    <h1>📘 JavaScript Complete Guide</h1>
-    <div class="subhead" style="border-left: none; text-align: center;">
-      Variables • Functions • DOM • Arrays • LocalStorage • Promises • Async/Await • Fetch • Classes • Error Handling
+<!-- Hero section -->
+<header class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <span class="hero-tag">Master JavaScript – ES6 to Modern</span>
+                <h1 class="hero-title">Bring Interactivity<br>with JavaScript.</h1>
+                <p class="lead text-white-50 mt-3">Complete guide: variables, functions, DOM, arrays, localStorage, promises, async/await, fetch, classes, error handling, and fully functional to‑do list & form validation.</p>
+                <div class="d-flex gap-3 mt-4">
+                    <a href="#intro" class="btn btn-primary btn-lg px-4 rounded-pill fw-bold">Start Learning</a>
+                    <a href="#todolist" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-bold">Try Live Demo</a>
+                </div>
+            </div>
+            <div class="col-lg-4 d-none d-lg-block">
+                <div class="code-window mb-0">
+                    <div class="code-header">
+                        <div class="mac-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div>
+                        <small class="text-muted">script.js</small>
+                    </div>
+                    <pre><code><span style="color:#7dd3fc">// Modern JavaScript</span>
+<span style="color:#7dd3fc">const</span> <span style="color:#fbbf24">greet</span> = (<span style="color:#34d399">name</span>) => {
+  <span style="color:#7dd3fc">return</span> <span style="color:#34d399">`Hello ${name}!`</span>;
+};
+<span style="color:#7dd3fc">document</span>.<span style="color:#fbbf24">getElementById</span>(<span style="color:#34d399">'btn'</span>)
+  .<span style="color:#fbbf24">addEventListener</span>(<span style="color:#34d399">'click'</span>, () => {
+    <span style="color:#fbbf24">console</span>.<span style="color:#fbbf24">log</span>(<span style="color:#34d399">greet('World')</span>);
+  });</code></pre>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</header>
 
-  <!-- ========== EXTENDED INTRODUCTION ========== -->
-  <div class="card">
-    <h2>🧠 What is JavaScript?</h2>
-    <div class="explanation">
-      <strong>JavaScript (JS)</strong> is the programming language that makes websites <strong>interactive and dynamic</strong>. While HTML gives structure and CSS provides styling, JavaScript brings <strong>behaviour</strong> – handling button clicks, validating forms, updating content without reloading, fetching data from servers, creating animations, and much more.
-      <br><br>
-      Created in 1995 by Brendan Eich in just 10 days, JavaScript has evolved into one of the most popular programming languages in the world. Today, it runs on every modern web browser (Chrome, Firefox, Safari, Edge) and also on servers using Node.js, allowing developers to build complete applications (frontend + backend) with a single language.
-      <br><br>
-      <strong>Why learn JavaScript?</strong> It is essential for front‑end development, enables full‑stack development (with Node.js), has a huge ecosystem of libraries and frameworks (React, Vue, Angular), and offers excellent job opportunities.
-    </div>
-    <div class="demo-area">
-      <p>Click the button below – JavaScript changes the text and style instantly!</p>
-      <button id="welcomeBtn">Say Hello</button>
-      <p id="welcomeMessage" style="margin-top: 0.5rem; font-weight: bold;"></p>
-    </div>
-    <div class="code-block">
-      <pre>// Basic example: change content and style with JavaScript
-document.getElementById('welcomeBtn').addEventListener('click', () => {
-  const msg = document.getElementById('welcomeMessage');
-  msg.textContent = 'Hello! JavaScript is working 🎉';
-  msg.style.color = '#2c7da0';
-  msg.style.fontWeight = 'bold';
-});</pre>
-    </div>
-    <div class="tip">
-      💡 JavaScript runs in the browser's JavaScript engine (e.g., Chrome's V8). It is an <strong>interpreted</strong> language – no compilation needed.
-    </div>
-  </div>
+<div class="container mt-4">
+    <!-- INTRO SECTION -->
+    <section id="intro" class="doc-section">
+        <span class="chapter-badge">Chapter 01</span>
+        <h2 class="fw-bold">What is JavaScript?</h2>
+        <p>JavaScript (JS) is the programming language that makes websites <strong>interactive and dynamic</strong>. While HTML gives structure and CSS provides styling, JavaScript brings behaviour – handling button clicks, validating forms, updating content without reloading, fetching data from servers, creating animations, and much more.</p>
+        <div class="explanation">
+            💡 <strong>Why learn JavaScript?</strong> It is essential for front‑end development, enables full‑stack development (with Node.js), has a huge ecosystem (React, Vue, Angular), and offers excellent career opportunities.
+        </div>
+        <div class="demo-area">
+            <p>Click the button below – JavaScript changes the text and style instantly!</p>
+            <button id="welcomeBtn">Say Hello</button>
+            <p id="welcomeMessage" style="margin-top: 0.5rem; font-weight: bold;"></p>
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"><span></span><span></span><span></span></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">// Basic example: change content and style with JavaScript</span>
+<span style="color:#7dd3fc">document</span>.<span style="color:#fbbf24">getElementById</span>(<span style="color:#34d399">'welcomeBtn'</span>).<span style="color:#fbbf24">addEventListener</span>(<span style="color:#34d399">'click'</span>, () => {
+  <span style="color:#7dd3fc">const</span> msg = <span style="color:#7dd3fc">document</span>.<span style="color:#fbbf24">getElementById</span>(<span style="color:#34d399">'welcomeMessage'</span>);
+  msg.<span style="color:#fbbf24">textContent</span> = <span style="color:#34d399">'Hello! JavaScript is working 🎉'</span>;
+  msg.<span style="color:#fbbf24">style</span>.<span style="color:#fbbf24">color</span> = <span style="color:#34d399">'#0ea5e9'</span>;
+});</code></pre>
+        </div>
+    </section>
 
-  <!-- ========== PRACTICAL DEMO: TO-DO LIST ========== -->
-  <div class="card">
-    <h2>📝 Practical Demo: To‑Do List (with localStorage)</h2>
-    <div class="explanation">
-      This fully functional to‑do list demonstrates <strong>variables, arrays, objects, functions, event listeners, DOM manipulation, array methods (filter, forEach), localStorage, and conditional logic</strong>. Tasks are saved in your browser's localStorage – refresh the page and they remain. This simulates a real database but on the client side.
-    </div>
-    <div class="flex" style="margin-bottom: 1rem">
-      <input type="text" id="taskInput" placeholder="Write a task..." style="flex: 1">
-      <button id="addTaskBtn">➕ Add Task</button>
-    </div>
-    <div class="flex" style="margin-bottom: 0.5rem">
-      <button id="filterAll" class="filter-btn active">All</button>
-      <button id="filterActive" class="filter-btn">Pending</button>
-      <button id="filterCompleted" class="filter-btn">Completed</button>
-      <button id="clearAllTasks" style="background:#64748b">🗑️ Clear All</button>
-    </div>
-    <div id="taskListContainer"></div>
-    <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
-    <div id="taskStats" style="font-size:0.8rem; color:#475569"></div>
-  </div>
+    <!-- PRACTICAL DEMO: TO-DO LIST (with localStorage) -->
+    <section id="todolist" class="doc-section">
+        <span class="chapter-badge">Chapter 02 · Live Project</span>
+        <h2 class="fw-bold">📝 To‑Do List with localStorage</h2>
+        <div class="explanation">
+            This fully functional to‑do list demonstrates <strong>variables, arrays, objects, functions, event listeners, DOM manipulation, array methods (filter, forEach), localStorage, and conditional logic</strong>. Tasks persist after page refresh – try adding, completing, or deleting tasks.
+        </div>
+        <div class="flex-row" style="margin-bottom: 1rem">
+            <input type="text" id="taskInput" placeholder="Write a task..." style="flex: 1">
+            <button id="addTaskBtn">➕ Add Task</button>
+        </div>
+        <div class="flex-row" style="margin-bottom: 0.5rem">
+            <button id="filterAll" class="filter-btn active">All</button>
+            <button id="filterActive" class="filter-btn">Pending</button>
+            <button id="filterCompleted" class="filter-btn">Completed</button>
+            <button id="clearAllTasks" style="background:#64748b">🗑️ Clear All</button>
+        </div>
+        <div id="taskListContainer"></div>
+        <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+        <div id="taskStats" style="font-size:0.8rem; color:#475569"></div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">// Core to-do logic (simplified)</span>
+<span style="color:#7dd3fc">let tasks</span> = [];
+<span style="color:#7dd3fc">function addTask()</span> {
+  <span style="color:#7dd3fc">const text</span> = taskInput.value.trim();
+  <span style="color:#7dd3fc">if (text)</span> tasks.push({ id: Date.now(), text, completed: false });
+  saveTasks(); renderTasks();
+}
+<span style="color:#7dd3fc">function renderTasks()</span> {
+  <span style="color:#7dd3fc">const filtered</span> = tasks.filter(t => currentFilter === 'active' ? !t.completed : currentFilter === 'completed' ? t.completed : true);
+  filtered.forEach(task => { /* create DOM elements dynamically */ });
+}</code></pre>
+        </div>
+    </section>
 
-  <!-- ========== FORM VALIDATION DEMO ========== -->
-  <div class="card">
-    <h2>✅ Real‑Time Form Validation</h2>
-    <div class="explanation">
-      Validates email format, password length, and password confirmation <strong>as you type</strong> – using <strong>event listeners (input)</strong> and <strong>conditional logic (if/else)</strong>. This gives immediate feedback, improving user experience.
-    </div>
-    <div class="flex" style="gap:1rem">
-      <div style="flex:1">
-        <label>Email:</label>
-        <input type="email" id="regEmail" placeholder="user@example.com">
-        <div id="emailError" class="error"></div>
-      </div>
-      <div style="flex:1">
-        <label>Password:</label>
-        <input type="password" id="regPassword" placeholder="Min 6 chars">
-        <div id="passwordError" class="error"></div>
-      </div>
-    </div>
-    <div style="margin-top:1rem">
-      <label>Confirm Password:</label>
-      <input type="password" id="confirmPassword" placeholder="Retype password">
-      <div id="confirmError" class="error"></div>
-    </div>
-    <button id="validateBtn" style="margin-top:1rem">Validate & Register (Demo)</button>
-    <div id="validationMessage" class="tip" style="display:none"></div>
-  </div>
+    <!-- FORM VALIDATION DEMO -->
+    <section class="doc-section">
+        <span class="chapter-badge">Chapter 03 · Real‑Time Validation</span>
+        <h2 class="fw-bold">✅ Form Validation (Live)</h2>
+        <div class="explanation">
+            Validates email format, password length, and password confirmation <strong>as you type</strong> – using <strong>event listeners (input)</strong> and <strong>conditional logic</strong>. Immediate feedback improves user experience.
+        </div>
+        <div class="flex-row" style="gap:1rem">
+            <div style="flex:1">
+                <label>Email:</label>
+                <input type="email" id="regEmail" placeholder="user@example.com">
+                <div id="emailError" class="error"></div>
+            </div>
+            <div style="flex:1">
+                <label>Password (min 6 chars):</label>
+                <input type="password" id="regPassword" placeholder="Min 6 chars">
+                <div id="passwordError" class="error"></div>
+            </div>
+        </div>
+        <div style="margin-top:1rem">
+            <label>Confirm Password:</label>
+            <input type="password" id="confirmPassword" placeholder="Retype password">
+            <div id="confirmError" class="error"></div>
+        </div>
+        <button id="validateBtn" style="margin-top:1rem">Validate & Register (Demo)</button>
+        <div id="validationMessage" class="tip" style="display:none"></div>
+        <div class="code-window mt-3">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">// Real‑time validation</span>
+emailInput.<span style="color:#fbbf24">addEventListener</span>(<span style="color:#34d399">'input'</span>, () => {
+  <span style="color:#7dd3fc">const isValid</span> = emailInput.value.includes('@') && emailInput.value.includes('.');
+  emailError.textContent = isValid ? '' : '❌ Invalid email';
+});</code></pre>
+        </div>
+    </section>
 
-  <!-- ========== DETAILED JAVASCRIPT CONCEPTS ========== -->
-  <h2>📚 JavaScript Concepts – Explained with Code</h2>
+    <!-- DETAILED CONCEPTS -->
+    <div style="margin-top: 2rem;"><h2 class="fw-bold">📚 Core JavaScript Concepts</h2></div>
 
-  <!-- 1. Variables -->
-  <div class="card">
-    <h3>1. Variables: let, const, and var</h3>
-    <div class="explanation">
-      <strong>Variables</strong> are containers for storing data. In JavaScript, we declare variables using:
-      <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-        <li><code>let</code> – for values that can change later. Example: <code>let age = 25; age = 26;</code></li>
-        <li><code>const</code> – for values that should never be reassigned. Used for DOM elements, configuration values. Note: objects/arrays declared with <code>const</code> can still be modified (e.g., push to array), but you cannot reassign the variable itself.</li>
-        <li><code>var</code> – the old way (pre‑ES6). Avoid it because it has function scope and can lead to bugs.</li>
-      </ul>
-      Data types include: strings (<code>"hello"</code>), numbers (<code>42</code>), booleans (<code>true/false</code>), arrays (<code>[1,2,3]</code>), objects (<code>{name:"John"}</code>), and more.
-    </div>
-    <div class="code-block">
-      <pre>let tasks = [];           // can be reassigned later
-const taskInput = document.getElementById('taskInput'); // never changes
-let count = 0;            // number
-const isCompleted = false; // boolean</pre>
-    </div>
-    <div class="tip">💡 In our to‑do list, <code>tasks</code> is a <code>let</code> variable because we reassign it when deleting or adding tasks. <code>taskInput</code> is a <code>const</code> because it always refers to the same DOM element.</div>
-  </div>
+    <!-- Variables -->
+    <section class="doc-section">
+        <span class="chapter-badge">Concept 01</span>
+        <h3>let, const, and var</h3>
+        <div class="explanation">
+            <strong>Variables</strong> store data. Use <code>let</code> for values that change, <code>const</code> for values that never change (objects/arrays declared with const can still be modified, but not reassigned). Avoid <code>var</code> (old, function‑scoped). Data types: strings, numbers, booleans, arrays, objects.
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">let</span> age = 25;      <span style="color:#7dd3fc">age</span> = 26;        <span style="color:#64748b">// allowed</span>
+<span style="color:#7dd3fc">const</span> name = <span style="color:#34d399">'John'</span>; <span style="color:#64748b">// name = 'Jane' → Error</span>
+<span style="color:#7dd3fc">const</span> tasks = [];   <span style="color:#64748b">// tasks.push('new') → allowed (object mutation)</span></code></pre>
+        </div>
+    </section>
 
-  <!-- 2. Functions -->
-  <div class="card">
-    <h3>2. Functions (Reusable code blocks)</h3>
-    <div class="explanation">
-      <strong>Functions</strong> are reusable blocks of code that perform a specific task. They help avoid repetition, organise code, and make it testable. A function can take <strong>parameters</strong> (inputs) and optionally <strong>return</strong> a value.
-      <br><br>
-      You define a function with the <code>function</code> keyword (or using arrow functions <code>() => {}</code>). Then you <strong>call</strong> it by its name followed by parentheses.
-    </div>
-    <div class="code-block">
-      <pre>// Function to add a new task (from our to‑do list)
-function addTask() {
-  const text = taskInput.value.trim();
-  if (text !== '') {
-    tasks.push({ id: Date.now(), text, completed: false });
-    saveTasks();    // call another function
-    renderTasks();  // update the UI
-    taskInput.value = '';
+    <!-- Functions -->
+    <section class="doc-section">
+        <span class="chapter-badge">Concept 02</span>
+        <h3>Functions (Reusable Code)</h3>
+        <div class="explanation">
+            Functions encapsulate reusable logic. Can take parameters and return values. Arrow functions (<code>() => {}</code>) provide concise syntax.
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">// Function declaration</span>
+<span style="color:#7dd3fc">function</span> <span style="color:#fbbf24">greet</span>(name) {
+  <span style="color:#7dd3fc">return</span> <span style="color:#34d399">`Hello ${name}`</span>;
+}
+<span style="color:#64748b">// Arrow function</span>
+<span style="color:#7dd3fc">const</span> add = (a, b) => a + b;</code></pre>
+        </div>
+    </section>
+
+    <!-- Event Listeners & DOM -->
+    <section class="doc-section">
+        <span class="chapter-badge">Concept 03</span>
+        <h3>Event Listeners & DOM Manipulation</h3>
+        <div class="explanation">
+            <code>addEventListener</code> waits for user actions (click, input, submit). DOM manipulation: <code>createElement</code>, <code>appendChild</code>, <code>classList</code> – dynamically update the page without reload.
+        </div>
+        <div class="demo-area">
+            <button id="domDemoBtn">Click to add a new element</button>
+            <div id="domDemoContainer" style="margin-top: 10px;"></div>
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">document</span>.<span style="color:#fbbf24">getElementById</span>(<span style="color:#34d399">'domDemoBtn'</span>).<span style="color:#fbbf24">addEventListener</span>(<span style="color:#34d399">'click'</span>, () => {
+  <span style="color:#7dd3fc">const</span> newDiv = <span style="color:#7dd3fc">document</span>.<span style="color:#fbbf24">createElement</span>(<span style="color:#34d399">'div'</span>);
+  newDiv.<span style="color:#fbbf24">textContent</span> = <span style="color:#34d399">'🎉 New element added!'</span>;
+  newDiv.<span style="color:#fbbf24">style</span>.<span style="color:#fbbf24">background</span> = <span style="color:#34d399">'#e2e8f0'</span>;
+  <span style="color:#7dd3fc">document</span>.<span style="color:#fbbf24">getElementById</span>(<span style="color:#34d399">'domDemoContainer'</span>).<span style="color:#fbbf24">appendChild</span>(newDiv);
+});</code></pre>
+        </div>
+    </section>
+
+    <!-- Array Methods -->
+    <section class="doc-section">
+        <span class="chapter-badge">Concept 04</span>
+        <h3>Array Methods (push, filter, forEach, map)</h3>
+        <div class="explanation">
+            Powerful methods to manipulate lists: <code>push</code> (add), <code>filter</code> (select), <code>forEach</code> (loop), <code>map</code> (transform).
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">const</span> numbers = [1, 2, 3, 4];
+<span style="color:#7dd3fc">const</span> doubled = numbers.map(n => n * 2);   <span style="color:#64748b">// [2,4,6,8]</span>
+<span style="color:#7dd3fc">const</span> evens = numbers.filter(n => n % 2 === 0); <span style="color:#64748b">// [2,4]</span>
+numbers.forEach(n => console.log(n));</code></pre>
+        </div>
+    </section>
+
+    <!-- LocalStorage -->
+    <section class="doc-section">
+        <span class="chapter-badge">Concept 05</span>
+        <h3>LocalStorage (Persistent Data)</h3>
+        <div class="explanation">
+            Stores key‑value pairs in the browser. Data survives page refresh. Use <code>JSON.stringify()</code> to store objects/arrays, <code>JSON.parse()</code> to retrieve.
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#64748b">// Save</span>
+localStorage.<span style="color:#fbbf24">setItem</span>(<span style="color:#34d399">'tasks'</span>, <span style="color:#34d399">JSON.stringify</span>(tasks));
+<span style="color:#64748b">// Load</span>
+<span style="color:#7dd3fc">const</span> saved = localStorage.<span style="color:#fbbf24">getItem</span>(<span style="color:#34d399">'tasks'</span>);
+<span style="color:#7dd3fc">if</span> (saved) tasks = <span style="color:#34d399">JSON.parse</span>(saved);</code></pre>
+        </div>
+    </section>
+
+    <!-- Promises & Async/Await + Fetch -->
+    <section class="doc-section">
+        <span class="chapter-badge">Concept 06</span>
+        <h3>Promises, Async/Await & Fetch</h3>
+        <div class="explanation">
+            <strong>Promises</strong> handle asynchronous operations. <strong>Async/await</strong> is modern syntax that makes promises easier. <strong>Fetch API</strong> makes HTTP requests.
+        </div>
+        <div class="demo-area">
+            <button id="fetchUserBtn">📡 Fetch Random User (JSONPlaceholder)</button>
+            <div id="userResult" style="margin-top: 0.5rem; font-family: monospace;"></div>
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">async function</span> <span style="color:#fbbf24">fetchUser</span>() {
+  <span style="color:#7dd3fc">try</span> {
+    <span style="color:#7dd3fc">const</span> response = <span style="color:#7dd3fc">await</span> <span style="color:#fbbf24">fetch</span>(<span style="color:#34d399">'https://jsonplaceholder.typicode.com/users/1'</span>);
+    <span style="color:#7dd3fc">const</span> user = <span style="color:#7dd3fc">await</span> response.<span style="color:#fbbf24">json</span>();
+    console.<span style="color:#fbbf24">log</span>(user.name);
+  } <span style="color:#7dd3fc">catch</span> (error) {
+    console.<span style="color:#fbbf24">error</span>(<span style="color:#34d399">'Failed:'</span>, error);
+  }
+}</code></pre>
+        </div>
+    </section>
+
+    <!-- Error Handling -->
+    <section class="doc-section">
+        <span class="chapter-badge">Concept 07</span>
+        <h3>Error Handling (try...catch)</h3>
+        <div class="explanation">
+            <code>try...catch</code> prevents scripts from crashing when an error occurs. Essential for network requests and user input.
+        </div>
+        <div class="demo-area">
+            <button id="simulateErrorBtn">🚨 Simulate an Error</button>
+            <div id="errorResult" style="margin-top: 0.5rem;"></div>
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">try</span> {
+  <span style="color:#7dd3fc">const</span> invalidJSON = <span style="color:#34d399">'{ name: "John" }'</span>; <span style="color:#64748b">// missing quotes</span>
+  <span style="color:#7dd3fc">const</span> data = <span style="color:#34d399">JSON.parse</span>(invalidJSON);
+} <span style="color:#7dd3fc">catch</span> (error) {
+  console.<span style="color:#fbbf24">error</span>(<span style="color:#34d399">'Caught:'</span>, error.message);
+}</code></pre>
+        </div>
+    </section>
+
+    <!-- Classes -->
+    <section class="doc-section">
+        <span class="chapter-badge">Concept 08</span>
+        <h3>Classes (Object‑Oriented Programming)</h3>
+        <div class="explanation">
+            Classes are blueprints for creating objects. Constructor initialises properties, methods define behaviour.
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">class</span> <span style="color:#fbbf24">Task</span> {
+  <span style="color:#fbbf24">constructor</span>(text) {
+    <span style="color:#7dd3fc">this</span>.id = Date.now();
+    <span style="color:#7dd3fc">this</span>.text = text;
+    <span style="color:#7dd3fc">this</span>.completed = <span style="color:#7dd3fc">false</span>;
+  }
+  <span style="color:#fbbf24">toggle</span>() {
+    <span style="color:#7dd3fc">this</span>.completed = !<span style="color:#7dd3fc">this</span>.completed;
   }
 }
+<span style="color:#7dd3fc">const</span> myTask = <span style="color:#7dd3fc">new</span> <span style="color:#fbbf24">Task</span>(<span style="color:#34d399">'Learn OOP'</span>);</code></pre>
+        </div>
+    </section>
 
-// Arrow function example
-const greet = (name) => `Hello ${name}!`;</pre>
-    </div>
-  </div>
+    <!-- Template Literals -->
+    <section class="doc-section">
+        <span class="chapter-badge">Concept 09</span>
+        <h3>Template Literals (Backticks & ${})</h3>
+        <div class="explanation">
+            Use backticks <code>`</code> and <code>${expression}</code> to embed variables and expressions in strings – cleaner than concatenation.
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">const</span> completed = 5, total = 10;
+<span style="color:#7dd3fc">const</span> message = <span style="color:#34d399">`${completed} of ${total} tasks done (${(completed/total)*100}%)`</span>;
+<span style="color:#64748b">// Multi‑line HTML</span>
+<span style="color:#7dd3fc">const</span> html = <span style="color:#34d399">`
+  &lt;div class="card"&gt;
+    &lt;h3&gt;${title}&lt;/h3&gt;
+  &lt;/div&gt;
+`</span>;</code></pre>
+        </div>
+    </section>
 
-  <!-- 3. Event Listeners -->
-  <div class="card">
-    <h3>3. Event Listeners (click, input, keypress, submit)</h3>
-    <div class="explanation">
-      <strong>Event listeners</strong> wait for user actions (clicks, typing, mouse movements, form submission) and then execute a function. This is what makes web pages interactive.
-      <br><br>
-      Common events: <code>click</code> (button pressed), <code>input</code> (user types in a field), <code>keypress</code> (keyboard key), <code>submit</code> (form sent). You attach an event listener using <code>addEventListener</code>.
-    </div>
-    <div class="code-block">
-      <pre>// Click event on Add button
-addBtn.addEventListener('click', addTask);
-
-// Keypress event – press Enter in the input field
-taskInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') addTask();
-});
-
-// Input event for real‑time validation
-emailInput.addEventListener('input', validateEmail);</pre>
-    </div>
-  </div>
-
-  <!-- 4. DOM Manipulation -->
-  <div class="card">
-    <h3>4. DOM Manipulation (createElement, appendChild, classList)</h3>
-    <div class="explanation">
-      The <strong>DOM (Document Object Model)</strong> is the browser's representation of the HTML page as a tree of objects. JavaScript can <strong>manipulate</strong> this tree – creating, removing, or modifying elements dynamically, without reloading the page.
-      <br><br>
-      Key methods: <code>document.getElementById()</code>, <code>document.querySelector()</code>, <code>createElement()</code>, <code>appendChild()</code>, <code>classList.add()/remove()</code>.
-    </div>
-    <div class="code-block">
-      <pre>// Create a new task element (from our to‑do list)
-const taskDiv = document.createElement('div');
-taskDiv.className = 'task-item';
-const textSpan = document.createElement('span');
-textSpan.textContent = task.text;
-textSpan.classList.add('task-text');
-if (task.completed) textSpan.classList.add('completed');
-taskDiv.appendChild(textSpan);
-container.appendChild(taskDiv);</pre>
-    </div>
-  </div>
-
-  <!-- 5. Array Methods -->
-  <div class="card">
-    <h3>5. Array Methods (push, filter, map, forEach, splice)</h3>
-    <div class="explanation">
-      Arrays are lists of data. JavaScript provides powerful built‑in methods to manipulate them:
-      <ul style="margin-left: 1.5rem;">
-        <li><code>push()</code> – add an item to the end</li>
-        <li><code>filter()</code> – create a new array with items that pass a test</li>
-        <li><code>forEach()</code> – execute a function for each array element</li>
-        <li><code>map()</code> – transform each element into a new value</li>
-        <li><code>splice()</code> – remove or replace items</li>
-      </ul>
-      These methods are <strong>immutable</strong> where appropriate and make array handling concise.
-    </div>
-    <div class="code-block">
-      <pre>// Add new task
-tasks.push(newTask);
-
-// Filter active tasks (not completed)
-const activeTasks = tasks.filter(task => !task.completed);
-
-// Loop to render each task
-filteredTasks.forEach(task => { /* create DOM element */ });
-
-// Delete a task by filtering out the one with matching id
-tasks = tasks.filter(t => t.id !== taskId);</pre>
-    </div>
-  </div>
-
-  <!-- 6. LocalStorage -->
-  <div class="card">
-    <h3>6. LocalStorage (persist data after page refresh)</h3>
-    <div class="explanation">
-      <strong>localStorage</strong> is a web storage API that allows you to store key‑value pairs in the browser. Data persists even after the page is closed and reopened (unlike sessionStorage which expires). It's perfect for saving user preferences, to‑do lists, or authentication tokens.
-      <br><br>
-      localStorage only stores strings. To store objects or arrays, use <code>JSON.stringify()</code> to convert them to a string, and <code>JSON.parse()</code> to convert back.
-    </div>
-    <div class="code-block">
-      <pre>// Save tasks to localStorage
-localStorage.setItem('js_tasks', JSON.stringify(tasks));
-
-// Load tasks from localStorage
-const saved = localStorage.getItem('js_tasks');
-if (saved) {
-  tasks = JSON.parse(saved); // convert back to array
-}</pre>
-    </div>
-    <div class="tip">💡 In our to‑do list, tasks are saved automatically. Try adding a task, refresh the page – it's still there! This simulates a real database.</div>
-  </div>
-
-  <!-- 7. Promises & Async/Await + Fetch -->
-  <div class="card">
-    <h3>7. Promises & Async/Await (Handling asynchronous operations)</h3>
-    <div class="explanation">
-      JavaScript is <strong>asynchronous</strong> by default – it doesn't wait for slow operations (like network requests) to finish before moving on. <strong>Promises</strong> represent a future value (pending, resolved, or rejected). <strong>Async/await</strong> is a modern syntax that makes working with promises easier and more readable.
-      <br><br>
-      The <strong>Fetch API</strong> is used to make HTTP requests to servers (e.g., get data from an API). It returns a Promise.
-    </div>
-    <div class="demo-area">
-      <button id="fetchUserBtn">📡 Fetch Random User (JSONPlaceholder)</button>
-      <div id="userResult" style="margin-top: 0.5rem; font-family: monospace;"></div>
-    </div>
-    <div class="code-block">
-      <pre>// Async function to fetch user data
-async function fetchUser() {
-  try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
-    if (!response.ok) throw new Error('Network error');
-    const user = await response.json();
-    console.log(user.name);
-  } catch (error) {
-    console.error('Failed:', error);
-  }
-}</pre>
-    </div>
-  </div>
-
-  <!-- 8. Error Handling (try/catch) -->
-  <div class="card">
-    <h3>8. Error Handling (try...catch)</h3>
-    <div class="explanation">
-      <strong>try...catch</strong> allows you to handle errors gracefully without crashing the entire script. The <code>try</code> block contains code that might throw an error; if an error occurs, the <code>catch</code> block runs. This is essential for network requests, user input parsing, and any operation that might fail.
-    </div>
-    <div class="demo-area">
-      <button id="simulateErrorBtn">🚨 Simulate an Error</button>
-      <div id="errorResult" style="margin-top: 0.5rem;"></div>
-    </div>
-    <div class="code-block">
-      <pre>try {
-  // Intentionally cause an error (invalid JSON)
-  const invalidJSON = '{ name: "John" }'; // missing quotes
-  const data = JSON.parse(invalidJSON);
-} catch (error) {
-  console.error('Caught error:', error.message);
-  errorDiv.textContent = 'Something went wrong. Please try again.';
-}</pre>
-    </div>
-  </div>
-
-  <!-- 9. Classes (ES6) -->
-  <div class="card">
-    <h3>9. Classes (Object‑oriented programming)</h3>
-    <div class="explanation">
-      <strong>Classes</strong> are blueprints for creating objects with similar properties and methods. They are a core part of object‑oriented programming (OOP). A class can have a <code>constructor</code> to initialise properties, and methods to define behaviour. Classes make code more organised and reusable.
-    </div>
-    <div class="code-block">
-      <pre>class Task {
-  constructor(text) {
-    this.id = Date.now();
-    this.text = text;
-    this.completed = false;
-  }
-  toggle() {
-    this.completed = !this.completed;
-  }
-}
-const myTask = new Task('Learn classes');
-myTask.toggle();
-console.log(myTask.completed); // true</pre>
-    </div>
-  </div>
-
-  <!-- 10. Template Literals -->
-  <div class="card">
-    <h3>10. Template Literals (Backticks and ${})</h3>
-    <div class="explanation">
-      <strong>Template literals</strong> (enclosed in backticks `` ` ``) allow embedding variables and expressions directly inside strings using <code>${...}</code>. They also support multi‑line strings without concatenation. This is much cleaner than the old <code>'string' + variable</code> approach.
-    </div>
-    <div class="code-block">
-      <pre>const completed = 5;
-const total = 10;
-const message = `${completed} of ${total} tasks done (${(completed/total)*100}%)`;
-console.log(message); // "5 of 10 tasks done (50%)"
-
-// Multi‑line string
-const html = `
-  <div class="task">
-    <span>${taskText}</span>
-  </div>
-`;</pre>
-    </div>
-  </div>
-
-  <footer>
-    <p>🎯 Complete JavaScript documentation – from fundamentals to async/await, fetch, classes, and error handling. Every concept includes live demos and code examples from a real to‑do list and validation form.</p>
-    <p>© 2025 – CET138 Full Stack Development | <a href="#">Back to top ↑</a></p>
-  </footer>
+    <!-- CONCLUSION -->
+    <section class="doc-section text-center">
+        <span class="chapter-badge">Final Chapter</span>
+        <h2 class="fw-bold display-6">You've Mastered JavaScript! 🚀</h2>
+        <p class="lead">From variables to async/await, classes, and real‑world projects – you now have the power to build interactive web applications.</p>
+        <p>Next: dive into React, Vue, or Node.js to become a full‑stack developer.</p>
+        <a href="#" class="btn btn-primary btn-lg rounded-pill px-5 mt-3">Continue to Frameworks</a>
+    </section>
 </div>
 
+<footer>
+    <p>© 2025 Web Guides – Complete JavaScript Encyclopedia | DOM · Async · OOP · localStorage · Fetch · Best Practices</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // ==================== WELCOME BUTTON DEMO ====================
-  document.getElementById('welcomeBtn')?.addEventListener('click', () => {
-    const msg = document.getElementById('welcomeMessage');
-    msg.textContent = 'Hello! JavaScript is working 🎉';
-    msg.style.color = '#2c7da0';
-    msg.style.fontWeight = 'bold';
-  });
-
-  // ==================== TO-DO LIST ====================
-  let tasks = [];
-  let currentFilter = 'all';
-
-  function loadTasks() {
-    const saved = localStorage.getItem('js_tasks');
-    if (saved) {
-      tasks = JSON.parse(saved);
-    } else {
-      tasks = [
-        { id: Date.now() + 1, text: 'Learn HTML', completed: true },
-        { id: Date.now() + 2, text: 'Learn CSS', completed: true },
-        { id: Date.now() + 3, text: 'Learn JavaScript', completed: false },
-        { id: Date.now() + 4, text: 'Build portfolio', completed: false },
-      ];
-    }
-    renderTasks();
-  }
-  function saveTasks() { localStorage.setItem('js_tasks', JSON.stringify(tasks)); }
-  function renderTasks() {
-    const container = document.getElementById('taskListContainer');
-    if (!container) return;
-    let filtered = tasks;
-    if (currentFilter === 'active') filtered = tasks.filter(t => !t.completed);
-    else if (currentFilter === 'completed') filtered = tasks.filter(t => t.completed);
-    if (filtered.length === 0) {
-      container.innerHTML = '<p style="text-align:center; color:#94a3b8;">No tasks to show</p>';
-    } else {
-      container.innerHTML = '';
-      filtered.forEach(task => {
-        const div = document.createElement('div');
-        div.className = 'task-item';
-        const textSpan = document.createElement('span');
-        textSpan.textContent = task.text;
-        textSpan.className = 'task-text';
-        if (task.completed) textSpan.classList.add('completed');
-        textSpan.addEventListener('click', () => {
-          task.completed = !task.completed;
-          saveTasks();
-          renderTasks();
-          updateStats();
+    // Copy function (matches HTML/CSS pages)
+    function copyCode(btn) {
+        const pre = btn.parentElement.nextElementSibling;
+        const code = pre.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            const old = btn.innerText;
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = old, 1500);
         });
-        const delBtn = document.createElement('button');
-        delBtn.textContent = 'Delete';
-        delBtn.className = 'delete-btn';
-        delBtn.addEventListener('click', () => {
-          tasks = tasks.filter(t => t.id !== task.id);
-          saveTasks();
-          renderTasks();
-          updateStats();
-        });
-        div.appendChild(textSpan);
-        div.appendChild(delBtn);
-        container.appendChild(div);
-      });
     }
-    updateStats();
-    updateFilterButtons();
-  }
-  function updateStats() {
-    const total = tasks.length;
-    const completed = tasks.filter(t => t.completed).length;
-    const percent = total === 0 ? 0 : (completed / total) * 100;
-    const progressBar = document.getElementById('progressBar');
-    if (progressBar) progressBar.style.width = percent + '%';
-    const statsDiv = document.getElementById('taskStats');
-    if (statsDiv) statsDiv.innerHTML = `${completed} of ${total} tasks completed (${Math.round(percent)}%)`;
-  }
-  function updateFilterButtons() {
-    const btns = ['filterAll', 'filterActive', 'filterCompleted'];
-    btns.forEach(id => {
-      const btn = document.getElementById(id);
-      if (btn) {
-        if ((id === 'filterAll' && currentFilter === 'all') ||
-            (id === 'filterActive' && currentFilter === 'active') ||
-            (id === 'filterCompleted' && currentFilter === 'completed')) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      }
+
+    // Welcome button
+    document.getElementById('welcomeBtn')?.addEventListener('click', () => {
+        const msg = document.getElementById('welcomeMessage');
+        msg.textContent = 'Hello! JavaScript is working 🎉';
+        msg.style.color = '#0ea5e9';
+        msg.style.fontWeight = 'bold';
     });
-  }
-  function addTask() {
-    const input = document.getElementById('taskInput');
-    const text = input.value.trim();
-    if (!text) { alert('Please enter a task'); return; }
-    tasks.push({ id: Date.now(), text, completed: false });
-    saveTasks();
-    renderTasks();
-    input.value = '';
-    input.focus();
-  }
-  function clearAll() {
-    if (tasks.length > 0 && confirm('Delete all tasks?')) {
-      tasks = [];
-      saveTasks();
-      renderTasks();
-    }
-  }
-  document.getElementById('addTaskBtn')?.addEventListener('click', addTask);
-  document.getElementById('clearAllTasks')?.addEventListener('click', clearAll);
-  document.getElementById('filterAll')?.addEventListener('click', () => { currentFilter = 'all'; renderTasks(); });
-  document.getElementById('filterActive')?.addEventListener('click', () => { currentFilter = 'active'; renderTasks(); });
-  document.getElementById('filterCompleted')?.addEventListener('click', () => { currentFilter = 'completed'; renderTasks(); });
-  document.getElementById('taskInput')?.addEventListener('keypress', e => { if (e.key === 'Enter') addTask(); });
-  loadTasks();
 
-  // ==================== FORM VALIDATION ====================
-  const emailInput = document.getElementById('regEmail');
-  const passwordInput = document.getElementById('regPassword');
-  const confirmInput = document.getElementById('confirmPassword');
-  const emailErr = document.getElementById('emailError');
-  const pwdErr = document.getElementById('passwordError');
-  const confirmErr = document.getElementById('confirmError');
-  const validateBtn = document.getElementById('validateBtn');
-  const valMsg = document.getElementById('validationMessage');
-  function validateEmail() {
-    const email = emailInput.value.trim();
-    if (!email) { emailErr.textContent = ''; return false; }
-    const ok = email.includes('@') && email.includes('.') && email.length > 5;
-    emailErr.textContent = ok ? '' : '❌ Email must contain @ and .';
-    return ok;
-  }
-  function validatePassword() {
-    const pwd = passwordInput.value;
-    if (!pwd) { pwdErr.textContent = ''; return false; }
-    const ok = pwd.length >= 6;
-    pwdErr.textContent = ok ? '' : '❌ Password must be at least 6 characters';
-    return ok;
-  }
-  function validateConfirm() {
-    const pwd = passwordInput.value;
-    const conf = confirmInput.value;
-    if (!conf) { confirmErr.textContent = ''; return false; }
-    const ok = pwd === conf;
-    confirmErr.textContent = ok ? '' : '❌ Passwords do not match';
-    return ok;
-  }
-  emailInput?.addEventListener('input', validateEmail);
-  passwordInput?.addEventListener('input', () => { validatePassword(); if (confirmInput.value) validateConfirm(); });
-  confirmInput?.addEventListener('input', validateConfirm);
-  validateBtn?.addEventListener('click', () => {
-    if (validateEmail() && validatePassword() && validateConfirm()) {
-      valMsg.style.display = 'block';
-      valMsg.innerHTML = '✅ All fields are valid! (Demo registration would proceed.)';
-      valMsg.style.background = '#e6f4ea';
-    } else {
-      valMsg.style.display = 'block';
-      valMsg.innerHTML = '⚠️ Please fix the errors above.';
-      valMsg.style.background = '#fee2e2';
-    }
-    setTimeout(() => { valMsg.style.display = 'none'; }, 3000);
-  });
+    // ========== TO-DO LIST ==========
+    let tasks = [];
+    let currentFilter = 'all';
 
-  // ==================== FETCH DEMO (Async/Await) ====================
-  const fetchBtn = document.getElementById('fetchUserBtn');
-  const userResult = document.getElementById('userResult');
-  async function fetchUser() {
-    userResult.innerHTML = '⏳ Loading user data...';
-    try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const user = await response.json();
-      userResult.innerHTML = `<strong>Fetched user:</strong> ${user.name} (${user.email}) from JSONPlaceholder API`;
-    } catch (error) {
-      userResult.innerHTML = `❌ Error: ${error.message}`;
+    function loadTasks() {
+        const saved = localStorage.getItem('js_tasks');
+        if (saved) {
+            tasks = JSON.parse(saved);
+        } else {
+            tasks = [
+                { id: Date.now() + 1, text: 'Learn HTML', completed: true },
+                { id: Date.now() + 2, text: 'Learn CSS', completed: true },
+                { id: Date.now() + 3, text: 'Learn JavaScript', completed: false },
+                { id: Date.now() + 4, text: 'Build portfolio', completed: false },
+            ];
+        }
+        renderTasks();
     }
-  }
-  fetchBtn?.addEventListener('click', fetchUser);
+    function saveTasks() { localStorage.setItem('js_tasks', JSON.stringify(tasks)); }
+    function renderTasks() {
+        const container = document.getElementById('taskListContainer');
+        if (!container) return;
+        let filtered = tasks;
+        if (currentFilter === 'active') filtered = tasks.filter(t => !t.completed);
+        else if (currentFilter === 'completed') filtered = tasks.filter(t => t.completed);
+        if (filtered.length === 0) {
+            container.innerHTML = '<p style="text-align:center; color:#94a3b8;">No tasks to show</p>';
+        } else {
+            container.innerHTML = '';
+            filtered.forEach(task => {
+                const div = document.createElement('div');
+                div.className = 'task-item';
+                const textSpan = document.createElement('span');
+                textSpan.textContent = task.text;
+                textSpan.className = 'task-text';
+                if (task.completed) textSpan.classList.add('completed');
+                textSpan.addEventListener('click', () => {
+                    task.completed = !task.completed;
+                    saveTasks();
+                    renderTasks();
+                    updateStats();
+                });
+                const delBtn = document.createElement('button');
+                delBtn.textContent = 'Delete';
+                delBtn.className = 'delete-btn';
+                delBtn.addEventListener('click', () => {
+                    tasks = tasks.filter(t => t.id !== task.id);
+                    saveTasks();
+                    renderTasks();
+                    updateStats();
+                });
+                div.appendChild(textSpan);
+                div.appendChild(delBtn);
+                container.appendChild(div);
+            });
+        }
+        updateStats();
+        updateFilterButtons();
+    }
+    function updateStats() {
+        const total = tasks.length;
+        const completed = tasks.filter(t => t.completed).length;
+        const percent = total === 0 ? 0 : (completed / total) * 100;
+        const progressBar = document.getElementById('progressBar');
+        if (progressBar) progressBar.style.width = percent + '%';
+        const statsDiv = document.getElementById('taskStats');
+        if (statsDiv) statsDiv.innerHTML = `${completed} of ${total} tasks completed (${Math.round(percent)}%)`;
+    }
+    function updateFilterButtons() {
+        const btns = ['filterAll', 'filterActive', 'filterCompleted'];
+        btns.forEach(id => {
+            const btn = document.getElementById(id);
+            if (btn) {
+                if ((id === 'filterAll' && currentFilter === 'all') ||
+                    (id === 'filterActive' && currentFilter === 'active') ||
+                    (id === 'filterCompleted' && currentFilter === 'completed')) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            }
+        });
+    }
+    function addTask() {
+        const input = document.getElementById('taskInput');
+        const text = input.value.trim();
+        if (!text) { alert('Please enter a task'); return; }
+        tasks.push({ id: Date.now(), text, completed: false });
+        saveTasks();
+        renderTasks();
+        input.value = '';
+        input.focus();
+    }
+    function clearAll() {
+        if (tasks.length > 0 && confirm('Delete all tasks?')) {
+            tasks = [];
+            saveTasks();
+            renderTasks();
+        }
+    }
+    document.getElementById('addTaskBtn')?.addEventListener('click', addTask);
+    document.getElementById('clearAllTasks')?.addEventListener('click', clearAll);
+    document.getElementById('filterAll')?.addEventListener('click', () => { currentFilter = 'all'; renderTasks(); });
+    document.getElementById('filterActive')?.addEventListener('click', () => { currentFilter = 'active'; renderTasks(); });
+    document.getElementById('filterCompleted')?.addEventListener('click', () => { currentFilter = 'completed'; renderTasks(); });
+    document.getElementById('taskInput')?.addEventListener('keypress', e => { if (e.key === 'Enter') addTask(); });
+    loadTasks();
 
-  // ==================== ERROR HANDLING DEMO ====================
-  const errorBtn = document.getElementById('simulateErrorBtn');
-  const errorResult = document.getElementById('errorResult');
-  errorBtn?.addEventListener('click', () => {
-    try {
-      const invalidJSON = '{ name: "John" }';
-      const data = JSON.parse(invalidJSON);
-      errorResult.innerHTML = '✅ No error occurred (unexpected)';
-    } catch (err) {
-      errorResult.innerHTML = `🚨 Caught error: "${err.message}". The script continued running.`;
-      errorResult.style.color = '#dc2626';
+    // ========== FORM VALIDATION ==========
+    const emailInput = document.getElementById('regEmail');
+    const passwordInput = document.getElementById('regPassword');
+    const confirmInput = document.getElementById('confirmPassword');
+    const emailErr = document.getElementById('emailError');
+    const pwdErr = document.getElementById('passwordError');
+    const confirmErr = document.getElementById('confirmError');
+    const validateBtn = document.getElementById('validateBtn');
+    const valMsg = document.getElementById('validationMessage');
+    function validateEmail() {
+        const email = emailInput.value.trim();
+        if (!email) { emailErr.textContent = ''; return false; }
+        const ok = email.includes('@') && email.includes('.') && email.length > 5;
+        emailErr.textContent = ok ? '' : '❌ Email must contain @ and .';
+        return ok;
     }
-  });
+    function validatePassword() {
+        const pwd = passwordInput.value;
+        if (!pwd) { pwdErr.textContent = ''; return false; }
+        const ok = pwd.length >= 6;
+        pwdErr.textContent = ok ? '' : '❌ Password must be at least 6 characters';
+        return ok;
+    }
+    function validateConfirm() {
+        const pwd = passwordInput.value;
+        const conf = confirmInput.value;
+        if (!conf) { confirmErr.textContent = ''; return false; }
+        const ok = pwd === conf;
+        confirmErr.textContent = ok ? '' : '❌ Passwords do not match';
+        return ok;
+    }
+    emailInput?.addEventListener('input', validateEmail);
+    passwordInput?.addEventListener('input', () => { validatePassword(); if (confirmInput.value) validateConfirm(); });
+    confirmInput?.addEventListener('input', validateConfirm);
+    validateBtn?.addEventListener('click', () => {
+        if (validateEmail() && validatePassword() && validateConfirm()) {
+            valMsg.style.display = 'block';
+            valMsg.innerHTML = '✅ All fields are valid! (Demo registration would proceed.)';
+            valMsg.style.background = '#e6f4ea';
+        } else {
+            valMsg.style.display = 'block';
+            valMsg.innerHTML = '⚠️ Please fix the errors above.';
+            valMsg.style.background = '#fee2e2';
+        }
+        setTimeout(() => { valMsg.style.display = 'none'; }, 3000);
+    });
+
+    // Fetch demo
+    const fetchBtn = document.getElementById('fetchUserBtn');
+    const userResult = document.getElementById('userResult');
+    async function fetchUser() {
+        userResult.innerHTML = '⏳ Loading user data...';
+        try {
+            const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const user = await response.json();
+            userResult.innerHTML = `<strong>Fetched user:</strong> ${user.name} (${user.email}) from JSONPlaceholder API`;
+        } catch (error) {
+            userResult.innerHTML = `❌ Error: ${error.message}`;
+        }
+    }
+    fetchBtn?.addEventListener('click', fetchUser);
+
+    // Error handling demo
+    const errorBtn = document.getElementById('simulateErrorBtn');
+    const errorResult = document.getElementById('errorResult');
+    errorBtn?.addEventListener('click', () => {
+        try {
+            const invalidJSON = '{ name: "John" }';
+            const data = JSON.parse(invalidJSON);
+            errorResult.innerHTML = '✅ No error occurred (unexpected)';
+        } catch (err) {
+            errorResult.innerHTML = `🚨 Caught error: "${err.message}". The script continued running.`;
+            errorResult.style.color = '#dc2626';
+        }
+    });
+
+    // DOM demo button
+    document.getElementById('domDemoBtn')?.addEventListener('click', () => {
+        const container = document.getElementById('domDemoContainer');
+        const newDiv = document.createElement('div');
+        newDiv.textContent = '🎉 New element added dynamically!';
+        newDiv.style.background = '#e2e8f0';
+        newDiv.style.padding = '0.5rem';
+        newDiv.style.borderRadius = '8px';
+        newDiv.style.marginTop = '0.5rem';
+        container.appendChild(newDiv);
+    });
 </script>
 </body>
 </html>
