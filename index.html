@@ -1,616 +1,619 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Full Stack Development – Complete Guide with Practical Examples</title>
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Bootstrap 5 CSS (for demo components) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f0f4f8;
-      color: #0f172a;
-      line-height: 1.5;
-    }
-    /* Navigation bar (same as first provided code) */
-    .site-nav {
-      background: #0f3b5c;
-      padding: 0.8rem 2rem;
-      border-radius: 0 0 1rem 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .site-nav-inner {
-      max-width: 1300px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .site-brand {
-      color: white;
-      font-size: 1.4rem;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .nav-links a {
-      color: #e2e8f0;
-      text-decoration: none;
-      margin-left: 1.2rem;
-      padding: 0.3rem 0.6rem;
-      border-radius: 2rem;
-      transition: 0.2s;
-    }
-    .nav-links a.active, .nav-links a:hover {
-      background: #2c7da0;
-      color: white;
-    }
-    /* Container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 1.5rem;
-      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
-    }
-    h1 {
-      font-size: 2.4rem;
-      background: linear-gradient(135deg, #0f3b5c, #2c7da0);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      margin-bottom: 0.5rem;
-    }
-    .subhead {
-      font-size: 1.2rem;
-      color: #334155;
-      border-left: 4px solid #2c7da0;
-      padding-left: 1rem;
-      margin-bottom: 2rem;
-    }
-    h2 {
-      font-size: 1.8rem;
-      margin: 2rem 0 1rem;
-      border-bottom: 3px solid #e2e8f0;
-      color: #0f3b5c;
-      padding-bottom: 0.3rem;
-    }
-    h3 {
-      font-size: 1.3rem;
-      margin: 1rem 0 0.5rem;
-      color: #1e5a6e;
-    }
-    .card {
-      background: #f9fbfd;
-      border-radius: 1rem;
-      padding: 1.2rem;
-      margin: 1rem 0;
-      border: 1px solid #e2e8f0;
-      transition: 0.2s;
-    }
-    .card:hover {
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    }
-    .explanation {
-      background: #e6f4ea;
-      border-left: 5px solid #2e7d32;
-      padding: 0.8rem 1rem;
-      border-radius: 0.75rem;
-      margin: 1rem 0;
-    }
-    .tip {
-      background: #fff3e0;
-      border-left: 5px solid #f39c12;
-      padding: 0.8rem 1rem;
-      border-radius: 0.75rem;
-      margin: 1rem 0;
-    }
-    .code-block {
-      background: #0f172a;
-      color: #e2e8f0;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      overflow-x: auto;
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
-      margin: 1rem 0;
-    }
-    .component-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-    }
-    .component-table th, .component-table td {
-      border: 1px solid #cbd5e1;
-      padding: 0.6rem;
-      text-align: left;
-    }
-    .component-table th {
-      background: #e2e8f0;
-    }
-    .demo-area {
-      background: #f1f5f9;
-      border-radius: 1rem;
-      padding: 1rem;
-      margin: 1rem 0;
-    }
-    .step-log {
-      background: #1e293b;
-      color: #a5f3c3;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      font-size: 0.8rem;
-      margin-top: 0.5rem;
-      white-space: pre-wrap;
-    }
-    footer {
-      margin-top: 2rem;
-      text-align: center;
-      border-top: 1px solid #cbd5e1;
-      padding-top: 1.5rem;
-      font-size: 0.85rem;
-      color: #475569;
-    }
-    @media (max-width: 700px) {
-      .site-nav-inner {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .nav-links a {
-        margin: 0 0.5rem;
-      }
-      .container {
-        padding: 1rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Full Stack Mastery | Complete Guide with Interactive Demos</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --dark: #0f172a;
+            --light-bg: #f8fafc;
+            --code-bg: #1e1e1e;
+            --nav-bg: #0a0f1f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--light-bg);
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        /* Horizontal spacing: only 10px on sides */
+        .container {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+            max-width: 1200px;
+        }
+
+        /* Modern Navbar (same as all pages) */
+        .navbar {
+            background: rgba(10, 15, 31, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+            padding: 1rem 0;
+        }
+        .navbar-brand { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+        .nav-link { 
+            font-weight: 500; 
+            color: #cbd5e1 !important; 
+            margin: 0 10px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .nav-link:hover, .nav-link.active { 
+            color: var(--primary) !important; 
+            text-shadow: 0 0 6px rgba(14,165,233,0.3);
+        }
+
+        /* Premium Hero Section */
+        .hero {
+            background: radial-gradient(circle at 80% 20%, #14283c, #050a14);
+            padding: 80px 0 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.1;
+        }
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(to right, #fff, #7dd3fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-tag {
+            background: rgba(14, 165, 233, 0.25);
+            color: #7dd3fc;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Doc Section Cards */
+        .doc-section {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 10px 15px -3px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+        .chapter-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Code Windows with Copy Button */
+        .code-window {
+            background: var(--code-bg);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        .code-header {
+            background: #2d2d2d;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .mac-dots span {
+            height: 10px; width: 10px; border-radius: 50%; display: inline-block; margin-right: 5px;
+        }
+        pre { 
+            margin: 0; padding: 20px; color: #e2e8f0; 
+            font-family: 'Fira Code', monospace; font-size: 0.85rem; 
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .btn-copy {
+            background: transparent; border: 1px solid #4b5563; color: #94a3b8;
+            font-size: 0.7rem; padding: 2px 12px; border-radius: 6px; transition: 0.3s;
+        }
+        .btn-copy:hover { border-color: var(--primary); color: white; }
+
+        .explanation {
+            background: #eef2ff;
+            border-left: 5px solid var(--primary);
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+        .demo-area {
+            background: #f9fafb;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.2rem 0;
+            position: relative;
+        }
+        .demo-area::after {
+            content: "LIVE PREVIEW";
+            position: absolute;
+            top: -10px; right: 20px;
+            background: #cbd5e1;
+            font-size: 0.65rem; font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+        .tip {
+            background: #fef9c3;
+            border-left: 5px solid #eab308;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        .tech-stack-card {
+            background: linear-gradient(135deg, #f8fafc, #ffffff);
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s;
+            height: 100%;
+            border: 1px solid #e2e8f0;
+        }
+        .tech-stack-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .step-log {
+            background: #1e293b;
+            color: #a5f3c3;
+            padding: 0.8rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            margin-top: 0.8rem;
+        }
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 2rem;
+            border-radius: 2rem 2rem 0 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        @media (max-width: 700px) {
+            .doc-section { padding: 1.2rem; }
+            .hero-title { font-size: 2.5rem; }
+        }
+    </style>
 </head>
 <body>
 
-<nav class="site-nav">
-  <div class="site-nav-inner">
-    <a href="#" class="site-brand">🧱 Web Guides</a>
-    <div class="nav-links">
-      <a href="#" class="active">Full Stack</a>
-      <a href="./html.html">HTML</a>
-      <a href="./Css.html">CSS</a>
-      <a href="./javascript.html">JavaScript</a>
-      <a href="./Bootstrap.html">Bootstrap</a>
+<!-- Navbar identical to all pages -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#"><i class="fas fa-cubes text-info me-2"></i>WEB GUIDES</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#">Full Stack</a></li>
+                <li class="nav-item"><a class="nav-link" href="./html.html">HTML</a></li>
+                <li class="nav-item"><a class="nav-link" href="./Css.html">CSS</a></li>
+                <li class="nav-item"><a class="nav-link" href="./javascript.html">JavaScript</a></li>
+                <li class="nav-item"><a class="nav-link" href="./Bootstrap.html">Bootstrap</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
 
-<div class="container">
-  <!-- Hero -->
-  <div style="text-align: center; margin-bottom: 1rem;">
-    <h1>🌐 Full Stack Development – Complete Guide</h1>
-    <div class="subhead" style="border-left: none; text-align: center;">
-      What it is, why it matters, how it works – with a real frontend login example, interactive simulation, and all essential concepts.
-    </div>
-  </div>
-
-  <!-- ========== 1. WHAT IS FULL STACK ========== -->
-  <h2>1. What is Full Stack Development?</h2>
-  <div class="card">
-    <div class="explanation">
-      <strong>Full stack development</strong> refers to the practice of building both the <strong>front end (client side)</strong> and <strong>back end (server side)</strong> of a web application, along with managing the database. A full stack developer is responsible for:
-      <ul style="margin-top: 0.5rem; margin-left: 1.2rem;">
-        <li>Designing user interfaces using HTML, CSS, and JavaScript.</li>
-        <li>Writing server side logic using frameworks such as Node.js, Django, or Laravel.</li>
-        <li>Creating and managing databases like MySQL, PostgreSQL, or MongoDB.</li>
-        <li>Ensuring smooth communication between the front end and back end via APIs and HTTP requests.</li>
-      </ul>
-      This holistic approach allows a developer to understand and control the entire application lifecycle, from user interaction to data storage and retrieval.
-    </div>
-    <div class="tip">
-      🍽️ <strong>Restaurant analogy:</strong><br>
-      • <strong>Frontend</strong> = menu, tables, lighting (customer experience).<br>
-      • <strong>Backend</strong> = kitchen (prepares food, handles orders).<br>
-      • <strong>Database</strong> = fridge/pantry (stores ingredients).<br>
-      • <strong>API</strong> = waiter (takes order to kitchen, brings food back).
-    </div>
-  </div>
-
-  <!-- ========== 2. WHY IMPORTANT ========== -->
-  <h2>2. Why is Full Stack Development Important?</h2>
-  <div class="card">
-    <ul style="margin-left: 1.5rem;">
-      <li><strong>End to end understanding:</strong> Developers gain a complete view of how different parts of an application interact.</li>
-      <li><strong>Faster development cycles:</strong> Teams can build and iterate features more quickly.</li>
-      <li><strong>Easier troubleshooting:</strong> Full stack developers can trace issues from the user interface down to the database.</li>
-      <li><strong>Scalability:</strong> Applications can be scaled efficiently when the entire architecture is well understood.</li>
-      <li><strong>Career flexibility:</strong> Full stack skills are highly valued and open diverse job opportunities.</li>
-    </ul>
-  </div>
-
-  <!-- ========== 3. HOW IT WORKS ========== -->
-  <h2>3. How Full Stack Development Works</h2>
-  <div class="card">
-    <div class="explanation">
-      The typical workflow of a full stack application includes:
-      <ol style="margin-left: 1.2rem; margin-top: 0.5rem;">
-        <li><strong>Frontend Design</strong> – Using HTML, CSS, and JavaScript frameworks (React, Vue, Angular) or libraries like Bootstrap.</li>
-        <li><strong>Backend Development</strong> – Writing server side logic and APIs (Node.js, Python, PHP, etc.).</li>
-        <li><strong>Database Management</strong> – Using SQL (MySQL, PostgreSQL) or NoSQL (MongoDB) databases.</li>
-        <li><strong>Integration</strong> – Connecting frontend and backend via HTTP requests (RESTful or GraphQL APIs).</li>
-        <li><strong>Deployment & Maintenance</strong> – Hosting on cloud platforms (AWS, Heroku) with containerisation (Docker, Kubernetes).</li>
-      </ol>
-      This assignment focuses on the frontend part of full stack development: building a responsive, styled login form using HTML, CSS, JavaScript, and Bootstrap.
-    </div>
-  </div>
-
-  <!-- ========== 4. PRACTICAL EXAMPLE: LOGIN FORM ========== -->
-  <h2>4. Practical Example: User Login Form (Frontend Only)</h2>
-  <div class="card">
-    <p>The following example demonstrates how to build a modern, responsive login form using HTML, CSS, JavaScript, and Bootstrap 5.</p>
-    
-    <h3>4.1 HTML Structure</h3>
-    <div class="code-block">
-      <pre>&lt;div class="container"&gt;
-  &lt;div class="row justify-content-center"&gt;
-    &lt;div class="col-md-6"&gt;
-      &lt;div class="card shadow"&gt;
-        &lt;div class="card-body"&gt;
-          &lt;h3&gt;Login&lt;/h3&gt;
-          &lt;input type="email" class="form-control" placeholder="Email" id="email"&gt;
-          &lt;input type="password" class="form-control mt-2" placeholder="Password" id="password"&gt;
-          &lt;button class="btn btn-primary w-100 mt-3" id="loginBtn"&gt;Sign In&lt;/button&gt;
-          &lt;div id="message"&gt;&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
-    </div>
-    <div class="explanation">
-      This HTML document includes Bootstrap 5 for responsive layout and pre‑styled components. It creates a centred card with a login form containing email and password fields. The <code>container, row, col-md-6, card</code> classes create a responsive, mobile‑friendly design. A <code>div</code> with <code>id="message"</code> is reserved for feedback messages.
-    </div>
-
-    <h3>4.2 Custom CSS (style.css)</h3>
-    <div class="code-block">
-      <pre>body {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-.card {
-  animation: fadeIn 0.5s ease;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.btn-primary:hover {
-  transform: scale(1.02);
-  transition: 0.2s;
-}</pre>
-    </div>
-    <div class="explanation">
-      • A gradient background gives a modern look.<br>
-      • Flexbox centres the form vertically and horizontally.<br>
-      • A fade‑in animation makes the card appear smoothly.<br>
-      • The login button has a hover effect (scale and colour change).<br>
-      • These styles complement Bootstrap, not replace it.
-    </div>
-
-    <h3>4.3 JavaScript (script.js) – Client Side Validation & Mock API Call</h3>
-    <div class="code-block">
-      <pre>document.getElementById('loginBtn').addEventListener('click', async () => {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const msgDiv = document.getElementById('message');
-
-  if (!email.includes('@') || password.length < 6) {
-    msgDiv.innerHTML = '&lt;div class="alert alert-danger"&gt;Invalid email or password (min 6 chars)&lt;/div&gt;';
-    return;
-  }
-
-  msgDiv.innerHTML = '&lt;div class="alert alert-info"&gt;Authenticating...&lt;/div&gt;';
-  
-  // Simulate backend API call
-  setTimeout(() => {
-    if (email === "demo@example.com" && password === "123456") {
-      msgDiv.innerHTML = '&lt;div class="alert alert-success"&gt;Login successful! (Mock)&lt;/div&gt;';
-    } else {
-      msgDiv.innerHTML = '&lt;div class="alert alert-danger"&gt;Invalid credentials&lt;/div&gt;';
-    }
-  }, 1000);
-});</pre>
-    </div>
-    <div class="explanation">
-      • The script prevents default form submission and reads the input values.<br>
-      • Client side validation checks for a basic email format and minimum password length.<br>
-      • It simulates an asynchronous login request (using <code>setTimeout</code>) and displays success/error messages using Bootstrap alert classes.<br>
-      • In a real full stack application, the fetch API would send the credentials to a backend endpoint like <code>/api/login</code>.
-    </div>
-
-    <h3>4.4 Bootstrap Components Used</h3>
-    <table class="component-table">
-      <thead><tr><th>Component</th><th>Bootstrap Class</th><th>Purpose</th></tr></thead>
-      <tbody>
-        <tr><td>Grid system</td><td>.container, .row, .col-md-6</td><td>Responsive layout</td></tr>
-        <tr><td>Card</td><td>.card, .card-body, .shadow</td><td>Styled container</td></tr>
-        <tr><td>Form controls</td><td>.form-control, .form-label</td><td>Styled inputs</td></tr>
-        <tr><td>Button</td><td>.btn, .btn-primary, .w-100</td><td>Styled login button</td></tr>
-        <tr><td>Alerts</td><td>.alert, .alert-danger, .alert-success</td><td>Feedback messages</td></tr>
-      </tbody>
-    </table>
-    <div class="tip">
-      No custom CSS is needed for basic functionality – Bootstrap alone can produce a clean login form, but the custom CSS adds a unique visual identity (gradient background, animations, hover effects).
-    </div>
-
-    <!-- Live interactive demo of the login form -->
-    <h3>🎮 Live Demo: Login Form (Mock API)</h3>
-    <div class="demo-area">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card shadow-sm border-0">
-            <div class="card-body p-4">
-              <h4 class="card-title text-center">🔐 Login to Dashboard</h4>
-              <form id="liveLoginForm">
-                <div class="mb-3">
-                  <label class="form-label">Email address</label>
-                  <input type="email" class="form-control" id="demoEmail" placeholder="demo@example.com" required>
+<!-- Hero Section -->
+<header class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <span class="hero-tag">From Frontend to Backend – Complete Guide</span>
+                <h1 class="hero-title">Full Stack Development<br>Mastery.</h1>
+                <p class="lead text-white-50 mt-3">Build complete web applications. Learn frontend, backend, databases, APIs, deployment, and best practices – with interactive demos and real‑world simulations.</p>
+                <div class="d-flex gap-3 mt-4">
+                    <a href="#intro" class="btn btn-primary btn-lg px-4 rounded-pill fw-bold">Start Journey</a>
+                    <a href="#demo" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-bold">Live Demo</a>
                 </div>
-                <div class="mb-3">
-                  <label class="form-label">Password</label>
-                  <input type="password" class="form-control" id="demoPassword" placeholder="Password (min 6 chars)" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100 py-2">Sign In (Mock Request)</button>
-                <div id="liveMessage" class="mt-3"></div>
-              </form>
             </div>
-          </div>
+            <div class="col-lg-4 d-none d-lg-block">
+                <div class="code-window mb-0">
+                    <div class="code-header">
+                        <div class="mac-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div>
+                        <small class="text-muted">fullstack.js</small>
+                    </div>
+                    <pre><code><span style="color:#7dd3fc">// Full stack mindset</span>
+<span style="color:#7dd3fc">async function</span> <span style="color:#fbbf24">fetchDashboard</span>() {
+  <span style="color:#7dd3fc">const</span> user = <span style="color:#7dd3fc">await</span> <span style="color:#fbbf24">fetch</span>(<span style="color:#34d399">'/api/user'</span>);
+  <span style="color:#7dd3fc">const</span> posts = <span style="color:#7dd3fc">await</span> <span style="color:#fbbf24">fetch</span>(<span style="color:#34d399">'/api/posts'</span>);
+  <span style="color:#7dd3fc">return</span> { user, posts };
+}</code></pre>
+                </div>
+            </div>
         </div>
-      </div>
-      <div id="loginSimLog" class="step-log mt-3">✨ Try email: demo@example.com / password: 123456. Validation + mock backend simulation.</div>
     </div>
-  </div>
+</header>
 
-  <!-- ========== 5. EXTENDED FULL STACK CONCEPTS ========== -->
-  <h2>5. Full Stack Architecture & Communication</h2>
-  <div class="card">
-    <div class="explanation">
-      <strong>How frontend and backend connect:</strong> The frontend sends HTTP requests (GET, POST, PUT, DELETE) to backend API endpoints. The backend processes the request, interacts with the database, and returns a JSON response. The frontend then updates the UI dynamically.
-    </div>
-    <div class="code-block">
-      <pre>// Real fetch example
-fetch('https://api.example.com/users')
-  .then(response => response.json())
+<div class="container mt-4">
+    <!-- INTRO: What is Full Stack -->
+    <section id="intro" class="doc-section">
+        <span class="chapter-badge">Chapter 01</span>
+        <h2 class="fw-bold">What is Full Stack Development?</h2>
+        <div class="explanation">
+            <strong>Full stack development</strong> is the practice of building both the <strong>front end (client side)</strong> and <strong>back end (server side)</strong> of a web application, along with managing the database. A full stack developer can handle:
+            <ul class="mt-2" style="margin-left: 1.2rem;">
+                <li>🎨 User interfaces with HTML, CSS, JavaScript, and modern frameworks (React, Vue, Angular)</li>
+                <li>⚙️ Server logic using Node.js, Python (Django/Flask), PHP, Ruby on Rails, or Java</li>
+                <li>🗄️ Databases – SQL (PostgreSQL, MySQL) or NoSQL (MongoDB)</li>
+                <li>🔌 APIs – RESTful or GraphQL to connect frontend and backend</li>
+                <li>☁️ Deployment & DevOps – cloud platforms (AWS, Vercel, Heroku), Docker, CI/CD</li>
+            </ul>
+        </div>
+        <div class="tip">
+            🍽️ <strong>Restaurant Analogy:</strong><br>
+            • Frontend = menu, tables, ambience (customer experience).<br>
+            • Backend = kitchen (prepares food, handles orders).<br>
+            • Database = fridge/pantry (stores ingredients).<br>
+            • API = waiter (takes order to kitchen, brings food back).
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">// Simple full stack architecture (conceptual)</span>
+Frontend (React)  →  Backend (Node/Express)  →  Database (MongoDB)
+       ← JSON API ←          ←  Query result ←</code></pre>
+        </div>
+    </section>
+
+    <!-- Why Full Stack -->
+    <section class="doc-section">
+        <span class="chapter-badge">Chapter 02</span>
+        <h2 class="fw-bold">Why Full Stack Development Matters</h2>
+        <div class="explanation">
+            <ul>
+                <li>✅ <strong>End‑to‑end understanding</strong> – you see the big picture.</li>
+                <li>✅ <strong>Faster problem solving</strong> – trace issues from UI to database.</li>
+                <li>✅ <strong>Flexibility & career growth</strong> – highly valued in startups and enterprises.</li>
+                <li>✅ <strong>Independent project delivery</strong> – build MVPs alone or lead teams.</li>
+                <li>✅ <strong>Better collaboration</strong> – communicate effectively with specialised developers.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Technologies Overview (Interactive Cards) -->
+    <section class="doc-section">
+        <span class="chapter-badge">Chapter 03</span>
+        <h2 class="fw-bold">Popular Full Stack Stacks</h2>
+        <div class="row g-4 mt-2">
+            <div class="col-md-3"><div class="tech-stack-card"><i class="fab fa-react fa-2x text-primary"></i><i class="fab fa-node-js fa-2x text-success"></i><h5 class="mt-2">MERN</h5><p>MongoDB, Express, React, Node.js</p></div></div>
+            <div class="col-md-3"><div class="tech-stack-card"><i class="fab fa-angular fa-2x text-danger"></i><i class="fab fa-node-js fa-2x text-success"></i><h5 class="mt-2">MEAN</h5><p>MongoDB, Express, Angular, Node</p></div></div>
+            <div class="col-md-3"><div class="tech-stack-card"><i class="fab fa-python fa-2x text-primary"></i><i class="fab fa-react fa-2x text-info"></i><h5 class="mt-2">Django + React</h5><p>Python backend + modern frontend</p></div></div>
+            <div class="col-md-3"><div class="tech-stack-card"><i class="fab fa-php fa-2x text-secondary"></i><i class="fas fa-database fa-2x text-warning"></i><h5 class="mt-2">LAMP</h5><p>Linux, Apache, MySQL, PHP</p></div></div>
+        </div>
+    </section>
+
+    <!-- API Lifecycle & Architecture -->
+    <section class="doc-section">
+        <span class="chapter-badge">Chapter 04</span>
+        <h2 class="fw-bold">How It Works: API Request Lifecycle</h2>
+        <div class="explanation">
+            <ol>
+                <li><strong>Frontend</strong> sends HTTP request (GET /api/products)</li>
+                <li><strong>Backend route handler</strong> validates request, extracts data</li>
+                <li><strong>Service/Controller</strong> executes business logic</li>
+                <li><strong>Database query</strong> – SQL or NoSQL operation</li>
+                <li><strong>Backend formats JSON response</strong> and sends HTTP status</li>
+                <li><strong>Frontend receives response</strong> and updates UI dynamically</li>
+            </ol>
+        </div>
+        <div class="demo-area">
+            <button id="apiSimulateBtn" class="btn btn-primary">🚀 Simulate API Request (Frontend → Backend → DB)</button>
+            <div id="apiLog" class="step-log">Ready. Click to simulate a full API call.</div>
+            <div id="apiResponse" class="code-block mt-2" style="background:#f1f5f9; color:#0f172a;"></div>
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">// Frontend fetch example</span>
+fetch('/api/products')
+  .then(res => res.json())
   .then(data => console.log(data));
 
-// Backend endpoint (Node.js/Express)
-app.get('/api/users', async (req, res) => {
-  const users = await db.query('SELECT * FROM users');
-  res.json(users);
-});</pre>
-    </div>
-  </div>
+<span style="color:#7dd3fc">// Backend (Node.js + Express)</span>
+app.get('/api/products', async (req, res) => {
+  const products = await db.query('SELECT * FROM products');
+  res.json(products);
+});</code></pre>
+        </div>
+    </section>
 
-  <h2>6. API Request Lifecycle (REST)</h2>
-  <div class="card">
-    <ol style="margin-left: 1.2rem;">
-      <li>Client → HTTP request (GET /api/products)</li>
-      <li>Backend route handler → validate params</li>
-      <li>Service layer → business logic</li>
-      <li>Database query → return result set</li>
-      <li>Backend formats JSON → HTTP response</li>
-      <li>Client parses JSON → updates UI</li>
-    </ol>
-    <div class="tip">💡 The browser never directly accesses the database – it always goes through the backend API. This keeps sensitive credentials secure.</div>
-  </div>
-
-  <h2>7. Authentication Flow (JWT)</h2>
-  <div class="card">
-    <ol style="margin-left: 1.2rem;">
-      <li>User submits credentials → frontend POST /api/login</li>
-      <li>Backend validates user against database</li>
-      <li>Backend generates signed JWT token</li>
-      <li>Frontend stores token (localStorage or cookie)</li>
-      <li>Subsequent requests include Authorization: Bearer &lt;token&gt;</li>
-      <li>Backend verifies token before sending protected data</li>
-    </ol>
-    <div class="code-block">
-      <pre>// JWT verification middleware (Node.js)
+    <!-- Authentication Flow (JWT) Interactive -->
+    <section class="doc-section">
+        <span class="chapter-badge">Chapter 05</span>
+        <h2 class="fw-bold">Authentication Flow (JWT)</h2>
+        <div class="explanation">
+            <ol>
+                <li>User submits login credentials</li>
+                <li>Backend validates against database</li>
+                <li>Backend generates signed JWT token</li>
+                <li>Frontend stores token (localStorage / cookies)</li>
+                <li>Subsequent requests include token in <code>Authorization: Bearer &lt;token&gt;</code></li>
+                <li>Backend verifies token before sending protected data</li>
+            </ol>
+        </div>
+        <div class="demo-area">
+            <form id="authSimForm">
+                <div class="mb-2"><label>Email:</label><input type="email" id="authEmail" class="form-control" placeholder="user@example.com"></div>
+                <div class="mb-2"><label>Password:</label><input type="password" id="authPassword" class="form-control" placeholder="password"></div>
+                <button type="submit" class="btn btn-success">Simulate Login (JWT)</button>
+            </form>
+            <div id="jwtLog" class="step-log mt-2"></div>
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">// JWT verification middleware</span>
 function authenticateToken(req, res, next) {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
+  const token = req.headers['authorization']?.split(' ')[1];
   if (!token) return res.sendStatus(401);
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
     if (err) return res.sendStatus(403);
     req.user = user;
     next();
   });
-}</pre>
-    </div>
-  </div>
+}</code></pre>
+        </div>
+    </section>
 
-  <h2>8. Deployment & Hosting</h2>
-  <div class="card">
-    <p><strong>Modern deployment pipeline:</strong> Code on GitHub → CI/CD (GitHub Actions) → Build → Deploy to platform.</p>
-    <ul style="margin-left: 1.5rem;">
-      <li><strong>Frontend:</strong> Vercel, Netlify, GitHub Pages</li>
-      <li><strong>Backend + Database:</strong> Render, Railway, Heroku, AWS</li>
-      <li><strong>Containerization:</strong> Docker, Kubernetes</li>
-    </ul>
-    <div class="code-block">
-      <pre># Deploy frontend to Vercel
-vercel --prod
+    <!-- Interactive Login Form (frontend only) -->
+    <section id="demo" class="doc-section">
+        <span class="chapter-badge">Chapter 06 · Live Demo</span>
+        <h2 class="fw-bold">🔐 Full Stack Login Simulation (Frontend + Mock Backend)</h2>
+        <div class="explanation">
+            This interactive form simulates a complete full stack authentication flow: frontend validation, mock API call (async), and backend validation against mock database. Enter <code>demo@example.com</code> / <code>123456</code> to see a successful login.
+        </div>
+        <div class="demo-area">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <h4 class="card-title text-center">🔐 Login to Dashboard</h4>
+                            <form id="liveLoginForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="demoEmail" placeholder="demo@example.com" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="demoPassword" placeholder="Password (min 6 chars)" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 py-2">Sign In (Mock Request)</button>
+                                <div id="liveMessage" class="mt-3"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="loginSimLog" class="step-log mt-3">✨ Try email: demo@example.com / password: 123456. Full stack simulation.</div>
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">// Frontend validation + mock fetch</span>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const pwd = document.getElementById('password').value;
+  <span style="color:#7dd3fc">if</span> (!email.includes('@') || pwd.length < 6) { showError(); return; }
+  <span style="color:#7dd3fc">const</span> response = <span style="color:#7dd3fc">await</span> fetch('/api/login', {
+    method: 'POST',
+    body: JSON.stringify({ email, password: pwd })
+  });
+  <span style="color:#7dd3fc">if</span> (response.ok) showSuccess();
+});</code></pre>
+        </div>
+    </section>
 
-# Docker build for backend
-docker build -t myapp .
-docker run -p 3000:3000 myapp</pre>
-    </div>
-  </div>
-
-  <h2>9. Security Best Practices</h2>
-  <div class="card">
-    <ul style="margin-left: 1.5rem;">
-      <li>✅ HTTPS everywhere, HSTS headers</li>
-      <li>✅ Hash passwords (bcrypt, PBKDF2)</li>
-      <li>✅ CSRF protection (tokens)</li>
-      <li>✅ XSS sanitization (escape output)</li>
-      <li>✅ Rate limiting & input validation</li>
-      <li>✅ Environment variables (never commit secrets)</li>
-    </ul>
-  </div>
-
-  <h2>10. Git & GitHub Workflow</h2>
-  <div class="card">
-    <div class="code-block">
-      <pre>git checkout -b feature/login
+    <!-- Deployment & Git Workflow -->
+    <section class="doc-section">
+        <span class="chapter-badge">Chapter 07</span>
+        <h2 class="fw-bold">Deployment & CI/CD Pipeline</h2>
+        <div class="explanation">
+            Modern full stack projects follow a streamlined pipeline: code → version control (Git) → automated testing → build → deploy to cloud.
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#64748b"># Typical Git workflow</span>
+git checkout -b feature/new-api
 git add .
-git commit -m "feat: login page"
-git push origin feature/login
-# open Pull Request → review → merge to main
-# CI/CD auto-deploys</pre>
-    </div>
-  </div>
+git commit -m "feat: add user endpoint"
+git push origin feature/new-api
+<span style="color:#64748b"># Open Pull Request → review → merge to main</span>
+<span style="color:#64748b"># CI/CD auto-deploys to Vercel / Netlify / AWS</span></code></pre>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6"><div class="tech-stack-card"><i class="fab fa-github fa-2x"></i><h5>GitHub + Actions</h5><p>CI/CD pipelines</p></div></div>
+            <div class="col-md-6"><div class="tech-stack-card"><i class="fas fa-cloud-upload-alt fa-2x text-primary"></i><h5>Vercel / Netlify / AWS</h5><p>Hosting & scaling</p></div></div>
+        </div>
+    </section>
 
-  <h2>11. Popular Full Stack Technology Stacks</h2>
-  <div class="card">
-    <ul style="margin-left: 1.5rem;">
-      <li><strong>MERN</strong> – MongoDB, Express.js, React, Node.js</li>
-      <li><strong>MEAN</strong> – MongoDB, Express.js, Angular, Node.js</li>
-      <li><strong>LAMP</strong> – Linux, Apache, MySQL, PHP</li>
-      <li><strong>Django + React + PostgreSQL</strong> – Python backend with modern frontend</li>
-    </ul>
-  </div>
+    <!-- Security Best Practices -->
+    <section class="doc-section">
+        <span class="chapter-badge">Chapter 08</span>
+        <h2 class="fw-bold">Security Best Practices</h2>
+        <ul class="mb-3">
+            <li>🔒 HTTPS & HSTS – encrypt all traffic</li>
+            <li>🔑 Hash passwords with bcrypt (never plain text)</li>
+            <li>🛡️ CSRF protection & XSS sanitisation</li>
+            <li>📦 Environment variables for secrets</li>
+            <li>⏱️ Rate limiting to prevent brute force</li>
+            <li>✅ Input validation & parameterised queries</li>
+        </ul>
+        <div class="tip">💡 Never commit .env files or API keys. Use <code>.gitignore</code> and secret managers.</div>
+    </section>
 
-  <!-- ========== 12. INTERACTIVE FULL STACK SIMULATION ========== -->
-  <h2>12. Interactive Simulation: Full Stack Request</h2>
-  <div class="card">
-    <div class="demo-area">
-      <button id="simulateFullStackBtn" class="btn btn-primary">🚀 Simulate Full Request (Frontend → Backend → DB)</button>
-      <div id="simulationLog" class="step-log">Ready. Click to start simulation.</div>
-      <div id="simulationResponse" class="code-block" style="background:#f1f5f9; color:#0f172a;">Response will appear here...</div>
-    </div>
-  </div>
+    <!-- Final Interactive Simulation (Full Stack Journey) -->
+    <section class="doc-section">
+        <span class="chapter-badge">Chapter 09 · Interactive Experience</span>
+        <h2 class="fw-bold">Full Stack Journey Simulator</h2>
+        <div class="explanation">
+            Click the button below to see a complete request journey from frontend UI → backend API → database → response → UI update. This simulates a real full stack application.
+        </div>
+        <div class="demo-area">
+            <button id="fullStackJourneyBtn" class="btn btn-primary btn-lg">🚀 Start Full Stack Simulation</button>
+            <div id="journeyLog" class="step-log mt-3">Ready to simulate.</div>
+            <div id="journeyResult" class="code-block mt-3" style="background:#f1f5f9; color:#0f172a;">Output will appear here...</div>
+        </div>
+    </section>
 
-  <!-- ========== 13. CONCLUSION ========== -->
-  <h2>13. Conclusion</h2>
-  <div class="card">
-    <div class="explanation">
-      The sequence of code and explanations above illustrates a frontend‑focused approach to a login form, covering:
-      <ul style="margin-left: 1.2rem;">
-        <li><strong>HTML</strong> – structure and semantic elements.</li>
-        <li><strong>CSS</strong> – custom styling, gradients, flexbox, and animations.</li>
-        <li><strong>JavaScript</strong> – form handling, validation, and mock asynchronous feedback.</li>
-        <li><strong>Bootstrap</strong> – responsive grid, cards, form styling, and alerts.</li>
-      </ul>
-      This represents the frontend layer of a full stack application. In a complete system, the JavaScript would communicate with a backend API (Node.js, Python, etc.) and a database. By mastering these frontend technologies, a full stack developer can build attractive, responsive user interfaces that integrate seamlessly with server side logic.<br><br>
-      Understanding HTML, CSS, JavaScript, and a framework like Bootstrap is the first step toward becoming a proficient full stack developer. The same principles apply when moving to more advanced frontend libraries (React, Vue) or backend technologies.
-    </div>
-  </div>
-
-  <!-- ========== 14. REFERENCES ========== -->
-  <h2>14. References</h2>
-  <div class="card">
-    <ul style="margin-left: 1.5rem;">
-      <li>Mozilla Developer Network. (2025). <em>HTML: HyperText Markup Language</em>. Retrieved from <a href="https://developer.mozilla.org/" target="_blank">https://developer.mozilla.org/</a></li>
-      <li>Mozilla Developer Network. (2025). <em>CSS: Cascading Style Sheets</em>. Retrieved from <a href="https://developer.mozilla.org/" target="_blank">https://developer.mozilla.org/</a></li>
-      <li>Mozilla Developer Network. (2025). <em>JavaScript</em>. Retrieved from <a href="https://developer.mozilla.org/" target="_blank">https://developer.mozilla.org/</a></li>
-      <li>Bootstrap Documentation. (2025). <em>Bootstrap v5.3</em>. Retrieved from <a href="https://getbootstrap.com/" target="_blank">https://getbootstrap.com/</a></li>
-    </ul>
-  </div>
-
-  <footer>
-    <p>🎯 Complete Full Stack Development guide – theory, practical examples, interactive demos, and real‑world workflows.</p>
-    <p>© 2025 – Full Stack Mastery | <a href="#">Back to top ↑</a></p>
-  </footer>
+    <!-- Conclusion -->
+    <section class="doc-section text-center">
+        <span class="chapter-badge">Final Chapter</span>
+        <h2 class="fw-bold display-6">Your Full Stack Journey Starts Here 🚀</h2>
+        <p class="lead">You've explored the complete landscape – from frontend frameworks to backend APIs, databases, authentication, deployment, and security. Now build your first full stack project and bring ideas to life.</p>
+        <a href="#" class="btn btn-primary btn-lg rounded-pill px-5 mt-3">Start Building</a>
+    </section>
 </div>
 
+<footer>
+    <p>© 2025 Web Guides – Complete Full Stack Development Encyclopedia | Interactive Demos & Real‑World Workflows</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // Live login form demo
-  const liveForm = document.getElementById('liveLoginForm');
-  const demoEmail = document.getElementById('demoEmail');
-  const demoPassword = document.getElementById('demoPassword');
-  const liveMsg = document.getElementById('liveMessage');
-  const loginSimLog = document.getElementById('loginSimLog');
-
-  liveForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = demoEmail.value;
-    const pwd = demoPassword.value;
-
-    if (!email.includes('@')) {
-      liveMsg.innerHTML = '<div class="alert alert-danger">Please enter a valid email address.</div>';
-      loginSimLog.innerHTML = '❌ Validation failed: invalid email.';
-      return;
-    }
-    if (pwd.length < 6) {
-      liveMsg.innerHTML = '<div class="alert alert-danger">Password must be at least 6 characters.</div>';
-      loginSimLog.innerHTML = '❌ Validation failed: password too short.';
-      return;
+    // Copy function (consistent across pages)
+    function copyCode(btn) {
+        const pre = btn.parentElement.nextElementSibling;
+        const code = pre.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            const old = btn.innerText;
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = old, 1500);
+        });
     }
 
-    liveMsg.innerHTML = '<div class="alert alert-info">🔄 Sending credentials to mock backend...</div>';
-    loginSimLog.innerHTML = '📡 Frontend: POST /api/login with credentials...';
-
-    await new Promise(r => setTimeout(r, 800));
-    loginSimLog.innerHTML += '\n⚙️ Backend: Received request. Checking credentials...';
-    await new Promise(r => setTimeout(r, 600));
-
-    if (email === 'demo@example.com' && pwd === '123456') {
-      loginSimLog.innerHTML += '\n🗄️ Database: User found. Password match.';
-      await new Promise(r => setTimeout(r, 500));
-      loginSimLog.innerHTML += '\n✅ Backend: Generating JWT token. Returning 200 OK.';
-      liveMsg.innerHTML = '<div class="alert alert-success">✅ Login successful! (Mock) Redirecting to dashboard...</div>';
-    } else {
-      loginSimLog.innerHTML += '\n🗄️ Database: User not found or wrong password.';
-      await new Promise(r => setTimeout(r, 500));
-      loginSimLog.innerHTML += '\n❌ Backend: Returning 401 Unauthorized.';
-      liveMsg.innerHTML = '<div class="alert alert-danger">❌ Invalid credentials. Use demo@example.com / 123456</div>';
+    // API lifecycle simulation
+    const apiBtn = document.getElementById('apiSimulateBtn');
+    const apiLog = document.getElementById('apiLog');
+    const apiResp = document.getElementById('apiResponse');
+    async function simulateAPI() {
+        apiLog.innerHTML = "📡 Frontend: Sending GET /api/products...";
+        apiResp.innerHTML = "⏳ Waiting...";
+        await delay(600);
+        apiLog.innerHTML += "\n⚙️ Backend: Received request. Validating token...";
+        await delay(500);
+        apiLog.innerHTML += "\n🗄️ Database: Executing SELECT * FROM products";
+        await delay(700);
+        apiLog.innerHTML += "\n🗄️ Database: Found 3 products. Returning rows.";
+        await delay(500);
+        apiLog.innerHTML += "\n⚙️ Backend: Formatting JSON response (200 OK).";
+        await delay(400);
+        apiLog.innerHTML += "\n🖥️ Frontend: Received response. Rendering product list.";
+        apiResp.innerHTML = `<strong>✅ API Response (mock):</strong><br>[
+  { id: 1, name: "Full Stack Course", price: 49 },
+  { id: 2, name: "JavaScript Mastery", price: 39 },
+  { id: 3, name: "Bootstrap Pro", price: 29 }
+]`;
     }
-    loginSimLog.innerHTML += '\n🏁 End of simulation.';
-  });
+    apiBtn?.addEventListener('click', simulateAPI);
 
-  // Full stack simulation
-  const simBtn = document.getElementById('simulateFullStackBtn');
-  const simLog = document.getElementById('simulationLog');
-  const simResp = document.getElementById('simulationResponse');
+    // JWT simulation
+    const authForm = document.getElementById('authSimForm');
+    const jwtLog = document.getElementById('jwtLog');
+    authForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('authEmail').value;
+        const pwd = document.getElementById('authPassword').value;
+        jwtLog.innerHTML = "🔐 Sending credentials to backend...";
+        setTimeout(() => {
+            if (email === "demo@example.com" && pwd === "123456") {
+                jwtLog.innerHTML = "✅ Backend: User validated. JWT token generated: eyJhbGciOiJIUzI1NiIs...<br>🔑 Token stored in localStorage (mock).";
+            } else {
+                jwtLog.innerHTML = "❌ Invalid credentials. Access denied.";
+            }
+        }, 800);
+    });
 
-  async function runFullSim() {
-    simLog.innerHTML = "📡 1. Frontend: Sending HTTP GET request to /api/user/42...";
-    simResp.innerHTML = "⏳ Waiting for backend response...";
-    await new Promise(r => setTimeout(r, 700));
+    // Live login simulation
+    const liveForm = document.getElementById('liveLoginForm');
+    const demoEmail = document.getElementById('demoEmail');
+    const demoPassword = document.getElementById('demoPassword');
+    const liveMsg = document.getElementById('liveMessage');
+    const loginSimLog = document.getElementById('loginSimLog');
+    liveForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = demoEmail.value;
+        const pwd = demoPassword.value;
+        if (!email.includes('@')) { liveMsg.innerHTML = '<div class="alert alert-danger">❌ Invalid email format</div>'; loginSimLog.innerHTML = '❌ Validation failed: email.'; return; }
+        if (pwd.length < 6) { liveMsg.innerHTML = '<div class="alert alert-danger">❌ Password must be at least 6 characters</div>'; loginSimLog.innerHTML = '❌ Validation failed: password too short.'; return; }
+        liveMsg.innerHTML = '<div class="alert alert-info">🔄 Sending to backend...</div>';
+        loginSimLog.innerHTML = '📡 Frontend → POST /api/login';
+        await delay(600);
+        loginSimLog.innerHTML += '\n⚙️ Backend: Verifying credentials...';
+        await delay(500);
+        if (email === 'demo@example.com' && pwd === '123456') {
+            loginSimLog.innerHTML += '\n🗄️ Database: User found. Password match.';
+            await delay(500);
+            loginSimLog.innerHTML += '\n✅ Backend: JWT issued. 200 OK.';
+            liveMsg.innerHTML = '<div class="alert alert-success">✅ Login successful! Redirecting to dashboard (mock).</div>';
+        } else {
+            loginSimLog.innerHTML += '\n🗄️ Database: User not found or wrong password.';
+            await delay(500);
+            loginSimLog.innerHTML += '\n❌ Backend: 401 Unauthorized.';
+            liveMsg.innerHTML = '<div class="alert alert-danger">❌ Invalid credentials. Use demo@example.com / 123456</div>';
+        }
+        loginSimLog.innerHTML += '\n🏁 End of simulation.';
+    });
 
-    simLog.innerHTML += "\n⚙️ 2. Backend: Received request. Validating user session...";
-    await new Promise(r => setTimeout(r, 600));
+    // Full stack journey simulator
+    const journeyBtn = document.getElementById('fullStackJourneyBtn');
+    const journeyLog = document.getElementById('journeyLog');
+    const journeyResult = document.getElementById('journeyResult');
+    async function fullJourney() {
+        journeyLog.innerHTML = "🌐 1. Frontend: User clicks 'Dashboard' button. Sending GET /api/user/profile";
+        journeyResult.innerHTML = "⏳ Simulation in progress...";
+        await delay(700);
+        journeyLog.innerHTML += "\n⚙️ 2. Backend: Received request. Checking authentication token from header.";
+        await delay(600);
+        journeyLog.innerHTML += "\n🔐 3. Backend: Token valid. Fetching user data from database.";
+        await delay(800);
+        journeyLog.innerHTML += "\n🗄️ 4. Database: SELECT * FROM users WHERE id = 42 → found record.";
+        await delay(600);
+        journeyLog.innerHTML += "\n⚙️ 5. Backend: Constructing JSON response (user + recent orders).";
+        await delay(500);
+        journeyLog.innerHTML += "\n🖥️ 6. Frontend: Received response, updating UI dynamically.";
+        journeyResult.innerHTML = `<strong>✅ Full Stack Journey Completed!</strong><br>
+        Response received: <code>{ "user": { "name": "Alex Johnson", "email": "alex@example.com" }, "orders": 5 }</code><br>
+        ✔️ Frontend → Backend API → Database → Response to frontend → UI update successful.`;
+    }
+    journeyBtn?.addEventListener('click', fullJourney);
 
-    simLog.innerHTML += "\n🗄️ 3. Database: Executing SQL → SELECT * FROM users WHERE id = 42";
-    await new Promise(r => setTimeout(r, 800));
-
-    simLog.innerHTML += "\n🗄️ 4. Database: Found user record. Returning to backend.";
-    await new Promise(r => setTimeout(r, 500));
-
-    const mockUser = { id: 42, name: "Alex Johnson", email: "alex@example.com", memberSince: "2025-01-20" };
-    simLog.innerHTML += "\n⚙️ 5. Backend: Formatting JSON response and sending HTTP 200 OK.";
-    await new Promise(r => setTimeout(r, 600));
-
-    simLog.innerHTML += "\n🖥️ 6. Frontend: Received response. Updating UI with user data.";
-    simResp.innerHTML = `<strong>✅ Full stack request completed!</strong><br>
-      Response (JSON): <code>${JSON.stringify({ status: "success", user: mockUser }, null, 2)}</code><br>
-      ✔ Simulation: Frontend → Backend API → Database → Response to frontend.`;
-    simLog.innerHTML += "\n🎉 Simulation finished.";
-  }
-
-  simBtn.addEventListener('click', () => {
-    simLog.innerHTML = "🚀 Starting full stack simulation...";
-    simResp.innerHTML = "⏳ Simulating request...";
-    runFullSim();
-  });
+    function delay(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 </script>
 </body>
 </html>
