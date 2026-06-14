@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Bootstrap 5 Master Encyclopedia | Grid · Components · Utilities + Quizzes</title>
+    <title>Bootstrap 5 Master Encyclopedia | Grid · Components · Utilities</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -175,16 +175,16 @@
             border-radius: 10px;
             margin: 1rem 0;
         }
-        /* Quiz styling */
-        .mini-quiz {
-            background: #f1f5f9;
+        /* Quiz styling (similar to Full Stack page) */
+        .quiz-container {
+            background: #f9fafb;
             border-radius: 16px;
-            padding: 1.2rem;
-            margin-top: 1rem;
-            border: 1px solid #cbd5e1;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 2px solid #e2e8f0;
         }
         .quiz-question {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             padding: 0.5rem;
             background: white;
             border-radius: 12px;
@@ -192,6 +192,7 @@
         .quiz-option {
             margin-left: 1rem;
             display: block;
+            cursor: pointer;
         }
         .quiz-feedback {
             margin-top: 1rem;
@@ -300,7 +301,7 @@
         </div>
     </div>
 
-    <!-- ========== 1. GRID SYSTEM + QUIZ ========== -->
+    <!-- ========== 1. GRID SYSTEM ========== -->
     <section id="grid" class="doc-section">
         <span class="chapter-badge">Chapter 02</span>
         <h2 class="fw-bold">Grid System (12 columns)</h2>
@@ -320,14 +321,6 @@
         </div>
         <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="container"&gt;&lt;div class="row"&gt;&lt;div class="col-md-4"&gt;...&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</span></code></pre></div>
         <div class="tip">💡 Use <code>g-3</code> for gutters. Columns auto‑wrap when exceeding 12.</div>
-
-        <!-- Grid Quiz (5 questions) -->
-        <div class="mini-quiz">
-            <h4 class="fw-bold">📋 Quick Quiz: Grid System</h4>
-            <div id="gridQuizContainer"></div>
-            <button class="btn btn-sm btn-outline-primary mt-2" onclick="checkGridQuiz()">Check Answers</button>
-            <div id="gridQuizFeedback" class="quiz-feedback mt-2"></div>
-        </div>
     </section>
 
     <!-- ========== 2. COMPONENTS (all demos) ========== -->
@@ -460,18 +453,7 @@
         <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;</code></pre></div>
     </section>
 
-    <!-- Components Quiz (5 questions) -->
-    <section class="doc-section">
-        <span class="chapter-badge">Test Yourself</span>
-        <h3>🧪 Quick Quiz: Bootstrap Components</h3>
-        <div class="mini-quiz">
-            <div id="componentsQuizContainer"></div>
-            <button class="btn btn-sm btn-outline-primary mt-2" onclick="checkComponentsQuiz()">Check Answers</button>
-            <div id="componentsQuizFeedback" class="quiz-feedback mt-2"></div>
-        </div>
-    </section>
-
-    <!-- ========== 3. FORMS & VALIDATION + QUIZ ========== -->
+    <!-- ========== 3. FORMS & VALIDATION ========== -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 03</span>
         <h2 class="fw-bold">Forms & Validation</h2>
@@ -487,17 +469,9 @@
             <div id="formResult" class="mt-2"></div>
         </div>
         <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;form class="needs-validation" novalidate&gt;&lt;div class="form-floating"&gt;&lt;input class="form-control" required&gt;&lt;label&gt;...&lt;/label&gt;&lt;/div&gt;&lt;/form&gt;</code></pre></div>
-
-        <!-- Forms Quiz (5 questions) -->
-        <div class="mini-quiz">
-            <h4 class="fw-bold">📋 Quick Quiz: Forms & Validation</h4>
-            <div id="formsQuizContainer"></div>
-            <button class="btn btn-sm btn-outline-primary mt-2" onclick="checkFormsQuiz()">Check Answers</button>
-            <div id="formsQuizFeedback" class="quiz-feedback mt-2"></div>
-        </div>
     </section>
 
-    <!-- ========== 4. UTILITY CLASSES + QUIZ ========== -->
+    <!-- ========== 4. UTILITY CLASSES ========== -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 04</span>
         <h2 class="fw-bold">Utility Classes (Spacing, Flex, Display)</h2>
@@ -512,17 +486,24 @@
             <div class="mt-3"><span class="me-2 bg-secondary text-white p-1">.me-2</span><span class="mx-3 bg-info p-1">.mx-3</span><span class="mb-0 d-block bg-warning p-1">.mb-0</span></div>
         </div>
         <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;div class="d-flex justify-content-between"&gt;...&lt;/div&gt;</code></pre></div>
-
-        <!-- Utilities Quiz (5 questions) -->
-        <div class="mini-quiz">
-            <h4 class="fw-bold">📋 Quick Quiz: Utility Classes</h4>
-            <div id="utilsQuizContainer"></div>
-            <button class="btn btn-sm btn-outline-primary mt-2" onclick="checkUtilsQuiz()">Check Answers</button>
-            <div id="utilsQuizFeedback" class="quiz-feedback mt-2"></div>
-        </div>
     </section>
 
-    <!-- ========== 5. CONCLUSION + REDIRECT TO HOME PAGE QUIZ ========== -->
+    <!-- ========== 5. FINAL QUIZ (5 questions, like Full Stack page) ========== -->
+    <section id="quizSection" class="doc-section">
+        <span class="chapter-badge">Test Your Knowledge</span>
+        <h2 class="fw-bold">📝 Bootstrap 5 Quiz</h2>
+        <div class="explanation">
+            How well do you remember Bootstrap? Answer these 5 questions covering grid, components, forms, and utilities.
+        </div>
+        <div id="quizContainer" class="quiz-container"></div>
+        <div class="mt-3">
+            <button id="submitQuiz" class="btn btn-primary">✅ Submit Answers</button>
+            <button id="resetQuiz" class="btn btn-outline-secondary ms-2">🔄 Reset Quiz</button>
+        </div>
+        <div id="quizResult" class="tip mt-3" style="display:none;"></div>
+    </section>
+
+    <!-- ========== 6. CONCLUSION ========== -->
     <section class="doc-section text-center">
         <span class="chapter-badge">Final Chapter</span>
         <h2 class="fw-bold display-6">You've Mastered Bootstrap 5! 🚀</h2>
@@ -573,79 +554,122 @@
         });
     }
 
-    // ========== QUIZ DATA ==========
-    // Grid Quiz (5 questions)
-    const gridQuestions = [
-        { q: "How many columns does Bootstrap's grid system support?", options: ["8", "10", "12", "16"], correct: 2 },
-        { q: "Which class creates a responsive fixed-width container?", options: [".container-fluid", ".container", ".row", ".col"], correct: 1 },
-        { q: "What does `col-md-6` mean?", options: ["6 columns on medium screens and up", "6 columns on all screens", "6 pixels width", "6% width"], correct: 0 },
-        { q: "Which class adds gutters between columns?", options: [".gutter", ".gap", ".g-*", ".spacing"], correct: 2 },
-        { q: "What is the default breakpoint for `col-lg-*`?", options: ["≥576px", "≥768px", "≥992px", "≥1200px"], correct: 2 }
-    ];
-    // Components Quiz (5 questions)
-    const componentsQuestions = [
-        { q: "Which component creates a collapsible sidebar?", options: ["Modal", "Offcanvas", "Toast", "Popover"], correct: 1 },
-        { q: "What class is used for a Bootstrap card?", options: [".card", ".panel", ".box", ".container"], correct: 0 },
-        { q: "Which attribute initialises a Bootstrap dropdown?", options: ["data-toggle='dropdown'", "data-bs-toggle='dropdown'", "data-dropdown='true'", "data-target='dropdown'"], correct: 1 },
-        { q: "Which component displays a small notification that auto‑hides?", options: ["Alert", "Toast", "Tooltip", "Modal"], correct: 1 },
-        { q: "What class creates a rotating loading indicator?", options: [".spinner-border", ".spinner-grow", ".progress", ".loader"], correct: 0 }
-    ];
-    // Forms Quiz (5 questions)
-    const formsQuestions = [
-        { q: "Which class styles all form controls consistently?", options: [".form-group", ".form-control", ".input", ".field"], correct: 1 },
-        { q: "What Bootstrap class is used for floating labels?", options: [".form-floating", ".floating-label", ".input-group", ".form-label"], correct: 0 },
-        { q: "Which class is required on the <form> element to enable Bootstrap's validation styles?", options: [".validate", ".was-validated", ".needs-validation", ".form-validate"], correct: 2 },
-        { q: "What class shows the validation feedback message?", options: [".invalid-feedback", ".error-message", ".validation-text", ".help-block"], correct: 0 },
-        { q: "Which attribute makes a form field mandatory in HTML5?", options: ["mandatory", "required", "validate", "needed"], correct: 1 }
-    ];
-    // Utilities Quiz (5 questions)
-    const utilsQuestions = [
-        { q: "Which class adds margin on all sides?", options: [".m-*", ".p-*", ".mt-*", ".mb-*"], correct: 0 },
-        { q: "What does `d-flex` do?", options: ["Display block", "Display flex", "Display grid", "Display none"], correct: 1 },
-        { q: "Which class centres text horizontally?", options: [".text-center", ".align-center", ".center-text", ".text-middle"], correct: 0 },
-        { q: "How do you add padding on the right side?", options: [".pr-*", ".ps-*", ".pe-*", ".pt-*"], correct: 2 },
-        { q: "Which class hides an element on mobile but shows on desktop?", options: [".d-none", ".d-md-block", ".visible", ".d-sm-none"], correct: 1 }
+    // ========== QUIZ LOGIC (5 questions covering Bootstrap) ==========
+    const quizQuestions = [
+        { text: "How many columns does Bootstrap's grid system support?", options: ["8", "10", "12", "16"], correct: 2 },
+        { text: "Which component creates a collapsible sidebar?", options: ["Modal", "Offcanvas", "Toast", "Popover"], correct: 1 },
+        { text: "What class is used for Bootstrap's floating labels?", options: [".form-floating", ".floating-label", ".input-group", ".form-label"], correct: 0 },
+        { text: "Which utility class adds margin on all sides?", options: [".m-*", ".p-*", ".mt-*", ".mb-*"], correct: 0 },
+        { text: "What attribute initialises a Bootstrap dropdown?", options: ["data-toggle='dropdown'", "data-bs-toggle='dropdown'", "data-dropdown='true'", "data-target='dropdown'"], correct: 1 }
     ];
 
-    function buildQuiz(containerId, questions) {
+    let userSelections = new Array(quizQuestions.length).fill(null);
+
+    function renderQuiz() {
+        const container = document.getElementById('quizContainer');
+        if (!container) return;
         let html = '';
-        questions.forEach((q, idx) => {
-            html += `<div class="quiz-question"><strong>${idx+1}. ${q.q}</strong><br>`;
+        quizQuestions.forEach((q, idx) => {
+            html += `<div class="quiz-question">
+                        <strong><span class="question-number">${idx + 1}.</span> ${q.text}</strong><br>`;
             q.options.forEach((opt, optIdx) => {
-                html += `<label class="quiz-option"><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label><br>`;
+                const isChecked = (userSelections[idx] === optIdx);
+                html += `<label class="quiz-option d-block">
+                            <input type="radio" name="q${idx}" value="${optIdx}" ${isChecked ? 'checked' : ''} 
+                                   onclick="setAnswer(${idx}, ${optIdx})"> ${opt}
+                         </label>`;
             });
             html += `</div>`;
         });
-        document.getElementById(containerId).innerHTML = html;
+        container.innerHTML = html;
     }
 
-    function checkQuiz(questions, containerIdPrefix, feedbackId) {
+    window.setAnswer = function(qIndex, optIndex) {
+        userSelections[qIndex] = optIndex;
+    };
+
+    function calculateScore() {
         let score = 0;
-        let results = [];
-        for (let i = 0; i < questions.length; i++) {
-            const radios = document.getElementsByName(`q${i}`);
-            let selected = null;
-            for (let r of radios) if (r.checked) { selected = parseInt(r.value); break; }
-            const isCorrect = (selected === questions[i].correct);
-            if (isCorrect) score++;
-            results.push(`Q${i+1}: ${isCorrect ? '✅' : '❌'} (Correct: ${questions[i].options[questions[i].correct]})`);
+        for (let i = 0; i < quizQuestions.length; i++) {
+            if (userSelections[i] === quizQuestions[i].correct) score++;
         }
-        const feedbackDiv = document.getElementById(feedbackId);
-        feedbackDiv.innerHTML = `<strong>Your score: ${score}/${questions.length}</strong><br>${results.join(' · ')}`;
+        return score;
     }
 
-    // Grid quiz
-    buildQuiz('gridQuizContainer', gridQuestions);
-    window.checkGridQuiz = () => checkQuiz(gridQuestions, 'grid', 'gridQuizFeedback');
-    // Components quiz
-    buildQuiz('componentsQuizContainer', componentsQuestions);
-    window.checkComponentsQuiz = () => checkQuiz(componentsQuestions, 'components', 'componentsQuizFeedback');
-    // Forms quiz
-    buildQuiz('formsQuizContainer', formsQuestions);
-    window.checkFormsQuiz = () => checkQuiz(formsQuestions, 'forms', 'formsQuizFeedback');
-    // Utilities quiz
-    buildQuiz('utilsQuizContainer', utilsQuestions);
-    window.checkUtilsQuiz = () => checkQuiz(utilsQuestions, 'utils', 'utilsQuizFeedback');
+    function checkAllQuestionsAnswered() {
+        const unanswered = [];
+        for (let i = 0; i < userSelections.length; i++) {
+            if (userSelections[i] === null) unanswered.push(i + 1);
+        }
+        return unanswered;
+    }
+
+    function showResults() {
+        const unanswered = checkAllQuestionsAnswered();
+        if (unanswered.length > 0) {
+            alert(`⚠️ Please answer all questions before submitting. Unanswered: ${unanswered.join(', ')}`);
+            return;
+        }
+
+        const score = calculateScore();
+        const total = quizQuestions.length;
+        const percentage = Math.round((score / total) * 100);
+        let feedback = '';
+        if (percentage >= 80) feedback = '🌟 Excellent! You\'ve mastered Bootstrap!';
+        else if (percentage >= 60) feedback = '👍 Good job! Review the components section to improve.';
+        else feedback = '📚 Keep learning! Revisit the demos and try again.';
+
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `
+            <strong>📊 Your Score: ${score} / ${total} (${percentage}%)</strong><br>
+            ${feedback}<br>
+            <button id="showAnswersBtn" class="btn btn-sm btn-info mt-2">🔍 Show Correct Answers</button>
+        `;
+
+        const showBtn = document.getElementById('showAnswersBtn');
+        if (showBtn) {
+            showBtn.onclick = () => showCorrectAnswers();
+        }
+    }
+
+    function showCorrectAnswers() {
+        let answersHtml = '<div class="mt-3"><strong>✅ Correct Answers:</strong><ul>';
+        for (let i = 0; i < quizQuestions.length; i++) {
+            const q = quizQuestions[i];
+            const userAnswerText = (userSelections[i] !== null) ? q.options[userSelections[i]] : 'Not answered';
+            const isUserCorrect = (userSelections[i] === q.correct);
+            const correctText = q.options[q.correct];
+            answersHtml += `<li><strong>${i+1}. ${q.text}</strong><br>
+                            ✔️ Correct answer: ${correctText}<br>
+                            📌 Your answer: ${userAnswerText} ${isUserCorrect ? '✅' : '❌'}</li>`;
+        }
+        answersHtml += '</ul></div>';
+        
+        const resultDiv = document.getElementById('quizResult');
+        if (!document.getElementById('existingAnswersSection')) {
+            const answersSection = document.createElement('div');
+            answersSection.id = 'existingAnswersSection';
+            answersSection.innerHTML = answersHtml;
+            resultDiv.appendChild(answersSection);
+        } else {
+            document.getElementById('existingAnswersSection').innerHTML = answersHtml;
+        }
+    }
+
+    function resetQuiz() {
+        userSelections.fill(null);
+        renderQuiz();
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'none';
+        resultDiv.innerHTML = '';
+        const existingSection = document.getElementById('existingAnswersSection');
+        if (existingSection) existingSection.remove();
+    }
+
+    document.getElementById('submitQuiz')?.addEventListener('click', showResults);
+    document.getElementById('resetQuiz')?.addEventListener('click', resetQuiz);
+    renderQuiz();
 </script>
 </body>
 </html>
