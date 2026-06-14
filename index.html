@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Full Stack Mastery | Complete Guide with Interactive Demos</title>
+    <title>Full Stack Mastery | Complete Guide with Quiz & Interactive Demos</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,6 @@
             --dark: #0f172a;
             --light-bg: #f8fafc;
             --code-bg: #1e1e1e;
-            --nav-bg: #0a0f1f;
         }
 
         * {
@@ -35,14 +34,13 @@
             line-height: 1.7;
         }
 
-        /* Horizontal spacing: only 10px on sides */
         .container {
             padding-left: 10px !important;
             padding-right: 10px !important;
             max-width: 1200px;
         }
 
-        /* Modern Navbar (same as all pages) */
+        /* Navbar */
         .navbar {
             background: rgba(10, 15, 31, 0.96);
             backdrop-filter: blur(12px);
@@ -62,7 +60,7 @@
             text-shadow: 0 0 6px rgba(14,165,233,0.3);
         }
 
-        /* Premium Hero Section */
+        /* Hero Section */
         .hero {
             background: radial-gradient(circle at 80% 20%, #14283c, #050a14);
             padding: 80px 0 60px;
@@ -104,7 +102,6 @@
             margin-bottom: 2.5rem;
             border: 1px solid #e2e8f0;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 10px 15px -3px rgba(0,0,0,0.03);
-            transition: transform 0.2s;
         }
         .chapter-badge {
             font-size: 0.75rem;
@@ -116,7 +113,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Code Windows with Copy Button */
+        /* Code Windows */
         .code-window {
             background: var(--code-bg);
             border-radius: 12px;
@@ -197,6 +194,8 @@
             font-size: 0.8rem;
             margin-top: 0.8rem;
         }
+        .quiz-option { margin-bottom: 0.5rem; cursor: pointer; }
+        .quiz-question { margin-bottom: 1.5rem; padding: 0.5rem; background: #f8fafc; border-radius: 12px; }
         footer {
             background: #0f172a;
             color: #94a3b8;
@@ -213,7 +212,7 @@
 </head>
 <body>
 
-<!-- Navbar identical to all pages -->
+<!-- Navbar with Full Stack active -->
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
         <a class="navbar-brand" href="#"><i class="fas fa-cubes text-info me-2"></i>WEB GUIDES</a>
@@ -240,7 +239,10 @@
                 <span class="hero-tag">From Frontend to Backend – Complete Guide</span>
                 <h1 class="hero-title">Full Stack Development<br>Mastery.</h1>
                 <p class="lead text-white-50 mt-3">Build complete web applications. Learn frontend, backend, databases, APIs, deployment, and best practices – with interactive demos and real‑world simulations.</p>
-               
+                <div class="d-flex gap-3 mt-4">
+                    <a href="#intro" class="btn btn-primary btn-lg px-4 rounded-pill fw-bold">Start Journey</a>
+                    <a href="#quizSection" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-bold">Test Your Knowledge</a>
+                </div>
             </div>
             <div class="col-lg-4 d-none d-lg-block">
                 <div class="code-window mb-0">
@@ -261,6 +263,19 @@
 </header>
 
 <div class="container mt-4">
+    <!-- Quick links to technology demos (fixes gap) -->
+    <div class="doc-section text-center">
+        <span class="chapter-badge">Quick Access</span>
+        <h2 class="fw-bold">Explore Detailed Technology Demos</h2>
+        <p>Click any button below to see deep dives with interactive examples and full code snippets.</p>
+        <div class="row g-3 mt-2">
+            <div class="col-md-3"><a href="./html.html" class="btn btn-outline-primary w-100 py-2"><i class="fab fa-html5 me-2"></i>HTML Demos</a></div>
+            <div class="col-md-3"><a href="./Css.html" class="btn btn-outline-success w-100 py-2"><i class="fab fa-css3-alt me-2"></i>CSS Demos</a></div>
+            <div class="col-md-3"><a href="./Bootstrap.html" class="btn btn-outline-info w-100 py-2"><i class="fab fa-bootstrap me-2"></i>Bootstrap Demos</a></div>
+            <div class="col-md-3"><a href="./javascript.html" class="btn btn-outline-warning w-100 py-2"><i class="fab fa-js me-2"></i>JavaScript Demos</a></div>
+        </div>
+    </div>
+
     <!-- INTRO: What is Full Stack -->
     <section id="intro" class="doc-section">
         <span class="chapter-badge">Chapter 01</span>
@@ -282,12 +297,6 @@
             • Database = fridge/pantry (stores ingredients).<br>
             • API = waiter (takes order to kitchen, brings food back).
         </div>
-        <div class="code-window">
-            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
-            <pre><code><span style="color:#7dd3fc">// Simple full stack architecture (conceptual)</span>
-Frontend (React)  →  Backend (Node/Express)  →  Database (MongoDB)
-       ← JSON API ←          ←  Query result ←</code></pre>
-        </div>
     </section>
 
     <!-- Why Full Stack -->
@@ -305,7 +314,7 @@ Frontend (React)  →  Backend (Node/Express)  →  Database (MongoDB)
         </div>
     </section>
 
-    <!-- Technologies Overview (Interactive Cards) -->
+    <!-- Technology Stacks -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 03</span>
         <h2 class="fw-bold">Popular Full Stack Stacks</h2>
@@ -317,20 +326,10 @@ Frontend (React)  →  Backend (Node/Express)  →  Database (MongoDB)
         </div>
     </section>
 
-    <!-- API Lifecycle & Architecture -->
+    <!-- API Lifecycle Simulation -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 04</span>
         <h2 class="fw-bold">How It Works: API Request Lifecycle</h2>
-        <div class="explanation">
-            <ol>
-                <li><strong>Frontend</strong> sends HTTP request (GET /api/products)</li>
-                <li><strong>Backend route handler</strong> validates request, extracts data</li>
-                <li><strong>Service/Controller</strong> executes business logic</li>
-                <li><strong>Database query</strong> – SQL or NoSQL operation</li>
-                <li><strong>Backend formats JSON response</strong> and sends HTTP status</li>
-                <li><strong>Frontend receives response</strong> and updates UI dynamically</li>
-            </ol>
-        </div>
         <div class="demo-area">
             <button id="apiSimulateBtn" class="btn btn-primary">🚀 Simulate API Request (Frontend → Backend → DB)</button>
             <div id="apiLog" class="step-log">Ready. Click to simulate a full API call.</div>
@@ -341,13 +340,7 @@ Frontend (React)  →  Backend (Node/Express)  →  Database (MongoDB)
             <pre><code><span style="color:#7dd3fc">// Frontend fetch example</span>
 fetch('/api/products')
   .then(res => res.json())
-  .then(data => console.log(data));
-
-<span style="color:#7dd3fc">// Backend (Node.js + Express)</span>
-app.get('/api/products', async (req, res) => {
-  const products = await db.query('SELECT * FROM products');
-  res.json(products);
-});</code></pre>
+  .then(data => console.log(data));</code></pre>
         </div>
     </section>
 
@@ -355,16 +348,6 @@ app.get('/api/products', async (req, res) => {
     <section class="doc-section">
         <span class="chapter-badge">Chapter 05</span>
         <h2 class="fw-bold">Authentication Flow (JWT)</h2>
-        <div class="explanation">
-            <ol>
-                <li>User submits login credentials</li>
-                <li>Backend validates against database</li>
-                <li>Backend generates signed JWT token</li>
-                <li>Frontend stores token (localStorage / cookies)</li>
-                <li>Subsequent requests include token in <code>Authorization: Bearer &lt;token&gt;</code></li>
-                <li>Backend verifies token before sending protected data</li>
-            </ol>
-        </div>
         <div class="demo-area">
             <form id="authSimForm">
                 <div class="mb-2"><label>Email:</label><input type="email" id="authEmail" class="form-control" placeholder="user@example.com"></div>
@@ -373,28 +356,12 @@ app.get('/api/products', async (req, res) => {
             </form>
             <div id="jwtLog" class="step-log mt-2"></div>
         </div>
-        <div class="code-window">
-            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
-            <pre><code><span style="color:#7dd3fc">// JWT verification middleware</span>
-function authenticateToken(req, res, next) {
-  const token = req.headers['authorization']?.split(' ')[1];
-  if (!token) return res.sendStatus(401);
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) return res.sendStatus(403);
-    req.user = user;
-    next();
-  });
-}</code></pre>
-        </div>
     </section>
 
-    <!-- Interactive Login Form (frontend only) -->
-    <section id="demo" class="doc-section">
+    <!-- Interactive Login Form (Frontend + Mock Backend) -->
+    <section class="doc-section">
         <span class="chapter-badge">Chapter 06 · Live Demo</span>
-        <h2 class="fw-bold">🔐 Full Stack Login Simulation (Frontend + Mock Backend)</h2>
-        <div class="explanation">
-            This interactive form simulates a complete full stack authentication flow: frontend validation, mock API call (async), and backend validation against mock database. Enter <code>demo@example.com</code> / <code>123456</code> to see a successful login.
-        </div>
+        <h2 class="fw-bold">🔐 Full Stack Login Simulation</h2>
         <div class="demo-area">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -419,30 +386,12 @@ function authenticateToken(req, res, next) {
             </div>
             <div id="loginSimLog" class="step-log mt-3">✨ Try email: demo@example.com / password: 123456. Full stack simulation.</div>
         </div>
-        <div class="code-window">
-            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
-            <pre><code><span style="color:#7dd3fc">// Frontend validation + mock fetch</span>
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const email = document.getElementById('email').value;
-  const pwd = document.getElementById('password').value;
-  <span style="color:#7dd3fc">if</span> (!email.includes('@') || pwd.length < 6) { showError(); return; }
-  <span style="color:#7dd3fc">const</span> response = <span style="color:#7dd3fc">await</span> fetch('/api/login', {
-    method: 'POST',
-    body: JSON.stringify({ email, password: pwd })
-  });
-  <span style="color:#7dd3fc">if</span> (response.ok) showSuccess();
-});</code></pre>
-        </div>
     </section>
 
     <!-- Deployment & Git Workflow -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 07</span>
         <h2 class="fw-bold">Deployment & CI/CD Pipeline</h2>
-        <div class="explanation">
-            Modern full stack projects follow a streamlined pipeline: code → version control (Git) → automated testing → build → deploy to cloud.
-        </div>
         <div class="code-window">
             <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
             <pre><code><span style="color:#64748b"># Typical Git workflow</span>
@@ -452,10 +401,6 @@ git commit -m "feat: add user endpoint"
 git push origin feature/new-api
 <span style="color:#64748b"># Open Pull Request → review → merge to main</span>
 <span style="color:#64748b"># CI/CD auto-deploys to Vercel / Netlify / AWS</span></code></pre>
-        </div>
-        <div class="row mt-3">
-            <div class="col-md-6"><div class="tech-stack-card"><i class="fab fa-github fa-2x"></i><h5>GitHub + Actions</h5><p>CI/CD pipelines</p></div></div>
-            <div class="col-md-6"><div class="tech-stack-card"><i class="fas fa-cloud-upload-alt fa-2x text-primary"></i><h5>Vercel / Netlify / AWS</h5><p>Hosting & scaling</p></div></div>
         </div>
     </section>
 
@@ -471,16 +416,12 @@ git push origin feature/new-api
             <li>⏱️ Rate limiting to prevent brute force</li>
             <li>✅ Input validation & parameterised queries</li>
         </ul>
-        <div class="tip">💡 Never commit .env files or API keys. Use <code>.gitignore</code> and secret managers.</div>
     </section>
 
-    <!-- Final Interactive Simulation (Full Stack Journey) -->
+    <!-- Full Stack Journey Simulator -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 09 · Interactive Experience</span>
         <h2 class="fw-bold">Full Stack Journey Simulator</h2>
-        <div class="explanation">
-            Click the button below to see a complete request journey from frontend UI → backend API → database → response → UI update. This simulates a real full stack application.
-        </div>
         <div class="demo-area">
             <button id="fullStackJourneyBtn" class="btn btn-primary btn-lg">🚀 Start Full Stack Simulation</button>
             <div id="journeyLog" class="step-log mt-3">Ready to simulate.</div>
@@ -488,28 +429,35 @@ git push origin feature/new-api
         </div>
     </section>
 
+    <!-- ========== QUIZ SECTION (NEW) ========== -->
+    <section id="quizSection" class="doc-section">
+        <span class="chapter-badge">Bonus Challenge</span>
+        <h2 class="fw-bold">📝 Test Your Knowledge – Interactive Quiz</h2>
+        <div class="explanation">
+            How well do you understand Full Stack, HTML, CSS, Bootstrap, and JavaScript? Answer these 10 questions and see your score.
+        </div>
+        <div id="quizContainer" class="demo-area" style="text-align: left;"></div>
+        <button id="submitQuiz" class="btn btn-primary mt-2">Submit Answers</button>
+        <button id="resetQuiz" class="btn btn-outline-secondary mt-2 ms-2">Reset Quiz</button>
+        <div id="quizResult" class="tip mt-3" style="display:none;"></div>
+    </section>
+
     <!-- Conclusion -->
     <section class="doc-section text-center">
         <span class="chapter-badge">Final Chapter</span>
         <h2 class="fw-bold display-6">Your Full Stack Journey Starts Here 🚀</h2>
         <p class="lead">You've explored the complete landscape – from frontend frameworks to backend APIs, databases, authentication, deployment, and security. Now build your first full stack project and bring ideas to life.</p>
-        <a href="/ePortfolio/html.html" class="btn btn-primary btn-lg rounded-pill px-5 mt-3">Start Building</a>
+        <a href="#" class="btn btn-primary btn-lg rounded-pill px-5 mt-3">Start Building</a>
     </section>
 </div>
 
-<footer class="bg-dark text-white-50 py-5 mt-5 text-center">
-    <div class="container">
-        <p class="mb-0">© 2025 Web Guides Documentation | Built for CET138</p>
-        <div class="mt-3">
-            <a href="#" class="text-white-50 me-3">Privacy</a>
-            <a href="#" class="text-white-50">Terms</a>
-        </div>
-    </div>
+<footer>
+    <p>© 2025 Web Guides – Complete Full Stack Development Encyclopedia | Interactive Demos & Real‑World Workflows</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Copy function (consistent across pages)
+    // Copy function
     function copyCode(btn) {
         const pre = btn.parentElement.nextElementSibling;
         const code = pre.innerText;
@@ -520,7 +468,7 @@ git push origin feature/new-api
         });
     }
 
-    // API lifecycle simulation
+    // ========== API Lifecycle Simulation ==========
     const apiBtn = document.getElementById('apiSimulateBtn');
     const apiLog = document.getElementById('apiLog');
     const apiResp = document.getElementById('apiResponse');
@@ -545,7 +493,7 @@ git push origin feature/new-api
     }
     apiBtn?.addEventListener('click', simulateAPI);
 
-    // JWT simulation
+    // ========== JWT Simulation ==========
     const authForm = document.getElementById('authSimForm');
     const jwtLog = document.getElementById('jwtLog');
     authForm?.addEventListener('submit', (e) => {
@@ -557,12 +505,12 @@ git push origin feature/new-api
             if (email === "demo@example.com" && pwd === "123456") {
                 jwtLog.innerHTML = "✅ Backend: User validated. JWT token generated: eyJhbGciOiJIUzI1NiIs...<br>🔑 Token stored in localStorage (mock).";
             } else {
-                jwtLog.innerHTML = "❌ Invalid credentials. Access denied.";
+                jwtLog.innerHTML = "❌ Invalid credentials. Access denied. (Hint: use demo@example.com / 123456)";
             }
         }, 800);
     });
 
-    // Live login simulation
+    // ========== Live Login Simulation ==========
     const liveForm = document.getElementById('liveLoginForm');
     const demoEmail = document.getElementById('demoEmail');
     const demoPassword = document.getElementById('demoPassword');
@@ -593,7 +541,7 @@ git push origin feature/new-api
         loginSimLog.innerHTML += '\n🏁 End of simulation.';
     });
 
-    // Full stack journey simulator
+    // ========== Full Stack Journey Simulator ==========
     const journeyBtn = document.getElementById('fullStackJourneyBtn');
     const journeyLog = document.getElementById('journeyLog');
     const journeyResult = document.getElementById('journeyResult');
@@ -617,6 +565,88 @@ git push origin feature/new-api
     journeyBtn?.addEventListener('click', fullJourney);
 
     function delay(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+    // ========== QUIZ LOGIC ==========
+    const questions = [
+        { text: "What does HTML stand for?", options: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Language"], correct: 0, section: "HTML" },
+        { text: "Which CSS property changes the background colour?", options: ["color", "background-color", "bgcolor"], correct: 1, section: "CSS" },
+        { text: "What Bootstrap class creates a responsive container?", options: [".container-fluid", ".row", ".container"], correct: 2, section: "Bootstrap" },
+        { text: "Which JavaScript method adds an element to the end of an array?", options: ["push()", "pop()", "shift()"], correct: 0, section: "JavaScript" },
+        { text: "What is the primary role of a backend server?", options: ["Handle database & business logic", "Style the webpage", "Create animations"], correct: 0, section: "Full Stack" },
+        { text: "Which HTML tag is used to link an external CSS file?", options: ["<style>", "<link>", "<css>"], correct: 1, section: "HTML" },
+        { text: "What does `flexbox` help with in CSS?", options: ["Layout alignment", "Color gradients", "Animations"], correct: 0, section: "CSS" },
+        { text: "Which Bootstrap component creates a collapsible sidebar?", options: ["Modal", "Offcanvas", "Carousel"], correct: 1, section: "Bootstrap" },
+        { text: "What does `localStorage` do in JavaScript?", options: ["Stores data persistently in browser", "Stores data on server", "Deletes cookies"], correct: 0, section: "JavaScript" },
+        { text: "What is a JWT used for in full stack apps?", options: ["Authentication", "Styling", "Database query"], correct: 0, section: "Full Stack" }
+    ];
+
+    let userAnswers = new Array(questions.length).fill(null);
+
+    function renderQuiz() {
+        const container = document.getElementById('quizContainer');
+        if (!container) return;
+        let html = '';
+        questions.forEach((q, idx) => {
+            html += `<div class="quiz-question"><strong>${idx + 1}. ${q.text}</strong><br>`;
+            q.options.forEach((opt, optIdx) => {
+                const checked = (userAnswers[idx] === optIdx) ? 'checked' : '';
+                html += `<label class="quiz-option d-block">
+                            <input type="radio" name="q${idx}" value="${optIdx}" ${checked} onchange="setAnswer(${idx}, ${optIdx})"> ${opt}
+                         </label>`;
+            });
+            html += `</div>`;
+        });
+        container.innerHTML = html;
+    }
+
+    window.setAnswer = function(qIndex, optIndex) {
+        userAnswers[qIndex] = optIndex;
+    };
+
+    function calculateScore() {
+        let score = 0;
+        for (let i = 0; i < questions.length; i++) {
+            if (userAnswers[i] === questions[i].correct) score++;
+        }
+        return score;
+    }
+
+    function showResults() {
+        const score = calculateScore();
+        const total = questions.length;
+        const percentage = Math.round((score / total) * 100);
+        let feedback = '';
+        if (percentage >= 90) feedback = '🌟 Excellent! You\'re a Full Stack expert!';
+        else if (percentage >= 70) feedback = '👍 Great job! You have solid understanding.';
+        else if (percentage >= 50) feedback = '📚 Good effort! Review the topics to improve.';
+        else feedback = '💪 Keep learning! Go through the demos again and retake the quiz.';
+        
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `<strong>Your Score: ${score} / ${total} (${percentage}%)</strong><br>${feedback}<br>
+                               <button class="btn btn-sm btn-info mt-2" onclick="showCorrectAnswers()">Show Correct Answers</button>`;
+    }
+
+    window.showCorrectAnswers = function() {
+        let correctHtml = '<div class="mt-3"><strong>✅ Correct Answers:</strong><ul>';
+        for (let i = 0; i < questions.length; i++) {
+            correctHtml += `<li><strong>${i+1}. ${questions[i].text}</strong><br>✔️ Correct: ${questions[i].options[questions[i].correct]}</li>`;
+        }
+        correctHtml += '</ul></div>';
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.innerHTML += correctHtml;
+    };
+
+    function resetQuiz() {
+        userAnswers.fill(null);
+        renderQuiz();
+        document.getElementById('quizResult').style.display = 'none';
+        document.getElementById('quizResult').innerHTML = '';
+    }
+
+    document.getElementById('submitQuiz')?.addEventListener('click', showResults);
+    document.getElementById('resetQuiz')?.addEventListener('click', resetQuiz);
+    renderQuiz();
 </script>
 </body>
 </html>
