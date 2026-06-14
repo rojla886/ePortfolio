@@ -40,7 +40,7 @@
             max-width: 1200px;
         }
 
-        /* --- Updated Navbar & Hero Colors --- */
+        /* Navbar */
         .navbar {
             background: rgba(10, 15, 31, 0.96);
             backdrop-filter: blur(12px);
@@ -196,6 +196,7 @@
         }
         .quiz-option { margin-bottom: 0.5rem; cursor: pointer; }
         .quiz-question { margin-bottom: 1.5rem; padding: 0.5rem; background: #f8fafc; border-radius: 12px; }
+        .question-number { font-weight: 800; color: var(--primary); margin-right: 0.5rem; }
         footer {
             background: #0f172a;
             color: #94a3b8;
@@ -221,7 +222,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="./">Full Stack</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#">Full Stack</a></li>
                 <li class="nav-item"><a class="nav-link" href="./html.html">HTML</a></li>
                 <li class="nav-item"><a class="nav-link" href="./Css.html">CSS</a></li>
                 <li class="nav-item"><a class="nav-link" href="./javascript.html">JavaScript</a></li>
@@ -263,7 +264,7 @@
 </header>
 
 <div class="container mt-4">
-    <!-- Quick links to technology demos (fixes gap) -->
+    <!-- Quick links to technology demos -->
     <div class="doc-section text-center">
         <span class="chapter-badge">Quick Access</span>
         <h2 class="fw-bold">Explore Detailed Technology Demos</h2>
@@ -429,16 +430,18 @@ git push origin feature/new-api
         </div>
     </section>
 
-    <!-- ========== QUIZ SECTION (NEW) ========== -->
+    <!-- ========== IMPROVED QUIZ SECTION ========== -->
     <section id="quizSection" class="doc-section">
         <span class="chapter-badge">Bonus Challenge</span>
         <h2 class="fw-bold">📝 Test Your Knowledge – Interactive Quiz</h2>
         <div class="explanation">
-            How well do you understand Full Stack, HTML, CSS, Bootstrap, and JavaScript? Answer these 10 questions and see your score.
+            How well do you understand Full Stack, HTML, CSS, Bootstrap, and JavaScript? Answer all 10 questions, submit, and see your score with detailed feedback.
         </div>
         <div id="quizContainer" class="demo-area" style="text-align: left;"></div>
-        <button id="submitQuiz" class="btn btn-primary mt-2">Submit Answers</button>
-        <button id="resetQuiz" class="btn btn-outline-secondary mt-2 ms-2">Reset Quiz</button>
+        <div class="mt-3">
+            <button id="submitQuiz" class="btn btn-primary">✅ Submit Answers</button>
+            <button id="resetQuiz" class="btn btn-outline-secondary ms-2">🔄 Reset Quiz</button>
+        </div>
         <div id="quizResult" class="tip mt-3" style="display:none;"></div>
     </section>
 
@@ -566,32 +569,34 @@ git push origin feature/new-api
 
     function delay(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
-    // ========== QUIZ LOGIC ==========
-    const questions = [
+    // ========== IMPROVED QUIZ LOGIC ==========
+    const quizQuestions = [
         { text: "What does HTML stand for?", options: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Language"], correct: 0, section: "HTML" },
         { text: "Which CSS property changes the background colour?", options: ["color", "background-color", "bgcolor"], correct: 1, section: "CSS" },
         { text: "What Bootstrap class creates a responsive container?", options: [".container-fluid", ".row", ".container"], correct: 2, section: "Bootstrap" },
         { text: "Which JavaScript method adds an element to the end of an array?", options: ["push()", "pop()", "shift()"], correct: 0, section: "JavaScript" },
         { text: "What is the primary role of a backend server?", options: ["Handle database & business logic", "Style the webpage", "Create animations"], correct: 0, section: "Full Stack" },
-        { text: "Which HTML tag is used to link an external CSS file?", options: ["<style>", "<link>", "<css>"], correct: 1, section: "HTML" },
+        { text: "Which HTML tag is used to link an external CSS file?", options: ["&lt;style&gt;", "&lt;link&gt;", "&lt;css&gt;"], correct: 1, section: "HTML" },
         { text: "What does `flexbox` help with in CSS?", options: ["Layout alignment", "Color gradients", "Animations"], correct: 0, section: "CSS" },
         { text: "Which Bootstrap component creates a collapsible sidebar?", options: ["Modal", "Offcanvas", "Carousel"], correct: 1, section: "Bootstrap" },
         { text: "What does `localStorage` do in JavaScript?", options: ["Stores data persistently in browser", "Stores data on server", "Deletes cookies"], correct: 0, section: "JavaScript" },
         { text: "What is a JWT used for in full stack apps?", options: ["Authentication", "Styling", "Database query"], correct: 0, section: "Full Stack" }
     ];
 
-    let userAnswers = new Array(questions.length).fill(null);
+    let userSelections = new Array(quizQuestions.length).fill(null);
 
     function renderQuiz() {
         const container = document.getElementById('quizContainer');
         if (!container) return;
         let html = '';
-        questions.forEach((q, idx) => {
-            html += `<div class="quiz-question"><strong>${idx + 1}. ${q.text}</strong><br>`;
+        quizQuestions.forEach((q, idx) => {
+            html += `<div class="quiz-question">
+                        <strong><span class="question-number">${idx + 1}.</span> ${q.text}</strong><br>`;
             q.options.forEach((opt, optIdx) => {
-                const checked = (userAnswers[idx] === optIdx) ? 'checked' : '';
+                const isChecked = (userSelections[idx] === optIdx);
                 html += `<label class="quiz-option d-block">
-                            <input type="radio" name="q${idx}" value="${optIdx}" ${checked} onchange="setAnswer(${idx}, ${optIdx})"> ${opt}
+                            <input type="radio" name="q${idx}" value="${optIdx}" ${isChecked ? 'checked' : ''} 
+                                   onclick="setAnswer(${idx}, ${optIdx})"> ${opt}
                          </label>`;
             });
             html += `</div>`;
@@ -600,48 +605,91 @@ git push origin feature/new-api
     }
 
     window.setAnswer = function(qIndex, optIndex) {
-        userAnswers[qIndex] = optIndex;
+        userSelections[qIndex] = optIndex;
     };
 
     function calculateScore() {
         let score = 0;
-        for (let i = 0; i < questions.length; i++) {
-            if (userAnswers[i] === questions[i].correct) score++;
+        for (let i = 0; i < quizQuestions.length; i++) {
+            if (userSelections[i] === quizQuestions[i].correct) score++;
         }
         return score;
     }
 
+    function checkAllQuestionsAnswered() {
+        const unanswered = [];
+        for (let i = 0; i < userSelections.length; i++) {
+            if (userSelections[i] === null) unanswered.push(i + 1);
+        }
+        return unanswered;
+    }
+
     function showResults() {
+        const unanswered = checkAllQuestionsAnswered();
+        if (unanswered.length > 0) {
+            alert(`⚠️ Please answer all questions before submitting. Unanswered: ${unanswered.join(', ')}`);
+            return;
+        }
+
         const score = calculateScore();
-        const total = questions.length;
+        const total = quizQuestions.length;
         const percentage = Math.round((score / total) * 100);
         let feedback = '';
         if (percentage >= 90) feedback = '🌟 Excellent! You\'re a Full Stack expert!';
         else if (percentage >= 70) feedback = '👍 Great job! You have solid understanding.';
         else if (percentage >= 50) feedback = '📚 Good effort! Review the topics to improve.';
         else feedback = '💪 Keep learning! Go through the demos again and retake the quiz.';
-        
+
         const resultDiv = document.getElementById('quizResult');
         resultDiv.style.display = 'block';
-        resultDiv.innerHTML = `<strong>Your Score: ${score} / ${total} (${percentage}%)</strong><br>${feedback}<br>
-                               <button class="btn btn-sm btn-info mt-2" onclick="showCorrectAnswers()">Show Correct Answers</button>`;
+        resultDiv.innerHTML = `
+            <strong>📊 Your Score: ${score} / ${total} (${percentage}%)</strong><br>
+            ${feedback}<br>
+            <button id="showAnswersBtn" class="btn btn-sm btn-info mt-2">🔍 Show Correct Answers</button>
+        `;
+
+        // Attach event listener dynamically to avoid duplication
+        const showBtn = document.getElementById('showAnswersBtn');
+        if (showBtn) {
+            showBtn.onclick = () => showCorrectAnswers();
+        }
     }
 
-    window.showCorrectAnswers = function() {
-        let correctHtml = '<div class="mt-3"><strong>✅ Correct Answers:</strong><ul>';
-        for (let i = 0; i < questions.length; i++) {
-            correctHtml += `<li><strong>${i+1}. ${questions[i].text}</strong><br>✔️ Correct: ${questions[i].options[questions[i].correct]}</li>`;
+    function showCorrectAnswers() {
+        let answersHtml = '<div class="mt-3"><strong>✅ Correct Answers:</strong><ul>';
+        for (let i = 0; i < quizQuestions.length; i++) {
+            const q = quizQuestions[i];
+            const userAnswerText = (userSelections[i] !== null) ? q.options[userSelections[i]] : 'Not answered';
+            const isUserCorrect = (userSelections[i] === q.correct);
+            const correctText = q.options[q.correct];
+            answersHtml += `<li><strong>${i+1}. ${q.text}</strong><br>
+                            ✔️ Correct answer: ${correctText}<br>
+                            ${userSelections[i] !== null ? `📌 Your answer: ${userAnswerText} ${isUserCorrect ? '✅' : '❌'}` : '⚠️ You did not answer this question.'}
+                            </li>`;
         }
-        correctHtml += '</ul></div>';
+        answersHtml += '</ul></div>';
+        
         const resultDiv = document.getElementById('quizResult');
-        resultDiv.innerHTML += correctHtml;
-    };
+        // Avoid duplicate answers section
+        if (!document.getElementById('existingAnswersSection')) {
+            const answersSection = document.createElement('div');
+            answersSection.id = 'existingAnswersSection';
+            answersSection.innerHTML = answersHtml;
+            resultDiv.appendChild(answersSection);
+        } else {
+            document.getElementById('existingAnswersSection').innerHTML = answersHtml;
+        }
+    }
 
     function resetQuiz() {
-        userAnswers.fill(null);
+        userSelections.fill(null);
         renderQuiz();
-        document.getElementById('quizResult').style.display = 'none';
-        document.getElementById('quizResult').innerHTML = '';
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'none';
+        resultDiv.innerHTML = '';
+        // Remove any extra answers section
+        const existingSection = document.getElementById('existingAnswersSection');
+        if (existingSection) existingSection.remove();
     }
 
     document.getElementById('submitQuiz')?.addEventListener('click', showResults);
