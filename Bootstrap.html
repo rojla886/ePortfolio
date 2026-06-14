@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Bootstrap 5 Master Encyclopedia | Grid · Components · Utilities</title>
+    <title>Bootstrap 5 Master Encyclopedia | Grid · Components · Utilities + Quizzes</title>
     
-    <!-- Bootstrap 5 CSS (needed for components) -->
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -35,13 +35,13 @@
             line-height: 1.7;
         }
 
-        /* Horizontal spacing: only 10px on sides */
         .container {
             padding-left: 10px !important;
             padding-right: 10px !important;
+            max-width: 1200px;
         }
 
-        /* --- Updated Navbar & Hero Colors --- */
+        /* Navbar */
         .navbar {
             background: rgba(10, 15, 31, 0.96);
             backdrop-filter: blur(12px);
@@ -61,7 +61,7 @@
             text-shadow: 0 0 6px rgba(14,165,233,0.3);
         }
 
-        /* Premium Hero Section */
+        /* Hero */
         .hero {
             background: radial-gradient(circle at 80% 20%, #14283c, #050a14);
             padding: 80px 0 60px;
@@ -95,7 +95,7 @@
             margin-bottom: 1rem;
         }
 
-        /* Doc Section Cards (matching HTML/CSS/JS) */
+        /* Doc Sections */
         .doc-section {
             background: white;
             border-radius: 24px;
@@ -114,7 +114,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Code Windows with Copy Button */
+        /* Code Windows */
         .code-window {
             background: var(--code-bg);
             border-radius: 12px;
@@ -176,6 +176,28 @@
             border-radius: 10px;
             margin: 1rem 0;
         }
+        /* Quiz styling */
+        .mini-quiz {
+            background: #f1f5f9;
+            border-radius: 16px;
+            padding: 1.2rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .quiz-question {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 12px;
+        }
+        .quiz-option {
+            margin-left: 1rem;
+            display: block;
+        }
+        .quiz-feedback {
+            margin-top: 1rem;
+            font-weight: 500;
+        }
         footer {
             background: #0f172a;
             color: #94a3b8;
@@ -184,22 +206,20 @@
             margin-top: 3rem;
             text-align: center;
         }
-        /* Fix Bootstrap conflicting styles inside demo-area */
         .demo-area .btn, .demo-area .progress, .demo-area .spinner-border,
         .demo-area .dropdown, .demo-area .offcanvas, .demo-area .toast {
             margin: 0.25rem;
         }
-        .demo-area .card {
-            margin-bottom: 0;
-        }
+        .demo-area .card { margin-bottom: 0; }
         @media (max-width: 700px) {
             .doc-section { padding: 1.2rem; }
+            .hero-title { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- Navbar identical to other pages -->
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
         <a class="navbar-brand" href="#"><i class="fas fa-cubes text-info me-2"></i>WEB GUIDES</a>
@@ -218,7 +238,7 @@
     </div>
 </nav>
 
-<!-- Hero section -->
+<!-- Hero -->
 <header class="hero">
     <div class="container">
         <div class="row align-items-center">
@@ -226,10 +246,6 @@
                 <span class="hero-tag">Bootstrap 5 – Build Fast, Responsive</span>
                 <h1 class="hero-title">Rapid UI Development<br>with Bootstrap 5.</h1>
                 <p class="lead text-white-50 mt-3">Complete guide: grid system, 20+ components, utilities, forms, and JavaScript plugins. Every concept includes live demos and ready‑to‑copy code.</p>
-                <!-- <div class="d-flex gap-3 mt-4">
-                    <a href="#grid" class="btn btn-primary btn-lg px-4 rounded-pill fw-bold">Start Learning</a>
-                    <a href="#components" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-bold">Explore Components</a>
-                </div> -->
             </div>
             <div class="col-lg-4 d-none d-lg-block">
                 <div class="code-window mb-0">
@@ -255,10 +271,8 @@
     <section class="doc-section">
         <span class="chapter-badge">Chapter 01</span>
         <h2 class="fw-bold">What is Bootstrap?</h2>
-        <p>Bootstrap is the world's most popular front‑end framework. It provides a responsive 12‑column grid system, hundreds of pre‑styled components (cards, modals, navbars, carousels…), utility classes for spacing/alignment, and JavaScript plugins. With Bootstrap, you build professional, mobile‑friendly websites <strong>fast</strong> – without writing custom CSS for every element.</p>
-        <div class="explanation">
-            💡 <strong>Why Bootstrap?</strong> Saves development time, ensures cross‑browser consistency, and is fully responsive out of the box. Used by millions of websites.
-        </div>
+        <p>Bootstrap is the world's most popular front‑end framework. It provides a responsive 12‑column grid system, hundreds of pre‑styled components, utility classes, and JavaScript plugins. With Bootstrap, you build professional, mobile‑friendly websites <strong>fast</strong> – without writing custom CSS for every element.</p>
+        <div class="explanation">💡 <strong>Why Bootstrap?</strong> Saves development time, ensures cross‑browser consistency, and is fully responsive out of the box.</div>
         <div class="demo-area">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bootstrapModal">
                 <i class="fas fa-info-circle"></i> What's in Bootstrap? (Modal)
@@ -266,14 +280,12 @@
         </div>
         <div class="code-window">
             <div class="code-header"><div class="mac-dots"><span></span><span></span><span></span></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
-            <pre><code><span style="color:#7dd3fc">&lt;!-- Include Bootstrap CSS --&gt;</span>
-<span style="color:#7dd3fc">&lt;link</span> <span style="color:#fbbf24">href</span>=<span style="color:#34d399">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"</span><span style="color:#7dd3fc">&gt;</span>
-<span style="color:#7dd3fc">&lt;!-- Include Bootstrap JS Bundle (includes Popper) --&gt;</span>
+            <pre><code><span style="color:#7dd3fc">&lt;link</span> <span style="color:#fbbf24">href</span>=<span style="color:#34d399">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"</span><span style="color:#7dd3fc">&gt;</span>
 <span style="color:#7dd3fc">&lt;script</span> <span style="color:#fbbf24">src</span>=<span style="color:#34d399">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"</span><span style="color:#7dd3fc">&gt;&lt;/script&gt;</span></code></pre>
         </div>
     </section>
 
-    <!-- Modal (explanation) -->
+    <!-- Modal -->
     <div class="modal fade" id="bootstrapModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -282,28 +294,18 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <ul>
-                        <li>Responsive grid system (12 columns, 6 breakpoints)</li>
-                        <li>Pre‑styled components (cards, buttons, navbars, alerts…)</li>
-                        <li>JavaScript plugins (modals, carousels, tooltips, toasts…)</li>
-                        <li>Utility classes for spacing, flex, display, typography</li>
-                        <li>Customizable via Sass variables</li>
-                    </ul>
+                    <ul><li>Responsive grid system (12 columns, 6 breakpoints)</li><li>Pre‑styled components</li><li>JavaScript plugins</li><li>Utility classes</li><li>Customizable via Sass</li></ul>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+                <div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
             </div>
         </div>
     </div>
 
-    <!-- ========== 1. GRID SYSTEM ========== -->
+    <!-- ========== 1. GRID SYSTEM + QUIZ ========== -->
     <section id="grid" class="doc-section">
         <span class="chapter-badge">Chapter 02</span>
         <h2 class="fw-bold">Grid System (12 columns)</h2>
-        <div class="explanation">
-            Bootstrap’s grid is built with flexbox. Use <code>.container</code> (or <code>.container-fluid</code>), <code>.row</code>, and <code>.col-*</code> classes. Columns sum to 12. Breakpoints: <code>col-sm</code>, <code>col-md</code>, <code>col-lg</code>, <code>col-xl</code>, <code>col-xxl</code>.
-        </div>
+        <div class="explanation">Bootstrap’s grid uses flexbox. Use <code>.container</code>, <code>.row</code>, and <code>.col-*</code> classes. Columns sum to 12. Breakpoints: sm, md, lg, xl, xxl.</div>
         <div class="demo-area">
             <div class="row g-3">
                 <div class="col-md-4"><div class="bg-primary text-white p-3 text-center rounded">.col-md-4</div></div>
@@ -317,280 +319,231 @@
                 <div class="col-6 col-md-3"><div class="bg-info p-3 text-center rounded">.col-6 .col-md-3</div></div>
             </div>
         </div>
-        <div class="code-window">
-            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
-            <pre><code><span style="color:#7dd3fc">&lt;div class="container"&gt;</span>
-  <span style="color:#7dd3fc">&lt;div class="row"&gt;</span>
-    <span style="color:#7dd3fc">&lt;div class="col-md-4"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
-    <span style="color:#7dd3fc">&lt;div class="col-md-4"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
-    <span style="color:#7dd3fc">&lt;div class="col-md-4"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
-  <span style="color:#7dd3fc">&lt;/div&gt;</span>
-<span style="color:#7dd3fc">&lt;/div&gt;</span></code></pre>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="container"&gt;&lt;div class="row"&gt;&lt;div class="col-md-4"&gt;...&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</span></code></pre></div>
+        <div class="tip">💡 Use <code>g-3</code> for gutters. Columns auto‑wrap when exceeding 12.</div>
+
+        <!-- Grid Quiz (5 questions) -->
+        <div class="mini-quiz">
+            <h4 class="fw-bold">📋 Quick Quiz: Grid System</h4>
+            <div id="gridQuizContainer"></div>
+            <button class="btn btn-sm btn-outline-primary mt-2" onclick="checkGridQuiz()">Check Answers</button>
+            <div id="gridQuizFeedback" class="quiz-feedback mt-2"></div>
         </div>
-        <div class="tip">💡 Columns automatically wrap when they exceed 12. Use <code>g-3</code> for gutters (gap between columns).</div>
     </section>
 
-    <!-- ========== 2. COMPONENTS (Multiple) ========== -->
+    <!-- ========== 2. COMPONENTS (all demos) ========== -->
     <h2 class="fw-bold mt-4 mb-3" id="components">🧩 Bootstrap Components</h2>
 
     <!-- Accordion -->
     <section class="doc-section">
         <span class="chapter-badge">Component 01</span>
         <h3>📂 Accordion</h3>
-        <div class="explanation">Vertically collapsing panels. Great for FAQs or sections where you want to save space. Each panel toggles independently.</div>
+        <div class="explanation">Vertically collapsing panels. Each panel toggles independently.</div>
         <div class="demo-area">
             <div class="accordion" id="demoAccordion">
-                <div class="accordion-item">
-                    <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne">Item 1</button></h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#demoAccordion"><div class="accordion-body">Content for item 1.</div></div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">Item 2</button></h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse"><div class="accordion-body">Content for item 2.</div></div>
-                </div>
+                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne">Item 1</button></h2><div id="collapseOne" class="accordion-collapse collapse show"><div class="accordion-body">Content 1</div></div></div>
+                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">Item 2</button></h2><div id="collapseTwo" class="accordion-collapse collapse"><div class="accordion-body">Content 2</div></div></div>
             </div>
         </div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="accordion" id="myAccordion"&gt;</span>
-  <span style="color:#7dd3fc">&lt;div class="accordion-item"&gt;</span>
-    <span style="color:#7dd3fc">&lt;h2 class="accordion-header"&gt;</span>
-      <span style="color:#7dd3fc">&lt;button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse1"&gt;</span>Title<span style="color:#7dd3fc">&lt;/button&gt;</span>
-    <span style="color:#7dd3fc">&lt;/h2&gt;</span>
-    <span style="color:#7dd3fc">&lt;div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#myAccordion"&gt;</span>
-      <span style="color:#7dd3fc">&lt;div class="accordion-body"&gt;</span>Content<span style="color:#7dd3fc">&lt;/div&gt;</span>
-    <span style="color:#7dd3fc">&lt;/div&gt;</span>
-  <span style="color:#7dd3fc">&lt;/div&gt;</span>
-<span style="color:#7dd3fc">&lt;/div&gt;</span></code></pre></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;div class="accordion"&gt;&lt;div class="accordion-item"&gt;...&lt;/div&gt;&lt;/div&gt;</code></pre></div>
     </section>
 
     <!-- Cards -->
     <section class="doc-section">
         <span class="chapter-badge">Component 02</span>
         <h3>🃏 Cards</h3>
-        <div class="explanation">Flexible content containers with headers, footers, images, and buttons. Used for product listings, user profiles, blog previews.</div>
         <div class="demo-area">
             <div class="row">
                 <div class="col-md-4"><div class="card"><div class="card-body"><h5 class="card-title">Basic Card</h5><p class="card-text">Simple card.</p></div></div></div>
-                <div class="col-md-4"><div class="card"><img src="https://picsum.photos/id/26/300/150" class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title">Image Card</h5><button class="btn btn-primary">Button</button></div></div></div>
+                <div class="col-md-4"><div class="card"><img src="https://picsum.photos/id/26/300/150" class="card-img-top"><div class="card-body"><h5 class="card-title">Image Card</h5><button class="btn btn-primary">Button</button></div></div></div>
                 <div class="col-md-4"><div class="card"><div class="card-header">Featured</div><div class="card-body"><h5 class="card-title">Header/Footer</h5></div><div class="card-footer">Footer</div></div></div>
             </div>
         </div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="card" style="width: 18rem;"&gt;</span>
-  <span style="color:#7dd3fc">&lt;img src="..." class="card-img-top"&gt;</span>
-  <span style="color:#7dd3fc">&lt;div class="card-body"&gt;</span>
-    <span style="color:#7dd3fc">&lt;h5 class="card-title"&gt;</span>Title<span style="color:#7dd3fc">&lt;/h5&gt;</span>
-    <span style="color:#7dd3fc">&lt;p class="card-text"&gt;</span>Content<span style="color:#7dd3fc">&lt;/p&gt;</span>
-    <span style="color:#7dd3fc">&lt;a href="#" class="btn btn-primary"&gt;</span>Button<span style="color:#7dd3fc">&lt;/a&gt;</span>
-  <span style="color:#7dd3fc">&lt;/div&gt;</span>
-<span style="color:#7dd3fc">&lt;/div&gt;</span></code></pre></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;div class="card"&gt;&lt;img src="..." class="card-img-top"&gt;&lt;div class="card-body"&gt;...&lt;/div&gt;&lt;/div&gt;</code></pre></div>
     </section>
 
     <!-- Carousel -->
     <section class="doc-section">
         <span class="chapter-badge">Component 03</span>
-        <h3>🎠 Carousel (Image Slider)</h3>
-        <div class="explanation">Cycles through images with slide/transition effects. Requires Bootstrap’s JavaScript.</div>
+        <h3>🎠 Carousel</h3>
         <div class="demo-area">
             <div id="carouselDemo" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner rounded">
-                    <div class="carousel-item active"><img src="https://picsum.photos/id/101/800/250" class="d-block w-100" alt="..."></div>
-                    <div class="carousel-item"><img src="https://picsum.photos/id/104/800/250" class="d-block w-100" alt="..."></div>
-                    <div class="carousel-item"><img src="https://picsum.photos/id/106/800/250" class="d-block w-100" alt="..."></div>
+                    <div class="carousel-item active"><img src="https://picsum.photos/id/101/800/250" class="d-block w-100"></div>
+                    <div class="carousel-item"><img src="https://picsum.photos/id/104/800/250" class="d-block w-100"></div>
+                    <div class="carousel-item"><img src="https://picsum.photos/id/106/800/250" class="d-block w-100"></div>
                 </div>
                 <button class="carousel-control-prev" data-bs-target="#carouselDemo" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
                 <button class="carousel-control-next" data-bs-target="#carouselDemo" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
             </div>
         </div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div id="myCarousel" class="carousel slide" data-bs-ride="carousel"&gt;</span>
-  <span style="color:#7dd3fc">&lt;div class="carousel-inner"&gt;</span>
-    <span style="color:#7dd3fc">&lt;div class="carousel-item active"&gt;&lt;img src="..."&gt;&lt;/div&gt;</span>
-  <span style="color:#7dd3fc">&lt;/div&gt;</span>
-  <span style="color:#7dd3fc">&lt;button class="carousel-control-prev" data-bs-target="#myCarousel" data-bs-slide="prev"&gt;&lt;/button&gt;</span>
-<span style="color:#7dd3fc">&lt;/div&gt;</span></code></pre></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;div id="carousel" class="carousel slide"&gt;&lt;div class="carousel-inner"&gt;...&lt;/div&gt;&lt;/div&gt;</code></pre></div>
     </section>
 
     <!-- Offcanvas -->
     <section class="doc-section">
         <span class="chapter-badge">Component 04</span>
-        <h3>📂 Offcanvas (Sidebar)</h3>
-        <div class="explanation">Hidden sidebar that slides in from left, right, or bottom. Great for mobile menus.</div>
-        <div class="demo-area">
-            <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDemo">Open Offcanvas</button>
-        </div>
+        <h3>📂 Offcanvas</h3>
+        <div class="demo-area"><button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDemo">Open Offcanvas</button></div>
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDemo"><div class="offcanvas-header"><h5 class="offcanvas-title">Menu</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div><div class="offcanvas-body"><p>Offcanvas content here.</p></div></div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;button data-bs-toggle="offcanvas" data-bs-target="#myOffcanvas"&gt;</span>Open<span style="color:#7dd3fc">&lt;/button&gt;</span>
-<span style="color:#7dd3fc">&lt;div class="offcanvas offcanvas-start" id="myOffcanvas"&gt;</span>
-  <span style="color:#7dd3fc">&lt;div class="offcanvas-header"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
-  <span style="color:#7dd3fc">&lt;div class="offcanvas-body"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
-<span style="color:#7dd3fc">&lt;/div&gt;</span></code></pre></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;button data-bs-toggle="offcanvas" data-bs-target="#myOffcanvas"&gt;Open&lt;/button&gt;</code></pre></div>
     </section>
 
     <!-- Dropdowns -->
     <section class="doc-section">
         <span class="chapter-badge">Component 05</span>
         <h3>📌 Dropdowns</h3>
-        <div class="explanation">Toggleable contextual menus. Use <code>data-bs-toggle="dropdown"</code>.</div>
-        <div class="demo-area">
-            <div class="dropdown"><button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#">Action</a></li><li><a class="dropdown-item" href="#">Another</a></li></ul></div>
-        </div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="dropdown"&gt;</span>
-  <span style="color:#7dd3fc">&lt;button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"&gt;</span>Dropdown<span style="color:#7dd3fc">&lt;/button&gt;</span>
-  <span style="color:#7dd3fc">&lt;ul class="dropdown-menu"&gt;</span>
-    <span style="color:#7dd3fc">&lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;</span>Action<span style="color:#7dd3fc">&lt;/a&gt;&lt;/li&gt;</span>
-  <span style="color:#7dd3fc">&lt;/ul&gt;</span>
-<span style="color:#7dd3fc">&lt;/div&gt;</span></code></pre></div>
+        <div class="demo-area"><div class="dropdown"><button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#">Action</a></li><li><a class="dropdown-item" href="#">Another</a></li></ul></div></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;div class="dropdown"&gt;&lt;button data-bs-toggle="dropdown"&gt;...&lt;/button&gt;&lt;ul class="dropdown-menu"&gt;...&lt;/ul&gt;&lt;/div&gt;</code></pre></div>
     </section>
 
     <!-- Tooltips & Popovers -->
     <section class="doc-section">
         <span class="chapter-badge">Component 06</span>
         <h3>💬 Tooltips & Popovers</h3>
-        <div class="explanation">Tooltips appear on hover; popovers are clickable cards. Must be initialised with JavaScript.</div>
         <div class="demo-area">
             <button class="btn btn-outline-secondary" data-bs-toggle="tooltip" title="Tooltip text">Hover me</button>
             <button class="btn btn-outline-danger ms-2" data-bs-toggle="popover" title="Popover Title" data-bs-content="Popover content">Click me</button>
         </div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;button data-bs-toggle="tooltip" title="Tooltip"&gt;</span>Hover<span style="color:#7dd3fc">&lt;/button&gt;</span>
-<span style="color:#7dd3fc">&lt;button data-bs-toggle="popover" title="Title" data-bs-content="Content"&gt;</span>Click<span style="color:#7dd3fc">&lt;/button&gt;</span>
-<span style="color:#7dd3fc">&lt;script&gt;</span>
-  <span style="color:#7dd3fc">var tooltips = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(t => new bootstrap.Tooltip(t));</span>
-  <span style="color:#7dd3fc">var popovers = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).map(p => new bootstrap.Popover(p));</span>
-<span style="color:#7dd3fc">&lt;/script&gt;</span></code></pre></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;button data-bs-toggle="tooltip" title="Tooltip"&gt;Hover&lt;/button&gt;</code></pre></div>
     </section>
 
     <!-- Toast -->
     <section class="doc-section">
         <span class="chapter-badge">Component 07</span>
-        <h3>🍞 Toast Notifications</h3>
-        <div class="explanation">Lightweight notifications that auto‑hide. Commonly used for success/error messages.</div>
-        <div class="demo-area">
-            <button class="btn btn-warning" id="toastBtn">Show Toast</button>
-        </div>
-        <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;"><div class="toast" id="liveToast" role="alert" data-bs-autohide="true" data-bs-delay="3000"><div class="toast-header"><strong class="me-auto">Bootstrap</strong><button type="button" class="btn-close" data-bs-dismiss="toast"></button></div><div class="toast-body">Hello! This is a toast.</div></div></div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="toast"&gt;</span>
-  <span style="color:#7dd3fc">&lt;div class="toast-header"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
-  <span style="color:#7dd3fc">&lt;div class="toast-body"&gt;</span>Message<span style="color:#7dd3fc">&lt;/div&gt;</span>
-<span style="color:#7dd3fc">&lt;/div&gt;</span>
-<span style="color:#7dd3fc">&lt;script&gt;new bootstrap.Toast(toastElement).show();&lt;/script&gt;</span></code></pre></div>
+        <h3>🍞 Toast</h3>
+        <div class="demo-area"><button class="btn btn-warning" id="toastBtn">Show Toast</button></div>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;"><div class="toast" id="liveToast"><div class="toast-header"><strong class="me-auto">Bootstrap</strong><button type="button" class="btn-close" data-bs-dismiss="toast"></button></div><div class="toast-body">Hello! This is a toast.</div></div></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;div class="toast"&gt;...&lt;/div&gt;</code></pre></div>
     </section>
 
     <!-- Progress Bars & Spinners -->
     <section class="doc-section">
         <span class="chapter-badge">Component 08</span>
-        <h3>⏳ Progress Bars & Spinners</h3>
-        <div class="explanation">Progress bars show task completion; spinners indicate loading.</div>
+        <h3>⏳ Progress & Spinners</h3>
         <div class="demo-area">
             <div class="progress mb-2"><div class="progress-bar bg-success" style="width: 65%">65%</div></div>
-            <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
-            <div class="spinner-grow text-success ms-2" role="status"><span class="visually-hidden">Loading...</span></div>
+            <div class="spinner-border text-primary"><span class="visually-hidden">Loading...</span></div>
+            <div class="spinner-grow text-success ms-2"><span class="visually-hidden">Loading...</span></div>
         </div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="progress"&gt;&lt;div class="progress-bar" style="width: 65%"&gt;</span>65%<span style="color:#7dd3fc">&lt;/div&gt;&lt;/div&gt;</span>
-<span style="color:#7dd3fc">&lt;div class="spinner-border text-primary"&gt;&lt;/div&gt;</span></code></pre></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;div class="progress"&gt;&lt;div class="progress-bar" style="width: 65%"&gt;65%&lt;/div&gt;&lt;/div&gt;</code></pre></div>
     </section>
 
     <!-- Badges & Breadcrumbs -->
     <section class="doc-section">
         <span class="chapter-badge">Component 09</span>
         <h3>🏷️ Badges & Breadcrumbs</h3>
-        <div class="explanation">Badges for counts/labels; breadcrumbs for navigation hierarchy.</div>
         <div class="demo-area">
             <span class="badge bg-primary">New</span> <span class="badge bg-secondary rounded-pill">Pill</span>
             <nav aria-label="breadcrumb" class="mt-2"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="#">Home</a></li><li class="breadcrumb-item active">Library</li></ol></nav>
         </div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;span class="badge bg-primary"&gt;</span>New<span style="color:#7dd3fc">&lt;/span&gt;</span>
-<span style="color:#7dd3fc">&lt;nav aria-label="breadcrumb"&gt;&lt;ol class="breadcrumb"&gt;&lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;</span>Home<span style="color:#7dd3fc">&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/nav&gt;</span></code></pre></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;span class="badge bg-primary"&gt;New&lt;/span&gt;</code></pre></div>
     </section>
 
     <!-- List Groups -->
     <section class="doc-section">
         <span class="chapter-badge">Component 10</span>
         <h3>📋 List Groups</h3>
-        <div class="explanation">Display lists of items, links, or buttons. Can be interactive.</div>
         <div class="demo-area"><ul class="list-group"><li class="list-group-item active">Active item</li><li class="list-group-item">Second</li><li class="list-group-item disabled">Disabled</li></ul></div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;ul class="list-group"&gt;&lt;li class="list-group-item"&gt;</span>Item<span style="color:#7dd3fc">&lt;/li&gt;&lt;/ul&gt;</span></code></pre></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;ul class="list-group"&gt;&lt;li class="list-group-item"&gt;Item&lt;/li&gt;&lt;/ul&gt;</code></pre></div>
     </section>
 
     <!-- Buttons & Button Groups -->
     <section class="doc-section">
         <span class="chapter-badge">Component 11</span>
         <h3>🔘 Buttons & Button Groups</h3>
-        <div class="explanation">Bootstrap provides multiple button styles, sizes, and groups (toolbar).</div>
         <div class="demo-area">
             <button class="btn btn-primary">Primary</button>
             <button class="btn btn-success">Success</button>
             <button class="btn btn-outline-danger">Outline Danger</button>
-            <div class="btn-group mt-2" role="group"><button class="btn btn-outline-secondary">Left</button><button class="btn btn-outline-secondary">Middle</button><button class="btn btn-outline-secondary">Right</button></div>
+            <div class="btn-group mt-2"><button class="btn btn-outline-secondary">Left</button><button class="btn btn-outline-secondary">Middle</button><button class="btn btn-outline-secondary">Right</button></div>
         </div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;button class="btn btn-primary"&gt;</span>Primary<span style="color:#7dd3fc">&lt;/button&gt;</span>
-<span style="color:#7dd3fc">&lt;div class="btn-group" role="group"&gt;&lt;button&gt;</span>Left<span style="color:#7dd3fc">&lt;/button&gt;&lt;button&gt;</span>Right<span style="color:#7dd3fc">&lt;/button&gt;&lt;/div&gt;</span></code></pre></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;</code></pre></div>
     </section>
 
-    <!-- ========== 3. FORMS & VALIDATION ========== -->
+    <!-- Components Quiz (5 questions) -->
+    <section class="doc-section">
+        <span class="chapter-badge">Test Yourself</span>
+        <h3>🧪 Quick Quiz: Bootstrap Components</h3>
+        <div class="mini-quiz">
+            <div id="componentsQuizContainer"></div>
+            <button class="btn btn-sm btn-outline-primary mt-2" onclick="checkComponentsQuiz()">Check Answers</button>
+            <div id="componentsQuizFeedback" class="quiz-feedback mt-2"></div>
+        </div>
+    </section>
+
+    <!-- ========== 3. FORMS & VALIDATION + QUIZ ========== -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 03</span>
         <h2 class="fw-bold">Forms & Validation</h2>
-        <div class="explanation">Bootstrap styles all form controls (<code>.form-control</code>, <code>.form-select</code>). Use <code>.needs-validation</code> and custom JavaScript for real‑time validation.</div>
+        <div class="explanation">Bootstrap styles form controls (<code>.form-control</code>, <code>.form-select</code>). Use <code>.needs-validation</code> + custom JS for real‑time validation.</div>
         <div class="demo-area">
             <form id="demoForm" class="needs-validation" novalidate>
-                <div class="form-floating mb-3"><input type="text" class="form-control" id="nameInput" placeholder="Name" required><label for="nameInput">Full name</label><div class="invalid-feedback">Required.</div></div>
-                <div class="form-floating mb-3"><input type="email" class="form-control" id="emailInput" placeholder="Email" required><label for="emailInput">Email address</label><div class="invalid-feedback">Valid email required.</div></div>
+                <div class="form-floating mb-3"><input type="text" class="form-control" id="nameInput" placeholder="Name" required><label>Full name</label><div class="invalid-feedback">Required.</div></div>
+                <div class="form-floating mb-3"><input type="email" class="form-control" id="emailInput" placeholder="Email" required><label>Email</label><div class="invalid-feedback">Valid email required.</div></div>
                 <div class="mb-3"><label class="form-label">Select</label><select class="form-select" required><option value="">Choose...</option><option>Option 1</option></select></div>
-                <div class="mb-3 form-check"><input type="checkbox" class="form-check-input" id="termsCheck" required><label class="form-check-label" for="termsCheck">Agree to terms</label></div>
+                <div class="mb-3 form-check"><input type="checkbox" class="form-check-input" id="termsCheck" required><label class="form-check-label">Agree to terms</label></div>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
             <div id="formResult" class="mt-2"></div>
         </div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;form class="needs-validation" novalidate&gt;</span>
-  <span style="color:#7dd3fc">&lt;div class="form-floating mb-3"&gt;</span>
-    <span style="color:#7dd3fc">&lt;input type="text" class="form-control" required&gt;</span>
-    <span style="color:#7dd3fc">&lt;label&gt;</span>Name<span style="color:#7dd3fc">&lt;/label&gt;</span>
-    <span style="color:#7dd3fc">&lt;div class="invalid-feedback"&gt;</span>Required<span style="color:#7dd3fc">&lt;/div&gt;</span>
-  <span style="color:#7dd3fc">&lt;/div&gt;</span>
-  <span style="color:#7dd3fc">&lt;button type="submit"&gt;</span>Submit<span style="color:#7dd3fc">&lt;/button&gt;</span>
-<span style="color:#7dd3fc">&lt;/form&gt;</span></code></pre></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;form class="needs-validation" novalidate&gt;&lt;div class="form-floating"&gt;&lt;input class="form-control" required&gt;&lt;label&gt;...&lt;/label&gt;&lt;/div&gt;&lt;/form&gt;</code></pre></div>
+
+        <!-- Forms Quiz (5 questions) -->
+        <div class="mini-quiz">
+            <h4 class="fw-bold">📋 Quick Quiz: Forms & Validation</h4>
+            <div id="formsQuizContainer"></div>
+            <button class="btn btn-sm btn-outline-primary mt-2" onclick="checkFormsQuiz()">Check Answers</button>
+            <div id="formsQuizFeedback" class="quiz-feedback mt-2"></div>
+        </div>
     </section>
 
-    <!-- ========== 4. UTILITY CLASSES ========== -->
+    <!-- ========== 4. UTILITY CLASSES + QUIZ ========== -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 04</span>
         <h2 class="fw-bold">Utility Classes (Spacing, Flex, Display)</h2>
-        <div class="explanation">Bootstrap has hundreds of utility classes to control spacing (<code>p-3</code>, <code>m-2</code>), flexbox (<code>d-flex</code>, <code>justify-content-between</code>), display (<code>d-none</code>, <code>d-block</code>), and more – without writing custom CSS.</div>
+        <div class="explanation">Bootstrap has hundreds of utilities: <code>p-3</code> (padding), <code>m-2</code> (margin), <code>d-flex</code>, <code>text-center</code>, etc.</div>
         <div class="demo-area">
             <div class="d-flex justify-content-between align-items-center border p-3 mb-3">
                 <div class="bg-primary text-white p-2">Flex 1</div>
                 <div class="bg-success text-white p-2">Flex 2</div>
                 <div class="bg-warning p-2">Flex 3</div>
             </div>
-            <div class="text-center p-3 bg-light rounded">Centered text with <code>.text-center .p-3</code></div>
+            <div class="text-center p-3 bg-light rounded">Centered with <code>.text-center .p-3</code></div>
             <div class="mt-3"><span class="me-2 bg-secondary text-white p-1">.me-2</span><span class="mx-3 bg-info p-1">.mx-3</span><span class="mb-0 d-block bg-warning p-1">.mb-0</span></div>
         </div>
-        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code><span style="color:#7dd3fc">&lt;div class="d-flex justify-content-between align-items-center"&gt;</span>...<span style="color:#7dd3fc">&lt;/div&gt;</span>
-<span style="color:#7dd3fc">&lt;div class="text-center p-3"&gt;</span>Centered<span style="color:#7dd3fc">&lt;/div&gt;</span>
-<span style="color:#7dd3fc">&lt;span class="me-2"&gt;</span>Margin right<span style="color:#7dd3fc">&lt;/span&gt;</span></code></pre></div>
+        <div class="code-window"><div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div><pre><code>&lt;div class="d-flex justify-content-between"&gt;...&lt;/div&gt;</code></pre></div>
+
+        <!-- Utilities Quiz (5 questions) -->
+        <div class="mini-quiz">
+            <h4 class="fw-bold">📋 Quick Quiz: Utility Classes</h4>
+            <div id="utilsQuizContainer"></div>
+            <button class="btn btn-sm btn-outline-primary mt-2" onclick="checkUtilsQuiz()">Check Answers</button>
+            <div id="utilsQuizFeedback" class="quiz-feedback mt-2"></div>
+        </div>
     </section>
 
-    <!-- ========== 5. CONCLUSION ========== -->
+    <!-- ========== 5. CONCLUSION + REDIRECT TO HOME PAGE QUIZ ========== -->
     <section class="doc-section text-center">
         <span class="chapter-badge">Final Chapter</span>
         <h2 class="fw-bold display-6">You've Mastered Bootstrap 5! 🚀</h2>
         <p class="lead">From grid system to 20+ components, utilities, and forms – you can now build responsive, professional websites rapidly.</p>
-        <p>Next: combine Bootstrap with JavaScript frameworks like React or Vue for dynamic SPAs.</p>
-        <a href="#" class="btn btn-primary btn-lg rounded-pill px-5 mt-3">Start Your Next Project</a>
+        <p>Want to test your overall Full Stack knowledge? Try the comprehensive quiz on the home page!</p>
+        <a href="./#quizSection" class="btn btn-primary btn-lg rounded-pill px-5 mt-3">🏆 Take the Full Stack Quiz</a>
+        <a href="#" class="btn btn-outline-secondary btn-lg rounded-pill px-5 mt-3 ms-2">Start Your Next Project</a>
     </section>
 </div>
 
 <footer class="bg-dark text-white-50 py-5 mt-5 text-center">
     <div class="container">
         <p class="mb-0">© 2025 Web Guides Documentation | Built for CET138</p>
-        <div class="mt-3">
-            <a href="#" class="text-white-50 me-3">Privacy</a>
-            <a href="#" class="text-white-50">Terms</a>
-        </div>
+        <div class="mt-3"><a href="#" class="text-white-50 me-3">Privacy</a><a href="#" class="text-white-50">Terms</a></div>
     </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Copy function (same as other pages)
+    // Copy function
     function copyCode(btn) {
         const pre = btn.parentElement.nextElementSibling;
         const code = pre.innerText;
@@ -601,35 +554,100 @@
         });
     }
 
-    // Tooltips & Popovers (Bootstrap JS)
+    // Tooltips & Popovers
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     popoverTriggerList.forEach(el => new bootstrap.Popover(el));
 
-    // Toast button
+    // Toast
     const toastBtn = document.getElementById('toastBtn');
     const toastLive = document.getElementById('liveToast');
-    if (toastBtn && toastLive) {
-        toastBtn.addEventListener('click', () => new bootstrap.Toast(toastLive).show());
-    }
+    if (toastBtn && toastLive) toastBtn.addEventListener('click', () => new bootstrap.Toast(toastLive).show());
 
-    // Form validation (Bootstrap's default)
+    // Form validation
     const form = document.getElementById('demoForm');
     if (form) {
         form.addEventListener('submit', function(e) {
-            if (!form.checkValidity()) {
-                e.preventDefault();
-                e.stopPropagation();
-            } else {
-                e.preventDefault();
-                document.getElementById('formResult').innerHTML = '<div class="alert alert-success">✅ Form submitted! (demo)</div>';
-                form.reset();
-                form.classList.remove('was-validated');
-            }
+            if (!form.checkValidity()) { e.preventDefault(); e.stopPropagation(); }
+            else { e.preventDefault(); document.getElementById('formResult').innerHTML = '<div class="alert alert-success">✅ Form submitted! (demo)</div>'; form.reset(); form.classList.remove('was-validated'); }
             form.classList.add('was-validated');
         });
     }
+
+    // ========== QUIZ DATA ==========
+    // Grid Quiz (5 questions)
+    const gridQuestions = [
+        { q: "How many columns does Bootstrap's grid system support?", options: ["8", "10", "12", "16"], correct: 2 },
+        { q: "Which class creates a responsive fixed-width container?", options: [".container-fluid", ".container", ".row", ".col"], correct: 1 },
+        { q: "What does `col-md-6` mean?", options: ["6 columns on medium screens and up", "6 columns on all screens", "6 pixels width", "6% width"], correct: 0 },
+        { q: "Which class adds gutters between columns?", options: [".gutter", ".gap", ".g-*", ".spacing"], correct: 2 },
+        { q: "What is the default breakpoint for `col-lg-*`?", options: ["≥576px", "≥768px", "≥992px", "≥1200px"], correct: 2 }
+    ];
+    // Components Quiz (5 questions)
+    const componentsQuestions = [
+        { q: "Which component creates a collapsible sidebar?", options: ["Modal", "Offcanvas", "Toast", "Popover"], correct: 1 },
+        { q: "What class is used for a Bootstrap card?", options: [".card", ".panel", ".box", ".container"], correct: 0 },
+        { q: "Which attribute initialises a Bootstrap dropdown?", options: ["data-toggle='dropdown'", "data-bs-toggle='dropdown'", "data-dropdown='true'", "data-target='dropdown'"], correct: 1 },
+        { q: "Which component displays a small notification that auto‑hides?", options: ["Alert", "Toast", "Tooltip", "Modal"], correct: 1 },
+        { q: "What class creates a rotating loading indicator?", options: [".spinner-border", ".spinner-grow", ".progress", ".loader"], correct: 0 }
+    ];
+    // Forms Quiz (5 questions)
+    const formsQuestions = [
+        { q: "Which class styles all form controls consistently?", options: [".form-group", ".form-control", ".input", ".field"], correct: 1 },
+        { q: "What Bootstrap class is used for floating labels?", options: [".form-floating", ".floating-label", ".input-group", ".form-label"], correct: 0 },
+        { q: "Which class is required on the <form> element to enable Bootstrap's validation styles?", options: [".validate", ".was-validated", ".needs-validation", ".form-validate"], correct: 2 },
+        { q: "What class shows the validation feedback message?", options: [".invalid-feedback", ".error-message", ".validation-text", ".help-block"], correct: 0 },
+        { q: "Which attribute makes a form field mandatory in HTML5?", options: ["mandatory", "required", "validate", "needed"], correct: 1 }
+    ];
+    // Utilities Quiz (5 questions)
+    const utilsQuestions = [
+        { q: "Which class adds margin on all sides?", options: [".m-*", ".p-*", ".mt-*", ".mb-*"], correct: 0 },
+        { q: "What does `d-flex` do?", options: ["Display block", "Display flex", "Display grid", "Display none"], correct: 1 },
+        { q: "Which class centres text horizontally?", options: [".text-center", ".align-center", ".center-text", ".text-middle"], correct: 0 },
+        { q: "How do you add padding on the right side?", options: [".pr-*", ".ps-*", ".pe-*", ".pt-*"], correct: 2 },
+        { q: "Which class hides an element on mobile but shows on desktop?", options: [".d-none", ".d-md-block", ".visible", ".d-sm-none"], correct: 1 }
+    ];
+
+    function buildQuiz(containerId, questions) {
+        let html = '';
+        questions.forEach((q, idx) => {
+            html += `<div class="quiz-question"><strong>${idx+1}. ${q.q}</strong><br>`;
+            q.options.forEach((opt, optIdx) => {
+                html += `<label class="quiz-option"><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label><br>`;
+            });
+            html += `</div>`;
+        });
+        document.getElementById(containerId).innerHTML = html;
+    }
+
+    function checkQuiz(questions, containerIdPrefix, feedbackId) {
+        let score = 0;
+        let results = [];
+        for (let i = 0; i < questions.length; i++) {
+            const radios = document.getElementsByName(`q${i}`);
+            let selected = null;
+            for (let r of radios) if (r.checked) { selected = parseInt(r.value); break; }
+            const isCorrect = (selected === questions[i].correct);
+            if (isCorrect) score++;
+            results.push(`Q${i+1}: ${isCorrect ? '✅' : '❌'} (Correct: ${questions[i].options[questions[i].correct]})`);
+        }
+        const feedbackDiv = document.getElementById(feedbackId);
+        feedbackDiv.innerHTML = `<strong>Your score: ${score}/${questions.length}</strong><br>${results.join(' · ')}`;
+    }
+
+    // Grid quiz
+    buildQuiz('gridQuizContainer', gridQuestions);
+    window.checkGridQuiz = () => checkQuiz(gridQuestions, 'grid', 'gridQuizFeedback');
+    // Components quiz
+    buildQuiz('componentsQuizContainer', componentsQuestions);
+    window.checkComponentsQuiz = () => checkQuiz(componentsQuestions, 'components', 'componentsQuizFeedback');
+    // Forms quiz
+    buildQuiz('formsQuizContainer', formsQuestions);
+    window.checkFormsQuiz = () => checkQuiz(formsQuestions, 'forms', 'formsQuizFeedback');
+    // Utilities quiz
+    buildQuiz('utilsQuizContainer', utilsQuestions);
+    window.checkUtilsQuiz = () => checkQuiz(utilsQuestions, 'utils', 'utilsQuizFeedback');
 </script>
 </body>
 </html>
