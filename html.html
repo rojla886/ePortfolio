@@ -196,6 +196,30 @@
             margin-bottom: 1rem;
             backdrop-filter: blur(2px);
         }
+
+        /* Quiz styling */
+        .quiz-container {
+            background: #f9fafb;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 2px solid #e2e8f0;
+        }
+        .quiz-question {
+            margin-bottom: 1.5rem;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 12px;
+        }
+        .quiz-option {
+            margin-left: 1rem;
+            display: block;
+            cursor: pointer;
+        }
+        .quiz-feedback {
+            margin-top: 1rem;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -227,15 +251,6 @@
                 <span class="hero-tag">Beginner to Pro 2025</span>
                 <h1 class="hero-title">Build the Web<br>with HTML5.</h1>
                 <p class="lead text-white-50 mb-5">Master the structure of the internet. We've broken down 70+ concepts into 17 easy-to-digest chapters with live code demos.</p>
-                <!-- <div class="d-flex gap-3">
-                    <a href="#section1" class="btn btn-primary btn-lg px-4 rounded-pill fw-bold">
-    Get Started
-</a>
-
-<a href="#section16" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-bold">
-    Best Practices
-</a>
-                </div> -->
             </div>
             <div class="col-lg-5 d-none d-lg-block">
                 <div class="code-window mb-0">
@@ -618,6 +633,21 @@
             </div>
         </section>
 
+        <!-- ========== QUIZ SECTION (5 questions) ========== -->
+        <section id="quizSection" class="doc-section">
+            <span class="chapter-badge">Test Your Knowledge</span>
+            <h2 class="fw-bold">📝 HTML5 Quiz</h2>
+            <div class="explanation">
+                How well do you remember HTML? Answer these 5 questions covering tags, attributes, semantic elements, forms, and best practices.
+            </div>
+            <div id="quizContainer" class="quiz-container"></div>
+            <div class="mt-3">
+                <button id="submitQuiz" class="btn btn-primary">✅ Submit Answers</button>
+                <button id="resetQuiz" class="btn btn-outline-secondary ms-2">🔄 Reset Quiz</button>
+            </div>
+            <div id="quizResult" class="tip mt-3" style="display:none;"></div>
+        </section>
+
         <!-- 17. CONCLUSION -->
         <section id="section17" class="doc-section text-center py-5">
             <span class="chapter-badge">Chapter 17</span>
@@ -662,6 +692,123 @@
             }, 2000);
         });
     }
+
+    // ========== QUIZ LOGIC (5 questions covering HTML) ==========
+    const quizQuestions = [
+        { text: "What does HTML stand for?", options: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Language", "Home Tool Markup Language"], correct: 0 },
+        { text: "Which HTML tag is used to link an external CSS file?", options: ["&lt;style&gt;", "&lt;link&gt;", "&lt;css&gt;", "&lt;script&gt;"], correct: 1 },
+        { text: "Which attribute specifies an image's alternative text?", options: ["title", "src", "alt", "href"], correct: 2 },
+        { text: "Which HTML element defines the most important heading?", options: ["&lt;h6&gt;", "&lt;head&gt;", "&lt;h1&gt;", "&lt;heading&gt;"], correct: 2 },
+        { text: "Which tag is used to create an unordered list?", options: ["&lt;ol&gt;", "&lt;list&gt;", "&lt;ul&gt;", "&lt;li&gt;"], correct: 2 }
+    ];
+
+    let userSelections = new Array(quizQuestions.length).fill(null);
+
+    function renderQuiz() {
+        const container = document.getElementById('quizContainer');
+        if (!container) return;
+        let html = '';
+        quizQuestions.forEach((q, idx) => {
+            html += `<div class="quiz-question">
+                        <strong><span class="question-number">${idx + 1}.</span> ${q.text}</strong><br>`;
+            q.options.forEach((opt, optIdx) => {
+                const isChecked = (userSelections[idx] === optIdx);
+                html += `<label class="quiz-option d-block">
+                            <input type="radio" name="q${idx}" value="${optIdx}" ${isChecked ? 'checked' : ''} 
+                                   onclick="setAnswer(${idx}, ${optIdx})"> ${opt}
+                         </label>`;
+            });
+            html += `</div>`;
+        });
+        container.innerHTML = html;
+    }
+
+    window.setAnswer = function(qIndex, optIndex) {
+        userSelections[qIndex] = optIndex;
+    };
+
+    function calculateScore() {
+        let score = 0;
+        for (let i = 0; i < quizQuestions.length; i++) {
+            if (userSelections[i] === quizQuestions[i].correct) score++;
+        }
+        return score;
+    }
+
+    function checkAllQuestionsAnswered() {
+        const unanswered = [];
+        for (let i = 0; i < userSelections.length; i++) {
+            if (userSelections[i] === null) unanswered.push(i + 1);
+        }
+        return unanswered;
+    }
+
+    function showResults() {
+        const unanswered = checkAllQuestionsAnswered();
+        if (unanswered.length > 0) {
+            alert(`⚠️ Please answer all questions before submitting. Unanswered: ${unanswered.join(', ')}`);
+            return;
+        }
+
+        const score = calculateScore();
+        const total = quizQuestions.length;
+        const percentage = Math.round((score / total) * 100);
+        let feedback = '';
+        if (percentage >= 80) feedback = '🌟 Excellent! You\'ve mastered HTML basics!';
+        else if (percentage >= 60) feedback = '👍 Good job! Review the sections on links and lists.';
+        else feedback = '📚 Keep learning! Revisit the demos and try again.';
+
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `
+            <strong>📊 Your Score: ${score} / ${total} (${percentage}%)</strong><br>
+            ${feedback}<br>
+            <button id="showAnswersBtn" class="btn btn-sm btn-info mt-2">🔍 Show Correct Answers</button>
+        `;
+
+        const showBtn = document.getElementById('showAnswersBtn');
+        if (showBtn) {
+            showBtn.onclick = () => showCorrectAnswers();
+        }
+    }
+
+    function showCorrectAnswers() {
+        let answersHtml = '<div class="mt-3"><strong>✅ Correct Answers:</strong><ul>';
+        for (let i = 0; i < quizQuestions.length; i++) {
+            const q = quizQuestions[i];
+            const userAnswerText = (userSelections[i] !== null) ? q.options[userSelections[i]] : 'Not answered';
+            const isUserCorrect = (userSelections[i] === q.correct);
+            const correctText = q.options[q.correct];
+            answersHtml += `<li><strong>${i+1}. ${q.text}</strong><br>
+                            ✔️ Correct answer: ${correctText}<br>
+                            📌 Your answer: ${userAnswerText} ${isUserCorrect ? '✅' : '❌'}</li>`;
+        }
+        answersHtml += '</ul></div>';
+        
+        const resultDiv = document.getElementById('quizResult');
+        if (!document.getElementById('existingAnswersSection')) {
+            const answersSection = document.createElement('div');
+            answersSection.id = 'existingAnswersSection';
+            answersSection.innerHTML = answersHtml;
+            resultDiv.appendChild(answersSection);
+        } else {
+            document.getElementById('existingAnswersSection').innerHTML = answersHtml;
+        }
+    }
+
+    function resetQuiz() {
+        userSelections.fill(null);
+        renderQuiz();
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'none';
+        resultDiv.innerHTML = '';
+        const existingSection = document.getElementById('existingAnswersSection');
+        if (existingSection) existingSection.remove();
+    }
+
+    document.getElementById('submitQuiz')?.addEventListener('click', showResults);
+    document.getElementById('resetQuiz')?.addEventListener('click', resetQuiz);
+    renderQuiz();
 </script>
 </body>
 </html>
