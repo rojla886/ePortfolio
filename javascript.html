@@ -211,6 +211,27 @@
         .filter-btn { background: #94a3b8; }
         .filter-btn.active { background: var(--primary); }
         .error { color: #dc2626; font-size: 0.8rem; margin-top: 0.2rem; }
+
+        /* Quiz styling */
+        .quiz-container {
+            background: #f9fafb;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 2px solid #e2e8f0;
+        }
+        .quiz-question {
+            margin-bottom: 1.5rem;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 12px;
+        }
+        .quiz-option {
+            margin-left: 1rem;
+            display: block;
+            cursor: pointer;
+        }
+
         footer {
             background: #0f172a;
             color: #94a3b8;
@@ -253,10 +274,6 @@
                 <span class="hero-tag">Master JavaScript – ES6 to Modern</span>
                 <h1 class="hero-title">Bring Interactivity<br>with JavaScript.</h1>
                 <p class="lead text-white-50 mt-3">Complete guide: variables, functions, DOM, arrays, localStorage, promises, async/await, fetch, classes, error handling, and fully functional to‑do list & form validation.</p>
-                <!-- <div class="d-flex gap-3 mt-4">
-                    <a href="#intro" class="btn btn-primary btn-lg px-4 rounded-pill fw-bold">Start Learning</a>
-                    <a href="#todolist" class="btn btn-outline-light btn-lg px-4 rounded-pill fw-bold">Try Live Demo</a>
-                </div> -->
             </div>
             <div class="col-lg-4 d-none d-lg-block">
                 <div class="code-window mb-0">
@@ -556,6 +573,21 @@ localStorage.<span style="color:#fbbf24">setItem</span>(<span style="color:#34d3
         </div>
     </section>
 
+    <!-- ========== QUIZ SECTION (5 questions) ========== -->
+    <section id="quizSection" class="doc-section">
+        <span class="chapter-badge">Test Your Knowledge</span>
+        <h2 class="fw-bold">📝 JavaScript Quiz</h2>
+        <div class="explanation">
+            How well do you remember JavaScript? Answer these 5 questions covering variables, functions, arrays, async/await, and classes.
+        </div>
+        <div id="quizContainer" class="quiz-container"></div>
+        <div class="mt-3">
+            <button id="submitQuiz" class="btn btn-primary">✅ Submit Answers</button>
+            <button id="resetQuiz" class="btn btn-outline-secondary ms-2">🔄 Reset Quiz</button>
+        </div>
+        <div id="quizResult" class="tip mt-3" style="display:none;"></div>
+    </section>
+
     <!-- CONCLUSION -->
     <section class="doc-section text-center">
         <span class="chapter-badge">Final Chapter</span>
@@ -793,6 +825,123 @@ localStorage.<span style="color:#fbbf24">setItem</span>(<span style="color:#34d3
         newDiv.style.marginTop = '0.5rem';
         container.appendChild(newDiv);
     });
+
+    // ========== QUIZ LOGIC (5 questions covering JavaScript) ==========
+    const quizQuestions = [
+        { text: "Which keyword declares a variable that cannot be reassigned?", options: ["let", "var", "const", "static"], correct: 2 },
+        { text: "Which array method adds a new element to the end of an array?", options: ["push()", "pop()", "shift()", "unshift()"], correct: 0 },
+        { text: "What does the `async` keyword do?", options: ["Makes a function return a Promise", "Makes a function run synchronously", "Creates a new thread", "Pauses execution forever"], correct: 0 },
+        { text: "Which of the following is used to handle errors in JavaScript?", options: ["try...catch", "if...else", "for...in", "switch...case"], correct: 0 },
+        { text: "What is the output of `console.log(typeof [])`?", options: ["array", "object", "undefined", "null"], correct: 1 }
+    ];
+
+    let userSelections = new Array(quizQuestions.length).fill(null);
+
+    function renderQuiz() {
+        const container = document.getElementById('quizContainer');
+        if (!container) return;
+        let html = '';
+        quizQuestions.forEach((q, idx) => {
+            html += `<div class="quiz-question">
+                        <strong><span class="question-number">${idx + 1}.</span> ${q.text}</strong><br>`;
+            q.options.forEach((opt, optIdx) => {
+                const isChecked = (userSelections[idx] === optIdx);
+                html += `<label class="quiz-option d-block">
+                            <input type="radio" name="q${idx}" value="${optIdx}" ${isChecked ? 'checked' : ''} 
+                                   onclick="setAnswer(${idx}, ${optIdx})"> ${opt}
+                         </label>`;
+            });
+            html += `</div>`;
+        });
+        container.innerHTML = html;
+    }
+
+    window.setAnswer = function(qIndex, optIndex) {
+        userSelections[qIndex] = optIndex;
+    };
+
+    function calculateScore() {
+        let score = 0;
+        for (let i = 0; i < quizQuestions.length; i++) {
+            if (userSelections[i] === quizQuestions[i].correct) score++;
+        }
+        return score;
+    }
+
+    function checkAllQuestionsAnswered() {
+        const unanswered = [];
+        for (let i = 0; i < userSelections.length; i++) {
+            if (userSelections[i] === null) unanswered.push(i + 1);
+        }
+        return unanswered;
+    }
+
+    function showResults() {
+        const unanswered = checkAllQuestionsAnswered();
+        if (unanswered.length > 0) {
+            alert(`⚠️ Please answer all questions before submitting. Unanswered: ${unanswered.join(', ')}`);
+            return;
+        }
+
+        const score = calculateScore();
+        const total = quizQuestions.length;
+        const percentage = Math.round((score / total) * 100);
+        let feedback = '';
+        if (percentage >= 80) feedback = '🌟 Excellent! You\'ve mastered JavaScript fundamentals!';
+        else if (percentage >= 60) feedback = '👍 Good job! Review the sections on async/await and classes.';
+        else feedback = '📚 Keep learning! Revisit the demos and try again.';
+
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `
+            <strong>📊 Your Score: ${score} / ${total} (${percentage}%)</strong><br>
+            ${feedback}<br>
+            <button id="showAnswersBtn" class="btn btn-sm btn-info mt-2">🔍 Show Correct Answers</button>
+        `;
+
+        const showBtn = document.getElementById('showAnswersBtn');
+        if (showBtn) {
+            showBtn.onclick = () => showCorrectAnswers();
+        }
+    }
+
+    function showCorrectAnswers() {
+        let answersHtml = '<div class="mt-3"><strong>✅ Correct Answers:</strong><ul>';
+        for (let i = 0; i < quizQuestions.length; i++) {
+            const q = quizQuestions[i];
+            const userAnswerText = (userSelections[i] !== null) ? q.options[userSelections[i]] : 'Not answered';
+            const isUserCorrect = (userSelections[i] === q.correct);
+            const correctText = q.options[q.correct];
+            answersHtml += `<li><strong>${i+1}. ${q.text}</strong><br>
+                            ✔️ Correct answer: ${correctText}<br>
+                            📌 Your answer: ${userAnswerText} ${isUserCorrect ? '✅' : '❌'}</li>`;
+        }
+        answersHtml += '</ul></div>';
+        
+        const resultDiv = document.getElementById('quizResult');
+        if (!document.getElementById('existingAnswersSection')) {
+            const answersSection = document.createElement('div');
+            answersSection.id = 'existingAnswersSection';
+            answersSection.innerHTML = answersHtml;
+            resultDiv.appendChild(answersSection);
+        } else {
+            document.getElementById('existingAnswersSection').innerHTML = answersHtml;
+        }
+    }
+
+    function resetQuiz() {
+        userSelections.fill(null);
+        renderQuiz();
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'none';
+        resultDiv.innerHTML = '';
+        const existingSection = document.getElementById('existingAnswersSection');
+        if (existingSection) existingSection.remove();
+    }
+
+    document.getElementById('submitQuiz')?.addEventListener('click', showResults);
+    document.getElementById('resetQuiz')?.addEventListener('click', resetQuiz);
+    renderQuiz();
 </script>
 </body>
 </html>
