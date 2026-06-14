@@ -194,6 +194,12 @@
             font-size: 0.8rem;
             margin-top: 0.8rem;
         }
+        /* Quiz container with increased height and scrolling if needed */
+        #quizContainer {
+            max-height: 550px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
         .quiz-option { margin-bottom: 0.5rem; cursor: pointer; }
         .quiz-question { margin-bottom: 1.5rem; padding: 0.5rem; background: #f8fafc; border-radius: 12px; }
         .question-number { font-weight: 800; color: var(--primary); margin-right: 0.5rem; }
@@ -208,6 +214,7 @@
         @media (max-width: 700px) {
             .doc-section { padding: 1.2rem; }
             .hero-title { font-size: 2.5rem; }
+            #quizContainer { max-height: 400px; }
         }
     </style>
 </head>
@@ -298,6 +305,12 @@
             • Database = fridge/pantry (stores ingredients).<br>
             • API = waiter (takes order to kitchen, brings food back).
         </div>
+        <div class="code-window mt-2">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">// Example of a simple full stack architecture</span>
+<span style="color:#7dd3fc">Frontend (React)</span>  →  <span style="color:#7dd3fc">Backend (Node/Express)</span>  →  <span style="color:#7dd3fc">Database (MongoDB)</span>
+       ← JSON API ←          ←  Query result ←</code></pre>
+        </div>
     </section>
 
     <!-- Why Full Stack -->
@@ -313,6 +326,14 @@
                 <li>✅ <strong>Better collaboration</strong> – communicate effectively with specialised developers.</li>
             </ul>
         </div>
+        <div class="code-window mt-2">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#64748b">// Example: A full stack developer can debug from UI to database</span>
+<span style="color:#7dd3fc">1. User reports:</span> "Profile picture not showing"
+<span style="color:#7dd3fc">2. Check frontend:</span> image URL correct? Network tab shows 404?
+<span style="color:#7dd3fc">3. Check backend:</span> API endpoint /api/user/avatar returns correct data?
+<span style="color:#7dd3fc">4. Check database:</span> SELECT avatar FROM users WHERE id = ?</code></pre>
+        </div>
     </section>
 
     <!-- Technology Stacks -->
@@ -327,10 +348,13 @@
         </div>
     </section>
 
-    <!-- API Lifecycle Simulation -->
+    <!-- API Lifecycle Simulation with enhanced explanation -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 04</span>
         <h2 class="fw-bold">How It Works: API Request Lifecycle</h2>
+        <div class="explanation">
+            <strong>API (Application Programming Interface)</strong> is how frontend and backend communicate. The frontend sends HTTP requests, the backend processes them and returns JSON data. Below is a simulated request from a product listing page.
+        </div>
         <div class="demo-area">
             <button id="apiSimulateBtn" class="btn btn-primary">🚀 Simulate API Request (Frontend → Backend → DB)</button>
             <div id="apiLog" class="step-log">Ready. Click to simulate a full API call.</div>
@@ -338,24 +362,46 @@
         </div>
         <div class="code-window">
             <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
-            <pre><code><span style="color:#7dd3fc">// Frontend fetch example</span>
+            <pre><code><span style="color:#7dd3fc">// Frontend: fetch products</span>
 fetch('/api/products')
   .then(res => res.json())
-  .then(data => console.log(data));</code></pre>
+  .then(data => console.log(data));
+
+<span style="color:#7dd3fc">// Backend (Node.js + Express)</span>
+app.get('/api/products', async (req, res) => {
+  const products = await db.query('SELECT * FROM products');
+  res.json(products);
+});</code></pre>
         </div>
     </section>
 
-    <!-- Authentication Flow (JWT) Interactive -->
+    <!-- Authentication Flow (JWT) Interactive with code -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 05</span>
         <h2 class="fw-bold">Authentication Flow (JWT)</h2>
+        <div class="explanation">
+            <strong>JWT (JSON Web Token)</strong> is a secure way to authenticate users. After login, the backend issues a signed token. The frontend stores it (localStorage) and sends it with every subsequent request.
+        </div>
         <div class="demo-area">
             <form id="authSimForm">
-                <div class="mb-2"><label>Email:</label><input type="email" id="authEmail" class="form-control" placeholder="user@example.com"></div>
-                <div class="mb-2"><label>Password:</label><input type="password" id="authPassword" class="form-control" placeholder="password"></div>
+                <div class="mb-2"><label>Email:</label><input type="email" id="authEmail" class="form-control" placeholder="demo@example.com"></div>
+                <div class="mb-2"><label>Password:</label><input type="password" id="authPassword" class="form-control" placeholder="123456"></div>
                 <button type="submit" class="btn btn-success">Simulate Login (JWT)</button>
             </form>
             <div id="jwtLog" class="step-log mt-2"></div>
+        </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">// JWT verification middleware (Node.js)</span>
+function authenticateToken(req, res, next) {
+  const token = req.headers['authorization']?.split(' ')[1];
+  if (!token) return res.sendStatus(401);
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403);
+    req.user = user;
+    next();
+  });
+}</code></pre>
         </div>
     </section>
 
@@ -387,12 +433,30 @@ fetch('/api/products')
             </div>
             <div id="loginSimLog" class="step-log mt-3">✨ Try email: demo@example.com / password: 123456. Full stack simulation.</div>
         </div>
+        <div class="code-window">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">// Frontend validation + mock fetch (as used in demo)</span>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const pwd = document.getElementById('password').value;
+  if (!email.includes('@') || pwd.length < 6) return showError();
+  const response = await fetch('/api/login', {
+    method: 'POST',
+    body: JSON.stringify({ email, password: pwd })
+  });
+  if (response.ok) showSuccess();
+});</code></pre>
+        </div>
     </section>
 
     <!-- Deployment & Git Workflow -->
     <section class="doc-section">
         <span class="chapter-badge">Chapter 07</span>
         <h2 class="fw-bold">Deployment & CI/CD Pipeline</h2>
+        <div class="explanation">
+            <strong>CI/CD (Continuous Integration / Continuous Deployment)</strong> automates testing and deployment. Every time you push code to GitHub, a pipeline can build, test, and deploy your application to a cloud server.
+        </div>
         <div class="code-window">
             <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
             <pre><code><span style="color:#64748b"># Typical Git workflow</span>
@@ -417,6 +481,14 @@ git push origin feature/new-api
             <li>⏱️ Rate limiting to prevent brute force</li>
             <li>✅ Input validation & parameterised queries</li>
         </ul>
+        <div class="code-window mt-2">
+            <div class="code-header"><div class="mac-dots"></div><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+            <pre><code><span style="color:#7dd3fc">// Password hashing example (Node.js with bcrypt)</span>
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const hashedPassword = await bcrypt.hash(password, saltRounds);
+<span style="color:#64748b">// Store hashedPassword in database, never the plain password</span></code></pre>
+        </div>
     </section>
 
     <!-- Full Stack Journey Simulator -->
@@ -430,7 +502,7 @@ git push origin feature/new-api
         </div>
     </section>
 
-    <!-- ========== IMPROVED QUIZ SECTION ========== -->
+    <!-- ========== IMPROVED QUIZ SECTION (FIXED: all 10 questions visible, options fixed) ========== -->
     <section id="quizSection" class="doc-section">
         <span class="chapter-badge">Bonus Challenge</span>
         <h2 class="fw-bold">📝 Test Your Knowledge – Interactive Quiz</h2>
@@ -569,7 +641,7 @@ git push origin feature/new-api
 
     function delay(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
-    // ========== IMPROVED QUIZ LOGIC ==========
+    // ========== IMPROVED QUIZ LOGIC – ALL 10 QUESTIONS, OPTIONS FIXED ==========
     const quizQuestions = [
         { text: "What does HTML stand for?", options: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Language"], correct: 0, section: "HTML" },
         { text: "Which CSS property changes the background colour?", options: ["color", "background-color", "bgcolor"], correct: 1, section: "CSS" },
@@ -648,7 +720,6 @@ git push origin feature/new-api
             <button id="showAnswersBtn" class="btn btn-sm btn-info mt-2">🔍 Show Correct Answers</button>
         `;
 
-        // Attach event listener dynamically to avoid duplication
         const showBtn = document.getElementById('showAnswersBtn');
         if (showBtn) {
             showBtn.onclick = () => showCorrectAnswers();
@@ -664,13 +735,11 @@ git push origin feature/new-api
             const correctText = q.options[q.correct];
             answersHtml += `<li><strong>${i+1}. ${q.text}</strong><br>
                             ✔️ Correct answer: ${correctText}<br>
-                            ${userSelections[i] !== null ? `📌 Your answer: ${userAnswerText} ${isUserCorrect ? '✅' : '❌'}` : '⚠️ You did not answer this question.'}
-                            </li>`;
+                            📌 Your answer: ${userAnswerText} ${isUserCorrect ? '✅' : '❌'}</li>`;
         }
         answersHtml += '</ul></div>';
         
         const resultDiv = document.getElementById('quizResult');
-        // Avoid duplicate answers section
         if (!document.getElementById('existingAnswersSection')) {
             const answersSection = document.createElement('div');
             answersSection.id = 'existingAnswersSection';
@@ -687,7 +756,6 @@ git push origin feature/new-api
         const resultDiv = document.getElementById('quizResult');
         resultDiv.style.display = 'none';
         resultDiv.innerHTML = '';
-        // Remove any extra answers section
         const existingSection = document.getElementById('existingAnswersSection');
         if (existingSection) existingSection.remove();
     }
